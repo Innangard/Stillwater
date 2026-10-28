@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://43yafy5pru4g"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ek7vsd7siwht" path="res://sprites/Skill_Item icons/Separated Files/fc1751.png" id="1_8a8jt"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/poison.tres" id="4"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.55
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 640.0
+projectile_lifetime = 1.4
+knockback = 170.0
+weapon_name = "Venomfall Bow"
+base_damage = 16.0
+element = 4
+cooldown = 0.9
+on_hit_effects = Array[ExtResource("3")]([SubResource("status_app")])
+description = "Arrows dipped in a reservoir of bog bile. The wound is secondary; the poison is the weapon."
+icon = ExtResource("1_8a8jt")
+two_handed = true

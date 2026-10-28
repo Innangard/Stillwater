@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bv7rxhghkaxa4"]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skeleton_pillar_burst.tres" id="weapon"]
+
+[node name="SkeletonPillar" unique_id=751095326 instance=ExtResource("base_enemy")]
+enemy_name = "Bone Pillar"
+sprite_name = "enemy_skeleton_pillar"
+body_tint = Color(0.5, 0.42, 0.55, 1)
+weapon_icon_color = Color(0.65, 0.55, 0.7, 1)
+body_radius = 16.0
+body_shape = 4
+max_health = 40.0
+max_speed = 0.0
+acceleration = 9999.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("weapon")
+wind_up_duration = 1.1
+recover_duration = 0.8
+currency_drop_min = 4
+item_drop_chance = 0.25

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PersistentHitboxWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/persistent_hitbox_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Forge Sparks"
+description = "Embers fountain from the anvil face, scattering in a wide cone. Stand behind the work or burn."
+base_damage = 6.0
+element = 1
+cooldown = 2.5
+on_hit_effects = []
+shape_kind = 0
+length = 180.0
+cone_angle_degrees = 55.0
+duration = 0.8
+tick_interval = 0.3
+knockback = 80.0

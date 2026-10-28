@@ -1,0 +1,121 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/kobold_blue.tscn" id="enemy_kobold_blue"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_goblin_spear"]
+[ext_resource type="PackedScene" path="res://enemies/kobold_brown.tscn" id="enemy_kobold_brown"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -340
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -520
+
+[node name="EastForestBuffer9" type="Node2D" unique_id=300009]
+script = ExtResource("region_script")
+region_id = "east_forest_buffer_9"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.26, 0.38, 0.28, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = 182
+offset_top = -980
+offset_right = 234
+offset_bottom = 0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = 182
+offset_top = 0
+offset_right = 234
+offset_bottom = 940
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Moss0" type="ColorRect" parent="."]
+offset_left = -270
+offset_top = 111
+offset_right = -180
+offset_bottom = 183
+mouse_filter = 2
+color = Color(0.28, 0.42, 0.26, 0.6)
+
+[node name="Rock1" type="ColorRect" parent="."]
+offset_left = 343
+offset_top = -339
+offset_right = 374
+offset_bottom = -305
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.38, 1)
+
+[node name="Bush2" type="ColorRect" parent="."]
+offset_left = 72
+offset_top = 28
+offset_right = 110
+offset_bottom = 69
+mouse_filter = 2
+color = Color(0.18, 0.28, 0.20, 1)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-340, -640, 182, -640, 182, -735, 234, -735, 234, -640, 520, -640, 520, -830, -340, -830)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-340, 600, 182, 600, 182, 695, 234, 695, 234, 600, 520, 600, 520, 790, -340, 790)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(208, -612)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(208, 578)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_kobold_blue")]
+position = Vector2(299, -64)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_spear")]
+position = Vector2(-162, -101)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_kobold_brown")]
+position = Vector2(268, -259)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(208, -728)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  forest path"
+tint = Color(0.5, 0.45, 0.35, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(208, 674)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  forest path"
+tint = Color(0.5, 0.45, 0.35, 0.4)
+zone_size = Vector2(192, 48)

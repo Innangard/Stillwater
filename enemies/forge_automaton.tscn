@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/forge_automaton_punch.tres" id="weapon"]
+
+[node name="ForgeAutomaton" instance=ExtResource("base_enemy")]
+enemy_name = "Forge Automaton"
+sprite_name = "enemy_forge_automaton"
+body_tint = Color(0.50, 0.42, 0.35, 1.0)
+weapon_icon_color = Color(0.75, 0.55, 0.35, 1.0)
+body_radius = 16.0
+body_shape = 2
+max_health = 65.0
+max_speed = 60.0
+acceleration = 450.0
+base_detection = 75.0
+noise_sensitivity = 2.0
+smell_sensitivity = 6.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.6
+recover_duration = 0.55
+min_engage_range = 0.0
+currency_drop_min = 9
+currency_drop_max = 15
+item_drop_chance = 0.35

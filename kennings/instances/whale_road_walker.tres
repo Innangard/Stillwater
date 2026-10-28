@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "whale_road_walker"
+display_name = "Whale-Road Walker"
+epithet = "She who measured the salt-paths"
+description = "The road to Nasus is no short stroll. Your stride has lengthened to swallow it. Faster movement and a shorter dash cooldown."
+flavor_text = "From cliff to city, you did not stop until the gulls knew your face."
+category = 3
+unlock_flag = "quest_story_reach_nasus"
+unlock_hint = "Walk the long road north and reach Nasus."
+move_speed_multiplier = 1.10
+dash_cooldown_multiplier = 0.85
+tier_color = Color(0.40, 0.65, 0.80, 1)

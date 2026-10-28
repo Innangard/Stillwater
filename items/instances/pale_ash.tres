@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bcbn6dodhjlhq"]
+
+[ext_resource type="Script" uid="uid://bxas2hp1afggk" path="res://items/item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dl8skxr1trde2" path="res://sprites/Skill_Item icons/Separated Files/fc210.png" id="1_h6qqx"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Pale Ash"
+description = "Soft grey ash from a temple altar that never quite went cold. Smells faintly of incense. Reagent."
+icon = ExtResource("1_h6qqx")
+category = "reagent"
+placeholder_color = Color(1, 0.5, 0.15, 1)

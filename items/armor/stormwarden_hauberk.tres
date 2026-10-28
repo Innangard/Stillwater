@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 3.0
+damage_taken_multiplier = 0.88
+element_multipliers = {
+3: 0.55
+}
+noise_weight = 10.0
+max_health_bonus = 15.0
+item_name = "Stormwarden Hauberk"
+description = "Rings of mountain-iron, each one individually tempered in the alpine wind. The hauberk sings in lightning storms; the wearer does not feel the bolt. Heavy, loud, and exactly as protective as it sounds. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.42, 0.46, 0.52, 1)

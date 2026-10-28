@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/drowned_crone.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/crone_net_cast.tres" id="w_net"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/crone_scythe.tres" id="w_scythe"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/crone_wave_pulse.tres" id="w_wave"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/crone_drag_under.tres" id="w_drag"]
+[ext_resource type="Resource" path="res://status/instances/waterlogged.tres" id="waterlogged"]
+[ext_resource type="PackedScene" path="res://enemies/drowned_sailor.tscn" id="sailor"]
+
+[node name="DrownedCrone" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "The Drowned Crone"
+sprite_name = "boss_drowned_crone"
+body_tint = Color(0.30, 0.44, 0.42, 1.0)
+weapon_icon_color = Color(0.65, 0.75, 0.72, 1.0)
+body_radius = 22.0
+body_shape = 10
+max_health = 1400.0
+max_speed = 70.0
+acceleration = 450.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_net")
+wind_up_duration = 0.85
+recover_duration = 0.90
+min_engage_range = 0.0
+currency_drop_min = 60
+currency_drop_max = 95
+item_drop_chance = 1.0
+boss_display_name = "The Drowned Crone"
+boss_id = "drowned_crone"
+weapon_net = ExtResource("w_net")
+weapon_scythe = ExtResource("w_scythe")
+weapon_wave = ExtResource("w_wave")
+weapon_drag_under = ExtResource("w_drag")
+phase2_threshold = 0.40
+phase2_speed = 55.0
+waterlogged_effect = ExtResource("waterlogged")
+sailor_scene = ExtResource("sailor")
+sailor_count = 2
+wind_up_net = 0.85
+wind_up_scythe = 0.60
+wind_up_wave = 0.75
+wind_up_drag_under = 0.55
+recover_net = 0.90
+recover_scythe = 0.60
+recover_wave = 1.00
+recover_drag_under = 1.10

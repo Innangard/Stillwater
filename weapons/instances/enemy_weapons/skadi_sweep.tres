@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Lance Sweep"
+description = "Skadi sweeps the lance in a wide horizontal arc, catching anything on either flank."
+base_damage = 14.0
+element = 4
+cooldown = 2.0
+on_hit_effects = []
+swing_range = 65.0
+arc_radius = 50.0
+swing_duration = 0.22
+knockback = 250.0
+swing_visual = 8

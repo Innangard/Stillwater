@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://c2rhoe3jacy8b"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_burst.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_b"]
+[ext_resource type="Resource" uid="uid://dxvfwcvpu3hye" path="res://items/armor/stormweave_cloak.tres" id="loot_armor"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -320
+
+[node name="WestmoorPath3" type="Node2D" unique_id=1666136729]
+script = ExtResource("region_script")
+region_id = "westmoor_path_3"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1623488448]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.36, 1)
+
+[node name="TrackH" type="ColorRect" parent="." unique_id=2092860496]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="TrackN" type="ColorRect" parent="." unique_id=1498525498]
+offset_left = -46.0
+offset_top = -320.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="Rift" type="ColorRect" parent="." unique_id=1183680229]
+offset_left = -300.0
+offset_top = 80.0
+offset_right = -120.0
+offset_bottom = 140.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="Rift2" type="ColorRect" parent="." unique_id=1338676387]
+offset_left = 120.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = -96.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="Stone1" type="ColorRect" parent="." unique_id=1917659870]
+offset_left = -40.0
+offset_top = 150.0
+offset_right = 2.0
+offset_bottom = 230.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Heath1" type="ColorRect" parent="." unique_id=1610476124]
+offset_left = 200.0
+offset_top = 120.0
+offset_right = 320.0
+offset_bottom = 190.0
+mouse_filter = 2
+color = Color(0.40, 0.44, 0.34, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1548292368]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=2043071472]
+build_mode = 1
+polygon = PackedVector2Array(-560, -320, -60, -320, -60, -420, 60, -420, 60, -320, 560, -320, 560, -510, -560, -510)
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1048996636]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1893872551]
+build_mode = 1
+polygon = PackedVector2Array(-560, -320, -560, -60, -660, -60, -660, 60, -560, 60, -560, 320, -750, 320, -750, -320)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1566245895]
+build_mode = 1
+polygon = PackedVector2Array(560, -320, 560, -60, 660, -60, 660, 60, 560, 60, 560, 320, 750, 320, 750, -320)
+
+[node name="default" type="Marker2D" parent="." unique_id=1943862136]
+position = Vector2(0, 60)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1159872249]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1012116127]
+position = Vector2(-500, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1279758889]
+position = Vector2(0, -280)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1190584262]
+position = Vector2(0, 280)
+
+[node name="Player" parent="." unique_id=1967353649 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="Skeleton1" parent="." unique_id=1693124530 instance=ExtResource("enemy_a")]
+position = Vector2(-140, -120)
+
+[node name="Goblin1" parent="." unique_id=1693777703 instance=ExtResource("enemy_b")]
+position = Vector2(200, 140)
+
+[node name="StormweaveCloakPickup" parent="." unique_id=1723341743 instance=ExtResource("pickup_scene")]
+position = Vector2(-20, -10)
+item = ExtResource("loot_armor")
+persistent_per_run = true
+
+[node name="ExitEast" parent="." unique_id=1098897120 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/westmoor_path_2.tscn"
+target_spawn_point = "from_west"
+label = "→  the standing stones"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=1352146807 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/westmoor_beacon.tscn"
+target_spawn_point = "from_east"
+label = "←  the Westmark Beacon"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." unique_id=1439020431 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/westmoor_merchant.tscn"
+target_spawn_point = "from_south"
+label = "↑  a sheltered camp"
+tint = Color(0.46, 0.44, 0.38, 0.4)
+zone_size = Vector2(192, 48)
+

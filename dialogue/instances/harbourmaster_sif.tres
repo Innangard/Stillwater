@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://bgqi8yo82c1ke"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Harbour-master Sif"
+text = "A pulse on my docks. Storsprunga doesn't see many of those."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Sif"
+text = "Most who come here come to the water. They wait at the breakers, asking the tide to take them somewhere it isn't allowed to take anyone anymore. They wait a long time."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Sif"
+text = "Whatever you came for — go careful. The shore takes a different kind of patience than the road does."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3")])

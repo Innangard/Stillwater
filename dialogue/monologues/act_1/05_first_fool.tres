@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "An Overheard Voice"
+text = "Three centuries ago, a fool in the south barrows refused the water before Hjarrandi ever arrived. He built a tomb of bones and sat in it, crowning himself sovereign of the dirt. He had no great charisma or followers; he was merely the first to show us how to fail."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/galgi_the_bound.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/galgi_pendulum_slam.tres" id="w_pendulum"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/galgi_rope_grab.tres" id="w_grab"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/galgi_choke_cough.tres" id="w_choke"]
+[ext_resource type="Resource" path="res://status/instances/rope_drag.tres" id="rope_drag"]
+
+[node name="GalgiTheBound" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Galgi the Bound"
+body_tint = Color(0.38, 0.30, 0.26, 1.0)
+weapon_icon_color = Color(0.55, 0.40, 0.30, 1.0)
+body_radius = 24.0
+body_shape = 9
+max_health = 1200.0
+max_speed = 0.0
+acceleration = 500.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_pendulum")
+wind_up_duration = 0.75
+recover_duration = 0.65
+min_engage_range = 0.0
+currency_drop_min = 50
+currency_drop_max = 80
+item_drop_chance = 1.0
+boss_display_name = "Galgi the Bound"
+boss_id = "galgi_the_bound"
+weapon_pendulum = ExtResource("w_pendulum")
+weapon_rope_grab = ExtResource("w_grab")
+weapon_choke = ExtResource("w_choke")
+phase2_threshold = 0.50
+phase2_wind_up = 0.55
+phase2_speed = 80.0
+wind_up_pendulum = 0.75
+wind_up_rope_grab = 0.80
+wind_up_choke = 0.70
+recover_pendulum = 0.65
+recover_rope_grab = 0.55
+recover_choke = 2.0
+rope_drag_effect = ExtResource("rope_drag")
+rope_drag_radius = 50.0

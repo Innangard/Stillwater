@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 2.0
+damage_taken_multiplier = 0.92
+element_multipliers = {
+6: 0.50
+}
+noise_weight = -2.0
+armor_slot = 0
+item_name = "Gravewalker Cowl"
+description = "A deep cowl of black wool, the lining waxed with gravewax until the fabric stops moving on its own. Sits low over the eyes. What looks for you in the dark looks straight past. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.18, 0.16, 0.22, 1)

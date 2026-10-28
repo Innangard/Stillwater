@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Carving"
+text = "We bleed black ash and slow memory. There is no slaughter-dew left in our veins to spill, only the dark resonance of the lives we once lived. When we are cut, the ash falls to the dirt, cold to the touch, and when we are broken, we simply dissolve and reform at the nearest arch."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ltrcarv0001"]
+
+[ext_resource type="Script" path="res://dialogue/altar_carving.gd" id="carving_script"]
+
+[sub_resource type="CircleShape2D" id="carving_shape"]
+radius = 28.0
+
+[node name="AltarCarving" type="Node2D"]
+script = ExtResource("carving_script")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("carving_shape")

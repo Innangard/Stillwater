@@ -1,0 +1,4 @@
+[gd_scene format=3]
+; DEPRECATED — Norn is now an NPC at res://npcs/norn.tscn.
+; Delete this file from your project.
+[node name="Deprecated" type="Node2D"]

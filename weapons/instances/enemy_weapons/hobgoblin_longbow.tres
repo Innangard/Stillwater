@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Hobgoblin Longbow"
+description = "Yew, sinew, and arrows fletched from something larger than a crow. Pulls heavier, hits harder, releases faster than a regular goblin bow."
+base_damage = 13.0
+element = 0
+cooldown = 0.85
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 540.0
+projectile_lifetime = 1.30
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 150.0

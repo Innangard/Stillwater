@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://quests/quest.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = "story_reach_nasus"
+quest_name = "The Northern Road"
+description = "The path north from Wickbarrow leads through wild forest toward the walled city of Nasus. Reach the city and speak to whoever will listen. The road is long and the forest does not forgive."
+quest_type = 0
+turn_in_npc = "Notice Board"
+target_count = 1
+reward_souls = 75

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://bbbcymktmuy61"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://df1drnch36ebl" path="res://sprites/Skill_Item icons/Separated Files/fc1514.png" id="1_ykwwj"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2_wansb"]
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 480.0
+projectile_lifetime = 0.4
+projectile_count = 5
+spread_degrees = 32.0
+knockback = 80.0
+weapon_name = "Splinter Volley"
+base_damage = 5.0
+cooldown = 1.8
+description = "A clutch of bone-shards, hurled in a rough fan. Vicious up close, useless past arm's length."
+icon = ExtResource("1_ykwwj")
+two_handed = true
+projectile_visual = 1

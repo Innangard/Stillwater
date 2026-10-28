@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/shield_zone.gd" id="zone_script"]
+
+[sub_resource type="RectangleShape2D" id="placeholder_shape"]
+size = Vector2(40, 80)
+
+[node name="ShieldZone" type="Area2D"]
+script = ExtResource("zone_script")
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("placeholder_shape")

@@ -1,0 +1,231 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/salt_revenant.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/drift_archer.tscn" id="enemy_b"]
+[ext_resource type="Resource" path="res://items/instances/brine_crystal.tres" id="item_a"]
+[ext_resource type="Resource" path="res://items/instances/frost_filament.tres" id="item_b"]
+[ext_resource type="PackedScene" path="res://dialogue/altar_carving.tscn" id="carving_scene"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2_pool.tres" id="monologue_pool"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -360
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -360
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -400
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -400
+
+[node name="StrandvikAltar" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "strandvik_altar"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.30, 0.35, 0.38, 1)
+
+[node name="Clearing" type="ColorRect" parent="."]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.46, 0.50, 0.54, 1)
+
+[node name="AccentN" type="ColorRect" parent="."]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = -210.0
+mouse_filter = 2
+color = Color(0.26, 0.36, 0.28, 0.9)
+
+[node name="AccentS" type="ColorRect" parent="."]
+offset_left = -300.0
+offset_top = 210.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.26, 0.36, 0.28, 0.9)
+
+[node name="CairnN" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -180.0
+offset_right = 24.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.43, 0.43, 0.40, 1)
+
+[node name="CairnNCap" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = -200.0
+offset_right = 16.0
+offset_bottom = -180.0
+mouse_filter = 2
+color = Color(0.53, 0.53, 0.50, 1)
+
+[node name="CairnS" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = 110.0
+offset_right = 24.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0.43, 0.43, 0.40, 1)
+
+[node name="CairnSCap" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = 180.0
+offset_right = 16.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.53, 0.53, 0.50, 1)
+
+[node name="CairnE" type="ColorRect" parent="."]
+offset_left = 180.0
+offset_top = -24.0
+offset_right = 240.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.43, 0.43, 0.40, 1)
+
+[node name="CairnECap" type="ColorRect" parent="."]
+offset_left = 220.0
+offset_top = -16.0
+offset_right = 240.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.53, 0.53, 0.50, 1)
+
+[node name="CairnW" type="ColorRect" parent="."]
+offset_left = -240.0
+offset_top = -24.0
+offset_right = -180.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.43, 0.43, 0.40, 1)
+
+[node name="CairnWCap" type="ColorRect" parent="."]
+offset_left = -240.0
+offset_top = -16.0
+offset_right = -220.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.53, 0.53, 0.50, 1)
+
+[node name="AltarBase" type="ColorRect" parent="."]
+offset_left = -90.0
+offset_top = -22.0
+offset_right = 90.0
+offset_bottom = 22.0
+mouse_filter = 2
+color = Color(0.36, 0.38, 0.40, 1)
+
+[node name="AltarStone" type="ColorRect" parent="."]
+offset_left = -78.0
+offset_top = -32.0
+offset_right = 78.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.48, 0.50, 0.52, 1)
+
+[node name="AltarBasin" type="ColorRect" parent="."]
+offset_left = -32.0
+offset_top = -22.0
+offset_right = 32.0
+offset_bottom = -8.0
+mouse_filter = 2
+color = Color(0.18, 0.24, 0.30, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 260)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(0, 260)
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -260)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(280, 0)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-280, 0)
+
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(0, 260)
+
+[node name="GuardianA" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(-140, -90)
+
+[node name="GuardianB" parent="." instance=ExtResource("enemy_b")]
+position = Vector2(140, -90)
+
+[node name="LootA_L" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(-200, -150)
+item = ExtResource("item_a")
+persistent_per_run = true
+
+[node name="LootA_R" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(200, -150)
+item = ExtResource("item_a")
+persistent_per_run = true
+
+[node name="LootB" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(0, 100)
+item = ExtResource("item_b")
+persistent_per_run = true
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 320)
+target_scene = "res://world/regions/driftworks_town.tscn"
+target_spawn_point = "from_east"
+label = "\u2193  back to Driftworks"
+tint = Color(0.40, 0.46, 0.50, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -320)
+target_scene = "res://world/regions/dungeon_entrance_sindri.tscn"
+target_spawn_point = "from_south"
+label = "\u2191  toward the Forge"
+tint = Color(0.50, 0.40, 0.30, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="AltarCarving" parent="." instance=ExtResource("carving_scene")]
+position = Vector2(0, -36)
+pool = ExtResource("monologue_pool")
+carving_name = "Brine-Crusted Slab"
+carving_id = "strandvik_main"
+tint = Color(0.43, 0.43, 0.40, 1)

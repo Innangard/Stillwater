@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://bql2vb0vpxuq1"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dj7qpxe2bueny" path="res://sprites/Skill_Item icons/Separated Files/fc1594.png" id="1_a3mpo"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="4"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.4
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 640.0
+projectile_lifetime = 1.4
+knockback = 170.0
+weapon_name = "Emberlance Bow"
+base_damage = 16.0
+element = 1
+cooldown = 0.9
+on_hit_effects = Array[ExtResource("3")]([SubResource("status_app")])
+description = "A longbow whose arrows ignite mid-flight. They arrive as streaks of fire."
+icon = ExtResource("1_a3mpo")
+two_handed = true

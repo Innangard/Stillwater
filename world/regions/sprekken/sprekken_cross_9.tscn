@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://gen4102171ccb0f"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_toss.tscn" id="enemy_1"]
+
+[node name="Node2D" type="Node2D" unique_id=20000298]
+script = ExtResource("region_script")
+region_id = "sprekken_cross_9"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20000299]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.18, 0.16, 0.22, 1)
+
+[node name="Track_north" type="ColorRect" parent="." unique_id=20000300]
+offset_left = -46.0
+offset_top = -400.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.40, 0.5)
+
+[node name="Track_south" type="ColorRect" parent="." unique_id=20000301]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.40, 0.5)
+
+[node name="Track_east" type="ColorRect" parent="." unique_id=20000302]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 660.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.40, 0.5)
+
+[node name="Track_west" type="ColorRect" parent="." unique_id=20000303]
+offset_left = -660.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.40, 0.5)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20000304]
+offset_left = -320.0
+offset_top = 66.0
+offset_right = -238.0
+offset_bottom = 106.0
+mouse_filter = 2
+color = Color(0.30, 0.20, 0.45, 0.3)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20000305]
+offset_left = 81.0
+offset_top = 12.0
+offset_right = 103.0
+offset_bottom = 68.0
+mouse_filter = 2
+color = Color(0.10, 0.08, 0.14, 0.8)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20000306]
+offset_left = 26.0
+offset_top = 133.0
+offset_right = 56.0
+offset_bottom = 185.0
+mouse_filter = 2
+color = Color(0.18, 0.16, 0.22, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="." unique_id=20000307]
+offset_left = 206.0
+offset_top = -50.0
+offset_right = 272.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.30, 0.20, 0.45, 0.3)
+
+[node name="Decor4" type="ColorRect" parent="." unique_id=20000308]
+offset_left = 106.0
+offset_top = 161.0
+offset_right = 158.0
+offset_bottom = 191.0
+mouse_filter = 2
+color = Color(0.10, 0.08, 0.14, 0.8)
+
+[node name="Decor5" type="ColorRect" parent="." unique_id=20000309]
+offset_left = -115.0
+offset_top = 17.0
+offset_right = -53.0
+offset_bottom = 53.0
+mouse_filter = 2
+color = Color(0.18, 0.16, 0.22, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20000310]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20000311]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -490, 60, -490, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20000312]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, -60, 300, -60, 490, 60, 490, 60, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20000313]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -750, -60, -750, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20000314]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 750, -60, 750, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20000315]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=20000316]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=20000317]
+position = Vector2(0, 260)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=20000318]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=20000319]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=20000320 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+
+[node name="SkeletonFan_0" parent="." unique_id=25755354 instance=ExtResource("enemy_0")]
+position = Vector2(6, 90)
+
+[node name="SkeletonToss_1" parent="." unique_id=25755355 instance=ExtResource("enemy_1")]
+position = Vector2(83, -161)
+
+[node name="SkeletonToss_2" parent="." unique_id=25755356 instance=ExtResource("enemy_1")]
+position = Vector2(-246, -90)
+
+[node name="SkeletonToss_3" parent="." unique_id=25755357 instance=ExtResource("enemy_1")]
+position = Vector2(-395, 142)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  dungeon corridor"
+tint = Color(0.35, 0.30, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  dungeon corridor"
+tint = Color(0.35, 0.30, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  dungeon corridor"
+tint = Color(0.35, 0.30, 0.40, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "←  dungeon corridor"
+tint = Color(0.35, 0.30, 0.40, 0.4)
+zone_size = Vector2(48, 192)

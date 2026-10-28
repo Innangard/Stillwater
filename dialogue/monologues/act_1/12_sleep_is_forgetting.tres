@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Journal Scrap"
+text = "Sleep is the only true forgetting we have left on this wretched island. When I close my eyes, I am no longer trapped on this stagnant shore; I am back in my village, holding my daughter's hand. But every morning, I wake up to the same pale sky, and the loss cuts me deeper than any blade."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://dnw43qqxcggbr"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bb5yksl8k2yds" path="res://sprites/Skill_Item icons/Separated Files/fc1980.png" id="1_j76fk"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 3.0
+damage_taken_multiplier = 0.88
+element_multipliers = {
+2: 0.55
+}
+noise_weight = 8.0
+item_name = "Tidewoven Cloak"
+description = "A cloak soaked in tidal brine and dried stiff. Ice and frost bead on its surface and slide off. Chest."
+icon = ExtResource("1_j76fk")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.35, 0.55, 0.65, 1)

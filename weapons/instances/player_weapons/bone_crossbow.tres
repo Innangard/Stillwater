@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://c300uo7svvsxw"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dmm84feeqm2mw" path="res://sprites/Skill_Item icons/Separated Files/fc1482.png" id="1_rrc43"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2_dw4eh"]
+[ext_resource type="Resource" uid="uid://cpyvoj5sxbbfn" path="res://status/instances/dark.tres" id="3_dark"]
+
+[sub_resource type="Resource" id="status_app_dark"]
+script = ExtResource("2_dw4eh")
+effect = ExtResource("3_dark")
+chance = 0.5
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 850.0
+projectile_lifetime = 1.4
+pierce = 1
+knockback = 220.0
+weapon_name = "Bone Crossbow"
+base_damage = 23.0
+element = 6
+cooldown = 1.7
+on_hit_effects = Array[ExtResource("2_dw4eh")]([SubResource("status_app_dark")])
+description = "A crossbow assembled from dungeon bone and sinew. The bolt punches through the first thing it hits and keeps going. Its dark workmanship leaves struck foes weakened."
+icon = ExtResource("1_rrc43")
+two_handed = true
+projectile_visual = 1

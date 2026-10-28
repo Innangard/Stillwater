@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 0.25
+damage_taken_multiplier = 0.97
+noise_weight = 0.5
+move_speed_multiplier = 1.1
+item_name = "Strandwalker Wraps"
+description = "Thin rope-soled sandals wound with strips of oiled sailcloth. They were made for walking the tideline at speed — running, really, when the surf turns. Silent on wet sand. Boots."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.50, 0.48, 0.42, 1)

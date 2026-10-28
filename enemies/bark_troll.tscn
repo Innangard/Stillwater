@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/bark_troll_club.tres" id="weapon"]
+
+[node name="BarkTroll" instance=ExtResource("base_enemy")]
+enemy_name = "Bark Troll"
+sprite_name = "enemy_bark_troll"
+body_tint = Color(0.38, 0.32, 0.25, 1.0)
+weapon_icon_color = Color(0.55, 0.45, 0.35, 1.0)
+body_radius = 22.0
+body_shape = 0
+max_health = 110.0
+max_speed = 45.0
+acceleration = 350.0
+base_detection = 65.0
+noise_sensitivity = 4.0
+smell_sensitivity = 3.5
+weapon = ExtResource("weapon")
+wind_up_duration = 0.85
+recover_duration = 0.7
+min_engage_range = 0.0
+currency_drop_min = 14
+currency_drop_max = 22
+item_drop_chance = 0.42

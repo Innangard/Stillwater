@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/giant_scorpion.gd" id="gs_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/scorpion_pincer.tres" id="pincer"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/scorpion_tail.tres" id="tail"]
+[ext_resource type="Script" path="res://items/item.gd" id="item_script"]
+[ext_resource type="Resource" path="res://items/instances/venom_sac.tres" id="drop_sac"]
+
+[node name="GiantScorpion" instance=ExtResource("base_enemy")]
+script = ExtResource("gs_script")
+enemy_name = "Giant Scorpion"
+sprite_name = "boss_giant_scorpion"
+body_tint = Color(0.32, 0.20, 0.14, 1.0)
+weapon_icon_color = Color(0.55, 0.85, 0.35, 1.0)
+body_radius = 22.0
+body_shape = 6
+max_health = 90.0
+max_speed = 92.0
+acceleration = 720.0
+base_detection = 105.0
+noise_sensitivity = 5.0
+smell_sensitivity = 5.0
+weapon = ExtResource("pincer")
+wind_up_duration = 0.40
+recover_duration = 0.35
+min_engage_range = 0.0
+stagger_threshold = 4.5
+currency_drop_min = 14
+currency_drop_max = 24
+item_drops = Array[ExtResource("item_script")]([ExtResource("drop_sac")])
+item_drop_chance = 0.55
+weapon_pincer = ExtResource("pincer")
+weapon_tail = ExtResource("tail")
+wind_up_pincer = 0.40
+wind_up_tail = 0.65
+recover_pincer = 0.35
+recover_tail = 0.55

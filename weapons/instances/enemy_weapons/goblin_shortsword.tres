@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://1unklwbp0f8c"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="1_uo6sl"]
+
+[resource]
+script = ExtResource("1")
+swing_range = 20.0
+arc_radius = 20.0
+swing_duration = 0.18
+knockback = 240.0
+weapon_name = "Goblin Shortsword"
+cooldown = 0.65
+description = "Heavier than it looks. The cross-guard has seen weather."

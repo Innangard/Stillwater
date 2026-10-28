@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Frost Wolf Bite"
+description = "Colder than its lowland cousin. The frost in its breath numbs where it bites."
+base_damage = 12.0
+element = 4
+cooldown = 1.0
+on_hit_effects = []
+swing_range = 24.0
+arc_radius = 20.0
+swing_duration = 0.14
+knockback = 230.0
+user_lunge_distance = 60.0
+swing_visual = 8

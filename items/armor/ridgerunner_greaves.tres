@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 1.5
+damage_taken_multiplier = 0.93
+element_multipliers = {
+2: 0.8
+}
+noise_weight = 3.0
+move_speed_multiplier = 1.12
+item_name = "Ridgerunner Greaves"
+description = "Leather shin-guards reinforced with cold-iron strips, soled in mountain goat hide. The grip on scree is unnatural; the speed on flat ground, earned. Faster and tougher than anything in the lowlands. Boots."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.44, 0.40, 0.34, 1)

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://dynydhp4lsfox"]
+
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_goblin_spear"]
+[ext_resource type="PackedScene" path="res://enemies/kobold_brown.tscn" id="enemy_kobold_brown"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -420
+
+[node name="ForestClearing7" type="Node2D" unique_id=300067]
+script = ExtResource("region_script")
+region_id = "north_forest_clearing_7"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2118834537]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.44, 0.28, 1)
+
+[node name="CenterPath" type="ColorRect" parent="."]
+offset_left = 128
+offset_top = -10
+offset_right = 650
+offset_bottom = 50
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1307288125]
+offset_left = -162.0
+offset_top = -140.0
+offset_right = 138.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.48, 0.54, 0.38, 1)
+
+[node name="Bush0" type="ColorRect" parent="." unique_id=58860334]
+offset_left = 95.0
+offset_top = 96.0
+offset_right = 134.0
+offset_bottom = 123.0
+mouse_filter = 2
+color = Color(0.14, 0.24, 0.16, 1)
+
+[node name="Pool1" type="ColorRect" parent="." unique_id=1023622530]
+offset_left = 57.0
+offset_top = 88.0
+offset_right = 115.0
+offset_bottom = 136.0
+mouse_filter = 2
+color = Color(0.16, 0.26, 0.3, 1)
+
+[node name="Rock2" type="ColorRect" parent="." unique_id=1096014550]
+offset_left = 265.0
+offset_top = 96.0
+offset_right = 290.0
+offset_bottom = 143.0
+mouse_filter = 2
+color = Color(0.5, 0.46, 0.4, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1258086488]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=921569881]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1339093080]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=632330097]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=134595263]
+build_mode = 1
+polygon = PackedVector2Array(460, -300, 460, -10, 555, -10, 555, 50, 460, 50, 460, 340, 650, 340, 650, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=1278252993]
+position = Vector2(436, 20)
+
+[node name="Player" parent="." unique_id=1744057315 instance=ExtResource("player_scene")]
+position = Vector2(436, 20)
+[node name="Brown Kobold" parent="." unique_id=1510073268 instance=ExtResource("enemy_kobold_brown")]
+position = Vector2(-86, 90)
+
+[node name="Brown Kobold 2" parent="." unique_id=1420920752 instance=ExtResource("enemy_kobold_brown")]
+position = Vector2(-18, -154)
+
+[node name="Goblin Spearman" parent="." unique_id=1044844350 instance=ExtResource("enemy_goblin_spear")]
+position = Vector2(-100, 69)
+[node name="ExitEast" parent="." unique_id=1715206535 instance=ExtResource("exit_scene")]
+position = Vector2(548, 20)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  back to the path"
+tint = Color(0.5, 0.45, 0.35, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(-63, 71)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(109, -27)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

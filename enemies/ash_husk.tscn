@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/ash_cleave.tres" id="weapon"]
+
+[node name="AshHusk" instance=ExtResource("base_enemy")]
+enemy_name = "Ash Husk"
+sprite_name = "enemy_ash_husk"
+body_tint = Color(0.45, 0.38, 0.35, 1.0)
+weapon_icon_color = Color(0.85, 0.42, 0.18, 1.0)
+body_radius = 15.0
+body_shape = 0
+max_health = 46.0
+max_speed = 80.0
+acceleration = 600.0
+base_detection = 75.0
+noise_sensitivity = 4.0
+smell_sensitivity = 4.5
+weapon = ExtResource("weapon")
+wind_up_duration = 0.65
+recover_duration = 0.50
+min_engage_range = 0.0
+currency_drop_min = 5
+currency_drop_max = 10
+item_drop_chance = 0.32

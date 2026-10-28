@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/shock.tres" id="3"]
+
+[sub_resource type="Resource" id="shock_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.55
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Stormcaller Hammer"
+description = "A storm-glass head cast around a sky-iron core. Hums faintly until it strikes — then the thunder catches up, late and loud. Heavy, slow, but the strike-after-strike is the thunder coming in. Half-and-then-some chance to shock."
+base_damage = 27.0
+element = 3
+cooldown = 0.88
+on_hit_effects = Array[ExtResource("2")]([SubResource("shock_app")])
+swing_range = 50.0
+arc_radius = 44.0
+swing_duration = 0.24
+knockback = 480.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+wielder_speed_multiplier = 0.96
+placeholder_color = Color(0.35, 0.45, 0.70, 1)
+two_handed = true
+swing_visual = 5

@@ -1,0 +1,84 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/tide_leaper.tscn" id="enemy_tide_leaper"]
+[ext_resource type="PackedScene" path="res://enemies/salt_revenant.tscn" id="enemy_salt_revenant"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="DriftworksClearing1" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "driftworks_clearing_1"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.25, 0.35, 0.38, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.40, 0.46, 0.42, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = 264
+offset_top = -308
+offset_right = 314
+offset_bottom = -268
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.34, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = -46
+offset_top = -112
+offset_right = -22
+offset_bottom = -87
+mouse_filter = 2
+color = Color(0.20, 0.34, 0.40, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -292
+offset_top = 130
+offset_right = -245
+offset_bottom = 167
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.34, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = -7
+offset_top = -64
+offset_right = 26
+offset_bottom = -30
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.34, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_tide_leaper")]
+position = Vector2(-163, -94)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_salt_revenant")]
+position = Vector2(179, -71)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -420)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "north"
+tint = Color(0.40, 0.46, 0.42, 0.4)
+zone_size = Vector2(192, 48)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "lorebearer_south"
+display_name = "Stone-Read"
+epithet = "She who heard the long shore in its own voice"
+description = "You have read every carving the southern dead have left. Their grief and patience pass through you; small wounds do not bite as deep when you carry their words."
+flavor_text = "I have moved this pile of stones from the left side of the path to the right, and then back again, every day for ten years."
+category = 1
+unlock_flag = "all_monologues_read_act_1"
+unlock_hint = "Read every carving the southern altars hold."
+damage_taken_multiplier = 0.95
+max_health_bonus = 10.0
+tier_color = Color(0.62, 0.58, 0.50, 1)

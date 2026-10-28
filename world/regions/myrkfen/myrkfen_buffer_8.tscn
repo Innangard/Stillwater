@@ -1,0 +1,147 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://enemies/bog_wretch.tscn" id="enemy_wretch"]
+[ext_resource type="PackedScene" path="res://enemies/orc.tscn" id="enemy_orc"]
+
+[node name="MyrkfenBuffer8" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "myrkfen_buffer_8"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000
+offset_top = -2000
+offset_right = 2000
+offset_bottom = 2000
+mouse_filter = 2
+color = Color(0.13, 0.16, 0.12, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = 0
+offset_top = -30
+offset_right = 575
+offset_bottom = 30
+mouse_filter = 2
+color = Color(0.30, 0.28, 0.18, 0.55)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = -575
+offset_top = -30
+offset_right = 0
+offset_bottom = 30
+mouse_filter = 2
+color = Color(0.30, 0.28, 0.18, 0.55)
+
+[node name="Roots0" type="ColorRect" parent="."]
+offset_left = -306
+offset_top = 248
+offset_right = -217
+offset_bottom = 263
+mouse_filter = 2
+color = Color(0.22, 0.17, 0.12, 0.9)
+
+[node name="Reeds1" type="ColorRect" parent="."]
+offset_left = -268
+offset_top = 347
+offset_right = -247
+offset_bottom = 416
+mouse_filter = 2
+color = Color(0.28, 0.40, 0.22, 0.8)
+
+[node name="Bogpool2" type="ColorRect" parent="."]
+offset_left = -355
+offset_top = -195
+offset_right = -222
+offset_bottom = -139
+mouse_filter = 2
+color = Color(0.22, 0.36, 0.20, 0.65)
+
+[node name="Deadtree3" type="ColorRect" parent="."]
+offset_left = -129
+offset_top = -156
+offset_right = -104
+offset_bottom = -62
+mouse_filter = 2
+color = Color(0.19, 0.15, 0.11, 1)
+
+[node name="Roots4" type="ColorRect" parent="."]
+offset_left = -345
+offset_top = 54
+offset_right = -280
+offset_bottom = 76
+mouse_filter = 2
+color = Color(0.22, 0.17, 0.12, 0.9)
+
+[node name="Reeds5" type="ColorRect" parent="."]
+offset_left = 32
+offset_top = 410
+offset_right = 44
+offset_bottom = 487
+mouse_filter = 2
+color = Color(0.28, 0.40, 0.22, 0.8)
+
+[node name="Reeds6" type="ColorRect" parent="."]
+offset_left = 405
+offset_top = 172
+offset_right = 418
+offset_bottom = 234
+mouse_filter = 2
+color = Color(0.28, 0.40, 0.22, 0.8)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallNorth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, -540, 520, -540, 520, -660, -520, -660)
+
+[node name="WallSouth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, 560, 520, 560, 520, 680, -520, 680)
+
+[node name="WallEast" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(480, -580, 480, -30, 575, -30, 575, 30, 480, 30, 480, 600, 600, 600, 600, -580)
+
+[node name="WallWest" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-480, -580, -480, -30, -575, -30, -575, 30, -480, 30, -480, 600, -600, 600, -600, -580)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(452, 0)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-452, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_wretch")]
+position = Vector2(162, 353)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_wretch")]
+position = Vector2(-127, 229)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_orc")]
+position = Vector2(-65, 392)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(568, 0)
+target_scene = "res://world/regions/dungeon_entrance_myrkfen.tscn"
+target_spawn_point = "default"
+label = "→  through the fen"
+tint = Color(0.30, 0.42, 0.24, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-568, 0)
+target_scene = "res://world/regions/dungeon_entrance_myrkfen.tscn"
+target_spawn_point = "default"
+label = "←  through the fen"
+tint = Color(0.30, 0.42, 0.24, 0.4)
+zone_size = Vector2(48, 192)
+

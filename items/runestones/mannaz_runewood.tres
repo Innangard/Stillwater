@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunestoneItem" load_steps=2 format=3 uid="uid://3b8511cef767"]
+
+[ext_resource type="Script" path="res://items/runestone_item.gd" id="script_1"]
+
+[resource]
+script = ExtResource("script_1")
+rune_symbol = "ᛗ"
+rune_stat = 3
+bonus_value = 2.2
+conduit = 2
+drop_weight = 5.0
+item_name = "Mannaz Wood"
+description = "+2.2% Damage Resistance. Mankind endures."
+category = "runestone"
+max_stack = 99
+placeholder_color = Color(0.55, 0.72, 0.45, 1)

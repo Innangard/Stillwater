@@ -1,0 +1,31 @@
+; ═══════════════════════════════════════════════════════════════════
+; RESERVED FOR LATER BOSS — not currently used by the Skeleton King.
+;
+; These ranged projectile weapons were the original Skeleton King
+; rotation (toss / fan / burst). They're well-balanced multi-projectile
+; patterns that belong on a mid-game boss where the player already
+; knows melee fundamentals (parry timing, dodge windows, spacing).
+;
+; When you build that boss, reference these .tres files from its .tscn.
+; The weapons are fully functional — no code changes needed.
+; ═══════════════════════════════════════════════════════════════════
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://bulof2exdmxl7"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="1_gpcym"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 500.0
+projectile_lifetime = 1.5
+projectile_count = 3
+spread_degrees = 15.0
+knockback = 150.0
+weapon_name = "Royal Bone Toss"
+base_damage = 15.0
+element = 6
+cooldown = 0.8
+description = "A king's throw — faster, sharper, and aimed with centuries of practice."
+projectile_visual = 2

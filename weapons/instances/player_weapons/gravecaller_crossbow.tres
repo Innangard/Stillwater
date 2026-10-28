@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/dark.tres" id="3"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="4"]
+
+[sub_resource type="Resource" id="dark_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.60
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Gravecaller Crossbow"
+description = "A crossbow of black yew, the prod waxed with gravewax until the wood drinks no light at all. The bolts come out silent. Whoever hears them last hears nothing else for a while. Heavy, slow, dark."
+base_damage = 24.0
+element = 6
+cooldown = 0.95
+on_hit_effects = Array[ExtResource("2")]([SubResource("dark_app")])
+projectile_scene = ExtResource("4")
+projectile_speed = 540.0
+projectile_lifetime = 1.45
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 1
+knockback = 200.0
+placeholder_color = Color(0.20, 0.18, 0.22, 1)
+two_handed = true
+projectile_visual = 1

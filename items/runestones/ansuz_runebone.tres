@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunestoneItem" load_steps=2 format=3 uid="uid://1cc09f361ef9"]
+
+[ext_resource type="Script" path="res://items/runestone_item.gd" id="script_1"]
+
+[resource]
+script = ExtResource("script_1")
+rune_symbol = "ᚨ"
+rune_stat = 1
+bonus_value = 2.0
+conduit = 1
+drop_weight = 10.0
+item_name = "Ansuz Bone"
+description = "+2% Projectile Damage. Words that strike from afar."
+category = "runestone"
+max_stack = 99
+placeholder_color = Color(0.82, 0.78, 0.70, 1)

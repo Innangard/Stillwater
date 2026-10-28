@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Venom Sac"
+description = "A leather-tough gland cut intact from a scorpion's tail. Heavy with green fluid, warm in the palm. Pierce it carelessly and you'll spend an evening in a feverish sweat. Pierce it carefully and you have ammunition. Reagent."
+category = "reagent"
+placeholder_color = Color(0.55, 0.85, 0.35, 1)

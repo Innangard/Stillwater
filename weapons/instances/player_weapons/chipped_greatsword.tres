@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://do10vb4a5aqfo"]
+
+[ext_resource type="Texture2D" uid="uid://c31nqxahnicb6" path="res://sprites/Skill_Item icons/Separated Files/fc1448.png" id="1_hfxau"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="1_jn7md"]
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="2_hfxau"]
+
+[resource]
+script = ExtResource("2_hfxau")
+swing_range = 50.0
+arc_radius = 70.0
+swing_duration = 0.5
+knockback = 400.0
+weapon_name = "Chipped Greatsword"
+base_damage = 13.0
+cooldown = 1.0
+item_name = "Chipped Greadsword"
+icon = ExtResource("1_hfxau")
+metadata/_custom_type_script = "uid://3ou3co034g02"
+two_handed = true

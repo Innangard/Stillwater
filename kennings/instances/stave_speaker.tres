@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "stave_speaker"
+display_name = "Stave-Speaker"
+epithet = "He who reads what is cut, not what is written"
+description = "The runes answer when you ask in the proper tongue. Spells bite deeper; rune-staves know your touch."
+flavor_text = "A stave is a sentence the gods will hear."
+category = 0
+unlock_flag = "kenning_unlock_stave_speaker"
+unlock_hint = "Inscribe twenty-four different runestones at a Norn."
+damage_dealt_multiplier = 1.25
+weapon_filter = 3
+tier_color = Color(0.55, 0.40, 0.70, 1)

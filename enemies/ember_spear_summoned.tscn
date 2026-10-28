@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/ember_spear.tres" id="weapon"]
+
+[node name="EmberSpearSummoned" instance=ExtResource("base_enemy")]
+enemy_name = "Conjured Ember-bearer"
+sprite_name = "enemy_ember_spear_summoned"
+body_tint = Color(0.88, 0.42, 0.22, 1.0)
+weapon_icon_color = Color(1.00, 0.78, 0.30, 1.0)
+body_radius = 12.0
+body_shape = 1
+max_health = 28.0
+max_speed = 140.0
+acceleration = 820.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.40
+min_engage_range = 0.0
+leash_range = 0.0
+currency_drop_min = 1
+currency_drop_max = 3
+item_drop_chance = 0.10

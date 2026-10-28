@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 1.0
+damage_taken_multiplier = 0.94
+noise_weight = 4.0
+max_health_bonus = 10.0
+item_name = "Drifthide Coat"
+description = "Seal-leather panels over a quilted linen core, treated with whale oil until it shed water like stone. The stink keeps the living at bay; the protection keeps the dead at bay. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.35, 0.38, 0.42, 1)

@@ -1,0 +1,132 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -200.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -200.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -800.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -800.0
+
+[node name="CrownedBridge" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "crowned_bridge"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.08, 0.08, 0.12, 1)
+
+[node name="Abyss" type="ColorRect" parent="."]
+offset_left = -800.0
+offset_top = -200.0
+offset_right = 800.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.08, 1)
+
+[node name="BridgeDeck" type="ColorRect" parent="."]
+offset_left = -700.0
+offset_top = -40.0
+offset_right = 700.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.30, 0.28, 0.26, 1)
+
+[node name="BridgeRailN" type="ColorRect" parent="."]
+offset_left = -700.0
+offset_top = -44.0
+offset_right = 700.0
+offset_bottom = -40.0
+mouse_filter = 2
+color = Color(0.40, 0.38, 0.35, 1)
+
+[node name="BridgeRailS" type="ColorRect" parent="."]
+offset_left = -700.0
+offset_top = 40.0
+offset_right = 700.0
+offset_bottom = 44.0
+mouse_filter = 2
+color = Color(0.40, 0.38, 0.35, 1)
+
+[node name="CrownPillarL" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -80.0
+offset_right = -10.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="CrownPillarR" type="ColorRect" parent="."]
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 20.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="CrownArch" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -90.0
+offset_right = 24.0
+offset_bottom = -80.0
+mouse_filter = 2
+color = Color(0.65, 0.58, 0.42, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(-600, 0)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-600, 0)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(600, 0)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(-600, 0)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-740, 0)
+target_scene = "res://world/regions/hrimbjarg_altar.tscn"
+target_spawn_point = "from_east"
+label = "\u2190  back to the mainland"
+tint = Color(0.35, 0.35, 0.40, 0.4)
+zone_size = Vector2(48, 120)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(740, 0)
+target_scene = "res://world/regions/kings_tower_entrance.tscn"
+target_spawn_point = "from_west"
+label = "\u2192  to the King's Tower"
+tint = Color(0.55, 0.45, 0.30, 0.5)
+zone_size = Vector2(48, 120)

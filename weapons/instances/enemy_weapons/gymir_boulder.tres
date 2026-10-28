@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Boulder Hurl"
+description = "Gymir tears a slab from the cave wall and launches it in a tumbling arc."
+base_damage = 16.0
+element = 3
+cooldown = 3.5
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 320.0
+projectile_lifetime = 2.0
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 400.0

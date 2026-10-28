@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.12
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Ash Cleave"
+description = "A blade forged in scorched earth. It carries the heat of everything it has touched."
+base_damage = 9.0
+element = 1
+cooldown = 0.85
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+swing_range = 34.0
+arc_radius = 28.0
+swing_duration = 0.20
+knockback = 200.0
+user_lunge_distance = 0.0
+hitbox_shape = 0

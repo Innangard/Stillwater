@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Carving"
+text = "I write my sins in the volcanic ash near Brann, hoping the heat will burn them away. But there is no wind to scatter the dust, and the rains never come to wash the ground clean. Everything you leave behind in this place stays exactly where you put it, forever."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://ddung000001"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -480
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -480
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -640
+
+[node name="DeepDesertDungeon" type="Node2D" unique_id=2300000001]
+script = ExtResource("region_script")
+region_id = "deep_desert_dungeon"
+player_scene = ExtResource("player_scene")
+
+; Deep Desert Dungeon — placeholder arena. EMPTY by design: the user
+; intends to fill this with an optional boss encounter once the design
+; lands. Until then, this scene exists so the dungeon entrance has a
+; functional destination instead of a dead-end door.
+;
+; The arena is intentionally oversized (1280×960 — larger than any
+; other room in the game) so future boss content has plenty of space
+; for telegraphs, projectile patterns, and arena hazards. The empty
+; floor is uniform dark sandstone — no decor — to signal "this is
+; staged but not finished." When the boss design ships, replace the
+; bare floor with proper arena dressing.
+;
+; Future hooks (commented placeholders below): a center marker where
+; the boss spawns, corner markers for projectile-spawn arcs, an arena
+; collision boundary that's tighter than the room boundary (boss
+; fights look better in a ring than in a rectangle).
+
+[node name="Background" type="ColorRect" parent="." unique_id=2300000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.18, 0.14, 0.10, 1)
+
+; Arena floor — large dark sandstone slab. The dimmer tone vs the
+; corridor outside marks "you're inside now, the rules are different."
+[node name="ArenaFloor" type="ColorRect" parent="." unique_id=2300000003]
+offset_left = -640.0
+offset_top = -480.0
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.26, 0.20, 0.14, 1)
+
+; Center marker for future boss-spawn alignment. Visually a slightly
+; darker square in the middle of the floor — a player visiting the
+; empty arena will see "something is supposed to go here," which is
+; the intended read for a placeholder.
+[node name="CenterMark" type="ColorRect" parent="." unique_id=2300000010]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.12, 0.08, 0.05, 1)
+
+; A few scattered bone piles in the corners for atmosphere — the only
+; decor in the room. Tells the player previous challengers came here
+; and didn't leave.
+[node name="BonesNW" type="ColorRect" parent="." unique_id=2300000020]
+offset_left = -560.0
+offset_top = -420.0
+offset_right = -460.0
+offset_bottom = -380.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.85)
+
+[node name="BonesNE" type="ColorRect" parent="." unique_id=2300000021]
+offset_left = 460.0
+offset_top = -420.0
+offset_right = 560.0
+offset_bottom = -380.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.85)
+
+[node name="BonesSW" type="ColorRect" parent="." unique_id=2300000022]
+offset_left = -560.0
+offset_top = 380.0
+offset_right = -460.0
+offset_bottom = 420.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.85)
+
+[node name="BonesSE" type="ColorRect" parent="." unique_id=2300000023]
+offset_left = 460.0
+offset_top = 380.0
+offset_right = 560.0
+offset_bottom = 420.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.85)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2300000050]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=2300000051]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=2300000052]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=2300000053]
+build_mode = 1
+polygon = PackedVector2Array(-640, -480, -640, -60, -740, -60, -740, 60, -640, 60, -640, 480, -830, 480, -830, -480)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=2300000054]
+shape = SubResource("wall_right")
+
+; Spawn markers — the only entry is from the dungeon entrance scene
+; on the west side. `default` and `from_west` both put the player at
+; the west wall facing east into the arena.
+[node name="default" type="Marker2D" parent="." unique_id=2300000060]
+position = Vector2(-580, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=2300000061]
+position = Vector2(-580, 0)
+
+[node name="Player" parent="." unique_id=2300000070 instance=ExtResource("player_scene")]
+position = Vector2(-580, 0)
+
+; Single exit, west, back to the dungeon entrance threshold. No east
+; exit — this IS the deepest point. When the boss content arrives, the
+; west exit may need a gate condition ("boss not yet defeated" blocks
+; passage) but that's a future decision.
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-620, 0)
+target_scene = "res://world/regions/dungeon_entrance_deep_desert.tscn"
+target_spawn_point = "from_east"
+label = "←  back to the threshold"
+tint = Color(0.32, 0.26, 0.18, 0.4)
+zone_size = Vector2(48, 192)

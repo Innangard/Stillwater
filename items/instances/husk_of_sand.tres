@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Husk-of-Sand"
+description = "A handful of vitrified grit raked from a worm's belly. The young one swallows sand on every burrow and the heat of its body sinters the grains into glass crystals. They keep their warmth long after the worm is dead. Reagent."
+category = "reagent"
+placeholder_color = Color(0.92, 0.78, 0.42, 1)

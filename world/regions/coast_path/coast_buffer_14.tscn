@@ -1,0 +1,154 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="e0"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="e1"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="e2"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -300
+
+[node name="CoastBuffer14" type="Node2D" unique_id=301400]
+script = ExtResource("region_script")
+region_id = "coast_buffer_14"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000
+offset_top = -2000
+offset_right = 2000
+offset_bottom = 2000
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -120
+offset_top = -1040
+offset_right = -72
+offset_bottom = 0
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = -120
+offset_top = 0
+offset_right = -72
+offset_bottom = 1000
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="PathEast" type="ColorRect" parent="."]
+offset_left = -50
+offset_top = -32
+offset_right = 580
+offset_bottom = 16
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Rock0" type="ColorRect" parent="."]
+offset_left = 240
+offset_top = -420
+offset_right = 320
+offset_bottom = -340
+mouse_filter = 2
+color = Color(0.50, 0.48, 0.44, 1)
+
+[node name="Rock1" type="ColorRect" parent="."]
+offset_left = -240
+offset_top = 280
+offset_right = -180
+offset_bottom = 360
+mouse_filter = 2
+color = Color(0.42, 0.40, 0.38, 1)
+
+[node name="Rock2" type="ColorRect" parent="."]
+offset_left = 380
+offset_top = -160
+offset_right = 440
+offset_bottom = -100
+mouse_filter = 2
+color = Color(0.50, 0.48, 0.44, 1)
+
+[node name="Kelp0" type="ColorRect" parent="."]
+offset_left = 100
+offset_top = 360
+offset_right = 160
+offset_bottom = 420
+mouse_filter = 2
+color = Color(0.20, 0.30, 0.24, 0.8)
+
+[node name="Sand0" type="ColorRect" parent="."]
+offset_left = -100
+offset_top = 500
+offset_right = 60
+offset_bottom = 560
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(600, -700, 600, -60, 700, -60, 700, 60, 600, 60, 600, 660, 790, 660, 790, -700)
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-300, -700, -60, -700, -60, -800, 60, -800, 60, -700, 600, -700, 600, -890, -300, -890)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-300, 660, -60, 660, -60, 760, 60, 760, 60, 660, 600, 660, 600, 850, -300, 850)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -600)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(0, 560)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(520, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("e0")]
+position = Vector2(100, -460)
+
+[node name="Enemy1" parent="." instance=ExtResource("e1")]
+position = Vector2(-150, 400)
+
+[node name="Enemy2" parent="." instance=ExtResource("e2")]
+position = Vector2(300, 60)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -700)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "↑  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 660)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "↓  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(560, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "→  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(48, 192)
+

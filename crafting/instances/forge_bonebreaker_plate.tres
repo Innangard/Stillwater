@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://items/armor/bonebreaker_plate.tres" id="out_armor"]
+[ext_resource type="Resource" path="res://items/instances/sky_iron.tres" id="reagent0"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="reagent1"]
+[ext_resource type="Resource" path="res://items/instances/heartcoal.tres" id="reagent2"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent0")
+count = 5
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 6
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("2")
+item = ExtResource("reagent2")
+count = 1
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Bonebreaker Plate"
+description = "Hammer the sky-iron plates over a bog-iron mail backing. Heavy work for the smith, heavier for the wearer. The first man to wear this set killed three trolls with a hammer, then walked into the sea. Either part may be apocryphal."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_item = ExtResource("out_armor")
+currency_cost = 320

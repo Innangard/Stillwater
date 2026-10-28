@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Death's-Foreknowledge"
+description = "A sliver of black obsidian no longer than a fingernail. Pointed in your hand, it leans subtly toward whichever direction the next death will come from. The skalds call it the kindest of the cursed reagents — it has, occasionally, been wrong. Reagent."
+category = "reagent"
+placeholder_color = Color(0.12, 0.10, 0.16, 1)

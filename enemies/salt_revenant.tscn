@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/salt_revenant_chain.tres" id="weapon"]
+
+[node name="SaltRevenant" instance=ExtResource("base_enemy")]
+enemy_name = "Salt Revenant"
+sprite_name = "enemy_salt_revenant"
+body_tint = Color(0.55, 0.58, 0.52, 1.0)
+weapon_icon_color = Color(0.75, 0.78, 0.70, 1.0)
+body_radius = 16.0
+body_shape = 0
+max_health = 58.0
+max_speed = 75.0
+acceleration = 550.0
+base_detection = 80.0
+noise_sensitivity = 4.5
+smell_sensitivity = 4.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.7
+recover_duration = 0.55
+min_engage_range = 0.0
+currency_drop_min = 8
+currency_drop_max = 14
+item_drop_chance = 0.35

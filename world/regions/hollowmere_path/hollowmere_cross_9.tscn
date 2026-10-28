@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://gen52f9deb642b8"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/orc.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/hobgoblin_sword.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_2"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_3"]
+
+[node name="Node2D" type="Node2D" unique_id=20000691]
+script = ExtResource("region_script")
+region_id = "hollowmere_cross_9"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20000692]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.26, 0.30, 0.34, 1)
+
+[node name="Track_north" type="ColorRect" parent="." unique_id=20000693]
+offset_left = -46.0
+offset_top = -400.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.44, 1)
+
+[node name="Track_south" type="ColorRect" parent="." unique_id=20000694]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.44, 1)
+
+[node name="Track_west" type="ColorRect" parent="." unique_id=20000695]
+offset_left = -660.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.44, 1)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20000696]
+offset_left = -28.0
+offset_top = 149.0
+offset_right = 56.0
+offset_bottom = 183.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20000697]
+offset_left = -234.0
+offset_top = 20.0
+offset_right = -176.0
+offset_bottom = 72.0
+mouse_filter = 2
+color = Color(0.55, 0.58, 0.46, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20000698]
+offset_left = 131.0
+offset_top = 137.0
+offset_right = 177.0
+offset_bottom = 209.0
+mouse_filter = 2
+color = Color(0.26, 0.30, 0.34, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="." unique_id=20000699]
+offset_left = -3.0
+offset_top = -117.0
+offset_right = 61.0
+offset_bottom = -41.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="Decor4" type="ColorRect" parent="." unique_id=20000700]
+offset_left = -202.0
+offset_top = -89.0
+offset_right = -140.0
+offset_bottom = -29.0
+mouse_filter = 2
+color = Color(0.55, 0.58, 0.46, 0.6)
+
+[node name="Decor5" type="ColorRect" parent="." unique_id=20000701]
+offset_left = -4.0
+offset_top = 170.0
+offset_right = 48.0
+offset_bottom = 186.0
+mouse_filter = 2
+color = Color(0.26, 0.30, 0.34, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20000702]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20000703]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -490, 60, -490, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20000704]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, -60, 300, -60, 490, 60, 490, 60, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20000705]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -750, -60, -750, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20000706]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20000707]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=20000708]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=20000709]
+position = Vector2(0, 260)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=20000710]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=20000711 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+
+[node name="Orc_0" parent="." unique_id=25039848 instance=ExtResource("enemy_0")]
+position = Vector2(194, 129)
+
+[node name="Orc_1" parent="." unique_id=25039849 instance=ExtResource("enemy_0")]
+position = Vector2(-194, 34)
+
+[node name="HobgoblinSword_2" parent="." unique_id=25039850 instance=ExtResource("enemy_1")]
+position = Vector2(157, -147)
+
+[node name="WolfLunge_3" parent="." unique_id=25039851 instance=ExtResource("enemy_2")]
+position = Vector2(30, -90)
+
+[node name="GoblinSword_4" parent="." unique_id=25039852 instance=ExtResource("enemy_3")]
+position = Vector2(242, -216)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  moorland"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  moorland"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "←  moorland"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)

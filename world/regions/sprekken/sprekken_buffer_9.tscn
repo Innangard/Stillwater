@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://gen99774382c039"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_burst.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_pillar.tscn" id="enemy_1"]
+
+[node name="Node2D" type="Node2D" unique_id=20000177]
+script = ExtResource("region_script")
+region_id = "sprekken_buffer_9"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20000178]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.18, 0.16, 0.22, 1)
+
+[node name="Track_east" type="ColorRect" parent="." unique_id=20000179]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 660.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.40, 0.5)
+
+[node name="Track_west" type="ColorRect" parent="." unique_id=20000180]
+offset_left = -660.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.40, 0.5)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20000181]
+offset_left = -222.0
+offset_top = -163.0
+offset_right = -138.0
+offset_bottom = -147.0
+mouse_filter = 2
+color = Color(0.30, 0.20, 0.45, 0.3)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20000182]
+offset_left = -203.0
+offset_top = -92.0
+offset_right = -167.0
+offset_bottom = -26.0
+mouse_filter = 2
+color = Color(0.10, 0.08, 0.14, 0.8)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20000183]
+offset_left = 196.0
+offset_top = 33.0
+offset_right = 238.0
+offset_bottom = 99.0
+mouse_filter = 2
+color = Color(0.18, 0.16, 0.22, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="." unique_id=20000184]
+offset_left = -251.0
+offset_top = -103.0
+offset_right = -189.0
+offset_bottom = -89.0
+mouse_filter = 2
+color = Color(0.30, 0.20, 0.45, 0.3)
+
+[node name="Decor4" type="ColorRect" parent="." unique_id=20000185]
+offset_left = 83.0
+offset_top = -70.0
+offset_right = 155.0
+offset_bottom = -20.0
+mouse_filter = 2
+color = Color(0.10, 0.08, 0.14, 0.8)
+
+[node name="Decor5" type="ColorRect" parent="." unique_id=20000186]
+offset_left = 110.0
+offset_top = 138.0
+offset_right = 196.0
+offset_bottom = 214.0
+mouse_filter = 2
+color = Color(0.18, 0.16, 0.22, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20000187]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20000188]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20000189]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20000190]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -750, -60, -750, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20000191]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 750, -60, 750, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20000192]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=20000193]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=20000194]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=20000195 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+
+[node name="SkeletonBurst_0" parent="." unique_id=25746980 instance=ExtResource("enemy_0")]
+position = Vector2(19, -149)
+
+[node name="SkeletonBurst_1" parent="." unique_id=25746981 instance=ExtResource("enemy_0")]
+position = Vector2(-155, 16)
+
+[node name="SkeletonPillar_2" parent="." unique_id=25746982 instance=ExtResource("enemy_1")]
+position = Vector2(-185, -182)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  dungeon corridor"
+tint = Color(0.35, 0.30, 0.40, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "←  dungeon corridor"
+tint = Color(0.35, 0.30, 0.40, 0.4)
+zone_size = Vector2(48, 192)

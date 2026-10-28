@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://items/consumable_item.gd" id="1"]
+[ext_resource type="Resource" path="res://status/instances/consumable_swiftfoot_t2l.tres" id="status_1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Steady-Wind Tonic"
+description = "Speed increased 10% for 2 minutes."
+category = "consumable"
+max_stack = 3
+placeholder_color = Color(0.55, 0.82, 0.90, 1)
+heal_amount = 0.0
+grants_status = ExtResource("status_1")

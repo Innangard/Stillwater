@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://dshdwfng3aaaa"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://clpwfofurfgbn" path="res://sprites/Skill_Item icons/Separated Files/fc1713.png" id="1_3uf41"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" uid="uid://cpyvoj5sxbbfn" path="res://status/instances/dark.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app_dark"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.25
+
+[resource]
+script = ExtResource("1")
+swing_range = 24.0
+arc_radius = 11.0
+swing_duration = 0.1
+knockback = 130.0
+hitbox_shape = 1
+weapon_name = "Shadowfang"
+base_damage = 9.0
+element = 6
+cooldown = 0.28
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app_dark")])
+description = "A blade so dark the edge seems to absorb light. Each cut leaves the target sapped, slower to answer."
+icon = ExtResource("1_3uf41")

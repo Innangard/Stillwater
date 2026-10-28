@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/persistent_hitbox.gd" id="ph_script"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="hitbox_script"]
+
+[node name="PersistentHitbox" type="Node2D"]
+script = ExtResource("ph_script")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 40
+script = ExtResource("hitbox_script")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent"]
+polygon = PackedVector2Array(0, 0, 100, -50, 100, 50)

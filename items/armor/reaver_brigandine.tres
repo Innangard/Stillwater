@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 3.5
+damage_taken_multiplier = 0.88
+noise_weight = 9.0
+melee_damage_multiplier = 1.12
+item_name = "Reaver's Brigandine"
+description = "Bog-iron plates riveted between two layers of cured leather. Heavy across the chest where it matters. The smith leaves the back light — you weren't supposed to be turning anyway. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.38, 0.36, 0.30, 1)

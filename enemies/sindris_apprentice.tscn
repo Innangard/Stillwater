@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/sindris_apprentice.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/apprentice_hammer_slam.tres" id="w_slam"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/apprentice_forge_sparks.tres" id="w_sparks"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/apprentice_hammer_throw.tres" id="w_throw"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/apprentice_two_handed_slam.tres" id="w_heavy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/apprentice_anvil_call.tres" id="w_anvil"]
+[ext_resource type="PackedScene" path="res://enemies/lesser_smith.tscn" id="smith"]
+
+[node name="SindrisApprentice" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Sindri's Apprentice"
+body_tint = Color(0.55, 0.40, 0.30, 1.0)
+weapon_icon_color = Color(0.85, 0.55, 0.25, 1.0)
+body_radius = 20.0
+body_shape = 2
+max_health = 1800.0
+max_speed = 80.0
+acceleration = 500.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_slam")
+wind_up_duration = 0.55
+recover_duration = 0.50
+min_engage_range = 0.0
+boss_display_name = "Sindri's Apprentice"
+boss_id = "sindris_apprentice"
+weapon_slam = ExtResource("w_slam")
+weapon_sparks = ExtResource("w_sparks")
+weapon_throw = ExtResource("w_throw")
+weapon_heavy = ExtResource("w_heavy")
+weapon_anvil = ExtResource("w_anvil")
+phase2_threshold = 0.40
+phase2_speed = 85.0
+smith_scene = ExtResource("smith")
+max_smiths = 2
+wind_up_slam = 0.55
+wind_up_sparks = 0.65
+wind_up_throw = 0.70
+wind_up_heavy = 0.80
+wind_up_anvil = 1.20
+recover_slam = 0.50
+recover_sparks = 0.70
+recover_throw = 0.80
+recover_heavy = 0.90
+recover_anvil = 1.00
+currency_drop_min = 80
+currency_drop_max = 130
+item_drop_chance = 1.0
+

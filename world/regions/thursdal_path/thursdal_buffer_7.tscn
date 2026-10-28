@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://thurbuf007"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/orc.tscn" id="enemy_1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -280
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -280
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -600
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -600
+
+[node name="Node2D" type="Node2D" unique_id=339167938]
+script = ExtResource("region_script")
+region_id = "thursdal_buffer_7"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=339167939]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.42, 1)
+
+[node name="TrackH" type="ColorRect" parent="." unique_id=339167940]
+offset_left = -600.0
+offset_top = -46.0
+offset_right = 600.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="StoneBig" type="ColorRect" parent="." unique_id=339167941]
+offset_left = -90.0
+offset_top = 50.0
+offset_right = 110.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Lichen1" type="ColorRect" parent="." unique_id=339167942]
+offset_left = -240.0
+offset_top = -120.0
+offset_right = -160.0
+offset_bottom = -80.0
+mouse_filter = 2
+color = Color(0.62, 0.68, 0.55, 0.55)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=339167943]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=339167944]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=339167945]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=339167946]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=339167947]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=339167948]
+position = Vector2(540, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=339167949]
+position = Vector2(540, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=339167950]
+position = Vector2(-540, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=339167951]
+position = Vector2(0, -240)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=339167952]
+position = Vector2(0, 240)
+
+[node name="Player" parent="." unique_id=339167953 instance=ExtResource("player_scene")]
+position = Vector2(540, 0)
+
+[node name="ExitEast" parent="." unique_id=339167954 instance=ExtResource("exit_scene")]
+position = Vector2(580, 0)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "→  further up"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=339167955 instance=ExtResource("exit_scene")]
+position = Vector2(-580, 0)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "←  back the way you came"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="goblinsword_0" parent="." unique_id=339167956 instance=ExtResource("enemy_0")]
+position = Vector2(36, -21)
+
+[node name="orc_1" parent="." unique_id=339167957 instance=ExtResource("enemy_1")]
+position = Vector2(332, 28)
+
+[node name="goblinsword_2" parent="." unique_id=339167958 instance=ExtResource("enemy_0")]
+position = Vector2(289, 76)
+
+[node name="orc_3" parent="." unique_id=339167959 instance=ExtResource("enemy_1")]
+position = Vector2(214, -131)

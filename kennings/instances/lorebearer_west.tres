@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "lorebearer_west"
+display_name = "Ember-Witness"
+epithet = "She who watched the seedling burn"
+description = "The western carvings spoke of heat that does not move and a world winding down. Their lessons have leathered you against the same fires that consumed them."
+flavor_text = "I write my sins in the volcanic ash near Brann, hoping the heat will burn them away. But there is no wind to scatter the dust, and the rains never come."
+category = 2
+unlock_flag = "all_monologues_read_act_2"
+unlock_hint = "Read every carving in the western reaches."
+element_damage_multipliers = {
+1: 1.10
+}
+element_resistance_multipliers = {
+1: 0.85
+}
+tier_color = Color(0.82, 0.40, 0.20, 1)

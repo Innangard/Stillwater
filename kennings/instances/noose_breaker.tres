@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Kenning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "noose_breaker"
+display_name = "Noose-Breaker"
+epithet = "He cut himself down"
+description = "You severed the binding of the hanged dead. When death draws close and the rope tightens, your legs remember what it meant to be held still — and refuse it."
+flavor_text = "The rope was all they had left. You took that too."
+unlock_flag = "boss_dead_galgi_the_bound"
+unlock_hint = "Cut down the hanged dead in the Gallows Grove, deep in the Myrkfen."
+hidden_when_locked = true
+damage_dealt_multiplier = 1.0
+weapon_filter = 0
+damage_taken_multiplier = 1.0
+move_speed_multiplier = 1.15
+dash_cooldown_multiplier = 1.0
+condition = 1
+condition_fraction = 0.5
+category = 3
+tier_color = Color(0.45, 0.35, 0.25, 1)

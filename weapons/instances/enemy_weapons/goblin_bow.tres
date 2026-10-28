@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Goblin Bow"
+description = "Properly tensioned. Whoever made this remembered better days."
+base_damage = 9.0
+element = 0
+cooldown = 1.0
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 460.0
+projectile_lifetime = 1.2
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 110.0

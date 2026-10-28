@@ -1,0 +1,11 @@
+CollisionPolygon2D
+CollisionShape2D
+StaticBody2D
+TileMapLayer
+TileMap
+NinePatchRect
+AnimatedSprite2D
+Pickup
+Player
+ColorRect
+Control

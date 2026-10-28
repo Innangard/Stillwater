@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "An Overheard Voice"
+text = "They feared the water so deeply they lashed themselves together with rope, choosing to hang from the gallows-tree rather than face the Pool alone. They became a horrifying knot of cowards sharing one throat, their bodies fused in a desperate bid to keep from being unmade. Now they swing in the sunken grove, a twisted mockery of sacrifice."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

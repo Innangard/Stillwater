@@ -1,0 +1,150 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/kobold_blue.tscn" id="3_pqu1l"]
+[ext_resource type="PackedScene" path="res://enemies/kobold_green.tscn" id="4_dkw1v"]
+[ext_resource type="PackedScene" path="res://enemies/kobold_brown.tscn" id="5_fs8eh"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oskii"]
+normal = Vector2(-1, 0)
+distance = -1070.215
+
+[node name="Node2D" type="Node2D" unique_id=570864775]
+script = ExtResource("region_script")
+region_id = "north_forest_buffer_1"
+player_scene = ExtResource("player_scene")
+
+
+[node name="Background" type="ColorRect" parent="." unique_id=714773462]
+offset_left = -2000.0
+offset_top = -2018.0
+offset_right = 2000.0
+offset_bottom = 1982.0
+mouse_filter = 2
+color = Color(0.28, 0.4, 0.3, 1)
+
+[node name="Path" type="ColorRect" parent="Background" unique_id=1117437609]
+layout_mode = 0
+offset_left = 1966.0
+offset_top = 1359.0
+offset_right = 2030.0
+offset_bottom = 4069.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Path2" type="ColorRect" parent="Background" unique_id=1670098074]
+layout_mode = 0
+offset_left = 1966.0
+offset_top = 1291.0
+offset_right = 2750.0
+offset_bottom = 1359.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Path3" type="ColorRect" parent="Background" unique_id=1524960959]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 1984.0
+offset_right = 1966.0
+offset_bottom = 2052.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Path4" type="ColorRect" parent="Background" unique_id=181248645]
+layout_mode = 0
+offset_left = 2686.0
+offset_top = -1419.0
+offset_right = 2750.0
+offset_bottom = 1291.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Player" parent="." unique_id=848816130 instance=ExtResource("player_scene")]
+position = Vector2(0, 462)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1249100501]
+position = Vector2(-0.21496582, 0)
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1995456951]
+build_mode = 1
+polygon = PackedVector2Array(-895, -1461, -895, -34, -990, -34, -990, 34, -895, 34, -895, 540, -1085, 540, -1085, -1461)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=112545252]
+shape = SubResource("WorldBoundaryShape2D_oskii")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=904412878]
+build_mode = 1
+polygon = PackedVector2Array(-895, -1461, 686, -1461, 686, -1556, 750, -1556, 750, -1461, 1070.215, -1461, 1070.215, -1651, -895, -1651)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=562567837]
+build_mode = 1
+polygon = PackedVector2Array(-895, 540, -34, 540, -34, 635, 30, 635, 30, 540, 1070.215, 540, 1070.215, 730, -895, 730)
+
+[node name="default" type="Marker2D" parent="." unique_id=1091757939]
+position = Vector2(1, 422)
+
+[node name="from_road" type="Marker2D" parent="." unique_id=787687489]
+position = Vector2(-2, 518)
+
+[node name="from_outskirts" type="Marker2D" parent="." unique_id=1312542268]
+position = Vector2(718, -1433)
+
+[node name="from_path" type="Marker2D" parent="." unique_id=1974438092]
+position = Vector2(-871, 0)
+
+[node name="ExitSouth" parent="." unique_id=1307864146 instance=ExtResource("exit_scene")]
+position = Vector2(-2, 614)
+target_scene = "res://world/regions/old_pilgrim_road.tscn"
+target_spawn_point = "from_glade"
+label = "↓  to Old Pilgrim Road"
+tint = Color(0.5, 0.45, 0.35, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." unique_id=869759128 instance=ExtResource("exit_scene")]
+position = Vector2(-983, 0)
+target_scene = "res://world/regions/greenwood_path.tscn"
+target_spawn_point = "from_clearing"
+label = "→  back to the path"
+tint = Color(0.3, 0.42, 0.28, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." unique_id=1145244273 instance=ExtResource("exit_scene")]
+position = Vector2(718, -1549)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "from_glade"
+label = "↑  to Wickbarrow Outskirts"
+tint = Color(0.48, 0.5, 0.36, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="Blue Kobold" parent="." unique_id=1932527001 instance=ExtResource("3_pqu1l")]
+position = Vector2(552, -880)
+
+[node name="Blue Kobold" parent="Blue Kobold" unique_id=858234504 instance=ExtResource("3_pqu1l")]
+position = Vector2(35, 63)
+
+[node name="Blue Kobold2" parent="Blue Kobold" unique_id=2107545314 instance=ExtResource("3_pqu1l")]
+position = Vector2(-68, 54)
+
+[node name="Green Kobold" parent="Blue Kobold" unique_id=113914491 instance=ExtResource("4_dkw1v")]
+position = Vector2(50, 271)
+
+[node name="Green Kobold2" parent="Blue Kobold" unique_id=2094179534 instance=ExtResource("4_dkw1v")]
+position = Vector2(273, 43)
+
+[node name="brown Kobold" parent="." unique_id=204941815 instance=ExtResource("5_fs8eh")]
+position = Vector2(-170, -101)
+
+[node name="brown Kobold" parent="brown Kobold" unique_id=2051142653 instance=ExtResource("5_fs8eh")]
+position = Vector2(265, -38)
+
+[node name="brown Kobold2" parent="brown Kobold" unique_id=329586986 instance=ExtResource("5_fs8eh")]
+position = Vector2(53, -58)
+
+[node name="Green Kobold" parent="brown Kobold" unique_id=208669580 instance=ExtResource("4_dkw1v")]
+position = Vector2(254, 28)
+
+[node name="Green Kobold2" parent="brown Kobold" unique_id=1055687233 instance=ExtResource("4_dkw1v")]
+position = Vector2(83, 11)

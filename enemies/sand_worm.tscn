@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/sand_worm.gd" id="sw_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/sand_eruption.tres" id="weapon"]
+[ext_resource type="Script" path="res://items/item.gd" id="item_script"]
+[ext_resource type="Resource" path="res://items/instances/husk_of_sand.tres" id="drop_husk"]
+
+[node name="SandWorm" instance=ExtResource("base_enemy")]
+script = ExtResource("sw_script")
+enemy_name = "Sand Worm"
+sprite_name = "enemy_sand_worm"
+body_tint = Color(0.62, 0.46, 0.28, 1.0)
+weapon_icon_color = Color(0.95, 0.86, 0.62, 1.0)
+body_radius = 16.0
+body_shape = 2
+max_health = 50.0
+max_speed = 78.0
+acceleration = 520.0
+base_detection = 75.0
+noise_sensitivity = 5.5
+smell_sensitivity = 3.5
+weapon = ExtResource("weapon")
+wind_up_duration = 1.20
+recover_duration = 2.20
+min_engage_range = 0.0
+currency_drop_min = 8
+currency_drop_max = 15
+item_drops = Array[ExtResource("item_script")]([ExtResource("drop_husk")])
+item_drop_chance = 0.40

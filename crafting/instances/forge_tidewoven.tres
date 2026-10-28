@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://items/armor/tidewoven_cloak.tres" id="out_armor"]
+[ext_resource type="Resource" path="res://items/armor/pilgrims_cloak.tres" id="base_armor"]
+[ext_resource type="Resource" path="res://items/instances/frost_filament.tres" id="reagent1"]
+
+[sub_resource type="Resource" id="input_base"]
+script = ExtResource("2")
+item = ExtResource("base_armor")
+count = 1
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 3
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Tidewoven Cloak"
+description = "Soak the pilgrim's cloak in tidal brine and frost filament."
+inputs = Array[ExtResource("2")]([SubResource("input_base"), SubResource("input_0")])
+output_item = ExtResource("out_armor")
+currency_cost = 40

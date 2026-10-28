@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://c8uhmucjy7fwv"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Net-mender Bru"
+text = "Mind the planks. Half of them are older than the queen who blessed this dock, and she's been gone a thousand years."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

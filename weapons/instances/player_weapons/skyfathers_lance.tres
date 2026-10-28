@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/shock.tres" id="3"]
+
+[sub_resource type="Resource" id="shock_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.70
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Skyfather's Lance"
+description = "A long spear with a skyfather's-tooth set as the point. The skalds say a strike from this weapon never has to land twice — the first one shows the next one where to go. Long reach, the thunder following close behind. Frequent shock."
+base_damage = 25.0
+element = 3
+cooldown = 0.55
+on_hit_effects = Array[ExtResource("2")]([SubResource("shock_app")])
+swing_range = 84.0
+arc_radius = 12.0
+swing_duration = 0.18
+knockback = 320.0
+user_lunge_distance = 0.0
+hitbox_shape = 1
+placeholder_color = Color(0.78, 0.85, 0.95, 1)
+two_handed = true
+swing_visual = 2

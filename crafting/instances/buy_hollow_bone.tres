@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://64be5af1c352"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/hollow_bone.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Hollow Bone"
+description = "A skeletal fragment, light as balsa and ringing faintly when struck. Dropped by the stronger dead. Reagent."
+currency_cost = 14
+output_item = ExtResource("2")

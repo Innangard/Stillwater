@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/skyfathers_lance.tres" id="out_weapon"]
+[ext_resource type="Resource" path="res://items/instances/skyfathers_tooth.tres" id="reagent0"]
+[ext_resource type="Resource" path="res://items/instances/sky_iron.tres" id="reagent1"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="reagent2"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent0")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 2
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("2")
+item = ExtResource("reagent2")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Skyfather's Lance"
+description = "Mount a skyfather's-tooth at the spearpoint, run a sky-iron shaft up through the haft. The spear remembers the long fall. Lifts almost on its own, in dry weather."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_weapon = ExtResource("out_weapon")
+currency_cost = 135

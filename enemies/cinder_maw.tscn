@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/cinder_maw.gd" id="cm_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/flame_spew.tres" id="weapon"]
+
+[node name="CinderMaw" instance=ExtResource("base_enemy")]
+script = ExtResource("cm_script")
+enemy_name = "Cinder Maw"
+sprite_name = "enemy_cinder_maw"
+body_tint = Color(0.55, 0.22, 0.18, 1.0)
+weapon_icon_color = Color(1.00, 0.50, 0.10, 1.0)
+body_radius = 18.0
+body_shape = 4
+max_health = 60.0
+max_speed = 50.0
+acceleration = 480.0
+base_detection = 80.0
+noise_sensitivity = 4.0
+smell_sensitivity = 5.0
+weapon = ExtResource("weapon")
+wind_up_duration = 1.40
+recover_duration = 2.00
+min_engage_range = 70.0
+currency_drop_min = 9
+currency_drop_max = 16
+item_drop_chance = 0.45

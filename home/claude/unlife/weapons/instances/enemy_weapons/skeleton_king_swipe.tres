@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Royal Arm Swipe"
+description = "A sweeping backhand from a dead king's long-cold arm. Wide and slow — the telegraph is the lesson."
+base_damage = 18.0
+element = 0
+cooldown = 1.6
+on_hit_effects = []
+swing_range = 40.0
+arc_radius = 48.0
+swing_duration = 0.22
+knockback = 320.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+swing_visual = 8

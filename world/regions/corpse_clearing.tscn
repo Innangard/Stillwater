@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_b"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -360.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -360.0
+
+[node name="CorpseClearing" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "corpse_clearing"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0.32, 0.30, 0.22, 1.0)
+mouse_filter = 2
+
+; Scattered "bone pile" rectangles — pale, evocative.
+[node name="BonePile1" type="ColorRect" parent="."]
+offset_left = -180.0
+offset_top = -100.0
+offset_right = -140.0
+offset_bottom = -76.0
+color = Color(0.78, 0.72, 0.62, 0.95)
+mouse_filter = 2
+
+[node name="BonePile2" type="ColorRect" parent="."]
+offset_left = 80.0
+offset_top = 60.0
+offset_right = 130.0
+offset_bottom = 90.0
+color = Color(0.78, 0.72, 0.62, 0.95)
+mouse_filter = 2
+
+[node name="BonePile3" type="ColorRect" parent="."]
+offset_left = 200.0
+offset_top = -200.0
+offset_right = 240.0
+offset_bottom = -178.0
+color = Color(0.78, 0.72, 0.62, 0.95)
+mouse_filter = 2
+
+[node name="BonePile4" type="ColorRect" parent="."]
+offset_left = -260.0
+offset_top = 200.0
+offset_right = -210.0
+offset_bottom = 226.0
+color = Color(0.78, 0.72, 0.62, 0.95)
+mouse_filter = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, -540, -60, -540, -60, -640, 60, -640, 60, -540, 360, -540, 360, -730, -360, -730)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, 540, -60, 540, -60, 640, 60, 640, 60, 540, 360, 540, 360, 730, -360, 730)
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="from_pyre" type="Marker2D" parent="."]
+position = Vector2(0, 460)
+
+[node name="from_stair" type="Marker2D" parent="."]
+position = Vector2(0, -460)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(0, 0)
+
+; Two enemies wandering among the bones — long line of sight in this clearing.
+[node name="Wanderer1" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(-200, -200)
+
+[node name="Wanderer2" parent="." instance=ExtResource("enemy_b")]
+position = Vector2(180, 180)[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 500)
+target_scene = "res://world/regions/pyre_ruins.tscn"
+target_spawn_point = "from_corpse"
+label = "↓  to the Pyre Ruins"
+tint = Color(0.20, 0.18, 0.14, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -500)
+target_scene = "res://world/regions/riven_stair.tscn"
+target_spawn_point = "from_corpse"
+label = "↑  to the Riven Stair"
+tint = Color(0.34, 0.30, 0.26, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(140, -260)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(-140, 260)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

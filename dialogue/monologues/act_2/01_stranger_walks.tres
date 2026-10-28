@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Carving"
+text = "A stranger walks among us, awake, and bleeding red. They do not belong on the long shore. Bath-keeper Aud says they smell wrong—like sweat and rain on grass, the scent of the living world. We are a graveyard of ash, yet the gods have dropped a beating heart into our stagnant waiting."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

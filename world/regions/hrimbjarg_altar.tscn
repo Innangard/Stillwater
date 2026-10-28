@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://hrimalt000"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_pillar.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_b"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/hoarfrost_bow.tres" id="loot_capstone"]
+[ext_resource type="Resource" path="res://items/instances/hoarfrost_tear.tres" id="item_0"]
+[ext_resource type="Resource" path="res://items/instances/ghost_lichen.tres" id="item_1"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="item_2"]
+[ext_resource type="Resource" path="res://items/instances/frost_filament.tres" id="item_3"]
+[ext_resource type="PackedScene" path="res://dialogue/altar_carving.tscn" id="carving_scene"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2_pool.tres" id="monologue_pool"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -360
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -400
+
+[node name="HrimbjargAltar" type="Node2D" unique_id=2108780328]
+script = ExtResource("region_script")
+region_id = "hrimbjarg_altar"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2108780329]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.24, 0.28, 0.34, 1)
+
+[node name="AltarSlab" type="ColorRect" parent="." unique_id=2108780330]
+offset_left = -80.0
+offset_top = -100.0
+offset_right = 80.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.62, 0.65, 0.68, 1)
+
+[node name="LeftStone" type="ColorRect" parent="." unique_id=2108780331]
+offset_left = -250.0
+offset_top = -180.0
+offset_right = -190.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.52, 1)
+
+[node name="RightStone" type="ColorRect" parent="." unique_id=2108780332]
+offset_left = 190.0
+offset_top = -180.0
+offset_right = 250.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.52, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2108780333]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=2108780334]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=2108780335]
+build_mode = 1
+polygon = PackedVector2Array(-400, 360, -60, 360, -60, 460, 60, 460, 60, 360, 400, 360, 400, 550, -400, 550)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=2108780336]
+build_mode = 1
+polygon = PackedVector2Array(-400, -360, -400, -60, -500, -60, -500, 60, -400, 60, -400, 360, -590, 360, -590, -360)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=2108780337]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=2108780338]
+position = Vector2(-340, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=2108780339]
+position = Vector2(340, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=2108780340]
+position = Vector2(-340, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=2108780341]
+position = Vector2(0, -320)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=2108780342]
+position = Vector2(0, 320)
+
+[node name="Player" parent="." unique_id=2108780343 instance=ExtResource("player_scene")]
+position = Vector2(-340, 0)
+
+[node name="GuardianA" parent="." unique_id=2108780344 instance=ExtResource("enemy_a")]
+position = Vector2(-160, -100)
+
+[node name="GuardianB" parent="." unique_id=2108780345 instance=ExtResource("enemy_b")]
+position = Vector2(160, -100)
+
+[node name="GuardianA2" parent="." unique_id=2108780346 instance=ExtResource("enemy_a")]
+position = Vector2(0, 180)
+
+[node name="WeaponCapstone" parent="." unique_id=2108780347 instance=ExtResource("pickup_scene")]
+position = Vector2(0, -30)
+weapon = ExtResource("loot_capstone")
+persistent_per_run = true
+
+[node name="HoarfrostTearPickup" parent="." unique_id=2108780348 instance=ExtResource("pickup_scene")]
+position = Vector2(-60, 20)
+item = ExtResource("item_0")
+persistent_per_run = true
+
+[node name="GhostLichenPickup" parent="." unique_id=2108780349 instance=ExtResource("pickup_scene")]
+position = Vector2(60, 20)
+item = ExtResource("item_1")
+persistent_per_run = true
+
+[node name="ColdIronFilingPickup" parent="." unique_id=2108780350 instance=ExtResource("pickup_scene")]
+position = Vector2(-30, 50)
+item = ExtResource("item_2")
+persistent_per_run = true
+
+[node name="FrostFilamentPickup" parent="." unique_id=2108780351 instance=ExtResource("pickup_scene")]
+position = Vector2(30, 50)
+item = ExtResource("item_3")
+persistent_per_run = true
+
+[node name="Carving" parent="." unique_id=2108780352 instance=ExtResource("carving_scene")]
+position = Vector2(0, -70)
+monologue_pool = ExtResource("monologue_pool")
+
+[node name="ExitBack" parent="." unique_id=2108780353 instance=ExtResource("exit_scene")]
+position = Vector2(0, 345)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "↓  back down the mountain"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-360, 0)
+target_scene = "res://world/regions/dungeon_entrance_brann.tscn"
+target_spawn_point = "from_east"
+label = "←  toward the Brann Throat"
+tint = Color(0.55, 0.45, 0.40, 0.4)
+zone_size = Vector2(48, 192)

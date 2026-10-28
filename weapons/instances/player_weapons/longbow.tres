@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://r5evsmxopxo2"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bf78qfumnhon8" path="res://sprites/Skill_Item icons/Separated Files/fc1484.png" id="1_5acbf"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2_j7k4k"]
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 600.0
+projectile_lifetime = 1.3
+knockback = 150.0
+weapon_name = "Longbow"
+base_damage = 15.0
+cooldown = 0.85
+description = "A proper war bow, taller than the pilgrim who draws it. Slow to nock, but the arrow flies true and far."
+icon = ExtResource("1_5acbf")
+two_handed = true

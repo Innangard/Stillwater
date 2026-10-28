@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://gen4648e289d2f5"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/draugr_husk.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/giant_scorpion.tscn" id="enemy_1"]
+
+[node name="Node2D" type="Node2D" unique_id=20001641]
+script = ExtResource("region_script")
+region_id = "deep_desert_buffer_28"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20001642]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.42, 0.32, 1)
+
+[node name="Track_north" type="ColorRect" parent="." unique_id=20001643]
+offset_left = -46.0
+offset_top = -400.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="Track_east" type="ColorRect" parent="." unique_id=20001644]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 660.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20001645]
+offset_left = -219.0
+offset_top = 36.0
+offset_right = -201.0
+offset_bottom = 86.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.28, 1)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20001646]
+offset_left = 122.0
+offset_top = -122.0
+offset_right = 154.0
+offset_bottom = -54.0
+mouse_filter = 2
+color = Color(0.62, 0.55, 0.42, 1)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20001647]
+offset_left = 67.0
+offset_top = -16.0
+offset_right = 139.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.48, 0.42, 0.32, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20001648]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20001649]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -490, 60, -490, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20001650]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20001651]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20001652]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 750, -60, 750, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20001653]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=20001654]
+position = Vector2(0, -260)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=20001655]
+position = Vector2(500, 0)
+
+[node name="Player" parent="." unique_id=20001656 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+
+[node name="DraugrHusk_0" parent="." unique_id=25527935 instance=ExtResource("enemy_0")]
+position = Vector2(-366, -197)
+
+[node name="GiantScorpion_1" parent="." unique_id=25527936 instance=ExtResource("enemy_1")]
+position = Vector2(-7, -44)
+
+[node name="DraugrHusk_2" parent="." unique_id=25527937 instance=ExtResource("enemy_0")]
+position = Vector2(277, -188)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  desert path"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  desert path"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(48, 192)

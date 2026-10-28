@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Ragnvald"
+text = "The pass freezes shut four months of the year. My forge is the only warm place in Frostgard. People come for the heat as much as the steel."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Ragnvald"
+text = "Mountain ore is dense and stubborn. It takes twice the heat to work, but the blades hold an edge longer than anything from the lowlands. Bring me what you find."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

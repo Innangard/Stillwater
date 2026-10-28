@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://1885b8ba60a5"]
+
+[ext_resource type="Script" uid="uid://bxas2hp1afggk" path="res://items/item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dsu6x8lp0g1rr" path="res://sprites/Skill_Item icons/Separated Files/fc997.png" id="1_j51yy"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Living Fire"
+description = "An ember that breathes. It sits in your palm without burning, pulsing with a slow orange heartbeat. Found near pyre sites. Reagent."
+icon = ExtResource("1_j51yy")
+category = "reagent"
+placeholder_color = Color(1, 0.55, 0.15, 1)

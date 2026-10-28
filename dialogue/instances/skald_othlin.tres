@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Skald Othlin"
+text = "Red-blooded thing. You've come a long way to stand in front of an old man with no songs left."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Othlin"
+text = "This was a watch town once. We faced north because the things that wanted in came from there. We faced north for so long that we forgot why, and then we forgot the things, and then we forgot the watching."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Othlin"
+text = "Now we just face north out of habit. There's a difference. I don't expect you to understand it yet, but you will."
+
+[sub_resource type="Resource" id="line_4"]
+script = ExtResource("2")
+speaker = "Othlin"
+text = "If you go past Hollowmere — and you will, eventually, all of you do — keep your fire lit and your back to nothing. The moor stops being kind past the last of our lamps."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3"), SubResource("line_4")])

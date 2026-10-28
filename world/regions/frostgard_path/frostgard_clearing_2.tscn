@@ -1,0 +1,95 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_goblin_sword"]
+[ext_resource type="PackedScene" path="res://enemies/frost_wolf.tscn" id="enemy_frost_wolf"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="FrostgardClearing2" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "frostgard_clearing_2"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.30, 0.35, 0.42, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.55, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = -243
+offset_top = 232
+offset_right = -214
+offset_bottom = 267
+mouse_filter = 2
+color = Color(0.50, 0.55, 0.60, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = 243
+offset_top = 256
+offset_right = 284
+offset_bottom = 286
+mouse_filter = 2
+color = Color(0.50, 0.55, 0.60, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -60
+offset_top = -143
+offset_right = -37
+offset_bottom = -105
+mouse_filter = 2
+color = Color(0.35, 0.40, 0.50, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = 191
+offset_top = -91
+offset_right = 236
+offset_bottom = -62
+mouse_filter = 2
+color = Color(0.40, 0.45, 0.52, 0.6)
+
+[node name="Decor4" type="ColorRect" parent="."]
+offset_left = -306
+offset_top = 178
+offset_right = -285
+offset_bottom = 199
+mouse_filter = 2
+color = Color(0.50, 0.55, 0.60, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(-150, -94)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(157, -80)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_frost_wolf")]
+position = Vector2(-17, 129)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -420)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "north"
+tint = Color(0.45, 0.50, 0.55, 0.4)
+zone_size = Vector2(192, 48)

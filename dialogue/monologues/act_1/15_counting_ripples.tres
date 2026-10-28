@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Journal Scrap"
+text = "I sit by the water and count the ripples, logging them in a ledger made of dried reeds. There are exactly four thousand ripples between the time I wake and the time I sleep. If the count ever changes, I will know the King has fallen and the world has begun to move again."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

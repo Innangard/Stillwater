@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "pyre_quenched"
+display_name = "Pyre-Quenched"
+epithet = "She who walked from the funeral fire"
+description = "Flame can no longer find a place to land on you. Fire stings half as much and your own flames carry a little further."
+flavor_text = "The fire took everything it could from you. There is nothing left for it to burn."
+category = 2
+unlock_flag = "kenning_unlock_pyre_quenched"
+unlock_hint = "Survive the pyre ruins without succumbing to burn."
+element_resistance_multipliers = {
+1: 0.5
+}
+element_damage_multipliers = {
+1: 1.10
+}
+tier_color = Color(1.00, 0.55, 0.20, 1)

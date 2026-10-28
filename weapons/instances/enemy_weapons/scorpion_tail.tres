@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/poison.tres" id="3"]
+
+[sub_resource type="Resource" id="poison_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.85
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Scorpion Tail Stinger"
+description = "A wet, hooked spine on a segmented whip. Where the pincers bruise, this is what kills you slow."
+base_damage = 10.0
+element = 4
+cooldown = 0.40
+on_hit_effects = Array[ExtResource("2")]([SubResource("poison_app")])
+swing_range = 62.0
+arc_radius = 8.0
+swing_duration = 0.14
+knockback = 220.0
+user_lunge_distance = 0.0
+hitbox_shape = 1
+swing_visual = 2

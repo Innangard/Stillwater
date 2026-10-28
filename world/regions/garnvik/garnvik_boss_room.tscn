@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://dge84o3dlwnx1"]
+
+[ext_resource type="PackedScene" path="res://enemies/drowned_crone.tscn" id="boss_scene"]
+[ext_resource type="Script" uid="uid://c740g1ijubcd" path="res://world/boss_room_gate.gd" id="gate_script"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -520.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -520.0
+
+[node name="GarnvikBossRoom" type="Node2D" unique_id=1859047936]
+script = ExtResource("region_script")
+region_id = "garnvik_boss_room"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1115059898]
+offset_left = -1977.0
+offset_top = -2016.0
+offset_right = 2023.0
+offset_bottom = 1984.0
+mouse_filter = 2
+color = Color(0.14, 0.18, 0.22, 1)
+
+[node name="Shallows" type="ColorRect" parent="." unique_id=894846016]
+offset_left = -520.0
+offset_top = -120.0
+offset_right = 520.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.22, 0.36, 0.46, 0.65)
+
+[node name="SandBar" type="ColorRect" parent="." unique_id=1465642315]
+offset_left = -520.0
+offset_top = -400.0
+offset_right = 520.0
+offset_bottom = -120.0
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.35, 0.6)
+
+[node name="WreckHull" type="ColorRect" parent="." unique_id=1221881003]
+offset_left = -140.0
+offset_top = -240.0
+offset_right = 160.0
+offset_bottom = -140.0
+mouse_filter = 2
+color = Color(0.3, 0.23, 0.16, 1)
+
+[node name="WreckProw" type="ColorRect" parent="." unique_id=1618600873]
+offset_left = 160.0
+offset_top = -225.0
+offset_right = 230.0
+offset_bottom = -155.0
+mouse_filter = 2
+color = Color(0.36, 0.28, 0.2, 1)
+
+[node name="MastStump" type="ColorRect" parent="." unique_id=684851602]
+offset_left = -20.0
+offset_top = -300.0
+offset_bottom = -240.0
+mouse_filter = 2
+color = Color(0.26, 0.2, 0.14, 1)
+
+[node name="IceSheet1" type="ColorRect" parent="." unique_id=295653308]
+offset_left = -460.0
+offset_top = 180.0
+offset_right = -300.0
+offset_bottom = 290.0
+mouse_filter = 2
+color = Color(0.72, 0.82, 0.9, 0.35)
+
+[node name="IceSheet2" type="ColorRect" parent="." unique_id=1389925378]
+offset_left = 300.0
+offset_top = 60.0
+offset_right = 450.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.72, 0.82, 0.9, 0.35)
+
+[node name="NetTangle1" type="ColorRect" parent="." unique_id=178660780]
+offset_left = -380.0
+offset_top = -220.0
+offset_right = -260.0
+offset_bottom = -160.0
+mouse_filter = 2
+color = Color(0.52, 0.5, 0.4, 0.45)
+
+[node name="KelpLine1" type="ColorRect" parent="." unique_id=1014453933]
+offset_left = -200.0
+offset_top = 260.0
+offset_right = 40.0
+offset_bottom = 276.0
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.9)
+
+[node name="BossRoomGate" type="Node2D" parent="." unique_id=190599090]
+script = ExtResource("gate_script")
+boss_id = "drowned_crone"
+target_scene = "res://world/regions/dungeon_entrance_garnvik.tscn"
+passage_color = Color(0.45, 0.7, 0.8, 1)
+prompt_text = "Press [E] to leave the cove"
+
+[node name="Player" parent="." unique_id=329465369 instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=940013761]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=381063707]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1158741276]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=786940098]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=769692254]
+shape = SubResource("wall_right")
+
+[node name="DrownedCrone" parent="." unique_id=251772520 instance=ExtResource("boss_scene")]
+position = Vector2(60, -190)
+
+[node name="default" type="Marker2D" parent="." unique_id=409263303]
+position = Vector2(0, 320)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1738254633]
+position = Vector2(0, -360)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=124116960]
+position = Vector2(0, 360)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1975204397]
+position = Vector2(470, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=792969150]
+position = Vector2(-470, 0)

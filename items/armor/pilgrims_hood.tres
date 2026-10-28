@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://d4fsoxbw6emyy"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bll224qssue5x" path="res://sprites/Skill_Item icons/Separated Files/fc2015.png" id="1_f6ed3"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_taken_multiplier = 0.95
+noise_weight = 1.5
+ranged_damage_multiplier = 1.05
+item_name = "Pilgrim's Hood"
+description = "Coarse grey wool, salt-stained. Worn by every pilgrim that ever climbed the cliffs to die. The hood narrows the world to the path ahead — useful when sighting down an arrow. Helmet."
+icon = ExtResource("1_f6ed3")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.55, 0.55, 0.6, 1)

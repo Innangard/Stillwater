@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://cd8188cc3741"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_script"]
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/bone_tablet.tres" id="item_bone_tablet"]
+[ext_resource type="Resource" path="res://items/instances/hollow_bone.tres" id="item_hollow_bone"]
+[ext_resource type="Resource" path="res://items/instances/cinder_salt.tres" id="item_cinder_salt"]
+[ext_resource type="Resource" uid="uid://82e6e2890e2a" path="res://items/runestones/ehwaz_runebone.tres" id="output_rune"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("iq_script")
+item = ExtResource("item_bone_tablet")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("iq_script")
+item = ExtResource("item_hollow_bone")
+count = 2
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("iq_script")
+item = ExtResource("item_cinder_salt")
+count = 1
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Inscribe Ehwaz Runebone"
+description = "Stampede — charge forward dealing 20 damage to all enemies in path."
+inputs = Array[ExtResource("iq_script")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_item = ExtResource("output_rune")

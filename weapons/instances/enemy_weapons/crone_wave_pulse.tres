@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ExpandingRingWeapon" format=3 uid="uid://t8idllaxctxs"]
+
+[ext_resource type="Script" uid="uid://q1guuhwe1j0y" path="res://weapons/expanding_ring_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/wave_slow.tres" id="3"]
+
+[sub_resource type="Resource" id="slow_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Wave Pulse"
+base_damage = 8.0
+element = 2
+cooldown = 4.0
+on_hit_effects = Array[ExtResource("2")]([SubResource("slow_app")])
+description = "She stamps the drowned timber and the sea answers — a ring of grey water rolling outward, heavy as a closing door."

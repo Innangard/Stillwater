@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/heimdall.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/heimdall_heavy_sword.tres" id="w_heavy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/heimdall_shield_bash.tres" id="w_bash"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/heimdall_cross_strike.tres" id="w_cross"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/heimdall_spinning_advance.tres" id="w_spin"]
+[ext_resource type="PackedScene" path="res://enemies/corrupted_knight.tscn" id="knight"]
+
+[node name="Heimdall" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Heimdall"
+body_tint = Color(0.60, 0.58, 0.52, 1.0)
+weapon_icon_color = Color(0.85, 0.80, 0.65, 1.0)
+body_radius = 22.0
+body_shape = 2
+max_health = 2500.0
+max_speed = 80.0
+acceleration = 500.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_heavy")
+wind_up_duration = 0.65
+recover_duration = 0.55
+min_engage_range = 0.0
+boss_display_name = "Heimdall"
+boss_id = "heimdall"
+weapon_heavy = ExtResource("w_heavy")
+weapon_bash = ExtResource("w_bash")
+weapon_cross = ExtResource("w_cross")
+weapon_spin = ExtResource("w_spin")
+phase2_threshold = 0.30
+phase2_speed = 100.0
+knight_scene = ExtResource("knight")
+max_knights = 2
+wind_up_heavy = 0.65
+wind_up_bash = 0.50
+wind_up_cross = 0.55
+wind_up_spin = 0.70
+recover_heavy = 0.55
+recover_bash = 0.45
+recover_cross = 0.50
+recover_spin = 0.60
+currency_drop_min = 80
+currency_drop_max = 130
+item_drop_chance = 1.0
+

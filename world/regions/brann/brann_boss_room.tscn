@@ -1,0 +1,211 @@
+[gd_scene format=3 uid="uid://cvx0f141p18pc"]
+
+[ext_resource type="Script" uid="uid://bxas2hp1afggk" path="res://items/item.gd" id="4_tdl58"]
+[ext_resource type="Resource" uid="uid://22mfa3n2rbfp" path="res://weapons/instances/enemy_weapons/sovereign_pyre.tres" id="5_8x303"]
+[ext_resource type="PackedScene" path="res://enemies/cinder_sovereign.tscn" id="boss_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://world/passage.tscn" id="passage_scene"]
+[ext_resource type="Script" path="res://world/boss_room_gate.gd" id="gate_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -503.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -800.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -540.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -540.0
+
+
+[node name="BrannBossRoom" type="Node2D" unique_id=8260038]
+script = ExtResource("region_script")
+region_id = "brann_boss_room"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=228165386]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.16, 0.07, 0.06, 1)
+
+[node name="Path" type="ColorRect" parent="." unique_id=720368189]
+offset_left = -35.0
+offset_top = 399.0
+offset_right = 35.0
+offset_bottom = 1238.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 0.2)
+
+[node name="Arena" type="ColorRect" parent="." unique_id=1265202551]
+offset_left = -500.0
+offset_top = -400.0
+offset_right = 500.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.3, 0.16, 0.1, 1)
+
+[node name="ArenaRing" type="ColorRect" parent="." unique_id=812256357]
+offset_left = -380.0
+offset_top = -280.0
+offset_right = 380.0
+offset_bottom = 280.0
+mouse_filter = 2
+color = Color(0.42, 0.2, 0.1, 0.45)
+
+[node name="Brazier1" type="ColorRect" parent="." unique_id=615481221]
+offset_left = -350.0
+offset_top = -250.0
+offset_right = -320.0
+offset_bottom = -220.0
+mouse_filter = 2
+color = Color(0.95, 0.55, 0.15, 1)
+
+[node name="BrazierGlow1" type="ColorRect" parent="." unique_id=466064070]
+offset_left = -370.0
+offset_top = -270.0
+offset_right = -300.0
+offset_bottom = -200.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 0.2)
+
+[node name="Brazier2" type="ColorRect" parent="." unique_id=2071418019]
+offset_left = 320.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = -220.0
+mouse_filter = 2
+color = Color(0.95, 0.55, 0.15, 1)
+
+[node name="BrazierGlow2" type="ColorRect" parent="." unique_id=670116474]
+offset_left = 300.0
+offset_top = -270.0
+offset_right = 370.0
+offset_bottom = -200.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 0.2)
+
+[node name="Brazier3" type="ColorRect" parent="." unique_id=1858267886]
+offset_left = -350.0
+offset_top = 220.0
+offset_right = -320.0
+offset_bottom = 250.0
+mouse_filter = 2
+color = Color(0.95, 0.55, 0.15, 1)
+
+[node name="BrazierGlow3" type="ColorRect" parent="." unique_id=736771334]
+offset_left = -370.0
+offset_top = 200.0
+offset_right = -300.0
+offset_bottom = 270.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 0.2)
+
+[node name="Brazier4" type="ColorRect" parent="." unique_id=1960176758]
+offset_left = 320.0
+offset_top = 220.0
+offset_right = 350.0
+offset_bottom = 250.0
+mouse_filter = 2
+color = Color(0.95, 0.55, 0.15, 1)
+
+[node name="BrazierGlow4" type="ColorRect" parent="." unique_id=922433107]
+offset_left = 300.0
+offset_top = 200.0
+offset_right = 370.0
+offset_bottom = 270.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 0.2)
+
+[node name="LavaCrack1" type="ColorRect" parent="." unique_id=1802454778]
+offset_left = -180.0
+offset_top = 30.0
+offset_right = -40.0
+offset_bottom = 38.0
+mouse_filter = 2
+color = Color(1, 0.45, 0.1, 0.7)
+
+[node name="LavaCrack2" type="ColorRect" parent="." unique_id=425058764]
+offset_left = 40.0
+offset_top = 60.0
+offset_right = 180.0
+offset_bottom = 68.0
+mouse_filter = 2
+color = Color(1, 0.45, 0.1, 0.7)
+
+[node name="LavaCrack3" type="ColorRect" parent="." unique_id=1752261730]
+offset_left = -90.0
+offset_top = -120.0
+offset_right = 90.0
+offset_bottom = -114.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.15, 0.65)
+
+[node name="Pyre" type="ColorRect" parent="." unique_id=315766912]
+offset_left = -30.0
+offset_top = -380.0
+offset_right = 30.0
+offset_bottom = -340.0
+mouse_filter = 2
+color = Color(1, 0.6, 0.2, 1)
+
+[node name="PyreGlow" type="ColorRect" parent="." unique_id=1696452582]
+offset_left = -90.0
+offset_top = -395.0
+offset_right = 90.0
+offset_bottom = -315.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 0.3)
+
+[node name="BossRoomGate" type="Node2D" parent="."]
+script = ExtResource("gate_script")
+boss_id = "cinder_sovereign"
+target_scene = "res://world/regions/dungeon_entrance_brann.tscn"
+passage_color = Color(0.95, 0.55, 0.25, 1.0)
+prompt_text = "Press [E] to leave the pyre hall"
+
+[node name="Player" parent="." unique_id=1005300320 instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=882014970]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="CinderSovereign" parent="." unique_id=238811522 instance=ExtResource("boss_scene")]
+position = Vector2(0, -260)
+boss_id = "cinder_sovereign"
+max_minions_in_room = 3
+max_health = 1600.0
+stagger_decay_rate = 0.1
+item_drops = Array[ExtResource("4_tdl58")]([ExtResource("5_8x303")])
+
+[node name="default" type="Marker2D" parent="." unique_id=702803791]
+position = Vector2(0, 600)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1001938066]
+position = Vector2(0, 700)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=440472541]
+position = Vector2(488, 716)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1106007966]
+position = Vector2(-493, 700)
+

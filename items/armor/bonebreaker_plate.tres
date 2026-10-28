@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 5.5
+damage_taken_multiplier = 0.8
+noise_weight = 16.0
+melee_damage_multiplier = 1.18
+max_health_bonus = 50.0
+item_name = "Bonebreaker Plate"
+description = "Full plate of sky-iron over a bog-iron mail backing. The wearer becomes their own siege weapon. Walks slow. Hits like a dropped bell. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.50, 0.52, 0.58, 1)

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TelegraphedAreaWeapon" format=3 uid="uid://dlx7beap770ew"]
+
+[ext_resource type="Script" uid="uid://bkgcue7ctrma4" path="res://weapons/telegraphed_area_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/telegraph.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/dragged_under.tres" id="4"]
+
+[sub_resource type="Resource" id="drag_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+
+[resource]
+script = ExtResource("1")
+warning_duration = 0.7
+damage_radius = 55.0
+linger_duration = 0.2
+prediction_seconds = 0.0
+caster_offset = Vector2(0, 0)
+max_engage_range = 9999.0
+weapon_name = "Drag Under"
+base_damage = 14.0
+element = 6
+cooldown = 6.0
+on_hit_effects = Array[ExtResource("3")]([SubResource("drag_app")])
+description = "Both hands close on the rope. The water under the catch opens like a mouth."

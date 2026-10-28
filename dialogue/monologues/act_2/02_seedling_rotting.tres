@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Carving"
+text = "The seedling on the western isle is rotting from the inside, its roots choked by the stagnant water. As the branches blacken and die, the living world above winds down. Without the flow of the Pool, no new children are born to their mothers. The warlord\'s pride is starving the earth we left behind."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

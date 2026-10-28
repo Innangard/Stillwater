@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/ashsprout.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/ashsprout_root_strike.tres" id="w_root"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/ashsprout_seed_pod.tres" id="w_seed"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/ashsprout_branch_sweep.tres" id="w_sweep"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/ashsprout_seed_rain.tres" id="w_rain"]
+
+[node name="Ashsprout" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Ashsprout"
+body_tint = Color(0.42, 0.38, 0.30, 1.0)
+weapon_icon_color = Color(0.60, 0.55, 0.40, 1.0)
+body_radius = 24.0
+body_shape = 0
+max_health = 2000.0
+max_speed = 15.0
+acceleration = 200.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_root")
+wind_up_duration = 0.65
+recover_duration = 0.60
+min_engage_range = 0.0
+boss_display_name = "Ashsprout"
+boss_id = "ashsprout"
+weapon_root = ExtResource("w_root")
+weapon_seed = ExtResource("w_seed")
+weapon_sweep = ExtResource("w_sweep")
+weapon_rain = ExtResource("w_rain")
+phase2_threshold = 0.35
+phase2_speed = 25.0
+wind_up_root = 0.65
+wind_up_seed = 0.60
+wind_up_sweep = 0.70
+wind_up_rain = 1.00
+recover_root = 0.60
+recover_seed = 0.55
+recover_sweep = 0.65
+recover_rain = 1.10
+currency_drop_min = 80
+currency_drop_max = 130
+item_drop_chance = 1.0
+

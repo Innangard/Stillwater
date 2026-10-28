@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Slag Touch"
+description = "Molten slag drips from its underside. Contact sears through leather."
+base_damage = 11.0
+element = 1
+cooldown = 0.8
+on_hit_effects = []
+swing_range = 20.0
+arc_radius = 16.0
+swing_duration = 0.12
+knockback = 150.0
+user_lunge_distance = 40.0
+swing_visual = 8

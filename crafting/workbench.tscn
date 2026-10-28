@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://crafting/workbench.gd" id="bench_script"]
+
+[sub_resource type="RectangleShape2D" id="bench_shape"]
+size = Vector2(72, 72)
+
+[node name="Workbench" type="Node2D"]
+script = ExtResource("bench_script")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("bench_shape")

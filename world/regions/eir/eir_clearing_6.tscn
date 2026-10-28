@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/rime_sprite.tscn" id="enemy_rime_sprite"]
+[ext_resource type="PackedScene" path="res://enemies/corrupted_knight.tscn" id="enemy_corrupted_knight"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="EirClearing6" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "eir_clearing_6"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.28, 0.25, 0.32, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.44, 0.40, 0.48, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = -243
+offset_top = 188
+offset_right = -197
+offset_bottom = 226
+mouse_filter = 2
+color = Color(0.34, 0.30, 0.40, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = -313
+offset_top = 274
+offset_right = -278
+offset_bottom = 303
+mouse_filter = 2
+color = Color(0.42, 0.38, 0.46, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = 237
+offset_top = 13
+offset_right = 264
+offset_bottom = 36
+mouse_filter = 2
+color = Color(0.34, 0.30, 0.40, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(300, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_rime_sprite")]
+position = Vector2(-138, -112)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_corrupted_knight")]
+position = Vector2(166, -99)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(420, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "east"
+tint = Color(0.44, 0.40, 0.48, 0.4)
+zone_size = Vector2(192, 48)

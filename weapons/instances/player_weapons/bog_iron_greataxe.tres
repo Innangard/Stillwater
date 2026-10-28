@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Bog-Iron Greataxe"
+description = "A two-hander forged from cold-iron pulled out of the moor. The head is too heavy for any one swing to be quick — but heavy things in motion are slow to be stopped, and what they hit, they break. Slow, devastating, throws bodies."
+base_damage = 28.0
+element = 0
+cooldown = 1.05
+swing_range = 64.0
+arc_radius = 56.0
+swing_duration = 0.30
+knockback = 520.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+wielder_speed_multiplier = 0.92
+placeholder_color = Color(0.42, 0.46, 0.50, 1)
+two_handed = true
+swing_visual = 3

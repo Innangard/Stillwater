@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://f47c39122cdd"]
+
+[ext_resource type="Script" path="res://status/status_effect.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = &"rune_serene"
+display_name = "Serene Pulse"
+description = "A warm current through the bones. Healing over time."
+duration = 60.0
+tick_interval = 1.0
+damage_per_tick = -2.0
+damage_element = 0
+speed_multiplier = 1.0
+damage_taken_multiplier = 1.0
+damage_dealt_multiplier = 1.0
+prevents_action = false
+stack_behavior = 0
+max_stacks = 1
+tint_color = Color(0.4, 0.95, 0.6, 1.0)
+tint_intensity = 0.2

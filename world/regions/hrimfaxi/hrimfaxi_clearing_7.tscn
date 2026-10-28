@@ -1,0 +1,83 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/crystal_sentry.tscn" id="enemy_crystal_sentry"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="HrimfaxiClearing7" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "hrimfaxi_clearing_7"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.30, 0.35, 0.42, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.55, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = -269
+offset_top = 146
+offset_right = -222
+offset_bottom = 174
+mouse_filter = 2
+color = Color(0.35, 0.42, 0.52, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = 58
+offset_top = -134
+offset_right = 108
+offset_bottom = -114
+mouse_filter = 2
+color = Color(0.50, 0.56, 0.62, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -82
+offset_top = -174
+offset_right = -53
+offset_bottom = -126
+mouse_filter = 2
+color = Color(0.42, 0.48, 0.55, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = 245
+offset_top = -166
+offset_right = 291
+offset_bottom = -121
+mouse_filter = 2
+color = Color(0.50, 0.56, 0.62, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-300, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_crystal_sentry")]
+position = Vector2(-150, -78)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_crystal_sentry")]
+position = Vector2(137, -71)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-420, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "west"
+tint = Color(0.45, 0.50, 0.55, 0.4)
+zone_size = Vector2(192, 48)

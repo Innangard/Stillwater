@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://ddent000001"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[node name="DungeonEntranceDeepDesert" type="Node2D" unique_id=2200000001]
+script = ExtResource("region_script")
+region_id = "dungeon_entrance_deep_desert"
+player_scene = ExtResource("player_scene")
+
+; Deep Desert dungeon entrance. The threshold sits at the eastern end
+; of a long NE corridor from the Sundust Altar — the player has fought
+; through twenty rooms of worms, husks, and scorpions to arrive here.
+; The visual language is heavier and more ominous than the Sundust
+; Gate: cracked stone steps descending into darkness, vitrified glass
+; shards from worm activity, sun-bleached bones piled at the corners.
+;
+; Currently empty by design. The dungeon proper (linked via ExitEast)
+; is a single empty boss arena waiting for the optional boss to be
+; designed. The player can walk in, look around, walk out. When the
+; boss content lands, the arena scene gets populated and the player
+; comes back here knowing what waits inside.
+
+[node name="Background" type="ColorRect" parent="." unique_id=2200000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.42, 0.32, 1)
+
+; Cracked-earth path floor running west-to-east. Darker than the
+; sundust path tint to signal "deeper into the desert, less travel,
+; less maintenance."
+[node name="PathFloor" type="ColorRect" parent="." unique_id=2200000003]
+offset_left = -500.0
+offset_top = -56.0
+offset_right = 500.0
+offset_bottom = 56.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+; Stone steps descending east into the dungeon. The visual focal point.
+; A series of rectangles tapering toward the entrance, each darker
+; than the last so the eye reads "descent into darkness."
+[node name="Step1" type="ColorRect" parent="." unique_id=2200000010]
+offset_left = 120.0
+offset_top = -80.0
+offset_right = 180.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.50, 0.42, 0.28, 1)
+
+[node name="Step2" type="ColorRect" parent="." unique_id=2200000011]
+offset_left = 200.0
+offset_top = -90.0
+offset_right = 260.0
+offset_bottom = 90.0
+mouse_filter = 2
+color = Color(0.42, 0.34, 0.22, 1)
+
+[node name="Step3" type="ColorRect" parent="." unique_id=2200000012]
+offset_left = 280.0
+offset_top = -100.0
+offset_right = 340.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.32, 0.26, 0.16, 1)
+
+[node name="Step4" type="ColorRect" parent="." unique_id=2200000013]
+offset_left = 360.0
+offset_top = -110.0
+offset_right = 420.0
+offset_bottom = 110.0
+mouse_filter = 2
+color = Color(0.20, 0.16, 0.10, 1)
+
+; Doorway mouth at the very east — pure dark, the entrance proper.
+[node name="DoorwayMouth" type="ColorRect" parent="." unique_id=2200000014]
+offset_left = 420.0
+offset_top = -120.0
+offset_right = 460.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.05, 0.04, 0.02, 1)
+
+; Pylons flanking the doorway — tall narrow obelisks like the Sundust
+; Altar's, but blackened. Marks this as a sibling structure to the
+; altar (same builder, same era), now corrupted by whatever sleeps
+; inside the dungeon.
+[node name="PylonN" type="ColorRect" parent="." unique_id=2200000020]
+offset_left = 350.0
+offset_top = -200.0
+offset_right = 380.0
+offset_bottom = -120.0
+mouse_filter = 2
+color = Color(0.18, 0.14, 0.10, 1)
+
+[node name="PylonS" type="ColorRect" parent="." unique_id=2200000021]
+offset_left = 350.0
+offset_top = 120.0
+offset_right = 380.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.18, 0.14, 0.10, 1)
+
+; Glass-fused sand crystals scattered around the threshold. Sand worms
+; have been here. A lot of them, for a long time. Each crystal is a
+; small pale-amber square — same palette as the Husk-of-Sand reagent
+; the player has been collecting.
+[node name="Glass1" type="ColorRect" parent="." unique_id=2200000030]
+offset_left = 40.0
+offset_top = -180.0
+offset_right = 64.0
+offset_bottom = -160.0
+mouse_filter = 2
+color = Color(0.92, 0.78, 0.42, 0.85)
+
+[node name="Glass2" type="ColorRect" parent="." unique_id=2200000031]
+offset_left = -160.0
+offset_top = 140.0
+offset_right = -136.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.92, 0.78, 0.42, 0.85)
+
+[node name="Glass3" type="ColorRect" parent="." unique_id=2200000032]
+offset_left = 200.0
+offset_top = 180.0
+offset_right = 220.0
+offset_bottom = 198.0
+mouse_filter = 2
+color = Color(0.92, 0.78, 0.42, 0.85)
+
+[node name="Glass4" type="ColorRect" parent="." unique_id=2200000033]
+offset_left = -300.0
+offset_top = -190.0
+offset_right = -276.0
+offset_bottom = -168.0
+mouse_filter = 2
+color = Color(0.92, 0.78, 0.42, 0.85)
+
+; Bone piles at the corners. Travelers, broodlings, things that came
+; this far and didn't go further.
+[node name="BonesNE" type="ColorRect" parent="." unique_id=2200000040]
+offset_left = 240.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = -200.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.9)
+
+[node name="BonesSW" type="ColorRect" parent="." unique_id=2200000041]
+offset_left = -460.0
+offset_top = 200.0
+offset_right = -360.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.9)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2200000050]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=2200000051]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=2200000052]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=2200000053]
+build_mode = 1
+polygon = PackedVector2Array(-500, -300, -500, -60, -600, -60, -600, 60, -500, 60, -500, 300, -690, 300, -690, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=2200000054]
+build_mode = 1
+polygon = PackedVector2Array(500, -300, 500, -60, 600, -60, 600, 60, 500, 60, 500, 300, 690, 300, 690, -300)
+
+; Spawn markers — players typically arrive from the west (the corridor
+; back to the altar). default + from_west collapse to the same point.
+[node name="default" type="Marker2D" parent="." unique_id=2200000060]
+position = Vector2(-440, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=2200000061]
+position = Vector2(-440, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=2200000062]
+position = Vector2(380, 0)
+
+[node name="Player" parent="." unique_id=2200000070 instance=ExtResource("player_scene")]
+position = Vector2(-440, 0)
+
+; ExitWest — runtime-rewritten by _try_chain to point at the deep
+; desert corridor's last buffer. Static fallback is the sundust altar
+; so a player isn't stranded if override logic ever fails.
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-480, 0)
+target_scene = "res://world/regions/sundust_altar.tscn"
+target_spawn_point = "from_east"
+label = "←  back into the desert"
+tint = Color(0.58, 0.50, 0.36, 0.4)
+zone_size = Vector2(48, 192)
+
+; ExitEast — the dungeon proper. Static wire (the dungeon is a
+; standalone scene, not part of any randomized chain), goes to the
+; placeholder boss arena. When the optional boss content lands, this
+; exit stays valid; only the arena scene itself gets populated.
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(480, 0)
+target_scene = "res://world/regions/deep_desert_dungeon.tscn"
+target_spawn_point = "from_west"
+label = "→  descend"
+tint = Color(0.10, 0.08, 0.05, 0.5)
+zone_size = Vector2(48, 192)

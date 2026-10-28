@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://chyssn7fgafn2"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Traveler"
+text = "Not many pilgrims make it this far. Take a look at what I've got before the forest reclaims us both."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Traveler"
+text = "Every item has a story. I don't tell them for free, but I sell the items cheap."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

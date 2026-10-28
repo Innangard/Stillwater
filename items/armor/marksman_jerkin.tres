@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 2.5
+damage_taken_multiplier = 0.9
+noise_weight = 4.0
+ranged_damage_multiplier = 1.1
+item_name = "Marksman's Jerkin"
+description = "A short-cut jerkin of soft leather that doesn't bind at the shoulder when you draw. The marksmen of Nasus prefer it; the bowyers of Hollowmere argue for stiffer kit, but no one beats a Nasus marksman to the shot. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.36, 0.40, 0.32, 1)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://kvq3rtaavdmw"]
+
+[ext_resource type="Script" uid="uid://bxas2hp1afggk" path="res://items/item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://co0sdq0wq107n" path="res://sprites/Skill_Item icons/Separated Files/fc74.png" id="1_as3wk"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Bone Key"
+description = "A key cut from a single human finger-bone. Yellowed, polished smooth by countless hands. Opens something."
+icon = ExtResource("1_as3wk")
+category = "key"
+max_stack = 1
+placeholder_color = Color(0.95, 0.92, 0.78, 1)

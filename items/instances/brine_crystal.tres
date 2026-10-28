@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Brine Crystal"
+description = "A thumb-sized crystal of sea-salt, clouded with trapped air. It formed in the hull of a sunken ship over centuries. Cold to the touch; colder the longer you hold it. Reagent."
+category = "reagent"
+placeholder_color = Color(0.65, 0.72, 0.80, 1)

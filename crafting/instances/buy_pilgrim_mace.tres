@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/pilgrim_mace.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Pilgrim's Mace"
+description = "A traveler's offering."
+currency_cost = 22
+output_weapon = ExtResource("2")

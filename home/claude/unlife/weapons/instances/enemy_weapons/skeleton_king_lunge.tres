@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Royal Lunge"
+description = "The dead king surges forward, bony arms outstretched. If you hear the grind of bone on stone, you waited too long."
+base_damage = 24.0
+element = 0
+cooldown = 2.0
+on_hit_effects = []
+swing_range = 55.0
+arc_radius = 22.0
+swing_duration = 0.18
+knockback = 280.0
+user_lunge_distance = 120.0
+hitbox_shape = 1
+swing_visual = 8

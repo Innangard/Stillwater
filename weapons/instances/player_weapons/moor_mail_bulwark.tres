@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ShieldWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/shield_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/shield_zone.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Moor-Mail Bulwark"
+description = "A pavise reinforced with peat-pitch-soaked mail behind the bone. Wider than a man, heavy as a man, almost nothing makes it through. The mail also armors you behind it."
+base_damage = 0.0
+element = 0
+cooldown = 0.0
+on_hit_effects = []
+category = "shield"
+max_stack = 1
+placeholder_color = Color(0.42, 0.45, 0.4, 1)
+block_arc_size = Vector2(54, 130)
+block_distance = 34.0
+movement_speed_multiplier = 0.3
+melee_damage_reduction = 0.1
+shield_zone_scene = ExtResource("2")
+max_health_bonus = 20.0

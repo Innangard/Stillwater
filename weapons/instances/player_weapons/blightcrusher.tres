@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://cuouqwrbbnvr6"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d2k00podulup3" path="res://sprites/Skill_Item icons/Separated Files/fc1802.png" id="1_ntc5g"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/poison.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.55
+
+[resource]
+script = ExtResource("1")
+swing_range = 34.0
+arc_radius = 44.0
+swing_duration = 0.24
+knockback = 380.0
+weapon_name = "Blightcrusher"
+base_damage = 19.0
+element = 4
+cooldown = 0.58
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app")])
+description = "The head seeps a thick green ichor. What doesn't break outright rots from within."
+icon = ExtResource("1_ntc5g")
+max_stack = 1
+swing_visual = 7

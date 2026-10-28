@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://b1c0scinyi6td"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bg2ohb54uqo8w" path="res://sprites/Skill_Item icons/Separated Files/fc1676.png" id="1_m0l46"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/freeze.tres" id="4"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.3
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 560.0
+knockback = 130.0
+weapon_name = "Froststring Bow"
+base_damage = 9.0
+element = 2
+cooldown = 0.6
+on_hit_effects = Array[ExtResource("3")]([SubResource("status_app")])
+description = "A bow strung with frozen sinew. Arrows arrive cold enough to numb."
+icon = ExtResource("1_m0l46")
+two_handed = true

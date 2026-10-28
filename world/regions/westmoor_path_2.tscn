@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://bifs2ejy2m6lh"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_b"]
+[ext_resource type="Resource" uid="uid://ccwei751iyhcg" path="res://weapons/instances/player_weapons/stormhammer.tres" id="loot_weapon"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -340
+
+[node name="WestmoorPath2" type="Node2D" unique_id=1504675977]
+script = ExtResource("region_script")
+region_id = "westmoor_path_2"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1874084238]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.36, 1)
+
+[node name="TrackH" type="ColorRect" parent="." unique_id=1505194571]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="TrackN" type="ColorRect" parent="." unique_id=1413732127]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="Menhir1" type="ColorRect" parent="." unique_id=1565273281]
+offset_left = -240.0
+offset_top = -120.0
+offset_right = -202.0
+offset_bottom = -30.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Menhir2" type="ColorRect" parent="." unique_id=1534352281]
+offset_left = -120.0
+offset_top = -200.0
+offset_right = -82.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Menhir3" type="ColorRect" parent="." unique_id=1989146700]
+offset_left = 60.0
+offset_top = -200.0
+offset_right = 98.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Menhir4" type="ColorRect" parent="." unique_id=1784727138]
+offset_left = 190.0
+offset_top = -110.0
+offset_right = 228.0
+offset_bottom = -20.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Menhir5" type="ColorRect" parent="." unique_id=1943202748]
+offset_left = 150.0
+offset_top = 110.0
+offset_right = 188.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Menhir6" type="ColorRect" parent="." unique_id=1713912376]
+offset_left = -180.0
+offset_top = 120.0
+offset_right = -142.0
+offset_bottom = 210.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="AltarShadow" type="ColorRect" parent="." unique_id=1907736992]
+offset_left = -40.0
+offset_top = -30.0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="Lichen1" type="ColorRect" parent="." unique_id=1358060594]
+offset_left = 240.0
+offset_top = 90.0
+offset_right = 330.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0.55, 0.58, 0.46, 0.6)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1398762990]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1738743858]
+build_mode = 1
+polygon = PackedVector2Array(-560, -340, -60, -340, -60, -440, 60, -440, 60, -340, 560, -340, 560, -530, -560, -530)
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1496003732]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1716142328]
+build_mode = 1
+polygon = PackedVector2Array(-560, -340, -560, -60, -660, -60, -660, 60, -560, 60, -560, 340, -750, 340, -750, -340)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1504081010]
+build_mode = 1
+polygon = PackedVector2Array(560, -340, 560, -60, 660, -60, 660, 60, 560, 60, 560, 340, 750, 340, 750, -340)
+
+[node name="default" type="Marker2D" parent="." unique_id=1475248956]
+position = Vector2(0, 60)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1710612804]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1232775002]
+position = Vector2(-500, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=2096857625]
+position = Vector2(0, -300)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1074788129]
+position = Vector2(0, 300)
+
+[node name="Player" parent="." unique_id=1797861273 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="Skeleton1" parent="." unique_id=1939517033 instance=ExtResource("enemy_a")]
+position = Vector2(120, -130)
+
+[node name="Wolf1" parent="." unique_id=1011802353 instance=ExtResource("enemy_b")]
+position = Vector2(-160, 150)
+
+[node name="StormhammerPickup" parent="." unique_id=1904495632 instance=ExtResource("pickup_scene")]
+position = Vector2(0, 0)
+weapon = ExtResource("loot_weapon")
+persistent_per_run = true
+
+[node name="ExitEast" parent="." unique_id=1309194470 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/westmoor_path_1.tscn"
+target_spawn_point = "from_west"
+label = "→  back toward Nasus"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=1092963735 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/westmoor_path_3.tscn"
+target_spawn_point = "from_east"
+label = "←  the Sunder Road"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." unique_id=1632149445 instance=ExtResource("exit_scene")]
+position = Vector2(0, -320)
+target_scene = "res://world/regions/westmoor_clearing_1.tscn"
+target_spawn_point = "from_south"
+label = "↑  a sheltered hollow"
+tint = Color(0.42, 0.46, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+

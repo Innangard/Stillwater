@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/kobold_spear.tres" id="weapon"]
+
+[node name="KoboldGreen" instance=ExtResource("base_enemy")]
+enemy_name = "Green Kobold"
+sprite_name = "enemy_kobold_green"
+body_tint = Color(0.42, 0.65, 0.32, 1.0)
+weapon_icon_color = Color(0.85, 0.78, 0.52, 1.0)
+body_radius = 12.0
+max_health = 22.0
+max_speed = 105.0
+acceleration = 700.0
+base_detection = 70.0
+noise_sensitivity = 3.5
+smell_sensitivity = 3.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.4
+min_engage_range = 0.0
+currency_drop_min = 2
+currency_drop_max = 5
+item_drop_chance = 0.25

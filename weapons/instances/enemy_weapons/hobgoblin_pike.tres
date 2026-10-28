@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Hobgoblin Pike"
+description = "Twice the length of a regular goblin spear and twice the man holding it. The reach is the threat."
+base_damage = 14.0
+element = 0
+cooldown = 0.62
+on_hit_effects = []
+swing_range = 66.0
+arc_radius = 8.0
+swing_duration = 0.14
+knockback = 240.0
+user_lunge_distance = 0.0
+hitbox_shape = 1
+swing_visual = 2

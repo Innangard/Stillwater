@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/poison.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.80
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Wyrmstinger Spear"
+description = "The hollow tip of the venomfang spear, now lined with a scorpion's intact gland-leather. Each thrust pumps a fresh dose through the shaft channel. The poison reservoir refills itself between fights — you're not sure how. You stop thinking about it."
+base_damage = 21.0
+element = 4
+cooldown = 0.42
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app")])
+swing_range = 60.0
+arc_radius = 9.0
+swing_duration = 0.14
+knockback = 240.0
+hitbox_shape = 1
+swing_visual = 2

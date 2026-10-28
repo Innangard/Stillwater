@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/bog_wretch_bite.tres" id="w_bite"]
+
+[node name="BogWretch" instance=ExtResource("base_enemy")]
+enemy_name = "Bog Wretch"
+sprite_name = "enemy_bog_wretch"
+body_tint = Color(0.34, 0.44, 0.24, 1.0)
+weapon_icon_color = Color(0.55, 0.70, 0.30, 1.0)
+body_radius = 13.0
+body_shape = 0
+max_health = 55.0
+max_speed = 95.0
+acceleration = 700.0
+base_detection = 110.0
+noise_sensitivity = 4.0
+smell_sensitivity = 6.0
+weapon = ExtResource("w_bite")
+wind_up_duration = 0.50
+recover_duration = 0.45
+min_engage_range = 0.0
+currency_drop_min = 3
+currency_drop_max = 7
+item_drop_chance = 0.30

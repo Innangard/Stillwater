@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "spear_dane"
+display_name = "Spear-Dane"
+epithet = "He whose shaft is longer than his patience"
+description = "You hold the line, not the horizon. Melee bites harder, but arrows leave your hand stiff and slow."
+flavor_text = "Close enough to hear them breathe, close enough to make them stop."
+category = 0
+unlock_flag = "kenning_unlock_spear_dane"
+unlock_hint = "Take a hundred close-quarters lives in a single run."
+damage_dealt_multiplier = 1.20
+weapon_filter = 1
+element_damage_multipliers = {
+0: 1.10
+}
+tier_color = Color(0.85, 0.40, 0.35, 1)

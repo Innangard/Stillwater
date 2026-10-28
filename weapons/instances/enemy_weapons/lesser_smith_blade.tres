@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Slag Blade"
+description = "A half-finished sword, still warm from the quench. Good enough for the task at hand."
+base_damage = 10.0
+element = 1
+cooldown = 1.0
+on_hit_effects = []
+swing_range = 30.0
+arc_radius = 22.0
+swing_duration = 0.14
+knockback = 200.0
+user_lunge_distance = 40.0
+swing_visual = 8

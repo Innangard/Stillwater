@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://wbuf00000067"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[node name="Node2D" type="Node2D" unique_id=1979893075]
+script = ExtResource("region_script")
+region_id = "west_buffer_3"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1461497809]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.36, 1)
+
+[node name="TrackH" type="ColorRect" parent="." unique_id=1167585262]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="Rift" type="ColorRect" parent="." unique_id=1261820134]
+offset_left = -220.0
+offset_top = 70.0
+offset_right = -80.0
+offset_bottom = 130.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="Rift2" type="ColorRect" parent="." unique_id=1820825440]
+offset_left = 100.0
+offset_top = -130.0
+offset_right = 260.0
+offset_bottom = -80.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1990350212]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1726129261]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1254882789]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=2050355835]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -660, -60, -660, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1176596088]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 660, -60, 660, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=1283750730]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1477785201]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1053095412]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=1094616301 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="Skel1" parent="." unique_id=1483576464 instance=ExtResource("enemy_0")]
+position = Vector2(-100, -120)
+
+[node name="Gob1" parent="." unique_id=1230289185 instance=ExtResource("enemy_1")]
+position = Vector2(200, 100)
+
+[node name="Wolf1" parent="." unique_id=1274101044 instance=ExtResource("enemy_2")]
+position = Vector2(-200, 140)
+
+[node name="ExitEast" parent="." unique_id=1393916645 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "→  the moor"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=1879272865 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "←  the moor"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+

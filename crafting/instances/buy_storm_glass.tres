@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/storm_glass.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Storm-Glass"
+description = "Lightning-fused crystal. Hums when you hold it. Hums louder near iron."
+inputs = []
+requires_weapon = null
+currency_cost = 18
+output_item = ExtResource("2")
+output_item_count = 1
+output_weapon = null

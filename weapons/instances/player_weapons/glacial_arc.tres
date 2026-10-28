@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://cd08n6ewjanh2"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://deh6ca1oy35vp" path="res://sprites/Skill_Item icons/Separated Files/fc1674.png" id="1_l3xld"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/freeze.tres" id="4"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.35
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 640.0
+projectile_lifetime = 1.4
+knockback = 170.0
+weapon_name = "Glacial Arc"
+base_damage = 16.0
+element = 2
+cooldown = 0.9
+on_hit_effects = Array[ExtResource("3")]([SubResource("status_app")])
+description = "Arrows from this bow frost over before they leave the string. Impact shatters ice and bone alike."
+icon = ExtResource("1_l3xld")
+two_handed = true

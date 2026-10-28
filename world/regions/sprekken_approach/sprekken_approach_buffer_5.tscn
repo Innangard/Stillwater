@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://sabu00000069"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1749726591]
+script = ExtResource("region_script")
+region_id = "sprekken_approach_buffer_5"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1232846650]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.50, 0.36, 1)
+
+[node name="TrackV" type="ColorRect" parent="." unique_id=1004260589]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.62, 0.58, 0.42, 1)
+
+[node name="RuinL" type="ColorRect" parent="." unique_id=1670484676]
+offset_left = -220.0
+offset_top = -80.0
+offset_right = -100.0
+offset_bottom = -20.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.22, 1)
+
+[node name="RuinR" type="ColorRect" parent="." unique_id=1718759978]
+offset_left = 100.0
+offset_top = 40.0
+offset_right = 220.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.22, 1)
+
+[node name="Moss" type="ColorRect" parent="." unique_id=1628641015]
+offset_left = -30.0
+offset_top = 150.0
+offset_right = 80.0
+offset_bottom = 210.0
+mouse_filter = 2
+color = Color(0.40, 0.46, 0.30, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1351733224]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1747975136]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -400, 60, -400, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=1355732782]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, -60, 300, -60, 400, 60, 400, 60, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1316898009]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1214730670]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1850422881]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1754332786]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1362994086]
+position = Vector2(0, 260)
+
+[node name="Player" parent="." unique_id=1923669831 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="Wolf1" parent="." unique_id=1829921769 instance=ExtResource("enemy_0")]
+position = Vector2(-120, -80)
+
+[node name="Wolf2" parent="." unique_id=1988606250 instance=ExtResource("enemy_1")]
+position = Vector2(100, -100)
+
+[node name="Gob" parent="." unique_id=2066804993 instance=ExtResource("enemy_2")]
+position = Vector2(180, 120)
+
+[node name="ExitNorth" parent="." unique_id=1393212759 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "↑  the descent"
+tint = Color(0.40, 0.46, 0.30, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." unique_id=1667506330 instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "↓  the descent"
+tint = Color(0.40, 0.46, 0.30, 0.4)
+zone_size = Vector2(192, 48)
+

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://drykekdn6878g"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://5vums2u2r346" path="res://sprites/Skill_Item icons/Separated Files/fc1925.png" id="1_b3pib"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 3.0
+damage_taken_multiplier = 0.9
+element_multipliers = {
+1: 0.6
+}
+noise_weight = 12.0
+item_name = "Cinderplate Cuirass"
+description = "Forge-blackened plate. The smith who hammered it died in the fire. The plate did not. Reduces fire damage taken. Chest."
+icon = ExtResource("1_b3pib")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.45, 0.25, 0.18, 1)

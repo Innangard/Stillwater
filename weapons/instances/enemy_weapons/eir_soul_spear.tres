@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TelegraphedAreaWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/telegraphed_area_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/telegraph.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Soul Spear"
+description = "A spear of pure light, driven into the earth at the target's feet. It judges."
+base_damage = 24.0
+element = 6
+cooldown = 6.0
+on_hit_effects = []
+telegraph_scene = ExtResource("2")
+warning_duration = 0.9
+damage_radius = 55.0
+linger_duration = 0.3
+target_picker = 0
+prediction_seconds = 0.2
+caster_offset = Vector2(0, 0)
+max_engage_range = 9999.0
+knockback = 500.0

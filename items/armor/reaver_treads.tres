@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 1.5
+damage_taken_multiplier = 0.93
+noise_weight = 3.0
+melee_damage_multiplier = 1.05
+item_name = "Reaver's Treads"
+description = "Iron-shod boots with bog-iron cleats at the heel for purchase on wet stone. The treads cut a line; the line says someone passed. Feet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.40, 0.38, 0.32, 1)

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://j6d4ek8nja3g"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnepo2u51ek8k" path="res://sprites/Skill_Item icons/Separated Files/fc1595.png" id="1_bl27m"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/shock.tres" id="4"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.3
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 640.0
+projectile_lifetime = 1.4
+knockback = 170.0
+weapon_name = "Stormpierce Bow"
+base_damage = 16.0
+element = 3
+cooldown = 0.9
+on_hit_effects = Array[ExtResource("3")]([SubResource("status_app")])
+description = "A longbow that draws lightning from the air. Each arrow arrives with a thunderclap."
+icon = ExtResource("1_bl27m")
+two_handed = true

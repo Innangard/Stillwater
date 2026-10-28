@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://ditclobmghtl6"]
+
+[ext_resource type="PackedScene" path="res://enemies/kobold_blue.tscn" id="5_wd7hv"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -280.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -320.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -410
+
+[node name="ForestClearing2" type="Node2D" unique_id=300062]
+script = ExtResource("region_script")
+region_id = "north_forest_clearing_2"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=779817769]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.44, 0.28, 1)
+
+[node name="CenterPath" type="ColorRect" parent="."]
+offset_left = 133
+offset_top = -10
+offset_right = 660
+offset_bottom = 50
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=474595151]
+offset_left = -117.0
+offset_top = -103.0
+offset_right = 143.0
+offset_bottom = 137.0
+mouse_filter = 2
+color = Color(0.48, 0.54, 0.38, 1)
+
+[node name="Rock0" type="ColorRect" parent="." unique_id=530944681]
+offset_left = -57.0
+offset_top = -230.0
+offset_right = -18.0
+offset_bottom = -189.0
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.38, 1)
+
+[node name="Moss1" type="ColorRect" parent="." unique_id=694048167]
+offset_left = 195.0
+offset_top = 85.0
+offset_right = 299.0
+offset_bottom = 127.0
+mouse_filter = 2
+color = Color(0.3, 0.46, 0.28, 0.6)
+
+[node name="Rock2" type="ColorRect" parent="." unique_id=1279422445]
+offset_left = 62.0
+offset_top = -111.0
+offset_right = 114.0
+offset_bottom = -64.0
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.38, 1)
+
+[node name="Moss3" type="ColorRect" parent="." unique_id=2046135576]
+offset_left = 20.0
+offset_top = 25.0
+offset_right = 100.0
+offset_bottom = 76.0
+mouse_filter = 2
+color = Color(0.3, 0.46, 0.28, 0.6)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=429975379]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=2114599422]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=29676796]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1525678816]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=193875233]
+build_mode = 1
+polygon = PackedVector2Array(470, -280, 470, -10, 565, -10, 565, 50, 470, 50, 470, 320, 660, 320, 660, -280)
+
+[node name="default" type="Marker2D" parent="." unique_id=2108343523]
+position = Vector2(446, 20)
+
+[node name="Player" parent="." unique_id=2053611150 instance=ExtResource("player_scene")]
+position = Vector2(446, 20)[node name="Blue Kobold" parent="." unique_id=431116232 instance=ExtResource("5_wd7hv")]
+position = Vector2(-88, -309)
+
+[node name="Blue Kobold2" parent="." unique_id=555407617 instance=ExtResource("5_wd7hv")]
+position = Vector2(95, -308)
+
+[node name="ExitEast" parent="." unique_id=514719172 instance=ExtResource("exit_scene")]
+position = Vector2(558, 20)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  back to the path"
+tint = Color(0.5, 0.45, 0.35, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(24, 18)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(25, -29)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

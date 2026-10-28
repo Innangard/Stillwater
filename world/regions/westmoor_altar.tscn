@@ -1,0 +1,232 @@
+[gd_scene format=3 uid="uid://baltar1xx1xx9"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_pillar.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_b"]
+[ext_resource type="Resource" uid="uid://cfa38gebjq1g6" path="res://weapons/instances/player_weapons/thunderstrike_spear.tres" id="loot_capstone"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="item_phial"]
+[ext_resource type="Resource" path="res://items/instances/runeslate_tablet.tres" id="item_slate"]
+[ext_resource type="Resource" path="res://items/instances/living_fire.tres" id="item_fire"]
+[ext_resource type="PackedScene" path="res://dialogue/altar_carving.tscn" id="carving_scene"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1_pool.tres" id="monologue_pool"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -360
+
+[node name="WestmoorAltar" type="Node2D" unique_id=1100000001]
+script = ExtResource("region_script")
+region_id = "westmoor_altar"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1100000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.28, 0.30, 0.34, 1)
+
+; The plateau the altar sits on — paler than surrounding ground so the
+; altar reads as a deliberate site rather than another bit of moor.
+[node name="Plateau" type="ColorRect" parent="." unique_id=1100000003]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.48, 0.50, 0.46, 1)
+
+; Standing stones around the altar — four pillars at the cardinal points.
+[node name="PillarN" type="ColorRect" parent="." unique_id=1100000004]
+offset_left = -18.0
+offset_top = -200.0
+offset_right = 18.0
+offset_bottom = -130.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="PillarS" type="ColorRect" parent="." unique_id=1100000005]
+offset_left = -18.0
+offset_top = 130.0
+offset_right = 18.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="PillarE" type="ColorRect" parent="." unique_id=1100000006]
+offset_left = 200.0
+offset_top = -22.0
+offset_right = 260.0
+offset_bottom = 22.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="PillarW" type="ColorRect" parent="." unique_id=1100000007]
+offset_left = -260.0
+offset_top = -22.0
+offset_right = -200.0
+offset_bottom = 22.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+; The altar itself — a wide, low stone slab at the centre, dressed
+; with a darker hollow (the offering basin) and a flame on top.
+[node name="AltarBase" type="ColorRect" parent="." unique_id=1100000008]
+offset_left = -90.0
+offset_top = -30.0
+offset_right = 90.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.34, 0.32, 0.32, 1)
+
+[node name="AltarStone" type="ColorRect" parent="." unique_id=1100000009]
+offset_left = -78.0
+offset_top = -42.0
+offset_right = 78.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(0.52, 0.50, 0.50, 1)
+
+[node name="AltarBasin" type="ColorRect" parent="." unique_id=1100000010]
+offset_left = -40.0
+offset_top = -28.0
+offset_right = 40.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.20, 0.18, 0.20, 1)
+
+[node name="AltarFlame" type="ColorRect" parent="." unique_id=1100000011]
+offset_left = -22.0
+offset_top = -70.0
+offset_right = 22.0
+offset_bottom = -28.0
+mouse_filter = 2
+color = Color(0.85, 0.55, 0.20, 1)
+
+; Cairn markers flanking the approach.
+[node name="CairnL" type="ColorRect" parent="." unique_id=1100000012]
+offset_left = -250.0
+offset_top = 150.0
+offset_right = -200.0
+offset_bottom = 220.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="CairnR" type="ColorRect" parent="." unique_id=1100000013]
+offset_left = 200.0
+offset_top = 150.0
+offset_right = 250.0
+offset_bottom = 220.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1100000014]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1100000015]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=1100000016]
+build_mode = 1
+polygon = PackedVector2Array(-400, 360, -60, 360, -60, 460, 60, 460, 60, 360, 400, 360, 400, 550, -400, 550)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1100000017]
+build_mode = 1
+polygon = PackedVector2Array(-400, -360, -400, -60, -500, -60, -500, 60, -400, 60, -400, 360, -590, 360, -590, -360)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1100000018]
+build_mode = 1
+polygon = PackedVector2Array(400, -360, 400, -60, 500, -60, 500, 60, 400, 60, 400, 360, 590, 360, 590, -360)
+
+; Spawn markers — one per cardinal direction so the runtime exit
+; rewiring (which spawns the player at `from_<dir>`) can land them
+; safely whichever way the chain attaches to the altar.
+[node name="default" type="Marker2D" parent="." unique_id=1100000019]
+position = Vector2(0, 240)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1100000020]
+position = Vector2(0, -240)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1100000021]
+position = Vector2(0, 240)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1100000022]
+position = Vector2(340, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1100000023]
+position = Vector2(-340, 0)
+
+[node name="Player" parent="." unique_id=1100000024 instance=ExtResource("player_scene")]
+position = Vector2(0, 240)
+
+; Two guardian skeletons — this is the chain's terminus, the
+; difficulty should noticeably step up.
+[node name="GuardianPillar" parent="." unique_id=1100000025 instance=ExtResource("enemy_a")]
+position = Vector2(-150, -100)
+
+[node name="GuardianFan" parent="." unique_id=1100000026 instance=ExtResource("enemy_b")]
+position = Vector2(160, -90)
+
+; Capstone loot at the altar itself + two reagent/consumable rewards.
+[node name="ThunderstrikeSpearPickup" parent="." unique_id=1100000027 instance=ExtResource("pickup_scene")]
+position = Vector2(0, 100)
+weapon = ExtResource("loot_capstone")
+persistent_per_run = true
+
+[node name="SoulPhialPickup" parent="." unique_id=1100000028 instance=ExtResource("pickup_scene")]
+position = Vector2(-130, 130)
+item = ExtResource("item_phial")
+persistent_per_run = true
+
+[node name="RuneslatePickup" parent="." unique_id=1100000029 instance=ExtResource("pickup_scene")]
+position = Vector2(130, 130)
+item = ExtResource("item_slate")
+persistent_per_run = true
+
+[node name="LivingFirePickup" parent="." unique_id=1100000030 instance=ExtResource("pickup_scene")]
+position = Vector2(-200, -150)
+item = ExtResource("item_fire")
+persistent_per_run = true
+
+; Single exit back the way you came. apply_overrides will rewire its
+; target_scene + target_spawn_point at runtime based on which buffer
+; the chain attached here from. The direction the exit lives on
+; (south/east/west) doesn't matter for the rewire — _try_chain uses
+; OPPOSITE[last.forward_exit_dir] to find the right Exit child. We
+; provide all four cardinal exits so any approach direction works.
+[node name="ExitSouth" parent="." unique_id=1100000031 instance=ExtResource("exit_scene")]
+position = Vector2(0, 320)
+target_scene = "res://world/regions/storsprunga_altar.tscn"
+target_spawn_point = "from_north"
+label = "↓  south to the coast"
+tint = Color(0.42, 0.48, 0.52, 0.4)
+zone_size = Vector2(192, 48)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." unique_id=1100000033 instance=ExtResource("exit_scene")]
+position = Vector2(360, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "→  back the way you came"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=1100000034 instance=ExtResource("exit_scene")]
+position = Vector2(-360, 0)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "←  deeper into the moor"
+tint = Color(0.30, 0.36, 0.42, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="AltarCarving" parent="." unique_id=1199999100 instance=ExtResource("carving_scene")]
+position = Vector2(0, -36)
+pool = ExtResource("monologue_pool")
+carving_name = "Cracked Slate"
+carving_id = "westmoor_main"
+tint = Color(0.4, 0.44, 0.46, 1)

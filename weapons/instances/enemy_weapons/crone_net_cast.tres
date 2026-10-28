@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PersistentHitboxWeapon" format=3 uid="uid://cxv0m0eesk2kd"]
+
+[ext_resource type="Script" uid="uid://c1tgaios4sv2h" path="res://weapons/persistent_hitbox_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/netted.tres" id="3"]
+
+[sub_resource type="Resource" id="net_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+
+[resource]
+script = ExtResource("1")
+length = 250.0
+cone_angle_degrees = 65.0
+duration = 0.3
+tick_interval = 5.0
+knockback = -850.0
+weapon_name = "Net Cast"
+base_damage = 6.0
+cooldown = 3.0
+on_hit_effects = Array[ExtResource("2")]([SubResource("net_app")])
+description = "A bone-braided net thrown in a wide arc. What it touches, it takes — the rope hauls the catch back to her hands."

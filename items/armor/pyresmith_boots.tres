@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 2.0
+damage_taken_multiplier = 0.92
+element_multipliers = {
+1: 0.55,
+2: 1.10
+}
+noise_weight = 4.0
+armor_slot = 2
+item_name = "Pyresmith Boots"
+description = "Heavy boots with slag-glass shoeing on the soles. They strike sparks off bare stone. Stand on a hot coal and feel only a vague suggestion of warmth. Feet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.50, 0.28, 0.18, 1)

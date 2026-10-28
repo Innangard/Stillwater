@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Bathkeeper Tova"
+text = "Off the road and into the water with you. You smell like every wolf in a five-mile radius can find you blindfolded."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Tova"
+text = "The springs here are cold but they don't lie like the warm ones. Cold water tells the truth about what you've been doing. A soul or two for the bath. Cheap, considering."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Tova"
+text = "Aud over in Wickbarrow taught me how to read the water. She said the moor would teach me the rest. The moor is a slow teacher but a good one."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3")])

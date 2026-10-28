@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Tomb-Shroud Wrap"
+description = "Strips of burial linen, still bound to the husk that wore them. The cloth holds the smell of the grave and a kind of pull — wrapped around steel, it teaches the blade to take from what it cuts. Reagent."
+category = "reagent"
+placeholder_color = Color(0.42, 0.30, 0.48, 1)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Cold-Iron Filing"
+description = "Bog-iron filings shaved from a buried smelter's casting. Heavier than it has any right to be. Holds a cutting edge through bone and through curse. The smiths of the moor work with little else. Reagent."
+category = "reagent"
+placeholder_color = Color(0.38, 0.42, 0.46, 1)

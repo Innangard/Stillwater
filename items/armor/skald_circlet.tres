@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 1.0
+damage_taken_multiplier = 0.93
+noise_weight = 1.5
+max_health_bonus = 20.0
+item_name = "Skald's Circlet"
+description = "A simple band of wormgold worn at the brow. The metal stays warm against the skin. The skalds say it remembers the songs you've not yet sung. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.60, 0.48, 0.30, 1)

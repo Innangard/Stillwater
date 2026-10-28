@@ -1,0 +1,423 @@
+[gd_scene format=3 uid="uid://hmvillage001"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="npc_scene"]
+[ext_resource type="PackedScene" path="res://npcs/townsperson.tscn" id="tp_scene"]
+[ext_resource type="PackedScene" path="res://world/quest_board.tscn" id="qb_scene"]
+[ext_resource type="PackedScene" path="res://world/bath_house.tscn" id="bath_scene"]
+
+[ext_resource type="Resource" path="res://dialogue/instances/smith_mooren.tres" id="dlg_mooren"]
+[ext_resource type="Resource" path="res://dialogue/instances/merchant_eska.tres" id="dlg_eska"]
+[ext_resource type="Resource" path="res://dialogue/instances/bathkeeper_tova.tres" id="dlg_tova"]
+[ext_resource type="Resource" path="res://dialogue/instances/skald_othlin.tres" id="dlg_othlin"]
+[ext_resource type="Resource" path="res://dialogue/instances/norn_kettil.tres" id="dlg_kettil"]
+
+; Smith Mooren stocks the storm-themed forge recipes — they fit the
+; moor's electrical/cold weather identity. Same recipes as Orn in
+; Nasus to keep the upgrade paths consistent across the two cities;
+; the player can craft these here if they couldn't earlier.
+[ext_resource type="Resource" path="res://crafting/instances/forge_stormhammer.tres" id="recipe_shammer"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_thunderstrike.tres" id="recipe_tstrike"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_sparkblade.tres" id="recipe_spark"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_voltbow.tres" id="recipe_voltbow"]
+
+; Merchant Eska sells the staple reagents. Wickbarrow + Nasus already
+; cover the basics; Eska's stock leans on items that map to enemies
+; the player encounters in the moors and on the way here.
+[ext_resource type="Resource" path="res://crafting/instances/buy_soul_phial.tres" id="buy_phial"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_pale_ash.tres" id="buy_ash"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_frost_filament.tres" id="buy_frost"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_hollow_bone.tres" id="buy_hbone"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_bog_bile.tres" id="buy_bile"]
+
+; Norn Kettil inscribes the rune set. Smaller selection than Svala
+; in Nasus (Kettil is the apprentice's apprentice's apprentice) but
+; covers the moor-themed runes — storm, frost, defensive.
+[ext_resource type="Resource" path="res://crafting/instances/runes/rune_isa_runebone.tres" id="rune_isa"]
+[ext_resource type="Resource" path="res://crafting/instances/runes/rune_hagalaz_runebone.tres" id="rune_hagalaz"]
+[ext_resource type="Resource" path="res://crafting/instances/runes/rune_nauthiz_runebone.tres" id="rune_nauthiz"]
+[ext_resource type="Resource" path="res://crafting/instances/runes/rune_algiz_runebone.tres" id="rune_algiz"]
+
+; Building collision rectangles. The town is laid out as a plaza
+; surrounded by four cardinal building footprints — same general
+; pattern as Nasus City but slightly larger.
+[sub_resource type="RectangleShape2D" id="bldg_forge"]
+size = Vector2(180, 120)
+
+[sub_resource type="RectangleShape2D" id="bldg_stall"]
+size = Vector2(140, 100)
+
+[sub_resource type="RectangleShape2D" id="bldg_hall"]
+size = Vector2(220, 130)
+
+[sub_resource type="RectangleShape2D" id="bldg_house_w"]
+size = Vector2(140, 90)
+
+[sub_resource type="RectangleShape2D" id="bldg_house_e"]
+size = Vector2(140, 90)
+
+[node name="HollowmereVillage" type="Node2D" unique_id=3000000001]
+script = ExtResource("region_script")
+region_id = "hollowmere_village"
+player_scene = ExtResource("player_scene")
+
+; Slate / moor palette. Cooler and more weathered than Nasus, which
+; reads as warm stone. The continuity from the Hollowmere corridor
+; (which uses the same family) makes the arrival feel like "you've
+; reached the heart of what you've been walking through," not a
+; sudden change of scenery.
+[node name="Background" type="ColorRect" parent="." unique_id=3000000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.24, 0.28, 0.32, 1)
+
+; Central plaza — flagstones, lighter than the surrounding moor so
+; it reads as "intentionally built, maintained, civilized."
+[node name="Plaza" type="ColorRect" parent="." unique_id=3000000003]
+offset_left = -360.0
+offset_top = -200.0
+offset_right = 360.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.42, 0.46, 0.48, 1)
+
+; Two avenues crossing the plaza, leading to the village's exits.
+; Horizontal first (E-W is the main road, since the player arrives
+; from the corridor east of here).
+[node name="AvenueH" type="ColorRect" parent="." unique_id=3000000004]
+offset_left = -640.0
+offset_top = -32.0
+offset_right = 640.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.44, 1)
+
+[node name="AvenueV" type="ColorRect" parent="." unique_id=3000000005]
+offset_left = -32.0
+offset_top = -340.0
+offset_right = 32.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.44, 1)
+
+; Building visuals (the actual structures around the plaza).
+; Smith's forge in the NW — large building, smokestack feel via the
+; darker chimney rectangle on top.
+[node name="ForgeVisual" type="ColorRect" parent="." unique_id=3000000010]
+offset_left = -460.0
+offset_top = -270.0
+offset_right = -280.0
+offset_bottom = -150.0
+mouse_filter = 2
+color = Color(0.20, 0.22, 0.26, 1)
+
+[node name="ForgeChimney" type="ColorRect" parent="." unique_id=3000000011]
+offset_left = -360.0
+offset_top = -320.0
+offset_right = -320.0
+offset_bottom = -270.0
+mouse_filter = 2
+color = Color(0.12, 0.12, 0.14, 1)
+
+; Merchant's stall — NE corner, smaller and more open. The merchant
+; works under awning rather than a full enclosed building.
+[node name="StallVisual" type="ColorRect" parent="." unique_id=3000000020]
+offset_left = 280.0
+offset_top = -260.0
+offset_right = 420.0
+offset_bottom = -160.0
+mouse_filter = 2
+color = Color(0.32, 0.34, 0.30, 1)
+
+[node name="StallAwning" type="ColorRect" parent="." unique_id=3000000021]
+offset_left = 270.0
+offset_top = -280.0
+offset_right = 430.0
+offset_bottom = -260.0
+mouse_filter = 2
+color = Color(0.50, 0.42, 0.30, 1)
+
+; Hall of the Skald — the central south building, larger than the
+; others. Reads as the town's anchor: where the lore-keeper lives.
+[node name="HallVisual" type="ColorRect" parent="." unique_id=3000000030]
+offset_left = -110.0
+offset_top = 150.0
+offset_right = 110.0
+offset_bottom = 280.0
+mouse_filter = 2
+color = Color(0.22, 0.26, 0.28, 1)
+
+[node name="HallPillars" type="ColorRect" parent="." unique_id=3000000031]
+offset_left = -110.0
+offset_top = 280.0
+offset_right = 110.0
+offset_bottom = 295.0
+mouse_filter = 2
+color = Color(0.16, 0.18, 0.20, 1)
+
+; Houses — two small dwellings on the west and east sides for
+; townsperson NPCs to mill around. Adds density without each
+; building needing its own NPC.
+[node name="HouseWVisual" type="ColorRect" parent="." unique_id=3000000040]
+offset_left = -460.0
+offset_top = 80.0
+offset_right = -320.0
+offset_bottom = 170.0
+mouse_filter = 2
+color = Color(0.26, 0.30, 0.32, 1)
+
+[node name="HouseEVisual" type="ColorRect" parent="." unique_id=3000000041]
+offset_left = 320.0
+offset_top = 80.0
+offset_right = 460.0
+offset_bottom = 170.0
+mouse_filter = 2
+color = Color(0.26, 0.30, 0.32, 1)
+
+; Standing stone in the plaza center — a small ritual marker.
+; Hollowmere was a watch town once, and the stones are what's left
+; of the watchers' rituals.
+[node name="StandingStone" type="ColorRect" parent="." unique_id=3000000050]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.16, 0.18, 0.20, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=3000000060]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=3000000061]
+build_mode = 1
+polygon = PackedVector2Array(-640, -340, -60, -340, -60, -440, 60, -440, 60, -340, 640, -340, 640, -530, -640, -530)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=3000000062]
+build_mode = 1
+polygon = PackedVector2Array(-640, 340, -60, 340, -60, 440, 60, 440, 60, 340, 640, 340, 640, 530, -640, 530)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=3000000063]
+build_mode = 1
+polygon = PackedVector2Array(-640, -340, -640, -60, -740, -60, -740, 60, -640, 60, -640, 340, -830, 340, -830, -340)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=3000000064]
+build_mode = 1
+polygon = PackedVector2Array(640, -340, 640, -60, 740, -60, 740, 60, 640, 60, 640, 340, 830, 340, 830, -340)
+
+[node name="Buildings" type="StaticBody2D" parent="." unique_id=3000000070]
+collision_layer = 1
+collision_mask = 0
+
+[node name="ForgeShape" type="CollisionShape2D" parent="Buildings" unique_id=3000000071]
+position = Vector2(-370, -210)
+shape = SubResource("bldg_forge")
+
+[node name="StallShape" type="CollisionShape2D" parent="Buildings" unique_id=3000000072]
+position = Vector2(350, -210)
+shape = SubResource("bldg_stall")
+
+[node name="HallShape" type="CollisionShape2D" parent="Buildings" unique_id=3000000073]
+position = Vector2(0, 215)
+shape = SubResource("bldg_hall")
+
+[node name="HouseWShape" type="CollisionShape2D" parent="Buildings" unique_id=3000000074]
+position = Vector2(-390, 125)
+shape = SubResource("bldg_house_w")
+
+[node name="HouseEShape" type="CollisionShape2D" parent="Buildings" unique_id=3000000075]
+position = Vector2(390, 125)
+shape = SubResource("bldg_house_e")
+
+; Spawn markers — player arrives from the east (the corridor back to
+; Westmoor Altar). Default + from_east put them at the east entrance.
+; Three new mountain-side spawn markers added for the act 2 chains:
+;   from_north — Hindarfjall path (straight north)
+;   from_west  — Hrimbjarg path (NNW, slightly west)
+;   from_south — Thursdal path (NW, the back track around the village)
+[node name="default" type="Marker2D" parent="." unique_id=3000000080]
+position = Vector2(580, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=3000000081]
+position = Vector2(580, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=3000000082]
+position = Vector2(0, -290)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=3000000083]
+position = Vector2(-580, 0)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=3000000084]
+position = Vector2(0, 290)
+
+[node name="Player" parent="." unique_id=3000000090 instance=ExtResource("player_scene")]
+position = Vector2(580, 0)
+
+; === NAMED NPCs ===
+
+; Smith Mooren — blacksmith, just outside the forge entrance.
+; Carries the same storm-themed recipes Orn does in Nasus; this is
+; the alternative crafting site for players who come through the
+; moor route rather than backtracking to Nasus.
+[node name="SmithMooren" parent="." unique_id=3000000100 instance=ExtResource("npc_scene")]
+position = Vector2(-340, -130)
+npc_name = "Smith Mooren"
+sprite_name = "npc_mooren"
+dialogue = ExtResource("dlg_mooren")
+tint = Color(0.45, 0.35, 0.30, 1)
+station_name = "Mooren's Forge"
+recipes = Array[Resource]([ExtResource("recipe_shammer"), ExtResource("recipe_tstrike"), ExtResource("recipe_spark"), ExtResource("recipe_voltbow")])
+
+; Merchant Eska — under the stall awning in the NE.
+[node name="MerchantEska" parent="." unique_id=3000000101 instance=ExtResource("npc_scene")]
+position = Vector2(350, -140)
+npc_name = "Merchant Eska"
+sprite_name = "npc_eska"
+dialogue = ExtResource("dlg_eska")
+tint = Color(0.50, 0.45, 0.38, 1)
+station_name = "Eska's Wares"
+recipes = Array[Resource]([ExtResource("buy_phial"), ExtResource("buy_ash"), ExtResource("buy_frost"), ExtResource("buy_hbone"), ExtResource("buy_bile")])
+
+; Skald Othlin — on the hall's porch, southern side of the plaza.
+; No crafting station; he's a lore figure who delivers Hollowmere's
+; backstory across four lines of dialogue.
+[node name="SkaldOthlin" parent="." unique_id=3000000102 instance=ExtResource("npc_scene")]
+position = Vector2(0, 140)
+npc_name = "Skald Othlin"
+sprite_name = "npc_othlin"
+dialogue = ExtResource("dlg_othlin")
+tint = Color(0.40, 0.30, 0.45, 1)
+
+; Norn Kettil — at the eastern end of the plaza, beside the standing
+; stone. Smaller rune selection than Svala in Nasus (4 vs 8) since
+; Kettil is a lesser-known practitioner; the moor's rune tradition
+; is documented but not central.
+[node name="NornKettil" parent="." unique_id=3000000103 instance=ExtResource("npc_scene")]
+position = Vector2(180, 60)
+npc_name = "Norn Kettil"
+sprite_name = "npc_kettil"
+dialogue = ExtResource("dlg_kettil")
+tint = Color(0.35, 0.40, 0.55, 1)
+station_name = "Kettil's Inscriptions"
+recipes = Array[Resource]([ExtResource("rune_isa"), ExtResource("rune_hagalaz"), ExtResource("rune_nauthiz"), ExtResource("rune_algiz")])
+
+; Bath house — built-in interactable for smell reduction. Place it
+; west of the plaza so players have a clear separation between the
+; commercial (Eska, Mooren) and personal-services (Tova) sides.
+[node name="BathHouse" parent="." unique_id=3000000104 instance=ExtResource("bath_scene")]
+position = Vector2(-180, 90)
+
+; Bathkeeper Tova — at the bath house. Standalone NPC; the bath_house
+; itself handles the smell-reduction interaction, so Tova is here for
+; flavor and a small dialogue scene without a crafting station.
+[node name="BathkeeperTova" parent="." unique_id=3000000105 instance=ExtResource("npc_scene")]
+position = Vector2(-180, 130)
+npc_name = "Bathkeeper Tova"
+sprite_name = "npc_tova"
+dialogue = ExtResource("dlg_tova")
+tint = Color(0.55, 0.55, 0.65, 1)
+
+; Quest board — central, against the standing stone. Where future
+; quests live; for now it's an interactable placeholder.
+[node name="QuestBoard" parent="." unique_id=3000000110 instance=ExtResource("qb_scene")]
+position = Vector2(80, -120)
+
+; === ATMOSPHERE TOWNSPEOPLE ===
+; Eight unnamed figures drifting around the plaza. Lissajous-style
+; wander built into Townsperson; each gets a unique phase via random
+; seeding at _ready, so they don't move in unison.
+
+[node name="TownspersonNW" parent="." unique_id=3000000200 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_hunter"
+position = Vector2(-260, -110)
+tint = Color(0.45, 0.42, 0.40, 1)
+
+[node name="TownspersonN" parent="." unique_id=3000000201 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_herbalist"
+position = Vector2(-60, -180)
+tint = Color(0.50, 0.45, 0.40, 1)
+
+[node name="TownspersonNE" parent="." unique_id=3000000202 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_hermit"
+position = Vector2(220, -90)
+tint = Color(0.42, 0.40, 0.38, 1)
+
+[node name="TownspersonE" parent="." unique_id=3000000203 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_hunter"
+position = Vector2(280, 90)
+tint = Color(0.40, 0.42, 0.42, 1)
+
+[node name="TownspersonS" parent="." unique_id=3000000204 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_herbalist"
+position = Vector2(60, 130)
+tint = Color(0.48, 0.42, 0.40, 1)
+
+[node name="TownspersonSW" parent="." unique_id=3000000205 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_hermit"
+position = Vector2(-260, 90)
+tint = Color(0.45, 0.40, 0.38, 1)
+
+[node name="TownspersonW" parent="." unique_id=3000000206 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_hunter"
+position = Vector2(-220, 0)
+tint = Color(0.42, 0.42, 0.42, 1)
+
+[node name="TownspersonC" parent="." unique_id=3000000207 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_hm_herbalist"
+position = Vector2(120, 0)
+tint = Color(0.50, 0.46, 0.42, 1)
+
+; === EXITS ===
+; East exit — back into the moor corridor toward Westmoor Altar.
+; The runtime _try_chain rewrites this to point at the last buffer
+; of the hollowmere chain (which itself walks back to the altar);
+; static fallback is the altar directly so the player isn't stranded
+; if override logic fails.
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(620, 0)
+target_scene = "res://world/regions/westmoor_altar.tscn"
+target_spawn_point = "from_west"
+label = "→  back into the moor"
+tint = Color(0.30, 0.36, 0.42, 0.4)
+zone_size = Vector2(48, 192)
+
+; North exit — Hindarfjall path. Mountain-grey tint distinguishes the
+; three new mountain exits from the moor-toned east exit. The target
+; scene below is a static fallback; PathManager._try_chain rewrites
+; it to the first buffer of the hindarfjall chain at runtime.
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -320)
+target_scene = "res://world/regions/hindarfjall_altar.tscn"
+target_spawn_point = "from_south"
+label = "↑  straight up the spine"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(192, 48)
+
+; West exit — Hrimbjarg path (the chain routes NNW from here, ending
+; at Hrimbjarg Altar, the frost-rock spur). Same tint as the north
+; exit since they're both mountainous.
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-620, 0)
+target_scene = "res://world/regions/hrimbjarg_altar.tscn"
+target_spawn_point = "from_east"
+label = "←  the trail through the ridge"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+; South exit — Thursdal path. The narrative justification for a NW
+; path exiting south is that the giants' valley is reached by a back
+; track that runs around the village's south side before climbing
+; into the western hills. Label hints at this layout so the player
+; isn't confused by the southward gate leading to a NW destination.
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 320)
+target_scene = "res://world/regions/thursdal_altar.tscn"
+target_spawn_point = "from_north"
+label = "↓  the back track to the valley"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(192, 48)

@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://cm8rt7i05s5aa"]
+
+[ext_resource type="PackedScene" path="res://world/passage.tscn" id="passage_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="Script" uid="uid://cgxk6g0sktqsx" path="res://world/scene_intro.gd" id="scene_intro_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -1600.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -1600.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -700.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -700.0
+
+[node name="Ginnungagap" type="Node2D" unique_id=-294967295]
+script = ExtResource("region_script")
+region_id = "ginnungagap"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=-294967294]
+offset_left = -3075.0
+offset_top = -3032.0
+offset_right = 2925.0
+offset_bottom = 3208.9272
+mouse_filter = 2
+color = Color(0.1, 0.13, 0.2, 1)
+
+[node name="PathBand" type="ColorRect" parent="." unique_id=-294967293]
+offset_left = -100.0
+offset_top = -1600.0
+offset_right = 100.0
+offset_bottom = 1600.0
+mouse_filter = 2
+color = Color(0.16, 0.2, 0.28, 1)
+
+[node name="FireFar" type="ColorRect" parent="." unique_id=-294967286]
+offset_left = -700.0
+offset_top = -1600.0
+offset_right = -640.0
+offset_bottom = 1600.0
+mouse_filter = 2
+color = Color(0.85, 0.4, 0.2, 0.55)
+
+[node name="FireMid" type="ColorRect" parent="." unique_id=-294967285]
+offset_left = -640.0
+offset_top = -1600.0
+offset_right = -580.0
+offset_bottom = 1600.0
+mouse_filter = 2
+color = Color(0.78, 0.42, 0.22, 0.35)
+
+[node name="FireNear" type="ColorRect" parent="." unique_id=-294967284]
+offset_left = -580.0
+offset_top = -1600.0
+offset_right = -530.0
+offset_bottom = 1600.0
+mouse_filter = 2
+color = Color(0.7, 0.4, 0.22, 0.18)
+
+[node name="IceNear" type="ColorRect" parent="." unique_id=-294967276]
+offset_left = 530.0
+offset_top = -1600.0
+offset_right = 580.0
+offset_bottom = 1600.0
+mouse_filter = 2
+color = Color(0.55, 0.7, 0.85, 0.18)
+
+[node name="IceMid" type="ColorRect" parent="." unique_id=-294967275]
+offset_left = 580.0
+offset_top = -1600.0
+offset_right = 640.0
+offset_bottom = 1600.0
+mouse_filter = 2
+color = Color(0.62, 0.75, 0.88, 0.35)
+
+[node name="IceFar" type="ColorRect" parent="." unique_id=-294967274]
+offset_left = 640.0
+offset_top = -1600.0
+offset_right = 700.0
+offset_bottom = 1600.0
+mouse_filter = 2
+color = Color(0.72, 0.82, 0.92, 0.55)
+
+[node name="Wisp1" type="ColorRect" parent="." unique_id=-294967266]
+offset_left = -34.0
+offset_top = 1100.0
+offset_right = -28.0
+offset_bottom = 1106.0
+mouse_filter = 2
+color = Color(0.92, 0.78, 0.65, 0.7)
+
+[node name="Wisp2" type="ColorRect" parent="." unique_id=-294967265]
+offset_left = 40.0
+offset_top = 720.0
+offset_right = 46.0
+offset_bottom = 726.0
+mouse_filter = 2
+color = Color(0.78, 0.85, 0.95, 0.7)
+
+[node name="Wisp3" type="ColorRect" parent="." unique_id=-294967264]
+offset_left = -50.0
+offset_top = 360.0
+offset_right = -44.0
+offset_bottom = 366.0
+mouse_filter = 2
+color = Color(0.95, 0.88, 0.75, 0.65)
+
+[node name="Wisp4" type="ColorRect" parent="." unique_id=-294967263]
+offset_left = 56.0
+offset_right = 62.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.85, 0.92, 0.96, 0.75)
+
+[node name="Wisp5" type="ColorRect" parent="." unique_id=-294967262]
+offset_left = -42.0
+offset_top = -380.0
+offset_right = -36.0
+offset_bottom = -374.0
+mouse_filter = 2
+color = Color(0.92, 0.78, 0.65, 0.65)
+
+[node name="Wisp6" type="ColorRect" parent="." unique_id=-294967261]
+offset_left = 48.0
+offset_top = -760.0
+offset_right = 54.0
+offset_bottom = -754.0
+mouse_filter = 2
+color = Color(0.85, 0.9, 0.95, 0.75)
+
+[node name="Wisp7" type="ColorRect" parent="." unique_id=-294967260]
+offset_left = -30.0
+offset_top = -1140.0
+offset_right = -24.0
+offset_bottom = -1134.0
+mouse_filter = 2
+color = Color(0.95, 0.88, 0.75, 0.6)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=-294967256]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=-294967255]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=-294967254]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=-294967253]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=-294967252]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=-294967246]
+position = Vector2(-1, 1210)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=-294967245]
+position = Vector2(-1, 1210)
+
+[node name="Player" parent="." unique_id=-294967244 instance=ExtResource("player_scene")]
+position = Vector2(-1, 1210)
+
+[node name="SceneIntro" type="Node" parent="." unique_id=-294967197]
+script = ExtResource("scene_intro_script")
+intro_lore_text = "Before the world, there was the gap.
+
+Cold met heat across it, and life leaked through.
+
+You come through now, chosen.
+
+You carry no name yet.
+
+Walk on."
+intro_flag = "ginnungagap_intro_played"
+
+[node name="Lesson1Glyph" type="ColorRect" parent="." unique_id=-294967186]
+offset_left = -50.0
+offset_top = 970.0
+offset_right = 50.0
+offset_bottom = 1000.0
+mouse_filter = 2
+color = Color(0.55, 0.65, 0.78, 0.3)
+
+[node name="Lesson1Text" type="Label" parent="." unique_id=-294967185]
+offset_left = -150.0
+offset_top = 1010.0
+offset_right = 150.0
+offset_bottom = 1080.0
+theme_override_colors/font_color = Color(0.9, 0.94, 0.98, 0.95)
+theme_override_font_sizes/font_size = 16
+text = "[W][A][S][D] — to walk
+the arrow keys also serve"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Lesson2Glyph" type="ColorRect" parent="." unique_id=-294967176]
+offset_left = -50.0
+offset_top = 620.0
+offset_right = 50.0
+offset_bottom = 650.0
+mouse_filter = 2
+color = Color(0.55, 0.78, 0.85, 0.3)
+
+[node name="Lesson2Text" type="Label" parent="." unique_id=-294967175]
+offset_left = -150.0
+offset_top = 660.0
+offset_right = 150.0
+offset_bottom = 730.0
+theme_override_colors/font_color = Color(0.9, 0.94, 0.98, 0.95)
+theme_override_font_sizes/font_size = 16
+text = "[SPACE] — to dash
+through what would catch you"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Lesson3Glyph" type="ColorRect" parent="." unique_id=-294967166]
+offset_left = -50.0
+offset_top = 270.0
+offset_right = 50.0
+offset_bottom = 300.0
+mouse_filter = 2
+color = Color(0.48, 0.62, 0.72, 0.3)
+
+[node name="Lesson3Text" type="Label" parent="." unique_id=-294967165]
+offset_left = -150.0
+offset_top = 310.0
+offset_right = 150.0
+offset_bottom = 380.0
+theme_override_colors/font_color = Color(0.9, 0.94, 0.98, 0.95)
+theme_override_font_sizes/font_size = 16
+text = "[SHIFT] held — to step soft
+the dead are listening"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Lesson4Glyph" type="ColorRect" parent="." unique_id=-294967156]
+offset_left = -50.0
+offset_top = -130.0
+offset_right = 50.0
+offset_bottom = -100.0
+mouse_filter = 2
+color = Color(0.78, 0.55, 0.45, 0.3)
+
+[node name="Lesson4Text" type="Label" parent="." unique_id=-294967155]
+offset_left = -200.0
+offset_top = -90.0
+offset_right = 200.0
+theme_override_colors/font_color = Color(0.92, 0.86, 0.78, 0.95)
+theme_override_font_sizes/font_size = 16
+text = "[LMB] — what you hold in your right hand
+[RMB] — what you hold in your left
+you carry nothing yet, but you will"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Lesson5Glyph" type="ColorRect" parent="." unique_id=-294967146]
+offset_left = -50.0
+offset_top = -530.0
+offset_right = 50.0
+offset_bottom = -500.0
+mouse_filter = 2
+color = Color(0.8, 0.85, 0.92, 0.4)
+
+[node name="Lesson5Text" type="Label" parent="." unique_id=-294967145]
+offset_left = -180.0
+offset_top = -490.0
+offset_right = 180.0
+offset_bottom = -420.0
+theme_override_colors/font_color = Color(0.95, 0.96, 0.99, 0.98)
+theme_override_font_sizes/font_size = 16
+text = "[E] — at a glowing thing
+to speak, to take, to step through"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Lesson6Text" type="Label" parent="." unique_id=-294967136]
+offset_left = -150.0
+offset_top = -950.0
+offset_right = 150.0
+offset_bottom = -780.0
+theme_override_colors/font_color = Color(0.78, 0.84, 0.92, 0.85)
+theme_override_font_sizes/font_size = 14
+text = "later you will need —
+  [I] your kit
+  [M] the world
+  [J] your tasks
+  [K] the names you've earned"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ToSouthCliff" parent="." unique_id=-294967116 instance=ExtResource("passage_scene")]
+position = Vector2(0, -1400)
+target_scene = "res://world/regions/south_cliff.tscn"
+completion_flag = "tutorial_completed"
+closing_lore_text = "You crossed the gap.
+
+The land beyond knows no names.
+
+What you do there will name you.
+
+Step through."

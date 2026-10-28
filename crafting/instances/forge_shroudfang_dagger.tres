@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/rusted_dagger.tres" id="req_weapon"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/shroudfang_dagger.tres" id="out_weapon"]
+[ext_resource type="Resource" path="res://items/instances/tomb_shroud_wrap.tres" id="reagent1"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Shroudfang Dagger"
+description = "Wrap the dagger's grip and tang in burial cloth taken from a husk. The cloth does the rest."
+inputs = Array[ExtResource("2")]([SubResource("input_0")])
+requires_weapon = ExtResource("req_weapon")
+currency_cost = 35
+output_weapon = ExtResource("out_weapon")

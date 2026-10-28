@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://b056skgfl5wdf"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://drmx5b17iw824" path="res://sprites/Skill_Item icons/Separated Files/fc1996.png" id="1_bkifg"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 1.5
+damage_taken_multiplier = 0.93
+element_multipliers = {
+2: 0.6
+}
+noise_weight = 1.5
+item_name = "Drowned Sandals"
+description = "Leather sandals pulled from the shallows, salt-cured to stone rigidity. The cold of the deep sea clings to them still. Reduces ice damage. Boots."
+icon = ExtResource("1_bkifg")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.4, 0.55, 0.55, 1)

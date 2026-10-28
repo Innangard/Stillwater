@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://d4bp5ai168b0t"]
+
+[ext_resource type="Script" uid="uid://d25hkgivi0bek" path="res://status/status_effect.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = &"shock"
+display_name = "Shock"
+description = "A jolt of stolen lightning. Briefly halts movement, leaves the target raw."
+duration = 0.6
+damage_element = 3
+damage_taken_multiplier = 1.5
+prevents_action = true
+tint_color = Color(1, 0.95, 0.4, 1)
+tint_intensity = 0.55

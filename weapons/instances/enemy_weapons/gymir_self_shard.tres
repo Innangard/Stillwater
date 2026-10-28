@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ExpandingRingWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/expanding_ring_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Stone Shatter"
+description = "Gymir cracks his own stone hide. Shards erupt outward in a ring of breaking mountain."
+base_damage = 12.0
+element = 3
+cooldown = 5.0
+on_hit_effects = []
+start_radius = 40.0
+end_radius = 220.0
+expand_duration = 0.9
+band_half_width = 16.0
+knockback = 200.0
+ring_color = Color(0.55, 0.50, 0.42, 0.70)

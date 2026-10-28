@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c33hqyottfa65"]
+
+[ext_resource type="Script" uid="uid://64rt5hiunick" path="res://components/hitbox_component.gd" id="hitbox_script"]
+[ext_resource type="Script" uid="uid://rw0evuuukhi5" path="res://weapons/melee_swing.gd" id="swing_script"]
+
+[sub_resource type="CircleShape2D" id="swing_shape"]
+radius = 32.0
+
+[node name="MeleeSwing" type="Node2D" unique_id=1056207992]
+script = ExtResource("swing_script")
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=498535776]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("hitbox_script")
+owning_team = "player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=503826539]
+shape = SubResource("swing_shape")
+debug_color = Color(0, 0.6375001, 0.75, 0.3764706)

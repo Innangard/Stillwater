@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://gend05e3e191a4f"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/hobgoblin_bow.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_2"]
+
+[node name="Node2D" type="Node2D" unique_id=20000885]
+script = ExtResource("region_script")
+region_id = "hrimbjarg_buffer_32"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20000886]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.42, 1)
+
+[node name="Track_east" type="ColorRect" parent="." unique_id=20000887]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 660.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="Track_west" type="ColorRect" parent="." unique_id=20000888]
+offset_left = -660.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20000889]
+offset_left = -198.0
+offset_top = 10.0
+offset_right = -172.0
+offset_bottom = 72.0
+mouse_filter = 2
+color = Color(0.50, 0.52, 0.55, 1)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20000890]
+offset_left = -158.0
+offset_top = 76.0
+offset_right = -136.0
+offset_bottom = 132.0
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20000891]
+offset_left = -185.0
+offset_top = -4.0
+offset_right = -125.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.42, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20000892]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20000893]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20000894]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20000895]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -750, -60, -750, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20000896]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 750, -60, 750, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20000897]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=20000898]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=20000899]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=20000900 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+
+[node name="GoblinSword_0" parent="." unique_id=25630580 instance=ExtResource("enemy_0")]
+position = Vector2(241, -90)
+
+[node name="HobgoblinBow_1" parent="." unique_id=25630581 instance=ExtResource("enemy_1")]
+position = Vector2(-57, -142)
+
+[node name="WolfSwipe_2" parent="." unique_id=25630582 instance=ExtResource("enemy_2")]
+position = Vector2(263, 22)
+
+[node name="HobgoblinBow_3" parent="." unique_id=25630583 instance=ExtResource("enemy_1")]
+position = Vector2(-372, -174)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  mountain pass"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "←  mountain pass"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "ash_walker"
+display_name = "Ash-Walker"
+epithet = "She whose footprints set no kindling alight"
+description = "Fire knows you and steps aside. You take no damage from flame of any kind."
+flavor_text = "The ash recognises its kin. So does the smoke."
+category = 2
+unlock_flag = "boss_dead_cinder_sovereign"
+unlock_hint = "Defeat a creature born of pure flame in the depths of Brann."
+hidden_when_locked = true
+element_resistance_multipliers = {
+1: 0.0
+}
+tier_color = Color(1.00, 0.40, 0.10, 1)

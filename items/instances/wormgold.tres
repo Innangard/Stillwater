@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Wormgold"
+description = "Thread-thin gold wire, drawn out of common ingots by burying them with the dead for a year and a day. What comes back is darker, softer, hungrier. Wound around grips and pommels, it remembers every hand that's held it. Reagent."
+category = "reagent"
+placeholder_color = Color(0.55, 0.42, 0.20, 1)

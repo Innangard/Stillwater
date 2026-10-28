@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/sandworm_broodmother.gd" id="bm_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/broodmother_erupt.tres" id="erupt"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/broodmother_spit.tres" id="spit"]
+[ext_resource type="Script" path="res://items/item.gd" id="item_script"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/brood_iron_lance.tres" id="drop_lance"]
+
+[node name="SandwormBroodmother" instance=ExtResource("base_enemy")]
+script = ExtResource("bm_script")
+enemy_name = "Sandworm Broodmother"
+sprite_name = "boss_sandworm_broodmother"
+body_tint = Color(0.42, 0.26, 0.18, 1.0)
+weapon_icon_color = Color(1.00, 0.70, 0.25, 1.0)
+body_radius = 32.0
+body_shape = 8
+max_health = 200.0
+max_speed = 60.0
+acceleration = 480.0
+base_detection = 500.0
+noise_sensitivity = 5.5
+smell_sensitivity = 5.0
+weapon = ExtResource("erupt")
+wind_up_duration = 1.50
+recover_duration = 2.00
+min_engage_range = 0.0
+stagger_threshold = 5.0
+stagger_long_stun_duration = 3.0
+leash_range = 0.0
+currency_drop_min = 30
+currency_drop_max = 55
+item_drops = Array[ExtResource("item_script")]([ExtResource("drop_lance")])
+item_drop_chance = 1.0
+boss_display_name = "Sandworm Broodmother"
+weapon_erupt = ExtResource("erupt")
+weapon_spit = ExtResource("spit")
+wind_up_erupt = 1.50
+wind_up_spit = 0.95
+recover_erupt = 2.00
+recover_spit = 1.40
+burrow_phase_duration = 1.20
+icon_color_erupt = Color(1.00, 0.70, 0.25, 1.0)
+icon_color_spit = Color(0.65, 0.85, 0.40, 1.0)

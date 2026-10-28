@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://items/consumable_item.gd" id="1"]
+[ext_resource type="Resource" path="res://status/instances/consumable_brine_shell.tres" id="status_1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Brine Tonic"
+description = "Saltwater boiled until it thickens, sealed in a clay bottle. Drink it and salt crystallises under your skin — blows bounce, blades skip. You can barely move, but for eight seconds nothing in the world can hurt you much. Incoming damage reduced 40%, speed reduced 20%. Consumable."
+category = "consumable"
+max_stack = 3
+placeholder_color = Color(0.45, 0.60, 0.65, 1)
+heal_amount = 0.0
+grants_status = ExtResource("status_1")

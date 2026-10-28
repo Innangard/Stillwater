@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_b"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_c"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_d"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+
+[ext_resource type="Resource" path="res://items/instances/wraithseed.tres" id="item_wraith"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -360.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -360.0
+
+[node name="BlackpineHollow" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "blackpine_hollow"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0.14, 0.20, 0.16, 1.0)
+mouse_filter = 2
+
+; Heavier tree clusters — the path threads between them.
+[node name="ClusterNW" type="ColorRect" parent="."]
+offset_left = -360.0
+offset_top = -360.0
+offset_right = -130.0
+offset_bottom = -100.0
+color = Color(0.06, 0.10, 0.07, 0.92)
+mouse_filter = 2
+
+[node name="ClusterNE" type="ColorRect" parent="."]
+offset_left = 130.0
+offset_top = -360.0
+offset_right = 360.0
+offset_bottom = -100.0
+color = Color(0.06, 0.10, 0.07, 0.92)
+mouse_filter = 2
+
+[node name="ClusterSW" type="ColorRect" parent="."]
+offset_left = -360.0
+offset_top = 100.0
+offset_right = -130.0
+offset_bottom = 360.0
+color = Color(0.06, 0.10, 0.07, 0.92)
+mouse_filter = 2
+
+[node name="ClusterSE" type="ColorRect" parent="."]
+offset_left = 130.0
+offset_top = 100.0
+offset_right = 360.0
+offset_bottom = 360.0
+color = Color(0.06, 0.10, 0.07, 0.92)
+mouse_filter = 2
+
+[node name="Path" type="ColorRect" parent="."]
+offset_left = -22.0
+offset_top = -540.0
+offset_right = 22.0
+offset_bottom = 540.0
+color = Color(0.30, 0.26, 0.20, 0.35)
+mouse_filter = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, -540, -60, -540, -60, -640, 60, -640, 60, -540, 360, -540, 360, -730, -360, -730)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, 540, -60, 540, -60, 640, 60, 640, 60, 540, 360, 540, 360, 730, -360, 730)
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="from_grove" type="Marker2D" parent="."]
+position = Vector2(0, 460)
+
+[node name="from_pyre" type="Marker2D" parent="."]
+position = Vector2(0, -460)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(0, 0)
+
+; Enemies hidden in the cluster shadows. Stealth is critical here.
+[node name="Lurker1" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(-220, -240)
+
+[node name="Lurker2" parent="." instance=ExtResource("enemy_b")]
+position = Vector2(240, -200)
+
+[node name="Lurker3" parent="." instance=ExtResource("enemy_c")]
+position = Vector2(-220, 240)
+
+[node name="Lurker4" parent="." instance=ExtResource("enemy_d")]
+position = Vector2(240, 200)
+
+[node name="ReagentWraith" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(0, -350)
+item = ExtResource("item_wraith")
+persistent_per_run = true
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 500)
+target_scene = "res://world/regions/sundered_grove.tscn"
+target_spawn_point = "from_blackpine"
+label = "↓  to the Sundered Grove"
+tint = Color(0.20, 0.32, 0.20, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -500)
+target_scene = "res://world/regions/pyre_ruins.tscn"
+target_spawn_point = "from_blackpine"
+label = "↑  to the Pyre Ruins"
+tint = Color(0.20, 0.18, 0.14, 0.4)
+zone_size = Vector2(192, 48)

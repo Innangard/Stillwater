@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dv0dido2xw16a"]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -280.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -280.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -300.0
+
+[node name="ForestClearing6" type="Node2D" unique_id=300098]
+script = ExtResource("region_script")
+region_id = "coast_clearing_6"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=601812108]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 1)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1997500768]
+offset_left = -125.0
+offset_top = -116.0
+offset_right = 115.0
+offset_bottom = 124.0
+mouse_filter = 2
+color = Color(0.4, 0.5, 0.4, 1)
+
+[node name="Drift0" type="ColorRect" parent="." unique_id=371474788]
+offset_left = -64.0
+offset_top = -90.0
+offset_right = 58.0
+offset_bottom = -73.0
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.8)
+
+[node name="Rock1" type="ColorRect" parent="." unique_id=421839133]
+offset_left = 23.0
+offset_top = -113.0
+offset_right = 68.0
+offset_bottom = -89.0
+mouse_filter = 2
+color = Color(0.5, 0.48, 0.44, 1)
+
+[node name="Sand2" type="ColorRect" parent="." unique_id=743670912]
+offset_left = 65.0
+offset_top = -167.0
+offset_right = 133.0
+offset_bottom = -118.0
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.5)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1338260823]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=507664611]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=552471053]
+build_mode = 1
+polygon = PackedVector2Array(-280, 300, -60, 300, -60, 400, 60, 400, 60, 300, 300, 300, 300, 490, -280, 490)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=964065661]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=678910171]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1355822678]
+position = Vector2(0, 229)
+
+[node name="Player" parent="." unique_id=295539228 instance=ExtResource("player_scene")]
+position = Vector2(0, 229)
+[node name="ExitSouth" parent="." unique_id=737536238 instance=ExtResource("exit_scene")]
+position = Vector2(0, 280)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "↓  back to the path"
+tint = Color(0.45, 0.5, 0.42, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(-70, -40)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(60, 50)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

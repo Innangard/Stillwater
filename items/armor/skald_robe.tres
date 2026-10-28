@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 2.5
+damage_taken_multiplier = 0.9
+noise_weight = 3.0
+max_health_bonus = 30.0
+item_name = "Skald's Robe"
+description = "A long robe of dyed wool, the inner seams sewn with wormgold thread. The thread hums faintly. The skalds say it sings back when the singer is too tired. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.55, 0.42, 0.28, 1)

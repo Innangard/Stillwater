@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://fd18d380da2b"]
+
+[ext_resource type="Script" uid="uid://bxas2hp1afggk" path="res://items/item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cbjsk2egwno2a" path="res://sprites/Skill_Item icons/Separated Files/fc252.png" id="1_vulhw"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Living Wood Tablet"
+description = "A thin plank of wood that still bleeds sap when cut. The grain shifts when you look away. Reagent."
+icon = ExtResource("1_vulhw")
+category = "reagent"
+placeholder_color = Color(0.4, 0.65, 0.35, 1)

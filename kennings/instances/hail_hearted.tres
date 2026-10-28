@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "hail_hearted"
+display_name = "Hail-Hearted"
+epithet = "He who slept on the glacier and did not wake cold"
+description = "Frost does not slow your blood. Ice damage rolls off, and your own ice strikes harder."
+flavor_text = "The cold knows its own."
+category = 2
+unlock_flag = "kenning_unlock_hail_hearted"
+unlock_hint = "Hold your ground in the frozen reaches without a warming cloak."
+element_resistance_multipliers = {
+2: 0.5
+}
+element_damage_multipliers = {
+2: 1.10
+}
+tier_color = Color(0.55, 0.85, 1.00, 1)

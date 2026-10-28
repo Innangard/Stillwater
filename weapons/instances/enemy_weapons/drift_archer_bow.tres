@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Drift Bow"
+description = "A short bow of driftwood and sinew. The arrows wobble but still find flesh."
+base_damage = 10.0
+element = 2
+cooldown = 1.2
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 440.0
+projectile_lifetime = 1.4
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 130.0

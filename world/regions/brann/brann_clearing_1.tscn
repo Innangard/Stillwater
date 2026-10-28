@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://0sluvhj22fkb"]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -320.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -300.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -340.0
+
+[node name="BrannClearing1" type="Node2D" unique_id=1170832183]
+script = ExtResource("region_script")
+region_id = "brann_clearing_1"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1501973989]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.18, 0.09, 0.07, 1)
+
+[node name="CenterPath" type="ColorRect" parent="."]
+offset_left = -10
+offset_top = -490
+offset_right = 50
+offset_bottom = -108
+mouse_filter = 2
+color = Color(0.50, 0.25, 0.15, 0.55)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1240932836]
+offset_left = -112.0
+offset_top = -118.0
+offset_right = 148.0
+offset_bottom = 122.0
+mouse_filter = 2
+color = Color(0.32, 0.18, 0.1, 1)
+
+[node name="LavaCrack0" type="ColorRect" parent="." unique_id=1240604950]
+offset_left = 7.0
+offset_top = 219.0
+offset_right = 105.0
+offset_bottom = 224.0
+mouse_filter = 2
+color = Color(1, 0.45, 0.1, 0.8)
+
+[node name="Brazier0" type="ColorRect" parent="." unique_id=51665328]
+offset_left = 80.0
+offset_top = -94.0
+offset_right = 100.0
+offset_bottom = -64.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 1)
+
+[node name="Brazier0Glow" type="ColorRect" parent="." unique_id=844717591]
+offset_left = 60.0
+offset_top = -114.0
+offset_right = 120.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(1, 0.55, 0.1, 0.3)
+
+[node name="EmberMote0" type="ColorRect" parent="." unique_id=1910375179]
+offset_left = -80.0
+offset_top = 60.0
+offset_right = -76.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(1, 0.7, 0.2, 0.95)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=21244956]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1999779407]
+build_mode = 1
+polygon = PackedVector2Array(-300, -300, -10, -300, -10, -395, 50, -395, 50, -300, 340, -300, 340, -490, -300, -490)
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=820249041]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=555768533]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1312571607]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1645693605]
+position = Vector2(20, -272)
+
+[node name="Player" parent="." unique_id=743235688 instance=ExtResource("player_scene")]
+position = Vector2(20, -272)[node name="ExitNorth" parent="." unique_id=546579267 instance=ExtResource("exit_scene")]
+position = Vector2(20, -388)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  back to the corridor"
+tint = Color(0.55, 0.25, 0.15, 0.45)
+zone_size = Vector2(192, 48)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(40, 20)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

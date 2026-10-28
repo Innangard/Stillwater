@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.45
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Slagsworn Greataxe"
+description = "A two-hander cast around a slag-glass core — the head holds heat the way good iron holds memory. Hits leave a brand that smokes in winter air. Slow swings, heavy work, lingering burns."
+base_damage = 26.0
+element = 1
+cooldown = 0.95
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+swing_range = 60.0
+arc_radius = 52.0
+swing_duration = 0.28
+knockback = 460.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+wielder_speed_multiplier = 0.94
+placeholder_color = Color(0.62, 0.30, 0.18, 1)
+two_handed = true
+swing_visual = 3

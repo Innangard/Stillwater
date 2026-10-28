@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/orc_stab.tres" id="weapon"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/orc_bite.tres" id="bite"]
+[ext_resource type="Script" path="res://items/item.gd" id="item_script"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/wraithfoot_shiv.tres" id="rare_shiv"]
+
+[node name="Orc" instance=ExtResource("base_enemy")]
+enemy_name = "Orc Skirmisher"
+sprite_name = "enemy_orc"
+body_tint = Color(0.40, 0.32, 0.26, 1.0)
+weapon_icon_color = Color(0.75, 0.30, 0.30, 1.0)
+body_radius = 13.0
+max_health = 38.0
+max_speed = 175.0
+acceleration = 1100.0
+base_detection = 110.0
+noise_sensitivity = 6.0
+smell_sensitivity = 7.0
+weapon = ExtResource("weapon")
+reactive_attack = ExtResource("bite")
+reactive_attack_trigger_distance = 16.0
+wind_up_duration = 0.18
+recover_duration = 0.22
+min_engage_range = 0.0
+stagger_threshold = 2.5
+currency_drop_min = 5
+currency_drop_max = 10
+item_drop_chance = 0.35
+rare_item_drops = Array[ExtResource("item_script")]([ExtResource("rare_shiv")])
+rare_drop_chance = 0.02

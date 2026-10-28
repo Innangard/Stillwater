@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://6423a53cdc8"]
+
+[ext_resource type="Script" uid="uid://bxas2hp1afggk" path="res://items/item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dq00t6wav12ov" path="res://sprites/Skill_Item icons/Separated Files/fc235.png" id="1_dcvhr"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Bone Tablet"
+description = "A flat shard of yellowed bone, sanded smooth and scratched with guide lines. Ready to receive a rune. Reagent."
+icon = ExtResource("1_dcvhr")
+category = "reagent"
+placeholder_color = Color(0.82, 0.78, 0.72, 1)

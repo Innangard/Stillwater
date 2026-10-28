@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Carving"
+text = "The water of the Pool does not pull you under by force; it only asks. That is the great, quiet cruelty of this island. You must step into the dark of your own free will, choosing to let the water wash the memory of your past from your mind. If the currents only dragged us, we would all be at peace, but instead, I stand shivering on this bank, completely unable to make the choice."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

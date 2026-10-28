@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "lorebearer_north"
+display_name = "Frost-Witness"
+epithet = "He who heard the silent peaks confess"
+description = "The northern carvings were not warnings — they were quiet admissions. Carrying their cold has cooled your blood enough that the ice itself remembers you and steps aside."
+flavor_text = "I refuse to sleep. The moment I close my eyes, I feel the freezing water of the lake where I drowned filling my lungs all over again."
+category = 2
+unlock_flag = "all_monologues_read_act_3"
+unlock_hint = "Read every carving in the northern peaks."
+element_damage_multipliers = {
+2: 1.10
+}
+element_resistance_multipliers = {
+2: 0.80
+}
+tier_color = Color(0.55, 0.72, 0.85, 1)

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://cgwmuvps2aoxj"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://yb5krhlvltdu" path="res://sprites/Skill_Item icons/Separated Files/fc1704.png" id="1_368kb"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" uid="uid://0wxssxysoks3" path="res://status/instances/poison.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.55
+
+[resource]
+script = ExtResource("1")
+swing_range = 60.0
+arc_radius = 9.0
+swing_duration = 0.15
+knockback = 220.0
+hitbox_shape = 1
+weapon_name = "Venomfang Spear"
+base_damage = 17.0
+element = 4
+cooldown = 0.42
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app")])
+description = "The tip is hollowed and filled with marsh resin. One good thrust and the poison does the rest."
+icon = ExtResource("1_368kb")
+swing_visual = 2

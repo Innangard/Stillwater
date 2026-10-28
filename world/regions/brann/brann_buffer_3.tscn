@@ -1,0 +1,136 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/cinder_maw.tscn" id="enemy_maw"]
+[ext_resource type="PackedScene" path="res://enemies/ember_spear.tscn" id="enemy_spear"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -400
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -400
+
+[node name="BrannBuffer3" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "brann_buffer_3"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.20, 0.10, 0.08, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -34
+offset_top = -800
+offset_right = 26
+offset_bottom = 800
+mouse_filter = 2
+color = Color(0.50, 0.25, 0.15, 0.55)
+
+[node name="LavaCrack0" type="ColorRect" parent="."]
+offset_left = -360
+offset_top = -100
+offset_right = -260
+offset_bottom = -94
+mouse_filter = 2
+color = Color(1.0, 0.45, 0.10, 0.75)
+
+[node name="LavaCrack1" type="ColorRect" parent="."]
+offset_left = 200
+offset_top = 220
+offset_right = 320
+offset_bottom = 226
+mouse_filter = 2
+color = Color(1.0, 0.45, 0.10, 0.75)
+
+[node name="Glow0" type="ColorRect" parent="."]
+offset_left = -370
+offset_top = -115
+offset_right = -250
+offset_bottom = -78
+mouse_filter = 2
+color = Color(1.0, 0.55, 0.10, 0.22)
+
+[node name="Glow1" type="ColorRect" parent="."]
+offset_left = 190
+offset_top = 200
+offset_right = 330
+offset_bottom = 245
+mouse_filter = 2
+color = Color(1.0, 0.55, 0.10, 0.22)
+
+[node name="Pillar0" type="ColorRect" parent="."]
+offset_left = -280
+offset_top = 180
+offset_right = -240
+offset_bottom = 240
+mouse_filter = 2
+color = Color(0.24, 0.12, 0.08, 1)
+
+[node name="EmberMote0" type="ColorRect" parent="."]
+offset_left = 200
+offset_top = -150
+offset_right = 204
+offset_bottom = -146
+mouse_filter = 2
+color = Color(1.0, 0.70, 0.20, 0.95)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-400, -600, -34, -600, -34, -695, 26, -695, 26, -600, 400, -600, 400, -790, -400, -790)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-400, 600, -34, 600, -34, 695, 26, 695, 26, 600, 400, 600, 400, 790, -400, 790)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(-4, -572)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(-4, 578)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_maw")]
+position = Vector2(-150, 100)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_spear")]
+position = Vector2(120, -240)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_spear")]
+position = Vector2(220, 280)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-4, -688)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  Brann corridor"
+tint = Color(0.55, 0.25, 0.15, 0.45)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-4, 674)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  Brann corridor"
+tint = Color(0.55, 0.25, 0.15, 0.45)
+zone_size = Vector2(192, 48)

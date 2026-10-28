@@ -1,0 +1,29 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/bear_stomp.tres" id="weapon"]
+[ext_resource type="Script" path="res://items/item.gd" id="item_script"]
+[ext_resource type="Resource" path="res://items/instances/bear_stomach.tres" id="drop_stomach"]
+
+[node name="BrownBear" instance=ExtResource("base_enemy")]
+enemy_name = "Brown Bear"
+sprite_name = "enemy_brown_bear"
+body_tint = Color(0.36, 0.24, 0.16, 1.0)
+weapon_icon_color = Color(0.85, 0.40, 0.20, 1.0)
+body_radius = 22.0
+body_shape = 3
+max_health = 110.0
+max_speed = 80.0
+acceleration = 540.0
+base_detection = 100.0
+noise_sensitivity = 4.5
+smell_sensitivity = 11.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.70
+recover_duration = 0.85
+min_engage_range = 0.0
+stagger_threshold = 5.5
+currency_drop_min = 14
+currency_drop_max = 26
+item_drops = Array[ExtResource("item_script")]([ExtResource("drop_stomach")])
+item_drop_chance = 0.50

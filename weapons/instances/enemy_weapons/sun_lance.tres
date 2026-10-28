@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PersistentHitboxWeapon" format=3 uid="uid://dawqootnhyjji"]
+
+[ext_resource type="Script" uid="uid://c1tgaios4sv2h" path="res://weapons/persistent_hitbox_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.55
+
+[resource]
+script = ExtResource("1")
+shape_kind = 1
+length = 720.0
+rect_width = 70.0
+tick_interval = 0.1
+knockback = 0.0
+weapon_name = "Sun Lance"
+base_damage = 6.0
+element = 1
+cooldown = 4.0
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+description = "A line of fire drawn through the air. It does not bend; you do."

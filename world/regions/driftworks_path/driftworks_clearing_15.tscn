@@ -1,0 +1,87 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/tide_leaper.tscn" id="enemy_tide_leaper"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_goblin_sword"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="DriftworksClearing15" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "driftworks_clearing_15"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.25, 0.35, 0.38, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.40, 0.46, 0.42, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = -253
+offset_top = -224
+offset_right = -208
+offset_bottom = -184
+mouse_filter = 2
+color = Color(0.20, 0.34, 0.40, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = 166
+offset_top = -274
+offset_right = 216
+offset_bottom = -250
+mouse_filter = 2
+color = Color(0.44, 0.42, 0.38, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = 161
+offset_top = 15
+offset_right = 198
+offset_bottom = 35
+mouse_filter = 2
+color = Color(0.44, 0.42, 0.38, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = 154
+offset_top = 164
+offset_right = 188
+offset_bottom = 197
+mouse_filter = 2
+color = Color(0.20, 0.34, 0.40, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-300, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_tide_leaper")]
+position = Vector2(-158, -118)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(132, -74)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(24, 130)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-420, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "west"
+tint = Color(0.40, 0.46, 0.42, 0.4)
+zone_size = Vector2(192, 48)

@@ -1,0 +1,251 @@
+[gd_scene format=3 uid="uid://baltar2yy2yy9"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_pillar.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_b"]
+[ext_resource type="Resource" path="res://items/instances/deep_gold_tablet.tres" id="loot_capstone"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/hearthbrand.tres" id="loot_weapon"]
+[ext_resource type="Resource" path="res://items/instances/bone_tablet.tres" id="item_tablet"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="item_phial"]
+[ext_resource type="PackedScene" path="res://dialogue/altar_carving.tscn" id="carving_scene"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1_pool.tres" id="monologue_pool"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -400
+
+[node name="EastreachAltar" type="Node2D" unique_id=1200000001]
+script = ExtResource("region_script")
+region_id = "eastreach_altar"
+player_scene = ExtResource("player_scene")
+
+; Warm earthy backdrop — the sun-bleached chalk highland the
+; Eastreach road climbs through. Contrasts with the Westmoor's cool
+; slate palette so the two altars feel like different sacred sites
+; even though they share the same TYPE_ALTAR map icon.
+[node name="Background" type="ColorRect" parent="." unique_id=1200000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="Plateau" type="ColorRect" parent="." unique_id=1200000003]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.78, 0.74, 0.66, 1)
+
+; Cairn-style markers at the cardinal points — round, stacked,
+; bone-pale, intentionally different in silhouette from Westmoor's
+; tall dark standing stones. Reads as "wayshrine cairns" instead of
+; "ancient megaliths."
+[node name="CairnN" type="ColorRect" parent="." unique_id=1200000004]
+offset_left = -26.0
+offset_top = -200.0
+offset_right = 26.0
+offset_bottom = -150.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="CairnS" type="ColorRect" parent="." unique_id=1200000005]
+offset_left = -26.0
+offset_top = 150.0
+offset_right = 26.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="CairnE" type="ColorRect" parent="." unique_id=1200000006]
+offset_left = 190.0
+offset_top = -28.0
+offset_right = 240.0
+offset_bottom = 28.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="CairnW" type="ColorRect" parent="." unique_id=1200000007]
+offset_left = -240.0
+offset_top = -28.0
+offset_right = -190.0
+offset_bottom = 28.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+; The altar — sandstone slab in earthen tones, with a golden sun
+; disc above it instead of a flame. Sun disc = pilgrim/road
+; symbolism; flame = the more elemental Westmoor altar.
+[node name="AltarBase" type="ColorRect" parent="." unique_id=1200000008]
+offset_left = -90.0
+offset_top = -30.0
+offset_right = 90.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.40, 0.34, 0.28, 1)
+
+[node name="AltarStone" type="ColorRect" parent="." unique_id=1200000009]
+offset_left = -78.0
+offset_top = -42.0
+offset_right = 78.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(0.72, 0.66, 0.54, 1)
+
+[node name="AltarBasin" type="ColorRect" parent="." unique_id=1200000010]
+offset_left = -40.0
+offset_top = -28.0
+offset_right = 40.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.30, 0.24, 0.18, 1)
+
+; Golden sun disc above the altar — the visual signifier that
+; differentiates this altar from Westmoor's at a glance.
+[node name="SunDisc" type="ColorRect" parent="." unique_id=1200000011]
+offset_left = -28.0
+offset_top = -76.0
+offset_right = 28.0
+offset_bottom = -20.0
+mouse_filter = 2
+color = Color(0.95, 0.80, 0.35, 1)
+
+[node name="SunCore" type="ColorRect" parent="." unique_id=1200000012]
+offset_left = -16.0
+offset_top = -64.0
+offset_right = 16.0
+offset_bottom = -32.0
+mouse_filter = 2
+color = Color(1.0, 0.92, 0.55, 1)
+
+; Two more cairns flanking the southern approach — visual cue that
+; this is a wayshrine on a pilgrim road, not just a found ruin.
+[node name="WayCairnL" type="ColorRect" parent="." unique_id=1200000013]
+offset_left = -250.0
+offset_top = 150.0
+offset_right = -200.0
+offset_bottom = 220.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="WayCairnR" type="ColorRect" parent="." unique_id=1200000014]
+offset_left = 200.0
+offset_top = 150.0
+offset_right = 250.0
+offset_bottom = 220.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1200000015]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1200000016]
+build_mode = 1
+polygon = PackedVector2Array(-400, -360, -60, -360, -60, -460, 60, -460, 60, -360, 400, -360, 400, -550, -400, -550)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=1200000017]
+build_mode = 1
+polygon = PackedVector2Array(-400, 360, -60, 360, -60, 460, 60, 460, 60, 360, 400, 360, 400, 550, -400, 550)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1200000018]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1200000019]
+build_mode = 1
+polygon = PackedVector2Array(400, -360, 400, -60, 500, -60, 500, 60, 400, 60, 400, 360, 590, 360, 590, -360)
+
+; Spawn markers — one per cardinal direction so the runtime exit
+; rewiring (which spawns the player at `from_<dir>`) can land them
+; safely whichever direction the chain attaches to the altar from.
+[node name="default" type="Marker2D" parent="." unique_id=1200000020]
+position = Vector2(0, 240)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1200000021]
+position = Vector2(0, -240)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1200000022]
+position = Vector2(0, 240)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1200000023]
+position = Vector2(340, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1200000024]
+position = Vector2(-340, 0)
+
+[node name="Player" parent="." unique_id=1200000025 instance=ExtResource("player_scene")]
+position = Vector2(0, 240)
+
+; Guardian enemies — a different combo from Westmoor's
+; (skeleton_pillar + skeleton_fan) so the fight feels distinct:
+; one big static threat plus one fast melee chaser. Difficulty
+; comparable to Westmoor's altar, not strictly harder.
+[node name="GuardianPillar" parent="." unique_id=1200000026 instance=ExtResource("enemy_a")]
+position = Vector2(-150, -100)
+
+[node name="GuardianWolf" parent="." unique_id=1200000027 instance=ExtResource("enemy_b")]
+position = Vector2(160, -90)
+
+; Capstone loot. deep_gold_tablet is the high-prestige reward
+; (reserved exclusively for this altar — doesn't appear elsewhere
+; in the pool). Hearthbrand mirrors the Westmoor's Thunderstrike
+; Spear slot as the altar's signature weapon.
+[node name="DeepGoldTabletPickup" parent="." unique_id=1200000028 instance=ExtResource("pickup_scene")]
+position = Vector2(0, 100)
+item = ExtResource("loot_capstone")
+persistent_per_run = true
+
+[node name="HearthbrandPickup" parent="." unique_id=1200000029 instance=ExtResource("pickup_scene")]
+position = Vector2(-130, 130)
+weapon = ExtResource("loot_weapon")
+persistent_per_run = true
+
+[node name="BoneTabletPickup" parent="." unique_id=1200000030 instance=ExtResource("pickup_scene")]
+position = Vector2(130, 130)
+item = ExtResource("item_tablet")
+persistent_per_run = true
+
+[node name="SoulPhialPickup" parent="." unique_id=1200000031 instance=ExtResource("pickup_scene")]
+position = Vector2(-200, -150)
+item = ExtResource("item_phial")
+persistent_per_run = true
+
+; Four cardinal exits. apply_overrides rewires whichever direction
+; the chain's last buffer approaches from; the others remain as
+; static fallbacks pointing back to nasus_overlook so the player
+; can never get stranded if PathManager fails to wire correctly.
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 320)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↓  back the way you came"
+tint = Color(0.55, 0.48, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -320)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↑  back the way you came"
+tint = Color(0.55, 0.48, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(360, 0)
+target_scene = "res://world/regions/sundust_gate.tscn"
+target_spawn_point = "from_west"
+label = "→  into the eastern desert"
+tint = Color(0.78, 0.60, 0.32, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="AltarCarving" parent="." unique_id=1199999000 instance=ExtResource("carving_scene")]
+position = Vector2(0, -36)
+pool = ExtResource("monologue_pool")
+carving_name = "Sun-Worn Stone"
+carving_id = "eastreach_main"
+tint = Color(0.62, 0.55, 0.38, 1)

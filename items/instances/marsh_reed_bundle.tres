@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Marsh-Reed Bundle"
+description = "A tight sheaf of dried fen-reeds, still faintly green at the core. The reeds are hollow — good for channeling, if you know what to channel. Reagent."
+category = "reagent"
+placeholder_color = Color(0.38, 0.48, 0.28, 1)

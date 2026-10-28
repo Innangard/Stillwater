@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://cg2lx64mgwl5x"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ckhyf08nydq4l" path="res://sprites/Skill_Item icons/Separated Files/fc2032.png" id="1_532pg"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 3.0
+damage_taken_multiplier = 0.88
+element_multipliers = {
+4: 0.55
+}
+noise_weight = 8.0
+item_name = "Bogwrapped Cloak"
+description = "Layers of marsh-cured hide. Smells vile but shrugs off venom like water off oilskin. Chest."
+icon = ExtResource("1_532pg")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.38, 0.52, 0.32, 1)

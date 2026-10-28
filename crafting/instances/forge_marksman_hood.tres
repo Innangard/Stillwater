@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://items/armor/marksman_hood.tres" id="out_armor"]
+[ext_resource type="Resource" path="res://items/instances/ghost_lichen.tres" id="reagent0"]
+[ext_resource type="Resource" path="res://items/instances/peat_pitch.tres" id="reagent1"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent0")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 1
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Marksman's Hood"
+description = "Wax the canvas. Cut the brim narrow. The shadow does the work."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1")])
+output_item = ExtResource("out_armor")
+currency_cost = 75

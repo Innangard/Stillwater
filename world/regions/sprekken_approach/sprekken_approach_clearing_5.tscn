@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://gen442d6f668755"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[node name="Node2D" type="Node2D" unique_id=20000144]
+script = ExtResource("region_script")
+region_id = "sprekken_approach_clearing_5"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20000145]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.50, 0.36, 1)
+
+[node name="Track_east" type="ColorRect" parent="." unique_id=20000146]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 660.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.62, 0.58, 0.42, 1)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20000147]
+offset_left = -239.0
+offset_top = -176.0
+offset_right = -183.0
+offset_bottom = -152.0
+mouse_filter = 2
+color = Color(0.55, 0.58, 0.45, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20000148]
+offset_left = 221.0
+offset_top = -97.0
+offset_right = 271.0
+offset_bottom = -21.0
+mouse_filter = 2
+color = Color(0.66, 0.62, 0.52, 1)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20000149]
+offset_left = -76.0
+offset_top = 59.0
+offset_right = -46.0
+offset_bottom = 133.0
+mouse_filter = 2
+color = Color(0.48, 0.50, 0.36, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="." unique_id=20000150]
+offset_left = -65.0
+offset_top = 43.0
+offset_right = 1.0
+offset_bottom = 81.0
+mouse_filter = 2
+color = Color(0.55, 0.58, 0.45, 0.6)
+
+[node name="RewardMarker" type="ColorRect" parent="." unique_id=20000151]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.85, 0.75, 0.45, 0.7)
+
+[node name="RewardGlow" type="ColorRect" parent="RewardMarker" unique_id=20000152]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(1.0, 0.95, 0.65, 0.3)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20000153]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20000154]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20000155]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20000156]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20000157]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 750, -60, 750, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20000158]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=20000159]
+position = Vector2(500, 0)
+
+[node name="Player" parent="." unique_id=20000160 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  wooded path"
+tint = Color(0.40, 0.46, 0.30, 0.4)
+zone_size = Vector2(48, 192)

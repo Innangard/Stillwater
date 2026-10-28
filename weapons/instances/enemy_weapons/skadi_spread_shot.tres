@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Spread Shot"
+description = "Three arrows leave the string at once, fanning outward in a lethal arc."
+base_damage = 10.0
+element = 4
+cooldown = 3.0
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 480.0
+projectile_lifetime = 1.5
+projectile_count = 3
+spread_degrees = 25.0
+pierce = 0
+knockback = 150.0

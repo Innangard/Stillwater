@@ -1,0 +1,219 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_type"]
+[ext_resource type="Resource" path="res://dialogue/instances/blacksmith_ragnvald.tres" id="dlg_ragnvald"]
+[ext_resource type="Resource" path="res://dialogue/instances/merchant_ingrid.tres" id="dlg_ingrid"]
+[ext_resource type="Resource" path="res://dialogue/instances/norn_frostgard.tres" id="dlg_vigdis"]
+[ext_resource type="Resource" path="res://dialogue/instances/sentinel_bjorg.tres" id="dlg_bjorg"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="npc_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/quest_board.tscn" id="qb_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://npcs/townsperson.tscn" id="tp_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -500.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -900.0
+
+[sub_resource type="RectangleShape2D" id="bldg_gatehouse"]
+size = Vector2(180, 100)
+
+[sub_resource type="RectangleShape2D" id="bldg_barracks"]
+size = Vector2(160, 90)
+
+[sub_resource type="RectangleShape2D" id="bldg_hall"]
+size = Vector2(140, 80)
+
+[sub_resource type="RectangleShape2D" id="bldg_tower"]
+size = Vector2(80, 80)
+
+[node name="FrostgardTown" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "frostgard_town"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2400.0
+offset_top = -2000.0
+offset_right = 2400.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.38, 0.40, 0.45, 1)
+
+[node name="Street" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -36.0
+offset_right = 900.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 0.55)
+
+[node name="FortressWallN" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -400.0
+offset_right = 900.0
+offset_bottom = -340.0
+mouse_filter = 2
+color = Color(0.28, 0.28, 0.30, 1)
+
+[node name="GateArch" type="ColorRect" parent="."]
+offset_left = -30.0
+offset_top = -400.0
+offset_right = 30.0
+offset_bottom = -340.0
+mouse_filter = 2
+color = Color(0.18, 0.18, 0.20, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Walltop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="Wallbottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="Wallleft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="Wallright" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="Buildings" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="bldg_gatehouseShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-280, -180)
+shape = SubResource("bldg_gatehouse")
+
+[node name="bldg_barracksShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(40, -180)
+shape = SubResource("bldg_barracks")
+
+[node name="bldg_hallShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(280, -180)
+shape = SubResource("bldg_hall")
+
+[node name="bldg_towerShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-200, 200)
+shape = SubResource("bldg_tower")
+
+[node name="GatehouseVisual" type="ColorRect" parent="."]
+offset_left = -370
+offset_top = -230
+offset_right = -190
+offset_bottom = -130
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.32, 1)
+
+[node name="BarracksVisual" type="ColorRect" parent="."]
+offset_left = -40
+offset_top = -225
+offset_right = 120
+offset_bottom = -135
+mouse_filter = 2
+color = Color(0.32, 0.32, 0.34, 1)
+
+[node name="HallVisual" type="ColorRect" parent="."]
+offset_left = 210
+offset_top = -220
+offset_right = 350
+offset_bottom = -140
+mouse_filter = 2
+color = Color(0.34, 0.34, 0.36, 1)
+
+[node name="TowerVisual" type="ColorRect" parent="."]
+offset_left = -240
+offset_top = 160
+offset_right = -160
+offset_bottom = 240
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.32, 1)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-380, 0)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(720, 0)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="BlacksmithRagnvald" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(360, -120)
+npc_name = "Ragnvald the Mountain-smith"
+dialogue = ExtResource("dlg_ragnvald")
+tint = Color(0.50, 0.48, 0.42, 1)
+station_name = "Ragnvald's Pass Forge"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="MerchantIngrid" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(460, 80)
+npc_name = "Merchant Ingrid"
+dialogue = ExtResource("dlg_ingrid")
+tint = Color(0.48, 0.48, 0.50, 1)
+station_name = "Ingrid's Provisions"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="IceSeerVigdis" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-200, 240)
+npc_name = "Ice-seer Vigdis"
+dialogue = ExtResource("dlg_vigdis")
+tint = Color(0.42, 0.48, 0.58, 1)
+station_name = "Vigdis's Frost Runes"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="SentinelBjorg" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-320, -80)
+npc_name = "Sentinel Bjorg"
+dialogue = ExtResource("dlg_bjorg")
+tint = Color(0.50, 0.50, 0.48, 1)
+
+[node name="QuestBoard" parent="." instance=ExtResource("qb_scene")]
+position = Vector2(160, 100)
+board_name = "FrostgardTown Postings"
+
+[node name="TownspersonNE" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(260, -80)
+tint = Color(0.48, 0.48, 0.52, 1)
+
+[node name="TownspersonE" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(400, 60)
+tint = Color(0.50, 0.48, 0.52, 1)
+
+[node name="TownspersonS" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(80, 220)
+tint = Color(0.45, 0.48, 0.50, 1)
+
+[node name="TownspersonNW" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(-200, -60)
+tint = Color(0.48, 0.50, 0.52, 1)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-460, 0)
+target_scene = "res://world/regions/hindarfjall_altar.tscn"
+target_spawn_point = "from_east"
+label = "\u2190  down the pass"
+tint = Color(0.42, 0.45, 0.50, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(740, 0)
+target_scene = "res://world/regions/isvarda_altar.tscn"
+target_spawn_point = "from_west"
+label = "\u2192  into the high ice"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)

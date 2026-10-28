@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://status/status_effect.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = &"brine_shell"
+display_name = "Brine Shell"
+description = "Salt crystallises across your skin. Blows glance off — but the crust is heavy, and your legs know it."
+duration = 8.0
+tick_interval = 0.0
+damage_per_tick = 0.0
+damage_element = 0
+speed_multiplier = 0.80
+damage_taken_multiplier = 0.60
+damage_dealt_multiplier = 1.0
+prevents_action = false
+binding = false
+stack_behavior = 0
+max_stacks = 1
+tint_color = Color(0.65, 0.78, 0.88, 1.0)
+tint_intensity = 0.35

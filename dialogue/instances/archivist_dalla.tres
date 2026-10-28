@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Dalla"
+text = "I keep the records. Every light, every shadow, every change in the Tower's silhouette. Five hundred years of observations, written on slate tablets and stored in the lower vault. The records prove nothing. They suggest everything."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Dalla"
+text = "If you are going to the bridge, take my observations with you. They may be useful. They may be nothing. I have spent five hundred years unable to tell the difference."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

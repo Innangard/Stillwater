@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://jfw3yhlv0pqc"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="1_3a4ko"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 150.0
+projectile_lifetime = 2.8
+projectile_count = 12
+spread_degrees = 330.0
+weapon_name = "Pillar Burst"
+base_damage = 6.0
+element = 6
+cooldown = 3.0
+description = "A slow, persistent ring of bones from a rooted revenant."
+projectile_visual = 2

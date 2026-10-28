@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://items/armor/bonebreaker_greaves.tres" id="out_armor"]
+[ext_resource type="Resource" path="res://items/instances/sky_iron.tres" id="reagent0"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="reagent1"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent0")
+count = 2
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 4
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Bonebreaker Greaves"
+description = "Forge the greaves heavy below the knee. The wearer stops being able to step quietly; what they gain in place of silence is the floor itself, reliably, beneath them."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1")])
+output_item = ExtResource("out_armor")
+currency_cost = 160

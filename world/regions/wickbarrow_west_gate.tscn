@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://b4o1qmlru16wl"]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="item_ash"]
+[ext_resource type="PackedScene" uid="uid://dr3i5loj15l4o" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://npcs/townsperson.tscn" id="tp_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -340.0
+
+[sub_resource type="RectangleShape2D" id="gh_shape"]
+size = Vector2(140, 80)
+
+[node name="WickbarrowWestGate" type="Node2D" unique_id=582500886]
+script = ExtResource("region_script")
+region_id = "wickbarrow_west_gate"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1347145967]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.45, 0.4, 0.34, 1)
+
+[node name="Path" type="ColorRect" parent="." unique_id=1628088360]
+offset_left = -540.0
+offset_top = -36.0
+offset_right = 540.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.55, 0.5, 0.4, 0.55)
+
+[node name="GatehouseVisual" type="ColorRect" parent="." unique_id=2134116127]
+offset_left = 60.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0.36, 0.3, 0.24, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1777382301]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=843707523]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=939356119]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft_Gen" type="CollisionPolygon2D" parent="Walls" unique_id=503789899]
+build_mode = 1
+polygon = PackedVector2Array(-538, -340, -538, -36, -633, -36, -633, 36, -538, 36, -538, 340, -728, 340, -728, -340)
+
+[node name="WallRight_Gen" type="CollisionPolygon2D" parent="Walls" unique_id=2111116929]
+build_mode = 1
+polygon = PackedVector2Array(524, -340, 524, -36, 619, -36, 619, 36, 524, 36, 524, 340, 714, 340, 714, -340)
+
+[node name="Buildings" type="StaticBody2D" parent="." unique_id=1574791387]
+collision_mask = 0
+
+[node name="GatehouseShape" type="CollisionShape2D" parent="Buildings" unique_id=1295699527]
+position = Vector2(130, 140)
+shape = SubResource("gh_shape")
+
+[node name="default" type="Marker2D" parent="." unique_id=1916309668]
+
+[node name="from_village" type="Marker2D" parent="." unique_id=606538357]
+position = Vector2(500, 0)
+
+[node name="from_forest" type="Marker2D" parent="." unique_id=1212207989]
+position = Vector2(-514, 0)
+
+[node name="Player" parent="." unique_id=751804977 instance=ExtResource("player_scene")]
+
+[node name="Townsperson" parent="." unique_id=197877714 instance=ExtResource("tp_scene")]
+position = Vector2(160, 60)
+tint = Color(0.4, 0.38, 0.36, 1)
+wander_radius = 24.0
+sprite_name = "npc_wander_wb_elder"
+
+[node name="ReagentAsh" parent="." unique_id=405287418 instance=ExtResource("pickup_scene")]
+position = Vector2(-200, -160)
+item = ExtResource("item_ash")
+persistent_per_run = true
+
+[node name="ExitEast" parent="." unique_id=454230261 instance=ExtResource("exit_scene")]
+position = Vector2(612, 0)
+target_scene = "res://world/regions/wickbarrow_village.tscn"
+target_spawn_point = "from_west"
+label = "→  to Wickbarrow"
+tint = Color(0.45, 0.38, 0.32, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=1483829462 instance=ExtResource("exit_scene")]
+position = Vector2(-626, 0)
+target_scene = "res://world/regions/forest_edge.tscn"
+target_spawn_point = "from_gate"
+label = "←  to the Forest Edge"
+tint = Color(0.34, 0.42, 0.3, 0.4)
+zone_size = Vector2(48, 192)

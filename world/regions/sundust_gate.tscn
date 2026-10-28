@@ -1,0 +1,330 @@
+[gd_scene format=3 uid="uid://sdgate000001"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/sandworm_broodmother.tscn" id="broodmother_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -240
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -240
+
+[node name="SundustGate" type="Node2D" unique_id=1500000001]
+script = ExtResource("region_script")
+region_id = "sundust_gate"
+player_scene = ExtResource("player_scene")
+
+; SUNDUST GATE — the static threshold between the Eastreach Altar
+; and the randomized desert spine. Same room every seed, intentionally
+; corridor-shaped (wider east-west than north-south) so the player
+; reads it as a passage rather than a destination. No N or S exits;
+; the player walks west to return to the altar, east to enter the
+; random sundust chain.
+;
+; Palette matches Eastreach + Sundust (warm sand BG, lighter sand
+; path) — the visual continuity tells the player "still the same
+; biome", with the architecture (gate arch + pillars) doing the work
+; of marking "this is a threshold".
+;
+; No enemies, no pickups. Future hooks: this is a natural location
+; for a gatekeeper NPC, a lore inscription, a tutorial beat for the
+; desert region, or a shopkeeper. Static-room status makes any of
+; those persistent across runs without needing to randomize them.
+
+[node name="Background" type="ColorRect" parent="." unique_id=1500000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+; Central east-west path: the corridor floor that connects the two
+; exits visually. Slightly wider than typical chain tracks to give the
+; gate the feel of a maintained processional way (vs the chain's
+; "you're hiking a worn trail" tone).
+[node name="PathFloor" type="ColorRect" parent="." unique_id=1500000003]
+offset_left = -440.0
+offset_top = -56.0
+offset_right = 440.0
+offset_bottom = 56.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+; ARCH structure — three pieces forming a stone gateway overhead.
+; The arch SPAN is the dark horizontal band visually above the path
+; (it isn't really "above" — Godot is 2D top-down — but in the
+; landmark-language it reads as "stone arch overhead"). The two ARCH
+; SUPPORTS descend from the span to the pillars, completing the
+; gateway silhouette.
+[node name="ArchSpan" type="ColorRect" parent="." unique_id=1500000004]
+offset_left = -320.0
+offset_top = -218.0
+offset_right = 320.0
+offset_bottom = -180.0
+mouse_filter = 2
+color = Color(0.42, 0.34, 0.24, 1)
+
+[node name="ArchSupportL" type="ColorRect" parent="." unique_id=1500000005]
+offset_left = -300.0
+offset_top = -190.0
+offset_right = -270.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+[node name="ArchSupportR" type="ColorRect" parent="." unique_id=1500000006]
+offset_left = 270.0
+offset_top = -190.0
+offset_right = 300.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+; Mirror arch on the south side — a second arch band so the player
+; reads the room as a TUNNEL through a gate, not a half-gate. Same
+; structure flipped vertically.
+[node name="ArchSpanS" type="ColorRect" parent="." unique_id=1500000007]
+offset_left = -320.0
+offset_top = 180.0
+offset_right = 320.0
+offset_bottom = 218.0
+mouse_filter = 2
+color = Color(0.42, 0.34, 0.24, 1)
+
+[node name="ArchSupportSL" type="ColorRect" parent="." unique_id=1500000008]
+offset_left = -300.0
+offset_top = 110.0
+offset_right = -270.0
+offset_bottom = 190.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+[node name="ArchSupportSR" type="ColorRect" parent="." unique_id=1500000009]
+offset_left = 270.0
+offset_top = 110.0
+offset_right = 300.0
+offset_bottom = 190.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+; PILLARS — two large sandstone blocks flanking the central path
+; horizontally. They're the visual "mass" of the gate; the arch
+; pieces above tie into them. Placed inboard of the arches so the
+; whole structure reads as "two pillars holding up the arch span."
+[node name="PillarNW" type="ColorRect" parent="." unique_id=1500000010]
+offset_left = -220.0
+offset_top = -170.0
+offset_right = -160.0
+offset_bottom = -80.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="PillarNE" type="ColorRect" parent="." unique_id=1500000011]
+offset_left = 160.0
+offset_top = -170.0
+offset_right = 220.0
+offset_bottom = -80.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="PillarSW" type="ColorRect" parent="." unique_id=1500000012]
+offset_left = -220.0
+offset_top = 80.0
+offset_right = -160.0
+offset_bottom = 170.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="PillarSE" type="ColorRect" parent="." unique_id=1500000013]
+offset_left = 160.0
+offset_top = 80.0
+offset_right = 220.0
+offset_bottom = 170.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+; Pillar caps — small darker rectangles on top of each pillar so
+; they read as "carved stone columns" rather than plain rectangles.
+[node name="CapNW" type="ColorRect" parent="." unique_id=1500000014]
+offset_left = -226.0
+offset_top = -180.0
+offset_right = -154.0
+offset_bottom = -168.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+[node name="CapNE" type="ColorRect" parent="." unique_id=1500000015]
+offset_left = 154.0
+offset_top = -180.0
+offset_right = 226.0
+offset_bottom = -168.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+[node name="CapSW" type="ColorRect" parent="." unique_id=1500000016]
+offset_left = -226.0
+offset_top = 168.0
+offset_right = -154.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+[node name="CapSE" type="ColorRect" parent="." unique_id=1500000017]
+offset_left = 154.0
+offset_top = 168.0
+offset_right = 226.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+; THRESHOLD STONE — central dark slab on the path. A worn marker
+; carved into the gate's threshold. The visual focal point at the
+; center of the room; also a natural anchor point for a future
+; gatekeeper NPC ("the carving warns travelers") or a lore stash.
+[node name="ThresholdStone" type="ColorRect" parent="." unique_id=1500000018]
+offset_left = -50.0
+offset_top = -24.0
+offset_right = 50.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.42, 0.34, 0.24, 1)
+
+[node name="ThresholdGlyph" type="ColorRect" parent="." unique_id=1500000019]
+offset_left = -14.0
+offset_top = -8.0
+offset_right = 14.0
+offset_bottom = 8.0
+mouse_filter = 2
+color = Color(0.22, 0.16, 0.10, 1)
+
+; Atmospheric details: sun-bleached bone fragments in the corners
+; (this place has stood long enough for travelers to have died here),
+; and pale ash drifts banking against the pillar bases.
+[node name="BonesNW" type="ColorRect" parent="." unique_id=1500000020]
+offset_left = -400.0
+offset_top = -210.0
+offset_right = -340.0
+offset_bottom = -180.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.9)
+
+[node name="BonesSE" type="ColorRect" parent="." unique_id=1500000021]
+offset_left = 330.0
+offset_top = 180.0
+offset_right = 400.0
+offset_bottom = 215.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.68, 0.9)
+
+[node name="AshDriftL" type="ColorRect" parent="." unique_id=1500000022]
+offset_left = -260.0
+offset_top = -90.0
+offset_right = -150.0
+offset_bottom = -70.0
+mouse_filter = 2
+color = Color(0.78, 0.72, 0.55, 0.6)
+
+[node name="AshDriftR" type="ColorRect" parent="." unique_id=1500000023]
+offset_left = 150.0
+offset_top = 70.0
+offset_right = 260.0
+offset_bottom = 90.0
+mouse_filter = 2
+color = Color(0.78, 0.72, 0.55, 0.6)
+
+; Cracked-earth fissure crossing the path — small but visible, hints
+; at the seismic dryness of the desert beyond.
+[node name="Fissure" type="ColorRect" parent="." unique_id=1500000024]
+offset_left = 80.0
+offset_top = -40.0
+offset_right = 130.0
+offset_bottom = -32.0
+mouse_filter = 2
+color = Color(0.40, 0.32, 0.22, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1500000030]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1500000031]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1500000032]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1500000033]
+build_mode = 1
+polygon = PackedVector2Array(-440, -240, -440, -60, -540, -60, -540, 60, -440, 60, -440, 240, -630, 240, -630, -240)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1500000034]
+build_mode = 1
+polygon = PackedVector2Array(440, -240, 440, -60, 540, -60, 540, 60, 440, 60, 440, 240, 630, 240, 630, -240)
+
+; Spawn markers — player typically arrives from the altar (west) when
+; first entering. "default" matches "from_west" since that's the most
+; common entry path. Coming back from the chain triggers from_east.
+[node name="default" type="Marker2D" parent="." unique_id=1500000040]
+position = Vector2(-380, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1500000041]
+position = Vector2(-380, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1500000042]
+position = Vector2(380, 0)
+
+[node name="Player" parent="." unique_id=1500000050 instance=ExtResource("player_scene")]
+position = Vector2(-380, 0)
+
+; ExitWest is STATIC — leads back to the Eastreach Altar. No
+; apply_overrides logic touches this exit (the gate is not the start
+; or end of any chain heading west). Hardcoded for life.
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-420, 0)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "from_east"
+label = "←  back to the altar"
+tint = Color(0.55, 0.50, 0.40, 0.4)
+zone_size = Vector2(48, 192)
+
+; ExitEast — STATIC FALLBACK points back at the altar for safety,
+; but apply_overrides REWRITES this exit at runtime: the gate is the
+; SUNDUST_CHAIN_START_SCENE, so _try_chain rewires ExitEast to the
+; first random sundust buffer (with the right spawn marker) the
+; moment the player enters this room. The fallback target only
+; matters in the unlikely event apply_overrides fails to run — in
+; that case the player isn't stranded.
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(420, 0)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "→  into the desert"
+tint = Color(0.78, 0.60, 0.32, 0.4)
+zone_size = Vector2(48, 192)
+
+; SANDWORM BROODMOTHER — mini-boss gatekeeper. Positioned east of
+; the threshold stone so a player entering from the altar (west)
+; reads the room in this order: threshold marker → broodmother mound
+; → eastern desert exit. She starts burrowed (the SandWorm parent's
+; _ready snaps to that state), so on first sight she's a large dark
+; mound in the room's far third — easy to spot, communicates "this
+; is not just decor."
+;
+; Engagement geometry: base_detection = 500 covers the full room
+; width (gate is 880 wide), so she'll detect the player the moment
+; they enter. Her erupt range (~364 reach) and spit range (~320)
+; reach most of the room, so the player can't just stand at one
+; wall and shoot her — they have to enter her territory.
+;
+; She respawns every time the gate scene is instanced — same as
+; any normal enemy in any normal room. For "kill once per run" or
+; "kill once permanently" behavior, gate the spawn at scene load
+; via RunState.consumed_node_paths (per-run) or
+; GameState.is_boss_dead("sandworm_broodmother") (permanent). The
+; broodmother.gd doesn't currently call mark_boss_dead on death;
+; wire that into _on_died if persistent kill tracking is wanted.
+[node name="SandwormBroodmother" parent="." instance=ExtResource("broodmother_scene")]
+position = Vector2(140, 0)

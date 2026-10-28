@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Quest" format=3]
+
+[ext_resource type="Script" path="res://quests/quest.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = "story_clear_sprekken"
+quest_name = "The Bone Throne"
+description = "A darkness festers in the Sprekken Depths east of Wickbarrow. Something old has crowned itself king of the dead there. Find the dungeon entrance at the end of the eastern forest and defeat the Skeleton King."
+quest_type = 0
+turn_in_npc = "Notice Board"
+target_boss = "Skeleton King"
+target_count = 1
+reward_souls = 100

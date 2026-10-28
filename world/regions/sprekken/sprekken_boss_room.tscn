@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://dqe1fljjcij8f"]
+
+[ext_resource type="Script" uid="uid://bxas2hp1afggk" path="res://items/item.gd" id="4_51kk4"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skeleton_bone_fan.tres" id="5_51n76"]
+[ext_resource type="PackedScene" uid="uid://cno72k7gxeuj3" path="res://enemies/skeleton_king.tscn" id="boss_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://world/passage.tscn" id="passage_scene"]
+[ext_resource type="Script" path="res://world/boss_room_gate.gd" id="gate_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -800.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -540.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -540.0
+
+
+[node name="SprekkenBossRoom" type="Node2D" unique_id=8000385]
+script = ExtResource("region_script")
+region_id = "sprekken_boss_room"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=8000386]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.18, 0.16, 0.22, 1)
+
+[node name="Path" type="ColorRect" parent="." unique_id=1916791663]
+offset_left = -30.0
+offset_top = 335.0
+offset_right = 30.0
+offset_bottom = 895.0
+mouse_filter = 2
+color = Color(0.28, 0.24, 0.36, 0.4)
+
+[node name="Arena" type="ColorRect" parent="." unique_id=8000387]
+offset_left = -500.0
+offset_top = -400.0
+offset_right = 500.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.24, 0.2, 0.3, 1)
+
+[node name="ArenaRing" type="ColorRect" parent="." unique_id=8000388]
+offset_left = -380.0
+offset_top = -280.0
+offset_right = 380.0
+offset_bottom = 280.0
+mouse_filter = 2
+color = Color(0.28, 0.24, 0.36, 0.4)
+
+[node name="Pillar1" type="ColorRect" parent="." unique_id=8000389]
+offset_left = -350.0
+offset_top = -250.0
+offset_right = -320.0
+offset_bottom = -220.0
+mouse_filter = 2
+color = Color(0.35, 0.3, 0.4, 1)
+
+[node name="Pillar2" type="ColorRect" parent="." unique_id=8000390]
+offset_left = 320.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = -220.0
+mouse_filter = 2
+color = Color(0.35, 0.3, 0.4, 1)
+
+[node name="Pillar3" type="ColorRect" parent="." unique_id=8000391]
+offset_left = -350.0
+offset_top = 220.0
+offset_right = -320.0
+offset_bottom = 250.0
+mouse_filter = 2
+color = Color(0.35, 0.3, 0.4, 1)
+
+[node name="Pillar4" type="ColorRect" parent="." unique_id=8000392]
+offset_left = 320.0
+offset_top = 220.0
+offset_right = 350.0
+offset_bottom = 250.0
+mouse_filter = 2
+color = Color(0.35, 0.3, 0.4, 1)
+
+[node name="Throne" type="ColorRect" parent="." unique_id=8000393]
+offset_left = -30.0
+offset_top = -380.0
+offset_right = 30.0
+offset_bottom = -340.0
+mouse_filter = 2
+color = Color(0.5, 0.35, 0.55, 1)
+
+[node name="BossRoomGate" type="Node2D" parent="."]
+script = ExtResource("gate_script")
+boss_id = "skeleton_king"
+target_scene = "res://world/regions/dungeon_entrance_sprekken.tscn"
+passage_color = Color(0.85, 0.85, 0.95, 1.0)
+prompt_text = "Press [E] to leave the crypt"
+
+[node name="Player" parent="." unique_id=8000394 instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=8000395]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="SkeletonKing" parent="." unique_id=259814409 instance=ExtResource("boss_scene")]
+position = Vector2(2, -98)
+boss_id = "skeleton_king"
+recover_duration = 1.0
+min_engage_range = 0.0
+stagger_decay_rate = 0.1
+item_drops = Array[ExtResource("4_51kk4")]([ExtResource("5_51n76")])
+
+[node name="default" type="Marker2D" parent="." unique_id=8000396]
+position = Vector2(1, 765)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=8000397]
+position = Vector2(1, 774)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=837721987]
+position = Vector2(478, 757)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=53098616]
+position = Vector2(-471, 759)
+

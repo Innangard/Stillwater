@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://pqyqvapxsark"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_toss.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_b"]
+[ext_resource type="Resource" path="res://items/instances/living_fire.tres" id="item_fire"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[node name="WestmoorPath1" type="Node2D" unique_id=1379826519]
+script = ExtResource("region_script")
+region_id = "westmoor_path_1"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1909018047]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.36, 1)
+
+[node name="Track" type="ColorRect" parent="." unique_id=1387596261]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="Stone1" type="ColorRect" parent="." unique_id=1123414715]
+offset_left = -360.0
+offset_top = -150.0
+offset_right = -322.0
+offset_bottom = -86.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Stone2" type="ColorRect" parent="." unique_id=1016246676]
+offset_left = 300.0
+offset_top = 70.0
+offset_right = 344.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Heath1" type="ColorRect" parent="." unique_id=2096347282]
+offset_left = -200.0
+offset_top = 120.0
+offset_right = -60.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.40, 0.44, 0.34, 0.7)
+
+[node name="Lichen1" type="ColorRect" parent="." unique_id=1138437333]
+offset_left = 160.0
+offset_top = -180.0
+offset_right = 260.0
+offset_bottom = -120.0
+mouse_filter = 2
+color = Color(0.55, 0.58, 0.46, 0.6)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1355605955]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1210176126]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1815654196]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1272236993]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -660, -60, -660, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1311303842]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 660, -60, 660, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=1619663229]
+position = Vector2(0, 0)
+
+[node name="from_overlook" type="Marker2D" parent="." unique_id=1001704347]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1030351078]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=2077065529]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=1759263217 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="Skeleton1" parent="." unique_id=1419428403 instance=ExtResource("enemy_a")]
+position = Vector2(-120, -140)
+
+[node name="Goblin1" parent="." unique_id=1119330467 instance=ExtResource("enemy_b")]
+position = Vector2(-240, 150)
+
+[node name="ReagentFire" parent="." unique_id=1294579392 instance=ExtResource("pickup_scene")]
+position = Vector2(60, 200)
+item = ExtResource("item_fire")
+persistent_per_run = true
+
+[node name="ExitEast" parent="." unique_id=1308119867 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "from_west"
+label = "→  to the Overlook"
+tint = Color(0.40, 0.42, 0.34, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=1988991465 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/westmoor_path_2.tscn"
+target_spawn_point = "from_east"
+label = "←  the standing stones"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunestoneItem" load_steps=2 format=3 uid="uid://ae80f9bc181b"]
+
+[ext_resource type="Script" path="res://items/runestone_item.gd" id="script_1"]
+
+[resource]
+script = ExtResource("script_1")
+rune_symbol = "ᛇ"
+rune_stat = 12
+bonus_value = 1.0
+conduit = 0
+drop_weight = 10.0
+item_name = "Eihwaz Slate"
+description = "+1 Dash Charges. The yew bends before it springs."
+category = "runestone"
+max_stack = 99
+placeholder_color = Color(0.55, 0.55, 0.58, 1)

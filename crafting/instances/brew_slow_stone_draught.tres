@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="recipe_script"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/stone_draught.tres" id="ing_0"]
+[ext_resource type="Resource" path="res://items/instances/gravewax.tres" id="ing_1"]
+[ext_resource type="Resource" path="res://items/instances/stone_draught_lasting.tres" id="output"]
+
+[sub_resource type="Resource" id="iq_0"]
+script = ExtResource("iq_script")
+item = ExtResource("ing_0")
+quantity = 1
+
+[sub_resource type="Resource" id="iq_1"]
+script = ExtResource("iq_script")
+item = ExtResource("ing_1")
+quantity = 1
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Slow-Stone Draught"
+description = "Longer stone."
+currency_cost = 12
+ingredients = [SubResource("iq_0"), SubResource("iq_1")]
+output_item = ExtResource("output")

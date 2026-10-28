@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/drift_archer_bow.tres" id="weapon"]
+
+[node name="DriftArcher" instance=ExtResource("base_enemy")]
+enemy_name = "Drift Archer"
+sprite_name = "enemy_drift_archer"
+body_tint = Color(0.50, 0.48, 0.40, 1.0)
+weapon_icon_color = Color(0.70, 0.65, 0.50, 1.0)
+body_radius = 14.0
+body_shape = 0
+max_health = 42.0
+max_speed = 65.0
+acceleration = 500.0
+base_detection = 120.0
+noise_sensitivity = 3.0
+smell_sensitivity = 5.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.5
+min_engage_range = 60.0
+currency_drop_min = 7
+currency_drop_max = 12
+item_drop_chance = 0.33

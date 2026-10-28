@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://deuw0kpnhqgb3"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Fortune-teller Svala"
+text = "Welcome, walker. The great runeloom is behind the gate, with most of the city — sealed by the king's masons. Out here I work with what I have. Stone. Bone. Gold."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Fortune-teller Svala"
+text = "I learned from my mother, who learned from her mother before her, who learned — they say — from a Norn herself, in the old days when the Norns still walked openly. The lineage runs long but I am only a soul, walker. I do not weave fate. I cut runes that work because the old shapes still hold."
+
+[sub_resource type="Resource" id="line3"]
+script = ExtResource("2")
+speaker = "Fortune-teller Svala"
+text = "Bring me bone or gold and I will cut you something that bites. And mind the woods just past the city — the wolf-mother in the trees has been louder these last seasons. People say she has pups. People say a lot of things."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2"), SubResource("line3")])

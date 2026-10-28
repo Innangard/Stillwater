@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://cb46528019bf"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/runeslate_tablet.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Runeslate Tablet"
+description = "A palm-sized tile of dense grey stone, quarried from the old runeworks. Holds ink and intention equally well. Reagent."
+currency_cost = 15
+output_item = ExtResource("2")

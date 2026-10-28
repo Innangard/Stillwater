@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://df0wcxu07hm1q"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://vpdoehggy1fn" path="res://sprites/Skill_Item icons/Separated Files/fc1006.png" id="1_rwmpl"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.4
+
+[resource]
+script = ExtResource("1")
+swing_range = 38.0
+arc_radius = 34.0
+swing_duration = 0.18
+knockback = 240.0
+weapon_name = "Hearthbrand"
+base_damage = 14.0
+element = 1
+cooldown = 0.45
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+description = "A blade quenched in the forge of a temple long since gone cold. Embers cling to it still."
+icon = ExtResource("1_rwmpl")

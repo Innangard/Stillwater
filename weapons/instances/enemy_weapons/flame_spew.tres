@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="PersistentHitboxWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/persistent_hitbox_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.35
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Flame Spew"
+description = "A choked rasp of fire that hangs in the air for a long, long second."
+base_damage = 3.0
+element = 1
+cooldown = 3.0
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+shape_kind = 0
+length = 130.0
+cone_angle_degrees = 60.0
+rect_width = 40.0
+duration = 2.0
+tick_interval = 0.20
+knockback = 50.0

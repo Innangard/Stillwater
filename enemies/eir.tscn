@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/eir.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/eir_spear_volley.tres" id="w_volley"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/eir_swoop.tres" id="w_swoop"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/eir_spear_flurry.tres" id="w_flurry"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/eir_whirlwind.tres" id="w_storm"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/eir_soul_spear.tres" id="w_soul"]
+
+[node name="Eir" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Eir"
+body_tint = Color(0.48, 0.42, 0.55, 1.0)
+weapon_icon_color = Color(0.70, 0.62, 0.78, 1.0)
+body_radius = 20.0
+body_shape = 0
+max_health = 2100.0
+max_speed = 90.0
+acceleration = 550.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_volley")
+wind_up_duration = 0.60
+recover_duration = 0.55
+min_engage_range = 0.0
+boss_display_name = "Eir"
+boss_id = "eir"
+weapon_volley = ExtResource("w_volley")
+weapon_swoop = ExtResource("w_swoop")
+weapon_flurry = ExtResource("w_flurry")
+weapon_storm = ExtResource("w_storm")
+weapon_soul = ExtResource("w_soul")
+phase2_threshold = 0.35
+phase2_speed = 100.0
+wind_up_volley = 0.60
+wind_up_swoop = 0.50
+wind_up_flurry = 0.40
+wind_up_storm = 0.75
+wind_up_soul = 0.90
+recover_volley = 0.55
+recover_swoop = 0.50
+recover_flurry = 0.45
+recover_storm = 0.70
+recover_soul = 0.85
+currency_drop_min = 80
+currency_drop_max = 130
+item_drop_chance = 1.0
+

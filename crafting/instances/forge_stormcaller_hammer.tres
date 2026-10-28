@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/stormcaller_hammer.tres" id="out_weapon"]
+[ext_resource type="Resource" path="res://items/instances/storm_glass.tres" id="reagent0"]
+[ext_resource type="Resource" path="res://items/instances/sky_iron.tres" id="reagent1"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent0")
+count = 3
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Stormcaller Hammer"
+description = "Cast the head from storm-glass set around a sky-iron core. The hammer hums in the forge before it cools. Hangs it on the wall — it hums there too. Quiet only when struck."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1")])
+output_weapon = ExtResource("out_weapon")
+currency_cost = 115

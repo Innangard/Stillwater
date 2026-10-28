@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Crab Pincer"
+description = "Chitin like worn iron, hinged on a single mean joint."
+base_damage = 13.0
+element = 0
+cooldown = 1.4
+on_hit_effects = []
+swing_range = 30.0
+arc_radius = 30.0
+swing_duration = 0.22
+knockback = 320.0
+user_lunge_distance = 0.0
+swing_visual = 8

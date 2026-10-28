@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/crooked_bow.tres" id="req_weapon"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/cindershot_bow.tres" id="out_weapon"]
+[ext_resource type="Resource" path="res://items/instances/living_fire.tres" id="reagent1"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="reagent2"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent2")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Cindershot Bow"
+description = "Treat the bowstring with living fire. Arrows ignite as they leave."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1")])
+requires_weapon = ExtResource("req_weapon")
+output_weapon = ExtResource("out_weapon")

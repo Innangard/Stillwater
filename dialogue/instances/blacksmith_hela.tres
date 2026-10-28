@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://dlorlhkku5we5"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Hela"
+text = "You bleed wrong. Red. Not seen that in a long while."
+
+[sub_resource type="Resource" id="line_1b"]
+script = ExtResource("2")
+speaker = "Hela"
+text = "Sit a moment. Let me look at you. — Yes. The Norns sent you, or one of them did. Don't argue. I knew before you came through the door."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Hela"
+text = "The forge still listens, even if the iron has forgotten what it was. Bring me reagents — ash, bile, frost-thread, whatever the king's quiet wars have left lying about — and I'll show the steel a thing it used to know."
+
+[sub_resource type="Resource" id="line_2b"]
+script = ExtResource("2")
+speaker = "Hela"
+text = "He was a good man once. I will not say his name in my own forge. But I will tell you this, since you are the one walking toward him: a piece of his silk came down the south road last winter, caught on a thorn. There were scales in it. Small ones, the colour of wet iron. Whatever you fight at the end of this — it will not be the man who sat down on that throne."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Hela"
+text = "Stand at my anvil there. The work knows what to do. You only have to want it."
+
+[sub_resource type="Resource" id="line_4"]
+script = ExtResource("2")
+text = "Hela returns to her hammer. The strikes ring out, slow and unhurried — the rhythm of a woman who has been doing this for longer than she can remember."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_1b"), SubResource("line_2"), SubResource("line_2b"), SubResource("line_3"), SubResource("line_4")])

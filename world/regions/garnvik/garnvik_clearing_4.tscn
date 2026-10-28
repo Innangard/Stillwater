@@ -1,0 +1,140 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://enemies/kobold_blue.tscn" id="enemy_kobold"]
+
+[node name="GarnvikClearing4" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "garnvik_clearing_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000
+offset_top = -2000
+offset_right = 2000
+offset_bottom = 2000
+mouse_filter = 2
+color = Color(0.15, 0.19, 0.23, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -575
+offset_top = -30
+offset_right = 0
+offset_bottom = 30
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.5)
+
+[node name="Tidepool0" type="ColorRect" parent="."]
+offset_left = -393
+offset_top = -323
+offset_right = -270
+offset_bottom = -281
+mouse_filter = 2
+color = Color(0.28, 0.44, 0.54, 0.55)
+
+[node name="Kelpline1" type="ColorRect" parent="."]
+offset_left = -410
+offset_top = 50
+offset_right = -272
+offset_bottom = 64
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.9)
+
+[node name="Ice2" type="ColorRect" parent="."]
+offset_left = -112
+offset_top = -392
+offset_right = -60
+offset_bottom = -316
+mouse_filter = 2
+color = Color(0.70, 0.80, 0.88, 0.35)
+
+[node name="Kelpline3" type="ColorRect" parent="."]
+offset_left = -202
+offset_top = -247
+offset_right = -55
+offset_bottom = -228
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.9)
+
+[node name="Netshred4" type="ColorRect" parent="."]
+offset_left = -3
+offset_top = 324
+offset_right = 31
+offset_bottom = 400
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.4)
+
+[node name="Netshred5" type="ColorRect" parent="."]
+offset_left = 250
+offset_top = -104
+offset_right = 285
+offset_bottom = -52
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.4)
+
+[node name="Ice6" type="ColorRect" parent="."]
+offset_left = -138
+offset_top = 301
+offset_right = -16
+offset_bottom = 380
+mouse_filter = 2
+color = Color(0.70, 0.80, 0.88, 0.35)
+
+[node name="Kelpline7" type="ColorRect" parent="."]
+offset_left = -158
+offset_top = -229
+offset_right = -81
+offset_bottom = -217
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.9)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallNorth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, -540, 520, -540, 520, -660, -520, -660)
+
+[node name="WallSouth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, 560, 520, 560, 520, 680, -520, 680)
+
+[node name="WallEast" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(480, -580, 480, 600, 600, 600, 600, -580)
+
+[node name="WallWest" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-480, -580, -480, -30, -575, -30, -575, 30, -480, 30, -480, 600, -600, 600, -600, -580)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-452, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_kobold")]
+position = Vector2(-135, -152)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_kobold")]
+position = Vector2(185, -348)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-568, 0)
+target_scene = "res://world/regions/dungeon_entrance_garnvik.tscn"
+target_spawn_point = "default"
+label = "←  along the shoals"
+tint = Color(0.35, 0.50, 0.58, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(-40, 0)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(40, 0)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(0, -30)

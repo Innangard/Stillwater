@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/cinder_sovereign.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/sovereign_pyre.tres" id="w_pyre"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/sovereign_cinder_pod.tres" id="w_pod"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/sun_lance.tres" id="w_beam"]
+[ext_resource type="PackedScene" path="res://enemies/ember_spear_summoned.tscn" id="minion"]
+
+[node name="CinderSovereign" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Cinder Sovereign"
+sprite_name = "boss_cinder_sovereign"
+body_tint = Color(0.60, 0.22, 0.18, 1.0)
+weapon_icon_color = Color(1.00, 0.55, 0.10, 1.0)
+body_radius = 22.0
+body_shape = 7
+max_health = 280.0
+max_speed = 95.0
+acceleration = 620.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_pyre")
+wind_up_duration = 0.85
+recover_duration = 0.75
+min_engage_range = 130.0
+currency_drop_min = 35
+currency_drop_max = 55
+item_drop_chance = 1.0
+boss_display_name = "Cinder Sovereign"
+weapon_flamethrower = ExtResource("w_pyre")
+weapon_pod = ExtResource("w_pod")
+weapon_beam = ExtResource("w_beam")
+minion_scene = ExtResource("minion")
+minion_spawn_offset = 60.0
+max_minions_in_room = 2
+phase2_threshold = 0.40
+phase2_wind_up = 0.50
+recover_flamethrower = 2.6
+recover_pod = 0.75
+recover_summon = 0.50
+recover_beam = 2.1
+wind_up_summon = 0.60

@@ -1,0 +1,84 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/bark_troll.tscn" id="enemy_bark_troll"]
+[ext_resource type="PackedScene" path="res://enemies/salt_revenant.tscn" id="enemy_salt_revenant"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="VatnborgClearing4" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "vatnborg_clearing_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.22, 0.32, 0.35, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.38, 0.44, 0.46, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = -195
+offset_top = 254
+offset_right = -170
+offset_bottom = 284
+mouse_filter = 2
+color = Color(0.34, 0.40, 0.42, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = 129
+offset_top = -274
+offset_right = 162
+offset_bottom = -245
+mouse_filter = 2
+color = Color(0.18, 0.30, 0.34, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -285
+offset_top = -2
+offset_right = -243
+offset_bottom = 39
+mouse_filter = 2
+color = Color(0.18, 0.30, 0.34, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = -151
+offset_top = -23
+offset_right = -116
+offset_bottom = -2
+mouse_filter = 2
+color = Color(0.34, 0.40, 0.42, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_bark_troll")]
+position = Vector2(-149, -115)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_salt_revenant")]
+position = Vector2(151, -126)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -420)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "north"
+tint = Color(0.38, 0.44, 0.46, 0.4)
+zone_size = Vector2(192, 48)

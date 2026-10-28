@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "bare_knuckled"
+display_name = "Bare-Knuckled"
+epithet = "He who started with nothing"
+description = "You arrived weaponless and learned the weight of your own fists. A small edge with anything you swing close."
+flavor_text = "Some men carry blades. Some men ARE the blade."
+category = 0
+unlock_flag = "tutorial_completed"
+unlock_hint = "Earned at the threshold of Ginnungagap — you crossed weaponless and the gods marked you for it."
+damage_dealt_multiplier = 1.08
+weapon_filter = 1
+tier_color = Color(0.80, 0.70, 0.55, 1)

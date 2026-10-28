@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 2.0
+damage_taken_multiplier = 0.92
+noise_weight = 4.0
+melee_damage_multiplier = 1.1
+item_name = "Reaver's Helm"
+description = "An iron skullcap with a half-mask of bog-iron strips that hides the eyes. The smith doesn't make these to a measure; you wear what fits and stop asking after. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.42, 0.42, 0.42, 1)

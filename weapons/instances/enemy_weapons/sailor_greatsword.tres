@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Waterlogged Greatsword"
+description = "A two-hander swollen with brine, swung by arms that no longer tire. Slow as the tide and about as arguable."
+base_damage = 14.0
+element = 0
+cooldown = 1.1
+on_hit_effects = []
+swing_range = 34.0
+arc_radius = 30.0
+swing_duration = 0.20
+knockback = 300.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+swing_visual = 6

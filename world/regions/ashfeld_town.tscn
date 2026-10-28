@@ -1,0 +1,219 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_type"]
+[ext_resource type="Resource" path="res://dialogue/instances/blacksmith_brynjar.tres" id="dlg_brynjar"]
+[ext_resource type="Resource" path="res://dialogue/instances/merchant_astrid.tres" id="dlg_astrid"]
+[ext_resource type="Resource" path="res://dialogue/instances/norn_ashfeld.tres" id="dlg_hild"]
+[ext_resource type="Resource" path="res://dialogue/instances/ashwalker_dag.tres" id="dlg_dag"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="npc_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/quest_board.tscn" id="qb_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://npcs/townsperson.tscn" id="tp_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -500.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -900.0
+
+[sub_resource type="RectangleShape2D" id="bldg_smeltery"]
+size = Vector2(200, 100)
+
+[sub_resource type="RectangleShape2D" id="bldg_depot"]
+size = Vector2(140, 80)
+
+[sub_resource type="RectangleShape2D" id="bldg_hut1"]
+size = Vector2(110, 70)
+
+[sub_resource type="RectangleShape2D" id="bldg_hut2"]
+size = Vector2(100, 70)
+
+[node name="AshfeldTown" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "ashfeld_town"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2400.0
+offset_top = -2000.0
+offset_right = 2400.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.28, 1)
+
+[node name="Street" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -36.0
+offset_right = 900.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.48, 0.42, 0.38, 0.50)
+
+[node name="AshDrift" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = 300.0
+offset_right = 900.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.40, 0.35, 0.30, 0.6)
+
+[node name="LavaGlow" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -400.0
+offset_right = 900.0
+offset_bottom = -370.0
+mouse_filter = 2
+color = Color(0.55, 0.25, 0.15, 0.4)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Walltop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="Wallbottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="Wallleft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="Wallright" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="Buildings" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="bldg_smelteryShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-260, -180)
+shape = SubResource("bldg_smeltery")
+
+[node name="bldg_depotShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(60, -180)
+shape = SubResource("bldg_depot")
+
+[node name="bldg_hut1Shape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(300, -180)
+shape = SubResource("bldg_hut1")
+
+[node name="bldg_hut2Shape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-180, 200)
+shape = SubResource("bldg_hut2")
+
+[node name="SmelteryVisual" type="ColorRect" parent="."]
+offset_left = -360
+offset_top = -230
+offset_right = -160
+offset_bottom = -130
+mouse_filter = 2
+color = Color(0.32, 0.25, 0.20, 1)
+
+[node name="DepotVisual" type="ColorRect" parent="."]
+offset_left = -10
+offset_top = -220
+offset_right = 130
+offset_bottom = -140
+mouse_filter = 2
+color = Color(0.34, 0.28, 0.22, 1)
+
+[node name="Hut1Visual" type="ColorRect" parent="."]
+offset_left = 245
+offset_top = -215
+offset_right = 355
+offset_bottom = -145
+mouse_filter = 2
+color = Color(0.30, 0.24, 0.20, 1)
+
+[node name="Hut2Visual" type="ColorRect" parent="."]
+offset_left = -230
+offset_top = 165
+offset_right = -130
+offset_bottom = 235
+mouse_filter = 2
+color = Color(0.30, 0.24, 0.20, 1)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-380, 0)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(720, 0)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="BlacksmithBrynjar" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(360, -120)
+npc_name = "Brynjar the Ash-smith"
+dialogue = ExtResource("dlg_brynjar")
+tint = Color(0.50, 0.42, 0.35, 1)
+station_name = "Brynjar's Cinder Forge"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="MerchantAstrid" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(460, 80)
+npc_name = "Merchant Astrid"
+dialogue = ExtResource("dlg_astrid")
+tint = Color(0.48, 0.42, 0.38, 1)
+station_name = "Astrid's Ashen Wares"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="CinderVoiceHild" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-200, 240)
+npc_name = "Cinder-voice Hild"
+dialogue = ExtResource("dlg_hild")
+tint = Color(0.48, 0.38, 0.32, 1)
+station_name = "Hild's Ember Runes"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="AshwalkerDag" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-320, 60)
+npc_name = "Ashwalker Dag"
+dialogue = ExtResource("dlg_dag")
+tint = Color(0.45, 0.40, 0.35, 1)
+
+[node name="QuestBoard" parent="." instance=ExtResource("qb_scene")]
+position = Vector2(180, 120)
+board_name = "AshfeldTown Postings"
+
+[node name="TownspersonNE" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(260, -80)
+tint = Color(0.45, 0.40, 0.38, 1)
+
+[node name="TownspersonE" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(400, 60)
+tint = Color(0.48, 0.42, 0.38, 1)
+
+[node name="TownspersonS" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(80, 220)
+tint = Color(0.42, 0.38, 0.35, 1)
+
+[node name="TownspersonW" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(-200, -60)
+tint = Color(0.45, 0.42, 0.38, 1)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-460, 0)
+target_scene = "res://world/regions/hrimbjarg_altar.tscn"
+target_spawn_point = "from_east"
+label = "\u2190  back through the ash fields"
+tint = Color(0.42, 0.35, 0.30, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(740, 0)
+target_scene = "res://world/regions/kolfjall_altar.tscn"
+target_spawn_point = "from_west"
+label = "\u2192  toward Kolfjall"
+tint = Color(0.48, 0.38, 0.32, 0.4)
+zone_size = Vector2(48, 192)

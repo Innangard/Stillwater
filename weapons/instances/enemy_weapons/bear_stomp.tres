@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="TelegraphedAreaWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/telegraphed_area_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/telegraph.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Bear Stomp"
+description = "A two-pawed slam that travels through the ground itself. The earth gives warning; the bear does not."
+base_damage = 22.0
+element = 0
+cooldown = 1.40
+on_hit_effects = []
+telegraph_scene = ExtResource("2")
+warning_duration = 0.65
+damage_radius = 80.0
+linger_duration = 0.0
+target_picker = 0
+prediction_seconds = 0.45
+caster_offset = Vector2(60, 0)
+max_engage_range = 60.0

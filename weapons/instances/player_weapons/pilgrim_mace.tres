@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://beyhg5k101rwo"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://q4wrqu00rml8" path="res://sprites/Skill_Item icons/Separated Files/fc1477.png" id="1_6bq8u"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2_ujcl0"]
+
+[resource]
+script = ExtResource("1")
+swing_range = 32.0
+arc_radius = 42.0
+swing_duration = 0.22
+knockback = 350.0
+weapon_name = "Pilgrim's Mace"
+base_damage = 16.0
+cooldown = 0.55
+description = "A knotted oak cudgel banded with corroded iron. Slow but punishing — everything in front of you gets hit."
+icon = ExtResource("1_6bq8u")
+swing_visual = 4

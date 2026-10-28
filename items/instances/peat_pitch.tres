@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Peat-Pitch"
+description = "Black resin pressed from cut peat-bricks, cured in a horse-skull jar. Sticks to anything that breathes, including the moor-air itself. Used as setting-pitch in haft-fittings and as wound-paste by the hollow-folk. Reagent."
+category = "reagent"
+placeholder_color = Color(0.18, 0.14, 0.10, 1)

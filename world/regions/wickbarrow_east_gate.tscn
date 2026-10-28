@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bvtcg4ydqfh2d"]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -400.0
+
+[node name="WickbarrowEastGate" type="Node2D" unique_id=8000399]
+script = ExtResource("region_script")
+region_id = "wickbarrow_east_gate"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=8000400]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.3, 0.38, 0.28, 1)
+
+[node name="PathEW" type="ColorRect" parent="." unique_id=8000401]
+offset_left = -600.0
+offset_top = -32.0
+offset_right = 600.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="GatePost1" type="ColorRect" parent="." unique_id=8000402]
+offset_left = 200.0
+offset_top = -80.0
+offset_right = 220.0
+offset_bottom = -40.0
+mouse_filter = 2
+color = Color(0.45, 0.38, 0.3, 1)
+
+[node name="GatePost2" type="ColorRect" parent="." unique_id=8000403]
+offset_left = 200.0
+offset_top = 40.0
+offset_right = 220.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.45, 0.38, 0.3, 1)
+
+[node name="Player" parent="." unique_id=8000404 instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=8000405]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=598998864]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1955077891]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft_Gen" type="CollisionPolygon2D" parent="Walls" unique_id=1283791564]
+build_mode = 1
+polygon = PackedVector2Array(-600, -400, -600, -60, -700, -60, -700, 60, -600, 60, -600, 400, -790, 400, -790, -400)
+
+[node name="WallRight_Gen" type="CollisionPolygon2D" parent="Walls" unique_id=770623609]
+build_mode = 1
+polygon = PackedVector2Array(600, -400, 600, -60, 700, -60, 700, 60, 600, 60, 600, 400, 790, 400, 790, -400)
+
+[node name="default" type="Marker2D" parent="." unique_id=8000406]
+
+[node name="from_village" type="Marker2D" parent="." unique_id=8000407]
+position = Vector2(-400, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=8000408]
+position = Vector2(400, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=8000409]
+position = Vector2(-400, 0)
+
+[node name="ExitWest" parent="." unique_id=8000410 instance=ExtResource("exit_scene")]
+position = Vector2(-500, 0)
+target_scene = "res://world/regions/wickbarrow_village.tscn"
+target_spawn_point = "from_east"
+label = "←  to Wickbarrow"
+tint = Color(0.4, 0.4, 0.34, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitEast" parent="." unique_id=8000411 instance=ExtResource("exit_scene")]
+position = Vector2(500, 0)
+target_scene = "res://world/regions/east_path/east_forest_buffer_1.tscn"
+target_spawn_point = "default"
+label = "→  into the eastern forest"
+tint = Color(0.3, 0.42, 0.28, 0.4)
+zone_size = Vector2(48, 192)

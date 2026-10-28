@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_b"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+
+[ext_resource type="Resource" path="res://items/instances/wraithseed.tres" id="item_wraith"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -360.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -360.0
+
+[node name="PyreRuins" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "pyre_ruins"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0.20, 0.18, 0.14, 1.0)
+mouse_filter = 2
+
+; Foundation stones — pale low rectangles forming an outline of a vanished building.
+[node name="FoundationN" type="ColorRect" parent="."]
+offset_left = -160.0
+offset_top = -180.0
+offset_right = 160.0
+offset_bottom = -160.0
+color = Color(0.45, 0.42, 0.38, 1.0)
+mouse_filter = 2
+
+[node name="FoundationS" type="ColorRect" parent="."]
+offset_left = -160.0
+offset_top = 60.0
+offset_right = 160.0
+offset_bottom = 80.0
+color = Color(0.45, 0.42, 0.38, 1.0)
+mouse_filter = 2
+
+[node name="FoundationE" type="ColorRect" parent="."]
+offset_left = 144.0
+offset_top = -180.0
+offset_right = 160.0
+offset_bottom = 80.0
+color = Color(0.45, 0.42, 0.38, 1.0)
+mouse_filter = 2
+
+[node name="FoundationW" type="ColorRect" parent="."]
+offset_left = -160.0
+offset_top = -180.0
+offset_right = -144.0
+offset_bottom = 80.0
+color = Color(0.45, 0.42, 0.38, 1.0)
+mouse_filter = 2
+
+; A central scorch — the pyre.
+[node name="Pyre" type="ColorRect" parent="."]
+offset_left = -28.0
+offset_top = -52.0
+offset_right = 28.0
+offset_bottom = 4.0
+color = Color(0.10, 0.08, 0.06, 1.0)
+mouse_filter = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, -540, -60, -540, -60, -640, 60, -640, 60, -540, 360, -540, 360, -730, -360, -730)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, 540, -60, 540, -60, 640, 60, 640, 60, 540, 360, 540, 360, 730, -360, 730)
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 220)
+
+[node name="from_blackpine" type="Marker2D" parent="."]
+position = Vector2(0, 460)
+
+[node name="from_corpse" type="Marker2D" parent="."]
+position = Vector2(0, -460)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(0, 220)
+
+[node name="Lurker1" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(-260, -260)
+
+[node name="Lurker2" parent="." instance=ExtResource("enemy_b")]
+position = Vector2(260, -260)
+
+[node name="Lurker3" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(0, -340)
+
+[node name="ReagentWraith" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(0, -40)
+item = ExtResource("item_wraith")
+persistent_per_run = true
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 500)
+target_scene = "res://world/regions/blackpine_hollow.tscn"
+target_spawn_point = "from_pyre"
+label = "↓  to Blackpine Hollow"
+tint = Color(0.14, 0.20, 0.16, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -500)
+target_scene = "res://world/regions/corpse_clearing.tscn"
+target_spawn_point = "from_pyre"
+label = "↑  to the Corpse Clearing"
+tint = Color(0.32, 0.30, 0.22, 0.4)
+zone_size = Vector2(192, 48)

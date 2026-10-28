@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://c0s6el70iijvp"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_a"]
+[ext_resource type="Resource" uid="uid://cfa38gebjq1g6" path="res://weapons/instances/player_weapons/thunderstrike_spear.tres" id="loot_weapon"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="item_phial"]
+[ext_resource type="Resource" path="res://items/instances/runeslate_tablet.tres" id="item_slate"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -360
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -360
+
+[node name="WestmoorBeacon" type="Node2D" unique_id=1962303404]
+script = ExtResource("region_script")
+region_id = "westmoor_beacon"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1201525239]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.30, 0.34, 0.38, 1)
+
+[node name="DistantSky" type="ColorRect" parent="." unique_id=1566776791]
+offset_left = -360.0
+offset_top = -360.0
+offset_right = -280.0
+offset_bottom = 300.0
+mouse_filter = 2
+color = Color(0.46, 0.52, 0.56, 1)
+
+[node name="Plateau" type="ColorRect" parent="." unique_id=1133496651]
+offset_left = -260.0
+offset_top = -150.0
+offset_right = 180.0
+offset_bottom = 170.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="BeaconBase" type="ColorRect" parent="." unique_id=1080367408]
+offset_left = -40.0
+offset_top = -60.0
+offset_right = 40.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="BeaconStone" type="ColorRect" parent="." unique_id=1350301069]
+offset_left = -28.0
+offset_top = -48.0
+offset_right = 28.0
+offset_bottom = 48.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="BeaconFlame" type="ColorRect" parent="." unique_id=1519518551]
+offset_left = -16.0
+offset_top = -92.0
+offset_right = 16.0
+offset_bottom = -52.0
+mouse_filter = 2
+color = Color(0.85, 0.55, 0.20, 1)
+
+[node name="Cairn1" type="ColorRect" parent="." unique_id=1857586777]
+offset_left = 110.0
+offset_top = 90.0
+offset_right = 150.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="Cairn2" type="ColorRect" parent="." unique_id=1693898435]
+offset_left = -200.0
+offset_top = 80.0
+offset_right = -160.0
+offset_bottom = 140.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1768456502]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1618407116]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=2011350751]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1307585417]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1698489844]
+build_mode = 1
+polygon = PackedVector2Array(360, -360, 360, -60, 460, -60, 460, 60, 360, 60, 360, 300, 550, 300, 550, -360)
+
+[node name="default" type="Marker2D" parent="." unique_id=1899502321]
+position = Vector2(0, 200)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1464104823]
+position = Vector2(280, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1138971628]
+position = Vector2(280, 0)
+
+[node name="Player" parent="." unique_id=1252620856 instance=ExtResource("player_scene")]
+position = Vector2(280, 0)
+
+[node name="Skeleton1" parent="." unique_id=1861770856 instance=ExtResource("enemy_a")]
+position = Vector2(-120, -100)
+
+[node name="ThunderstrikeSpearPickup" parent="." unique_id=1919655649 instance=ExtResource("pickup_scene")]
+position = Vector2(0, 120)
+weapon = ExtResource("loot_weapon")
+persistent_per_run = true
+
+[node name="SoulPhialPickup" parent="." unique_id=1216689335 instance=ExtResource("pickup_scene")]
+position = Vector2(-150, 40)
+item = ExtResource("item_phial")
+persistent_per_run = true
+
+[node name="RuneslatePickup" parent="." unique_id=1786981332 instance=ExtResource("pickup_scene")]
+position = Vector2(120, -20)
+item = ExtResource("item_slate")
+persistent_per_run = true
+
+[node name="ExitEast" parent="." unique_id=1743328016 instance=ExtResource("exit_scene")]
+position = Vector2(320, 0)
+target_scene = "res://world/regions/westmoor_path_3.tscn"
+target_spawn_point = "from_west"
+label = "→  back down the road"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+

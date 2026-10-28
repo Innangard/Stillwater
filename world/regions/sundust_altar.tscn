@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://sdaltar00001"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://dialogue/altar_carving.tscn" id="carving_scene"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1_pool.tres" id="monologue_pool"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -360
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -360
+
+[node name="SundustAltar" type="Node2D" unique_id=1400000001]
+script = ExtResource("region_script")
+region_id = "sundust_altar"
+player_scene = ExtResource("player_scene")
+
+; Desert palette — same warm sand as eastreach so the visual continuity
+; tells the player "you're deeper in the same biome", not "you've
+; crossed into something new". The dryness comes from the decor
+; (sandstone obelisks, cracked earth, sun-bleached bone) rather than
+; a palette shift. This is intentional — the climb NE is into THE
+; SAME desert, only farther.
+[node name="Background" type="ColorRect" parent="." unique_id=1400000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1400000003]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.72, 0.62, 0.42, 1)
+
+; Four sandstone obelisks at the cardinal points. Distinct silhouette
+; from the other three altars:
+;   Westmoor — slate slabs + flame triangle
+;   Eastreach — bone-pale cairns + sun disc
+;   Wickbarrow — wooden totem posts + sprouting branch
+;   Sundust — narrow sandstone obelisks + scorched glyph (below)
+; Tall narrow rectangles read as "ancient markers carved by erosion"
+; — a fourth visual vocabulary players can identify at a glance.
+[node name="ObeliskN" type="ColorRect" parent="." unique_id=1400000004]
+offset_left = -14.0
+offset_top = -210.0
+offset_right = 14.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="ObeliskS" type="ColorRect" parent="." unique_id=1400000005]
+offset_left = -14.0
+offset_top = 110.0
+offset_right = 14.0
+offset_bottom = 210.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="ObeliskE" type="ColorRect" parent="." unique_id=1400000006]
+offset_left = 180.0
+offset_top = -16.0
+offset_right = 280.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="ObeliskW" type="ColorRect" parent="." unique_id=1400000007]
+offset_left = -280.0
+offset_top = -16.0
+offset_right = -180.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+; Capstones on the N/S obelisks — small darker squares evoking
+; weathered carvings at the tip.
+[node name="CapN" type="ColorRect" parent="." unique_id=1400000008]
+offset_left = -20.0
+offset_top = -224.0
+offset_right = 20.0
+offset_bottom = -204.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+[node name="CapS" type="ColorRect" parent="." unique_id=1400000009]
+offset_left = -20.0
+offset_top = 204.0
+offset_right = 20.0
+offset_bottom = 224.0
+mouse_filter = 2
+color = Color(0.50, 0.40, 0.28, 1)
+
+; Central altar slab + scorched sun-glyph above it. The glyph is the
+; signature visual — a stylized solar disc rendered as a black-on-tan
+; offering, evoking the desert sun.
+[node name="AltarBase" type="ColorRect" parent="." unique_id=1400000010]
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.50, 0.42, 0.30, 1)
+
+[node name="AltarStone" type="ColorRect" parent="." unique_id=1400000011]
+offset_left = -88.0
+offset_top = -32.0
+offset_right = 88.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.78, 0.66, 0.46, 1)
+
+[node name="AltarBasin" type="ColorRect" parent="." unique_id=1400000012]
+offset_left = -44.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.32, 0.26, 0.18, 1)
+
+; Scorched sun-glyph: dark disc above the altar with two narrow rays.
+; Reads as "sun mark burned into the air" at small scale on the map's
+; altar icon and at full scale in-scene.
+[node name="GlyphDisc" type="ColorRect" parent="." unique_id=1400000013]
+offset_left = -26.0
+offset_top = -90.0
+offset_right = 26.0
+offset_bottom = -50.0
+mouse_filter = 2
+color = Color(0.18, 0.12, 0.08, 1)
+
+[node name="GlyphRayL" type="ColorRect" parent="." unique_id=1400000014]
+offset_left = -64.0
+offset_top = -76.0
+offset_right = -32.0
+offset_bottom = -64.0
+mouse_filter = 2
+color = Color(0.30, 0.22, 0.14, 1)
+
+[node name="GlyphRayR" type="ColorRect" parent="." unique_id=1400000015]
+offset_left = 32.0
+offset_top = -76.0
+offset_right = 64.0
+offset_bottom = -64.0
+mouse_filter = 2
+color = Color(0.30, 0.22, 0.14, 1)
+
+; Cracked-earth fissures radiating from the altar — adds a "site of
+; ritual heat" feel without resorting to fire imagery (Westmoor owns
+; the flame). Each fissure is a thin dark rectangle at a diagonal
+; offset, none aligned with cardinal directions so they don't block
+; sightlines from exits.
+[node name="FissureNW" type="ColorRect" parent="." unique_id=1400000016]
+offset_left = -260.0
+offset_top = -150.0
+offset_right = -160.0
+offset_bottom = -130.0
+mouse_filter = 2
+color = Color(0.38, 0.32, 0.22, 1)
+
+[node name="FissureNE" type="ColorRect" parent="." unique_id=1400000017]
+offset_left = 160.0
+offset_top = -140.0
+offset_right = 260.0
+offset_bottom = -120.0
+mouse_filter = 2
+color = Color(0.38, 0.32, 0.22, 1)
+
+[node name="FissureSW" type="ColorRect" parent="." unique_id=1400000018]
+offset_left = -240.0
+offset_top = 130.0
+offset_right = -150.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0.38, 0.32, 0.22, 1)
+
+[node name="FissureSE" type="ColorRect" parent="." unique_id=1400000019]
+offset_left = 150.0
+offset_top = 140.0
+offset_right = 240.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.38, 0.32, 0.22, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1400000020]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1400000021]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1400000022]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1400000023]
+build_mode = 1
+polygon = PackedVector2Array(-400, -360, -400, -60, -500, -60, -500, 60, -400, 60, -400, 360, -590, 360, -590, -360)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1400000024]
+build_mode = 1
+polygon = PackedVector2Array(400, -360, 400, -60, 500, -60, 500, 60, 400, 60, 400, 360, 590, 360, 590, -360)
+
+; Spawn markers — one per cardinal direction. The sundust chain
+; approaches from the south (chain walks NE from Eastreach altar, so
+; the last buffer's forward exit is whichever cardinal the chain
+; final-stretches in — south is most likely given the NE diagonal
+; ending at this altar). _try_chain rewires whichever exit corresponds
+; to the chain's approach direction; the other three are static
+; fallbacks (set below) routing back to the altar's expected approach.
+[node name="default" type="Marker2D" parent="." unique_id=1400000025]
+position = Vector2(0, 240)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1400000026]
+position = Vector2(0, -240)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1400000027]
+position = Vector2(0, 240)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1400000028]
+position = Vector2(340, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1400000029]
+position = Vector2(-340, 0)
+
+[node name="Player" parent="." unique_id=1400000030 instance=ExtResource("player_scene")]
+position = Vector2(0, 240)
+
+; NO enemies, NO pickups. Per user request: content for this entire
+; area (path rooms + altar) will be authored in a future pass. The
+; altar exists as a structural endpoint anchoring the chain on the
+; world map and giving the player a clear "you've reached the
+; destination" room. Capstone loot + guardian fight slot in here
+; later.
+
+; Exits — static fallback targets all point at eastreach_altar.tscn.
+; The runtime override (_try_chain on sundust_chain end-of-chain)
+; will rewire whichever exit the chain approached from to point at
+; the last sundust buffer instead. The other three exits keep these
+; static targets, ensuring the player always has a way back even if
+; something unexpected happens to the chain.
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(360, 0)
+target_scene = "res://world/regions/dungeon_entrance_deep_desert.tscn"
+target_spawn_point = "default"
+label = "→  into the deep desert"
+tint = Color(0.55, 0.42, 0.28, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-360, 0)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "←  back the way you came"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="AltarCarving" parent="." unique_id=1499999000 instance=ExtResource("carving_scene")]
+position = Vector2(0, -36)
+pool = ExtResource("monologue_pool")
+carving_name = "Obelisk Fragment"
+carving_id = "sundust_main"
+tint = Color(0.6, 0.52, 0.4, 1)

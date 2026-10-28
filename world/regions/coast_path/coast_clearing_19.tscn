@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://gend767c6e4f49e"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[node name="Node2D" type="Node2D" unique_id=20001431]
+script = ExtResource("region_script")
+region_id = "coast_clearing_19"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20001432]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 1)
+
+[node name="Track_south" type="ColorRect" parent="." unique_id=20001433]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20001434]
+offset_left = 222.0
+offset_top = -169.0
+offset_right = 242.0
+offset_bottom = -151.0
+mouse_filter = 2
+color = Color(0.38, 0.46, 0.38, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20001435]
+offset_left = -177.0
+offset_top = -46.0
+offset_right = -103.0
+offset_bottom = 26.0
+mouse_filter = 2
+color = Color(0.50, 0.55, 0.48, 0.7)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20001436]
+offset_left = -168.0
+offset_top = 114.0
+offset_right = -88.0
+offset_bottom = 146.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="." unique_id=20001437]
+offset_left = 28.0
+offset_top = 116.0
+offset_right = 82.0
+offset_bottom = 150.0
+mouse_filter = 2
+color = Color(0.38, 0.46, 0.38, 0.6)
+
+[node name="Decor4" type="ColorRect" parent="." unique_id=20001438]
+offset_left = 96.0
+offset_top = 106.0
+offset_right = 148.0
+offset_bottom = 164.0
+mouse_filter = 2
+color = Color(0.50, 0.55, 0.48, 0.7)
+
+[node name="Decor5" type="ColorRect" parent="." unique_id=20001439]
+offset_left = 198.0
+offset_top = 42.0
+offset_right = 280.0
+offset_bottom = 118.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 0.7)
+
+[node name="RewardMarker" type="ColorRect" parent="." unique_id=20001440]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.85, 0.75, 0.45, 0.7)
+
+[node name="RewardGlow" type="ColorRect" parent="RewardMarker" unique_id=20001441]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(1.0, 0.95, 0.65, 0.3)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20001442]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20001443]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20001444]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, -60, 300, -60, 490, 60, 490, 60, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20001445]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20001446]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20001447]
+position = Vector2(0, 260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=20001448]
+position = Vector2(0, 260)
+
+[node name="Player" parent="." unique_id=20001449 instance=ExtResource("player_scene")]
+position = Vector2(0, 260)
+
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(192, 48)

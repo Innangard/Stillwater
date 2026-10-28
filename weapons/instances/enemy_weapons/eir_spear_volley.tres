@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Spear Volley"
+description = "Eir conjures three spectral spears and hurls them in rapid succession."
+base_damage = 11.0
+element = 6
+cooldown = 2.5
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 500.0
+projectile_lifetime = 1.5
+projectile_count = 3
+spread_degrees = 15.0
+pierce = 0
+knockback = 200.0

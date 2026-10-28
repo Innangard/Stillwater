@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/hobgoblin_longbow.tres" id="weapon"]
+
+[node name="HobgoblinBow" instance=ExtResource("base_enemy")]
+enemy_name = "Hobgoblin Marksman"
+sprite_name = "enemy_hobgoblin"
+body_tint = Color(0.22, 0.36, 0.20, 1.0)
+weapon_icon_color = Color(0.85, 0.80, 0.55, 1.0)
+body_radius = 14.0
+body_shape = 1
+max_health = 45.0
+max_speed = 95.0
+acceleration = 680.0
+base_detection = 130.0
+noise_sensitivity = 6.5
+smell_sensitivity = 3.5
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.45
+min_engage_range = 180.0
+movement_profile = 1
+stagger_threshold = 3.0
+currency_drop_min = 8
+currency_drop_max = 14
+item_drop_chance = 0.42

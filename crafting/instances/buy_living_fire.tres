@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://0aa9b01a239d"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/living_fire.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Living Fire"
+description = "An ember that breathes. It sits in your palm without burning, pulsing with a slow orange heartbeat. Found near pyre sites. Reagent."
+currency_cost = 18
+output_item = ExtResource("2")

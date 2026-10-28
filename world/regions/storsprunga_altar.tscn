@@ -1,0 +1,272 @@
+[gd_scene format=3 uid="uid://baltar4yy4yy9"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_burst.tscn" id="enemy_b"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="item_phial"]
+[ext_resource type="Resource" path="res://items/instances/frost_filament.tres" id="item_frost"]
+[ext_resource type="PackedScene" path="res://dialogue/altar_carving.tscn" id="carving_scene"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1_pool.tres" id="monologue_pool"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -400
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -400
+
+[node name="StorsprungaAltar" type="Node2D" unique_id=1500000001]
+script = ExtResource("region_script")
+region_id = "storsprunga_altar"
+player_scene = ExtResource("player_scene")
+
+; Coast palette — kelp-and-stone. Reads as a sea shrine: cool stone
+; floor under a pale-grey sky, kelp tide-line at the edges. Visually
+; distinct from the four prior altars (Westmoor slate, Eastreach
+; chalk, Wickbarrow forest, Sundust sand) so the player knows
+; immediately which altar they're at. Coast = "the sea kept its dead
+; here and the dead stayed beside the water."
+[node name="Background" type="ColorRect" parent="." unique_id=1500000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.40, 1)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1500000003]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.48, 0.52, 0.56, 1)
+
+; Tide-line bands at top and bottom — kelp-strand colored — give the
+; altar a "low-tide flat" feel without us needing actual animated
+; water. Visual continuity with the coast pool's seaweed-greens.
+[node name="TideLineN" type="ColorRect" parent="." unique_id=1500000004]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = -210.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.30, 0.9)
+
+[node name="TideLineS" type="ColorRect" parent="." unique_id=1500000005]
+offset_left = -300.0
+offset_top = 210.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.30, 0.9)
+
+; Four cairns at the cardinal points — different silhouette from
+; Wickbarrow's wooden totems and Westmoor's slab stones. These read
+; as stacks of beach cobbles, the kind dead sailors raise to mark
+; where the sea spits a body back.
+[node name="CairnN" type="ColorRect" parent="." unique_id=1500000010]
+offset_left = -24.0
+offset_top = -180.0
+offset_right = 24.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.45, 0.45, 0.42, 1)
+
+[node name="CairnNCap" type="ColorRect" parent="." unique_id=1500000011]
+offset_left = -16.0
+offset_top = -200.0
+offset_right = 16.0
+offset_bottom = -180.0
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.52, 1)
+
+[node name="CairnS" type="ColorRect" parent="." unique_id=1500000012]
+offset_left = -24.0
+offset_top = 110.0
+offset_right = 24.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0.45, 0.45, 0.42, 1)
+
+[node name="CairnSCap" type="ColorRect" parent="." unique_id=1500000013]
+offset_left = -16.0
+offset_top = 180.0
+offset_right = 16.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.52, 1)
+
+[node name="CairnE" type="ColorRect" parent="." unique_id=1500000014]
+offset_left = 180.0
+offset_top = -24.0
+offset_right = 240.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.45, 0.45, 0.42, 1)
+
+[node name="CairnECap" type="ColorRect" parent="." unique_id=1500000015]
+offset_left = 220.0
+offset_top = -16.0
+offset_right = 240.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.52, 1)
+
+[node name="CairnW" type="ColorRect" parent="." unique_id=1500000016]
+offset_left = -240.0
+offset_top = -24.0
+offset_right = -180.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.45, 0.45, 0.42, 1)
+
+[node name="CairnWCap" type="ColorRect" parent="." unique_id=1500000017]
+offset_left = -240.0
+offset_top = -16.0
+offset_right = -220.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.52, 1)
+
+; Central altar — a flat slab with a basin that catches rainwater
+; and old salt. Same shape language as the other altars (rectangle +
+; smaller centered rectangle on top) so player reads "this is an
+; altar, same affordances as the others."
+[node name="AltarBase" type="ColorRect" parent="." unique_id=1500000020]
+offset_left = -90.0
+offset_top = -22.0
+offset_right = 90.0
+offset_bottom = 22.0
+mouse_filter = 2
+color = Color(0.38, 0.40, 0.42, 1)
+
+[node name="AltarStone" type="ColorRect" parent="." unique_id=1500000021]
+offset_left = -78.0
+offset_top = -32.0
+offset_right = 78.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.50, 0.52, 0.54, 1)
+
+[node name="AltarBasin" type="ColorRect" parent="." unique_id=1500000022]
+offset_left = -32.0
+offset_top = -22.0
+offset_right = 32.0
+offset_bottom = -8.0
+mouse_filter = 2
+color = Color(0.20, 0.26, 0.32, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1500000050]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1500000051]
+build_mode = 1
+polygon = PackedVector2Array(-400, -360, -60, -360, -60, -460, 60, -460, 60, -360, 400, -360, 400, -550, -400, -550)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=1500000052]
+build_mode = 1
+polygon = PackedVector2Array(-400, 360, -60, 360, -60, 460, 60, 460, 60, 360, 400, 360, 400, 550, -400, 550)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1500000053]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1500000054]
+shape = SubResource("wall_right")
+
+; Spawn markers — players arrive from either south (coast chain back
+; from Storsprunga) or north (the new connector back from Westmoor).
+[node name="default" type="Marker2D" parent="." unique_id=1500000060]
+position = Vector2(0, 260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1500000061]
+position = Vector2(0, 260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1500000062]
+position = Vector2(0, -260)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1500000063]
+position = Vector2(280, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1500000064]
+position = Vector2(-280, 0)
+
+[node name="Player" parent="." unique_id=1500000070 instance=ExtResource("player_scene")]
+position = Vector2(0, 260)
+
+; Guardian — a lone draugr-touched coast-walker. Mid-tier guardian:
+; the coast altar gates the connection between two regions, so its
+; defender should feel like an inflection-point fight rather than a
+; trivial obstacle. One wolf-pack tier enemy + one skeleton, mirroring
+; the wickbarrow guardian density.
+[node name="GuardianWolf" parent="." unique_id=1500000080 instance=ExtResource("enemy_a")]
+position = Vector2(-140, -90)
+
+[node name="GuardianSkeleton" parent="." unique_id=1500000081 instance=ExtResource("enemy_b")]
+position = Vector2(140, -90)
+
+; Loot. Two phials + a frost filament. Modest stash since this altar's
+; main reward is the inter-region connection it provides, not the loot
+; pile — the player gets a real gameplay benefit (skip Nasus to reach
+; Westmoor) which is the actual capstone here.
+[node name="SoulPhialPickupL" parent="." unique_id=1500000090 instance=ExtResource("pickup_scene")]
+position = Vector2(-200, -150)
+item = ExtResource("item_phial")
+persistent_per_run = true
+
+[node name="SoulPhialPickupR" parent="." unique_id=1500000091 instance=ExtResource("pickup_scene")]
+position = Vector2(200, -150)
+item = ExtResource("item_phial")
+persistent_per_run = true
+
+[node name="FrostFilamentPickup" parent="." unique_id=1500000092 instance=ExtResource("pickup_scene")]
+position = Vector2(0, 100)
+item = ExtResource("item_frost")
+persistent_per_run = true
+
+; ExitSouth — back into the coast chain toward Storsprunga. The
+; runtime _try_chain rewrites this to point at the last buffer of the
+; coast chain; static fallback is storsprunga_town directly so the
+; player is never stranded if override logic fails.
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 320)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "from_north"
+label = "↓  back along the coast"
+tint = Color(0.40, 0.46, 0.50, 0.4)
+zone_size = Vector2(192, 48)
+
+; ExitNorth — the new connector toward Westmoor Altar. The runtime
+; _try_chain rewrites this to point at the first buffer of the
+; coast-to-west connector; static fallback is the westmoor altar
+; directly so the connector is at least reachable even on a path
+; manager hiccup.
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -320)
+target_scene = "res://world/regions/westmoor_altar.tscn"
+target_spawn_point = "from_south"
+label = "↑  inland to the moor"
+tint = Color(0.42, 0.48, 0.52, 0.4)
+zone_size = Vector2(192, 48)
+
+; ExitEast and ExitWest — unused. Coast region only connects north-
+; south here. Fallback to Storsprunga so a player who somehow steps
+; into them isn't stranded; they just round-trip back to the town
+; below. No label nudge on these — the player should learn from
+; trying them once that they don't lead anywhere new.
+
+; Carving wired to the Act I pool, same as the other four shipped
+; altars. Storsprunga's altar is the fifth carving in the world; future
+; act-2 altars (when the western volcano region ships) should wire to
+; act_2_pool instead.
+[node name="AltarCarving" parent="." unique_id=1599999000 instance=ExtResource("carving_scene")]
+position = Vector2(0, -36)
+pool = ExtResource("monologue_pool")
+carving_name = "Salt-Worn Stone"
+carving_id = "storsprunga_main"
+tint = Color(0.45, 0.45, 0.42, 1)

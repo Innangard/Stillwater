@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "cliff_born"
+display_name = "Cliff-Born"
+epithet = "He who woke at the world's edge"
+description = "Your first steps on the island left footprints in the cliff-grass. The sea wind keeps your stride brisk."
+flavor_text = "The gods set you down where the path begins, and named the wind your kin."
+category = 3
+unlock_flag = "tutorial_completed"
+unlock_hint = "Earned at the threshold of Ginnungagap — you stepped from the void onto stone, and the wind took up with you."
+move_speed_multiplier = 1.08
+tier_color = Color(0.55, 0.70, 0.78, 1)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "berserker_wraith"
+display_name = "Berserker-Wraith"
+epithet = "He who left his body to do the killing"
+description = "You went too deep into the red and left some of yourself there. Your strikes land harder; theirs do too."
+flavor_text = "Your hands don't ask anymore. They just take."
+category = 0
+unlock_flag = "kenning_unlock_berserker_wraith"
+unlock_hint = "Stand bleeding in the snow at the end of a long run, and refuse to fall."
+damage_dealt_multiplier = 1.30
+damage_taken_multiplier = 1.20
+tier_color = Color(0.65, 0.20, 0.25, 1)

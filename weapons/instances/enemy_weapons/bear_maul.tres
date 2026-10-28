@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Bear Maul"
+description = "A claw-stroke from something bigger than you that has decided you are food. The arc is slow. The impact is not."
+base_damage = 18.0
+element = 0
+cooldown = 1.20
+on_hit_effects = []
+swing_range = 36.0
+arc_radius = 40.0
+swing_duration = 0.22
+knockback = 420.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+swing_visual = 8

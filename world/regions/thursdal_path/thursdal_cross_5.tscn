@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://thurcross005"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/orc.tscn" id="enemy_1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1350664752]
+script = ExtResource("region_script")
+region_id = "thursdal_cross_5"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2060150058]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.42, 1)
+
+[node name="TrackE" type="ColorRect" parent="." unique_id=1242296423]
+offset_left = 0.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="TrackN" type="ColorRect" parent="." unique_id=1334816321]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="TrackW" type="ColorRect" parent="." unique_id=1828175894]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 0.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="Stone1" type="ColorRect" parent="." unique_id=1780123157]
+offset_left = -245.5
+offset_top = 72.2
+offset_right = -181.6
+offset_bottom = 124.4
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Stone2" type="ColorRect" parent="." unique_id=1275207660]
+offset_left = 247.1
+offset_top = -103.5
+offset_right = 320.2
+offset_bottom = -55.2
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Stone3" type="ColorRect" parent="." unique_id=2035793583]
+offset_left = 185.0
+offset_top = 47.7
+offset_right = 233.6
+offset_bottom = 100.7
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Stone4" type="ColorRect" parent="." unique_id=1976197502]
+offset_left = -200.4
+offset_top = 68.9
+offset_right = -122.1
+offset_bottom = 138.7
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Lichen1" type="ColorRect" parent="." unique_id=1831253861]
+offset_left = -1.3
+offset_top = 85.4
+offset_right = 132.5
+offset_bottom = 148.2
+mouse_filter = 2
+color = Color(0.62, 0.68, 0.55, 0.6)
+
+[node name="Lichen2" type="ColorRect" parent="." unique_id=1586921315]
+offset_left = 26.2
+offset_top = 124.7
+offset_right = 168.1
+offset_bottom = 183.1
+mouse_filter = 2
+color = Color(0.62, 0.68, 0.55, 0.6)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1012835995]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1258853538]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1399604530]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1817220563]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1984428595]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1346911237]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1331363684]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1580984405]
+position = Vector2(-500, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1329984287]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1225308972]
+position = Vector2(0, 260)
+
+[node name="Player" parent="." unique_id=1255748965 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="ExitEast" parent="." unique_id=1216382192 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "→  along the trail"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." unique_id=1982770394 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "↑  up the trail"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." unique_id=2097106813 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "←  along the trail"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="wolf_0" parent="." unique_id=1398083757 instance=ExtResource("enemy_0")]
+position = Vector2(-150, 22)
+
+[node name="orc_1" parent="." unique_id=1640137234 instance=ExtResource("enemy_1")]
+position = Vector2(12, -160)
+
+[node name="wolf_2" parent="." unique_id=1768860564 instance=ExtResource("enemy_0")]
+position = Vector2(200, -20)

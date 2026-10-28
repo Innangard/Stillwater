@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.80
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Heartcoal Brand"
+description = "A sword forged around a heartcoal at the very base of the blade — burning since the smith dropped it into the quench. The edge stays warm. Cuts come away cauterized, which is mercy. Burns nearly every kill."
+base_damage = 23.0
+element = 1
+cooldown = 0.48
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+swing_range = 38.0
+arc_radius = 32.0
+swing_duration = 0.16
+knockback = 240.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+placeholder_color = Color(0.95, 0.40, 0.15, 1)

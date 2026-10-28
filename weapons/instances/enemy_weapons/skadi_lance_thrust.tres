@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Ice Lance Thrust"
+description = "A straight thrust with a lance of solid ice. It reaches further than any sword."
+base_damage = 18.0
+element = 4
+cooldown = 1.5
+on_hit_effects = []
+swing_range = 80.0
+arc_radius = 20.0
+swing_duration = 0.16
+knockback = 300.0
+user_lunge_distance = 60.0
+swing_visual = 8

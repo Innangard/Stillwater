@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 1.0
+damage_taken_multiplier = 0.93
+noise_weight = 2.0
+ranged_damage_multiplier = 1.12
+item_name = "Marksman's Hood"
+description = "A close hood of waxed canvas with a narrow brim that throws shadow over the eyes. The world steadies through the brim's shadow. The hand follows the eye. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.32, 0.36, 0.30, 1)

@@ -1,0 +1,185 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://enemies/giant_crab.tscn" id="enemy_crab"]
+[ext_resource type="PackedScene" path="res://enemies/drowned_sailor.tscn" id="enemy_sailor"]
+
+[node name="GarnvikCross6" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "garnvik_cross_6"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000
+offset_top = -2000
+offset_right = 2000
+offset_bottom = 2000
+mouse_filter = 2
+color = Color(0.15, 0.19, 0.23, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -30
+offset_top = -635
+offset_right = 30
+offset_bottom = 0
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.5)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = 0
+offset_top = -30
+offset_right = 575
+offset_bottom = 30
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.5)
+
+[node name="Path2" type="ColorRect" parent="."]
+offset_left = -575
+offset_top = -30
+offset_right = 0
+offset_bottom = 30
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.5)
+
+[node name="Kelpline0" type="ColorRect" parent="."]
+offset_left = -265
+offset_top = 381
+offset_right = -190
+offset_bottom = 392
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.9)
+
+[node name="Tidepool1" type="ColorRect" parent="."]
+offset_left = -60
+offset_top = -4
+offset_right = 10
+offset_bottom = 80
+mouse_filter = 2
+color = Color(0.28, 0.44, 0.54, 0.55)
+
+[node name="Sand2" type="ColorRect" parent="."]
+offset_left = 52
+offset_top = 124
+offset_right = 222
+offset_bottom = 217
+mouse_filter = 2
+color = Color(0.52, 0.48, 0.38, 0.55)
+
+[node name="Wreckwood3" type="ColorRect" parent="."]
+offset_left = -306
+offset_top = -49
+offset_right = -256
+offset_bottom = -31
+mouse_filter = 2
+color = Color(0.33, 0.26, 0.19, 1)
+
+[node name="Sand4" type="ColorRect" parent="."]
+offset_left = 71
+offset_top = -370
+offset_right = 183
+offset_bottom = -307
+mouse_filter = 2
+color = Color(0.52, 0.48, 0.38, 0.55)
+
+[node name="Wreckwood5" type="ColorRect" parent="."]
+offset_left = 303
+offset_top = 451
+offset_right = 356
+offset_bottom = 472
+mouse_filter = 2
+color = Color(0.33, 0.26, 0.19, 1)
+
+[node name="Wreckwood6" type="ColorRect" parent="."]
+offset_left = 199
+offset_top = 426
+offset_right = 303
+offset_bottom = 459
+mouse_filter = 2
+color = Color(0.33, 0.26, 0.19, 1)
+
+[node name="Kelpline7" type="ColorRect" parent="."]
+offset_left = 136
+offset_top = 429
+offset_right = 259
+offset_bottom = 449
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.9)
+
+[node name="Wreckwood8" type="ColorRect" parent="."]
+offset_left = -216
+offset_top = -353
+offset_right = -106
+offset_bottom = -320
+mouse_filter = 2
+color = Color(0.33, 0.26, 0.19, 1)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallNorth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, -540, -30, -540, -30, -635, 30, -635, 30, -540, 520, -540, 520, -660, -520, -660)
+
+[node name="WallSouth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, 560, 520, 560, 520, 680, -520, 680)
+
+[node name="WallEast" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(480, -580, 480, -30, 575, -30, 575, 30, 480, 30, 480, 600, 600, 600, 600, -580)
+
+[node name="WallWest" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-480, -580, -480, -30, -575, -30, -575, 30, -480, 30, -480, 600, -600, 600, -600, -580)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -512)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(452, 0)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-452, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_crab")]
+position = Vector2(-213, 307)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_crab")]
+position = Vector2(-30, -87)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_sailor")]
+position = Vector2(-87, 243)
+
+[node name="Enemy3" parent="." instance=ExtResource("enemy_crab")]
+position = Vector2(-236, -187)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -628)
+target_scene = "res://world/regions/dungeon_entrance_garnvik.tscn"
+target_spawn_point = "default"
+label = "↑  along the shoals"
+tint = Color(0.35, 0.50, 0.58, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(568, 0)
+target_scene = "res://world/regions/dungeon_entrance_garnvik.tscn"
+target_spawn_point = "default"
+label = "→  along the shoals"
+tint = Color(0.35, 0.50, 0.58, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-568, 0)
+target_scene = "res://world/regions/dungeon_entrance_garnvik.tscn"
+target_spawn_point = "default"
+label = "←  along the shoals"
+tint = Color(0.35, 0.50, 0.58, 0.4)
+zone_size = Vector2(48, 192)
+

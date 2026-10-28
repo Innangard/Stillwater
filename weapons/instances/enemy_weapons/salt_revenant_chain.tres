@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Salt Chain"
+description = "A corroded chain swung in a wide horizontal arc. The links are crusted with sea-salt."
+base_damage = 13.0
+element = 2
+cooldown = 1.3
+on_hit_effects = []
+swing_range = 50.0
+arc_radius = 38.0
+swing_duration = 0.18
+knockback = 280.0
+user_lunge_distance = 30.0
+swing_visual = 8

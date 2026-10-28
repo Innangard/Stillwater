@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/ember_honey.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Ember-Honey"
+description = "A pot of viscous, almost-glowing honey. The bees that made it were not friendly."
+inputs = []
+requires_weapon = null
+currency_cost = 26
+output_item = ExtResource("2")
+output_item_count = 1
+output_weapon = null

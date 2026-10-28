@@ -1,0 +1,219 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_type"]
+[ext_resource type="Resource" path="res://dialogue/instances/blacksmith_thorkel.tres" id="dlg_thorkel"]
+[ext_resource type="Resource" path="res://dialogue/instances/merchant_fenna.tres" id="dlg_fenna"]
+[ext_resource type="Resource" path="res://dialogue/instances/norn_driftworks.tres" id="dlg_sigyn"]
+[ext_resource type="Resource" path="res://dialogue/instances/dockmaster_halvar.tres" id="dlg_halvar"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="npc_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/quest_board.tscn" id="qb_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://npcs/townsperson.tscn" id="tp_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -500.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -900.0
+
+[sub_resource type="RectangleShape2D" id="bldg_drydock"]
+size = Vector2(200, 100)
+
+[sub_resource type="RectangleShape2D" id="bldg_warehouse"]
+size = Vector2(160, 90)
+
+[sub_resource type="RectangleShape2D" id="bldg_house1"]
+size = Vector2(120, 80)
+
+[sub_resource type="RectangleShape2D" id="bldg_house2"]
+size = Vector2(140, 80)
+
+[node name="DriftworksTown" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "driftworks_town"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2400.0
+offset_top = -2000.0
+offset_right = 2400.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.42, 0.48, 0.52, 1)
+
+[node name="Street" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -36.0
+offset_right = 900.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.50, 0.50, 0.50, 0.55)
+
+[node name="Ocean" type="ColorRect" parent="."]
+offset_left = -1200.0
+offset_top = -340.0
+offset_right = -500.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.18, 0.30, 0.42, 1)
+
+[node name="DockPlanks" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = -360.0
+offset_bottom = 20.0
+mouse_filter = 2
+color = Color(0.42, 0.34, 0.28, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Walltop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="Wallbottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="Wallleft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="Wallright" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="Buildings" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="bldg_drydockShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-280, -180)
+shape = SubResource("bldg_drydock")
+
+[node name="bldg_warehouseShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(40, -180)
+shape = SubResource("bldg_warehouse")
+
+[node name="bldg_house1Shape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(280, -180)
+shape = SubResource("bldg_house1")
+
+[node name="bldg_house2Shape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-200, 200)
+shape = SubResource("bldg_house2")
+
+[node name="DrydockVisual" type="ColorRect" parent="."]
+offset_left = -380
+offset_top = -230
+offset_right = -180
+offset_bottom = -130
+mouse_filter = 2
+color = Color(0.32, 0.28, 0.24, 1)
+
+[node name="WarehouseVisual" type="ColorRect" parent="."]
+offset_left = -40
+offset_top = -225
+offset_right = 120
+offset_bottom = -135
+mouse_filter = 2
+color = Color(0.35, 0.30, 0.25, 1)
+
+[node name="House1Visual" type="ColorRect" parent="."]
+offset_left = 220
+offset_top = -220
+offset_right = 340
+offset_bottom = -140
+mouse_filter = 2
+color = Color(0.34, 0.30, 0.26, 1)
+
+[node name="House2Visual" type="ColorRect" parent="."]
+offset_left = -270
+offset_top = 160
+offset_right = -130
+offset_bottom = 240
+mouse_filter = 2
+color = Color(0.34, 0.30, 0.26, 1)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-380, 0)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(720, 0)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="BlacksmithThorkel" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(380, -120)
+npc_name = "Thorkel the Riveter"
+dialogue = ExtResource("dlg_thorkel")
+tint = Color(0.48, 0.52, 0.58, 1)
+station_name = "Thorkel's Driftforge"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="MerchantFenna" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(480, 80)
+npc_name = "Merchant Fenna"
+dialogue = ExtResource("dlg_fenna")
+tint = Color(0.50, 0.48, 0.52, 1)
+station_name = "Fenna's Salvage"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="TideReaderSigyn" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-200, 260)
+npc_name = "Tide-reader Sigyn"
+dialogue = ExtResource("dlg_sigyn")
+tint = Color(0.38, 0.48, 0.58, 1)
+station_name = "Sigyn's Tidemarks"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="DockmasterHalvar" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-340, 80)
+npc_name = "Dockmaster Halvar"
+dialogue = ExtResource("dlg_halvar")
+tint = Color(0.45, 0.50, 0.55, 1)
+
+[node name="QuestBoard" parent="." instance=ExtResource("qb_scene")]
+position = Vector2(160, 100)
+board_name = "DriftworksTown Postings"
+
+[node name="TownspersonN" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(280, -60)
+tint = Color(0.50, 0.48, 0.52, 1)
+
+[node name="TownspersonE" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(420, 80)
+tint = Color(0.52, 0.50, 0.52, 1)
+
+[node name="TownspersonS" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(80, 240)
+tint = Color(0.48, 0.50, 0.52, 1)
+
+[node name="TownspersonW" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(-200, -60)
+tint = Color(0.45, 0.48, 0.50, 1)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-460, 0)
+target_scene = "res://world/regions/storsprunga_altar.tscn"
+target_spawn_point = "from_east"
+label = "\u2190  back along the coast"
+tint = Color(0.40, 0.46, 0.50, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(740, 0)
+target_scene = "res://world/regions/strandvik_altar.tscn"
+target_spawn_point = "from_west"
+label = "\u2192  toward Strandvik"
+tint = Color(0.45, 0.50, 0.52, 0.4)
+zone_size = Vector2(48, 192)

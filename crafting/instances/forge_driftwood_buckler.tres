@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/driftwood_buckler.tres" id="3"]
+[ext_resource type="Resource" path="res://items/instances/hollow_bone.tres" id="4"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="5"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("4")
+count = 2
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("5")
+count = 1
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Driftwood Buckler"
+description = "A handful of bone, a length of pale-ash for the grip — barely a shield, but barely is enough at first."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1")])
+output_weapon = ExtResource("3")
+currency_cost = 5

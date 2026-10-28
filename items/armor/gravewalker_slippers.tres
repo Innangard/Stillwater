@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 1.5
+damage_taken_multiplier = 0.95
+element_multipliers = {
+6: 0.55
+}
+noise_weight = -4.0
+armor_slot = 2
+item_name = "Gravewalker Slippers"
+description = "Soft slippers, the soles cured in gravewax until they leave no print at all. The wearer walks above the floor more than on it. Whatever's listening for footfalls hears the room itself, not you. Feet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.22, 0.20, 0.24, 1)

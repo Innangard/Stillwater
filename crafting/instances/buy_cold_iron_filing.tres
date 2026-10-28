@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Cold-Iron Filing"
+description = "Bog-iron filings, smelted out of the moor and shaved fine. The smith won't say where she finds it."
+inputs = []
+requires_weapon = null
+currency_cost = 18
+output_item = ExtResource("2")
+output_item_count = 1
+output_weapon = null

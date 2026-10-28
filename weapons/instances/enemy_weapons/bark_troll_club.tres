@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Bark Club"
+description = "A fist-sized knot of ancient heartwood. The troll swings it like a maul."
+base_damage = 20.0
+element = 5
+cooldown = 2.0
+on_hit_effects = []
+swing_range = 55.0
+arc_radius = 40.0
+swing_duration = 0.24
+knockback = 380.0
+user_lunge_distance = 20.0
+swing_visual = 8

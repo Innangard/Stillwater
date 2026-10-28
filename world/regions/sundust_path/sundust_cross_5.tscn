@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://sdcr000005"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[ext_resource type="PackedScene" path="res://enemies/giant_scorpion.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/draugr_husk.tscn" id="enemy_1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=605000]
+script = ExtResource("region_script")
+region_id = "sundust_cross_5"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=605001]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="TrackW" type="ColorRect" parent="." unique_id=605010]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 0.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="TrackV" type="ColorRect" parent="." unique_id=605011]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="Plaza" type="ColorRect" parent="." unique_id=605030]
+offset_left = -90.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 90.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="StoneN" type="ColorRect" parent="." unique_id=605050]
+offset_left = -30.0
+offset_top = -220.0
+offset_right = 40.0
+offset_bottom = -160.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="StoneE" type="ColorRect" parent="." unique_id=605051]
+offset_left = 180.0
+offset_top = -30.0
+offset_right = 240.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(0.62, 0.55, 0.42, 1)
+
+[node name="StoneS" type="ColorRect" parent="." unique_id=605052]
+offset_left = -30.0
+offset_top = 160.0
+offset_right = 40.0
+offset_bottom = 220.0
+mouse_filter = 2
+color = Color(0.72, 0.58, 0.40, 1)
+
+[node name="StoneW" type="ColorRect" parent="." unique_id=605053]
+offset_left = -240.0
+offset_top = -30.0
+offset_right = -180.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(0.62, 0.55, 0.42, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=605100]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=605101]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=605102]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=605103]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=605104]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=605200]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=605201]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=605202]
+position = Vector2(0, 260)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=605203]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=605250 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "↑  desert crossroads"
+tint = Color(0.55, 0.50, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "↓  desert crossroads"
+tint = Color(0.55, 0.50, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "←  desert crossroads"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(48, 192)
+
+
+[node name="GiantScorpion_0" parent="." unique_id=9000500 instance=ExtResource("enemy_0")]
+position = Vector2(0, 0)
+
+[node name="GiantScorpion_1" parent="." unique_id=9000501 instance=ExtResource("enemy_0")]
+position = Vector2(-260, -140)
+
+[node name="DraugrHusk_2" parent="." unique_id=9000502 instance=ExtResource("enemy_1")]
+position = Vector2(260, 140)

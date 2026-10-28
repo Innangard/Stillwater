@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://dfd78ccca2a1"]
+
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/bone_tablet.tres" id="item_bone_tablet"]
+[ext_resource type="Resource" path="res://items/instances/cinder_salt.tres" id="item_cinder_salt"]
+[ext_resource type="Resource" path="res://items/instances/hollow_bone.tres" id="item_hollow_bone"]
+[ext_resource type="Resource" uid="uid://4c2b1c851753" path="res://items/runestones/nauthiz_runebone.tres" id="output_rune"]
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_script"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("iq_script")
+item = ExtResource("item_bone_tablet")
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("iq_script")
+item = ExtResource("item_cinder_salt")
+count = 3
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("iq_script")
+item = ExtResource("item_hollow_bone")
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Inscribe Nauthiz Runebone"
+description = "Desperation — next attack deals bonus damage equal to your missing HP."
+inputs = Array[ExtResource("iq_script")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_item = ExtResource("output_rune")

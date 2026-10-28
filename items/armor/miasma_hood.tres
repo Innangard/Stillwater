@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://ggup3to6br1j"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://h7dduj0j4d3u" path="res://sprites/Skill_Item icons/Separated Files/fc2016.png" id="1_uk4cl"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 2.0
+damage_taken_multiplier = 0.92
+element_multipliers = {
+4: 0.6
+}
+noise_weight = 3.0
+item_name = "Miasma Hood"
+description = "A hood treated with bog resin. The stench is terrible, but poison finds no purchase. Helmet."
+icon = ExtResource("1_uk4cl")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.35, 0.55, 0.3, 1)

@@ -1,0 +1,285 @@
+[gd_scene format=3 uid="uid://mtyomx2trp47"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="8_8uar4"]
+[ext_resource type="Resource" uid="uid://ciy5fyqj1mc7" path="res://crafting/instances/buy_bog_bile.tres" id="buy_bile"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_frost_filament.tres" id="buy_frost"]
+[ext_resource type="Resource" uid="uid://64be5af1c352" path="res://crafting/instances/buy_hollow_bone.tres" id="buy_hbone"]
+[ext_resource type="Resource" path="res://dialogue/instances/netmender_bru.tres" id="dlg_bru"]
+[ext_resource type="Resource" path="res://dialogue/instances/blacksmith_keld.tres" id="dlg_keld"]
+[ext_resource type="Resource" path="res://dialogue/instances/merchant_mora.tres" id="dlg_mora"]
+[ext_resource type="Resource" path="res://dialogue/instances/norn_storsprunga.tres" id="dlg_norn"]
+[ext_resource type="Resource" path="res://dialogue/instances/harbourmaster_sif.tres" id="dlg_sif"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="npc_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/quest_board.tscn" id="qb_scene"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_froststring.tres" id="recipe_fbow"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_frostbite_spear.tres" id="recipe_fspear"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_glacial_arc.tres" id="recipe_garc"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_permafrost_maul.tres" id="recipe_pmaul"]
+[ext_resource type="Resource" path="res://crafting/instances/forge_rimeblade.tres" id="recipe_rime"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="Resource" uid="uid://f40baeed48d7" path="res://crafting/instances/runes/rune_hagalaz_runestone.tres" id="rstone_hagalaz"]
+[ext_resource type="Resource" uid="uid://015cfba2d841" path="res://crafting/instances/runes/rune_isa_runestone.tres" id="rstone_isa"]
+[ext_resource type="Resource" uid="uid://3f1ee2a6d36a" path="res://crafting/instances/runes/rune_hagalaz_runebone.tres" id="rune_hagalaz"]
+[ext_resource type="Resource" uid="uid://7b481b0b4e5c" path="res://crafting/instances/runes/rune_isa_runebone.tres" id="rune_isa"]
+[ext_resource type="Resource" uid="uid://b8f8a0d1e68c" path="res://crafting/instances/runes/rune_laguz_runebone.tres" id="rune_laguz"]
+[ext_resource type="Resource" uid="uid://dfd78ccca2a1" path="res://crafting/instances/runes/rune_nauthiz_runebone.tres" id="rune_nauthiz"]
+[ext_resource type="PackedScene" path="res://npcs/townsperson.tscn" id="tp_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_west_ocean"]
+normal = Vector2(1, 0)
+distance = -440.0
+
+[sub_resource type="RectangleShape2D" id="bldg_warehouse"]
+size = Vector2(180, 100)
+
+[sub_resource type="RectangleShape2D" id="bldg_inn"]
+size = Vector2(160, 90)
+
+[sub_resource type="RectangleShape2D" id="bldg_house1"]
+size = Vector2(120, 80)
+
+[sub_resource type="RectangleShape2D" id="bldg_house2"]
+size = Vector2(140, 80)
+
+[sub_resource type="RectangleShape2D" id="bldg_dock_shed"]
+size = Vector2(100, 70)
+
+[node name="StorsprungaTown" type="Node2D" unique_id=990889061]
+script = ExtResource("region_script")
+region_id = "storsprunga_town"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1563075064]
+offset_left = -2400.0
+offset_top = -2000.0
+offset_right = 2400.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.5, 0.55, 0.6, 1)
+
+[node name="Ocean" type="ColorRect" parent="." unique_id=1926470315]
+offset_left = -1200.0
+offset_top = -340.0
+offset_right = -440.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.18, 0.3, 0.4, 1)
+
+[node name="OceanEdge" type="ColorRect" parent="." unique_id=68951943]
+offset_left = -442.0
+offset_top = -340.0
+offset_right = -434.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.1, 0.18, 0.26, 1)
+
+[node name="Street" type="ColorRect" parent="." unique_id=1588037985]
+offset_left = -440.0
+offset_top = -36.0
+offset_right = 800.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.55, 0.55)
+
+[node name="DockPlanks" type="ColorRect" parent="." unique_id=912104791]
+offset_left = -440.0
+offset_top = -20.0
+offset_right = -300.0
+offset_bottom = 20.0
+mouse_filter = 2
+color = Color(0.42, 0.34, 0.28, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1397541687]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=462508155]
+build_mode = 1
+polygon = PackedVector2Array(-440, -429, -60, -429, -60, -529, 60, -529, 60, -429, 1000, -429, 1000, -619, -440, -619)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=449128132]
+build_mode = 1
+polygon = PackedVector2Array(-440, 340, -60, 340, -60, 440, 60, 440, 60, 340, 1000, 340, 1000, 530, -440, 530)
+
+[node name="WallWest" type="CollisionShape2D" parent="Walls" unique_id=1667930129]
+shape = SubResource("wall_west_ocean")
+
+[node name="WallRight_Gen" type="CollisionPolygon2D" parent="Walls" unique_id=123220656]
+build_mode = 1
+polygon = PackedVector2Array(1000, -429, 1000, -60, 1100, -60, 1100, 60, 1000, 60, 1000, 340, 1190, 340, 1190, -429)
+
+[node name="Buildings" type="StaticBody2D" parent="." unique_id=1512332246]
+collision_mask = 0
+
+[node name="WarehouseShape" type="CollisionShape2D" parent="Buildings" unique_id=477894643]
+position = Vector2(-280, -180)
+shape = SubResource("bldg_warehouse")
+
+[node name="InnShape" type="CollisionShape2D" parent="Buildings" unique_id=1886627372]
+position = Vector2(40, -180)
+shape = SubResource("bldg_inn")
+
+[node name="House1Shape" type="CollisionShape2D" parent="Buildings" unique_id=1554186711]
+position = Vector2(280, -180)
+shape = SubResource("bldg_house1")
+
+[node name="House2Shape" type="CollisionShape2D" parent="Buildings" unique_id=276516602]
+position = Vector2(-200, 200)
+shape = SubResource("bldg_house2")
+
+[node name="DockShedShape" type="CollisionShape2D" parent="Buildings" unique_id=1617210354]
+position = Vector2(-360, 220)
+shape = SubResource("bldg_dock_shed")
+
+[node name="WarehouseVisual" type="ColorRect" parent="." unique_id=152262681]
+offset_left = -370.0
+offset_top = -230.0
+offset_right = -190.0
+offset_bottom = -130.0
+mouse_filter = 2
+color = Color(0.3, 0.26, 0.22, 1)
+
+[node name="InnVisual" type="ColorRect" parent="." unique_id=348140665]
+offset_left = -40.0
+offset_top = -225.0
+offset_right = 120.0
+offset_bottom = -135.0
+mouse_filter = 2
+color = Color(0.4, 0.3, 0.22, 1)
+
+[node name="House1Visual" type="ColorRect" parent="." unique_id=722503462]
+offset_left = 220.0
+offset_top = -220.0
+offset_right = 340.0
+offset_bottom = -140.0
+mouse_filter = 2
+color = Color(0.34, 0.28, 0.24, 1)
+
+[node name="House2Visual" type="ColorRect" parent="." unique_id=1009963989]
+offset_left = -270.0
+offset_top = 160.0
+offset_right = -130.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.34, 0.28, 0.24, 1)
+
+[node name="DockShedVisual" type="ColorRect" parent="." unique_id=309651022]
+offset_left = -410.0
+offset_top = 185.0
+offset_right = -310.0
+offset_bottom = 255.0
+mouse_filter = 2
+color = Color(0.32, 0.26, 0.22, 1)
+
+[node name="default" type="Marker2D" parent="." unique_id=439905339]
+
+[node name="from_shoals" type="Marker2D" parent="." unique_id=589208486]
+position = Vector2(720, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=543972354]
+position = Vector2(0, -360)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1389200614]
+position = Vector2(0, 280)
+
+[node name="Player" parent="." unique_id=515201228 instance=ExtResource("player_scene")]
+
+[node name="HarbourmasterSif" parent="." unique_id=852909713 instance=ExtResource("npc_scene")]
+position = Vector2(-340, 80)
+npc_name = "Harbour-master Sif"
+sprite_name = "npc_sif"
+dialogue = ExtResource("dlg_sif")
+tint = Color(0.45, 0.55, 0.6, 1)
+
+[node name="NetmenderBru" parent="." unique_id=679019846 instance=ExtResource("npc_scene")]
+position = Vector2(-260, 120)
+npc_name = "Net-mender Bru"
+sprite_name = "npc_bru"
+dialogue = ExtResource("dlg_bru")
+tint = Color(0.5, 0.45, 0.5, 1)
+
+[node name="QuestBoard" parent="." unique_id=488317803 instance=ExtResource("qb_scene")]
+position = Vector2(160, 100)
+board_name = "Storsprunga Dock Board"
+slayer_enemy_paths = Array[String](["res://enemies/kobold_blue.tscn", "res://enemies/goblin_bow.tscn", "res://enemies/goblin_sword.tscn", "res://enemies/wolf_lunge.tscn", "res://enemies/wolf_swipe.tscn"])
+slayer_enemy_names = Array[String](["Blue Kobold", "Goblin Archer", "Goblin Swordsman", "Lunging Wolf", "Swiping Wolf"])
+collect_item_paths = Array[String](["res://items/instances/frost_filament.tres", "res://items/instances/bog_bile.tres", "res://items/instances/hollow_bone.tres", "res://items/instances/cinder_salt.tres"])
+collect_item_names = Array[String](["Frost Filament", "Bog Bile", "Hollow Bone", "Cinder Salt"])
+reward_weapon_paths = Array[String](["res://weapons/instances/player_weapons/rimeblade.tres", "res://weapons/instances/player_weapons/froststring_bow.tres"])
+reward_weapon_names = Array[String](["Rimeblade", "Froststring Bow"])
+reward_armor_paths = Array[String](["res://items/armor/tidewoven_cloak.tres", "res://items/armor/drowned_sandals.tres"])
+reward_armor_names = Array[String](["Tidewoven Cloak", "Drowned Sandals"])
+reward_rune_paths = Array[String](["res://items/runestones/isa_runebone.tres", "res://items/runestones/laguz_runebone.tres"])
+reward_rune_names = Array[String](["Isa Runebone", "Laguz Runebone"])
+
+[node name="BlacksmithKeld" parent="." unique_id=811562356 instance=ExtResource("npc_scene")]
+position = Vector2(380, -120)
+npc_name = "Keld the Smith"
+sprite_name = "npc_keld"
+dialogue = ExtResource("dlg_keld")
+tint = Color(0.45, 0.5, 0.6, 1)
+station_name = "Keld's Saltforge"
+recipes = Array[ExtResource("8_8uar4")]([ExtResource("recipe_rime"), ExtResource("recipe_fspear"), ExtResource("recipe_pmaul"), ExtResource("recipe_fbow"), ExtResource("recipe_garc")])
+
+[node name="MerchantMora" parent="." unique_id=74973218 instance=ExtResource("npc_scene")]
+position = Vector2(480, 80)
+npc_name = "Merchant Mora"
+sprite_name = "npc_mora"
+dialogue = ExtResource("dlg_mora")
+tint = Color(0.5, 0.5, 0.55, 1)
+station_name = "Mora's Stock"
+recipes = Array[ExtResource("8_8uar4")]([ExtResource("buy_frost"), ExtResource("buy_bile"), ExtResource("buy_hbone")])
+
+[node name="NornYlla" parent="." unique_id=136211580 instance=ExtResource("npc_scene")]
+position = Vector2(-200, 260)
+npc_name = "Norn Ylla"
+sprite_name = "npc_ylla"
+dialogue = ExtResource("dlg_norn")
+tint = Color(0.35, 0.45, 0.6, 1)
+station_name = "Ylla's Runes"
+recipes = Array[ExtResource("8_8uar4")]([ExtResource("rune_isa"), ExtResource("rune_hagalaz"), ExtResource("rune_nauthiz"), ExtResource("rune_laguz"), ExtResource("rstone_isa"), ExtResource("rstone_hagalaz")])
+
+[node name="TownspersonE" parent="." unique_id=713769976 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_ss_fisherman"
+position = Vector2(420, 80)
+tint = Color(0.55, 0.5, 0.55, 1)
+
+[node name="TownspersonNE" parent="." unique_id=2146103270 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_ss_dockworker"
+position = Vector2(280, -60)
+tint = Color(0.5, 0.45, 0.55, 1)
+
+[node name="TownspersonS" parent="." unique_id=1996867577 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_ss_netmender"
+position = Vector2(80, 240)
+tint = Color(0.45, 0.5, 0.55, 1)
+
+[node name="TownspersonNW" parent="." unique_id=422590663 instance=ExtResource("tp_scene")]
+sprite_name = "npc_wander_ss_fisherman"
+position = Vector2(-200, -60)
+tint = Color(0.42, 0.48, 0.5, 1)
+
+[node name="ExitEast" parent="." unique_id=1872395897 instance=ExtResource("exit_scene")]
+position = Vector2(740, 0)
+target_scene = "res://world/regions/wreck_shoals.tscn"
+target_spawn_point = "from_storsprunga"
+label = "→  to the Wreck Shoals"
+tint = Color(0.42, 0.45, 0.5, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." unique_id=1480654303 instance=ExtResource("exit_scene")]
+position = Vector2(0, -400)
+target_scene = "res://world/regions/storsprunga_altar.tscn"
+target_spawn_point = "from_south"
+label = "↑  into the coastal forest"
+tint = Color(0.35, 0.48, 0.38, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." unique_id=1794201914 instance=ExtResource("exit_scene")]
+position = Vector2(0, 320)
+target_scene = "res://world/regions/skerry_strand.tscn"
+target_spawn_point = "from_north"
+label = "↓  down to the Skerry Strand"
+tint = Color(0.8, 0.4, 0.18, 0.45)
+zone_size = Vector2(192, 48)

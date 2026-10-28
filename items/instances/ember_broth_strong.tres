@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://items/consumable_item.gd" id="1"]
+[ext_resource type="Resource" path="res://status/instances/consumable_warmth_t2s.tres" id="status_1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Searing Broth"
+description = "Heals 3 HP every 2 seconds for 1 minute."
+category = "consumable"
+max_stack = 3
+placeholder_color = Color(0.95, 0.45, 0.20, 1)
+heal_amount = 0.0
+grants_status = ExtResource("status_1")

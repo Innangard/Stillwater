@@ -1,0 +1,128 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/cinder_bloom.tscn" id="enemy_bloom"]
+[ext_resource type="PackedScene" path="res://enemies/ember_spear.tscn" id="enemy_spear"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -340
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -440
+
+[node name="BrannBuffer6" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "brann_buffer_6"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.20, 0.10, 0.08, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -34
+offset_top = -34
+offset_right = 26
+offset_bottom = 900
+mouse_filter = 2
+color = Color(0.50, 0.25, 0.15, 0.55)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = -920
+offset_top = -34
+offset_right = 26
+offset_bottom = 26
+mouse_filter = 2
+color = Color(0.50, 0.25, 0.15, 0.55)
+
+[node name="LavaCrack0" type="ColorRect" parent="."]
+offset_left = -300
+offset_top = 200
+offset_right = -200
+offset_bottom = 206
+mouse_filter = 2
+color = Color(1.0, 0.45, 0.10, 0.75)
+
+[node name="Glow0" type="ColorRect" parent="."]
+offset_left = -310
+offset_top = 188
+offset_right = -190
+offset_bottom = 218
+mouse_filter = 2
+color = Color(1.0, 0.55, 0.10, 0.22)
+
+[node name="EmberMote0" type="ColorRect" parent="."]
+offset_left = -200
+offset_top = 100
+offset_right = -196
+offset_bottom = 104
+mouse_filter = 2
+color = Color(1.0, 0.70, 0.20, 0.95)
+
+[node name="EmberMote1" type="ColorRect" parent="."]
+offset_left = -400
+offset_top = -120
+offset_right = -396
+offset_bottom = -116
+mouse_filter = 2
+color = Color(1.0, 0.70, 0.20, 0.95)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-620, -440, -620, -34, -715, -34, -715, 26, -620, 26, -620, 640, -810, 640, -810, -440)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-620, 640, -34, 640, -34, 735, 26, 735, 26, 640, 340, 640, 340, 830, -620, 830)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(-4, 618)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-596, -4)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_bloom")]
+position = Vector2(-220, 240)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_spear")]
+position = Vector2(-460, 100)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_spear")]
+position = Vector2(80, 320)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-4, 714)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  Brann corridor"
+tint = Color(0.55, 0.25, 0.15, 0.45)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-708, -4)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "←  Brann corridor"
+tint = Color(0.55, 0.25, 0.15, 0.45)
+zone_size = Vector2(48, 192)

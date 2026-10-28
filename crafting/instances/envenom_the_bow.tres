@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://dsyt2o8r8bwgh"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://items/instances/bog_bile.tres" id="3"]
+[ext_resource type="Resource" uid="uid://bxle0mvxgq2nw" path="res://weapons/instances/player_weapons/verdigris_sting.tres" id="3_qnk7m"]
+[ext_resource type="Resource" uid="uid://ctgkgcbxbagea" path="res://weapons/instances/player_weapons/crooked_bow.tres" id="4"]
+
+[sub_resource type="Resource" id="input_bile"]
+script = ExtResource("2")
+item = ExtResource("3")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Envenom the Bow"
+description = "Smear the bowstring with marsh resin. Each shot leaves a wound that thinks for itself."
+inputs = Array[ExtResource("2")]([SubResource("input_bile")])
+requires_weapon = ExtResource("4")
+output_weapon = ExtResource("3_qnk7m")

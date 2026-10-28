@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ShieldWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/shield_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/shield_zone.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Driftwood Buckler"
+description = "A plank from the surf, banded with what bone the tide left. It does not so much block as occupy space."
+base_damage = 0.0
+element = 0
+cooldown = 0.0
+on_hit_effects = []
+category = "shield"
+max_stack = 1
+placeholder_color = Color(0.65, 0.55, 0.45, 1)
+block_arc_size = Vector2(28, 56)
+block_distance = 24.0
+movement_speed_multiplier = 0.7
+melee_damage_reduction = 0.55
+shield_zone_scene = ExtResource("2")

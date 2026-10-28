@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 3.0
+damage_taken_multiplier = 0.88
+noise_weight = 7.0
+melee_damage_multiplier = 1.15
+max_health_bonus = 30.0
+item_name = "Bonebreaker Great-Helm"
+description = "A full great-helm of sky-iron, the visor pierced with a single horizontal slit. Inside it, the world narrows to whatever's directly ahead. Inside it, you become a problem with a forward direction. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.48, 0.50, 0.55, 1)

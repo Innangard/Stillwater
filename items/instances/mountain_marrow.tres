@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://items/consumable_item.gd" id="1"]
+[ext_resource type="Resource" path="res://status/instances/consumable_stone_resolve.tres" id="status_1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Mountain Marrow"
+description = "A thick paste rendered from the bones of mountain goats, mixed with honey and ground feldspar. Your arms remember what stone was. Damage dealt increased 15% for 25 seconds — but the marrow hardens everything, including your ability to take a hit. Incoming damage increased 10%. Consumable."
+category = "consumable"
+max_stack = 5
+placeholder_color = Color(0.70, 0.65, 0.55, 1)
+heal_amount = 0.0
+grants_status = ExtResource("status_1")

@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/kobold_bow.tres" id="weapon"]
+
+[node name="KoboldBlue" instance=ExtResource("base_enemy")]
+enemy_name = "Blue Kobold"
+sprite_name = "enemy_kobold_blue"
+body_tint = Color(0.34, 0.46, 0.62, 1.0)
+weapon_icon_color = Color(0.55, 0.78, 0.95, 1.0)
+body_radius = 12.0
+body_shape = 1
+max_health = 20.0
+max_speed = 95.0
+acceleration = 650.0
+base_detection = 80.0
+noise_sensitivity = 3.5
+smell_sensitivity = 3.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.7
+recover_duration = 0.5
+min_engage_range = 110.0
+currency_drop_min = 3
+currency_drop_max = 7
+item_drop_chance = 0.30

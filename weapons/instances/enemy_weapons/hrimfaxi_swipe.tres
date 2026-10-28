@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Frost Hoof Swipe"
+description = "A sweeping kick that trails ice crystals in a wide arc."
+base_damage = 13.0
+element = 4
+cooldown = 1.5
+on_hit_effects = []
+swing_range = 55.0
+arc_radius = 40.0
+swing_duration = 0.18
+knockback = 250.0
+swing_visual = 8

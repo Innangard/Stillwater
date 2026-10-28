@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "arrow_crow"
+display_name = "Arrow-Crow"
+epithet = "She who feeds the carrion at a distance"
+description = "You learned the wind before the wound. Ranged shots hit harder and the carrion-crows follow you wherever you draw."
+flavor_text = "Your kills land before the kill knows it has been made."
+category = 0
+unlock_flag = "kenning_unlock_arrow_crow"
+unlock_hint = "Drop seventy enemies at range without taking a hit in close quarters."
+damage_dealt_multiplier = 1.18
+weapon_filter = 2
+tier_color = Color(0.35, 0.35, 0.45, 1)

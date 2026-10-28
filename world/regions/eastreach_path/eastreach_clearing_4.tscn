@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://ercl00000130"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -260
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -260
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -300
+
+[node name="Node2D" type="Node2D" unique_id=1287500716]
+script = ExtResource("region_script")
+region_id = "eastreach_clearing_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1445044076]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="Hollow" type="ColorRect" parent="." unique_id=1916768670]
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = 140.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="StoneL" type="ColorRect" parent="." unique_id=2079373408]
+offset_left = -160.0
+offset_top = -90.0
+offset_right = -120.0
+offset_bottom = -40.0
+mouse_filter = 2
+color = Color(0.78, 0.74, 0.66, 1)
+
+[node name="StoneR" type="ColorRect" parent="." unique_id=1969399807]
+offset_left = 100.0
+offset_top = 30.0
+offset_right = 140.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.78, 0.74, 0.66, 1)
+
+[node name="Grass" type="ColorRect" parent="." unique_id=1119279315]
+offset_left = 60.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = -60.0
+mouse_filter = 2
+color = Color(0.70, 0.62, 0.40, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1499860646]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1657082193]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1525605412]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1494180341]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1108853206]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1112405631]
+position = Vector2(-240, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1621150361]
+position = Vector2(-240, 0)
+
+[node name="Player" parent="." unique_id=1566838005 instance=ExtResource("player_scene")]
+position = Vector2(-240, 0)[node name="ExitWest" parent="." unique_id=1838214561 instance=ExtResource("exit_scene")]
+position = Vector2(-280, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "←  back to the road"
+tint = Color(0.58, 0.50, 0.34, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(90, 60)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

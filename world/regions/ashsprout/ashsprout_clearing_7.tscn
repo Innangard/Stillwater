@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/pine_warden.tscn" id="enemy_pine_warden"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_goblin_sword"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="AshsproutClearing7" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "ashsprout_clearing_7"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.22, 0.28, 0.18, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.30, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = 183
+offset_top = 234
+offset_right = 228
+offset_bottom = 261
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.26, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = 74
+offset_top = 170
+offset_right = 121
+offset_bottom = 197
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.26, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -312
+offset_top = -52
+offset_right = -289
+offset_bottom = -13
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.26, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-300, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_pine_warden")]
+position = Vector2(-178, -122)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(152, -72)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-420, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "west"
+tint = Color(0.38, 0.42, 0.30, 0.4)
+zone_size = Vector2(192, 48)

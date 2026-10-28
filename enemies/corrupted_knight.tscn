@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/corrupted_knight_sword.tres" id="weapon"]
+
+[node name="CorruptedKnight" instance=ExtResource("base_enemy")]
+enemy_name = "Corrupted Knight"
+sprite_name = "enemy_corrupted_knight"
+body_tint = Color(0.35, 0.32, 0.38, 1.0)
+weapon_icon_color = Color(0.55, 0.50, 0.60, 1.0)
+body_radius = 16.0
+body_shape = 2
+max_health = 55.0
+max_speed = 70.0
+acceleration = 500.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.45
+min_engage_range = 0.0
+currency_drop_min = 5
+currency_drop_max = 10
+item_drop_chance = 0.2

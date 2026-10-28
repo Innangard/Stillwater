@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dr3i5loj15l4o"]
+
+[ext_resource type="Texture2D" uid="uid://c3sci43lyrh8d" path="res://sprites/Skill_Item icons/Separated Files/fc655.png" id="2_0ketk"]
+[ext_resource type="Script" uid="uid://dtkwieu1w5nhn" path="res://pickups/pickup.gd" id="pickup_script"]
+
+[sub_resource type="CircleShape2D" id="pickup_shape"]
+radius = 16.0
+
+[node name="Pickup" type="Node2D" unique_id=761141295]
+script = ExtResource("pickup_script")
+currency_icon = ExtResource("2_0ketk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1494397374]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1454022676]
+shape = SubResource("pickup_shape")

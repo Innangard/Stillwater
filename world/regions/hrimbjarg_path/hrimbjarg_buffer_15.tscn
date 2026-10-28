@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://hrimbuf015"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/hobgoblin_bow.tscn" id="enemy_1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1183599788]
+script = ExtResource("region_script")
+region_id = "hrimbjarg_buffer_15"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2081594231]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.42, 1)
+
+[node name="TrackV" type="ColorRect" parent="." unique_id=1522766261]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="Stone1" type="ColorRect" parent="." unique_id=1870082636]
+offset_left = 234.5
+offset_top = -44.8
+offset_right = 307.7
+offset_bottom = 22.6
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Stone2" type="ColorRect" parent="." unique_id=2067029921]
+offset_left = -79.0
+offset_top = -248.0
+offset_right = -13.1
+offset_bottom = -187.8
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Stone3" type="ColorRect" parent="." unique_id=1426004895]
+offset_left = 262.3
+offset_top = 39.4
+offset_right = 339.7
+offset_bottom = 105.1
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Stone4" type="ColorRect" parent="." unique_id=1753098239]
+offset_left = -382.3
+offset_top = -110.8
+offset_right = -313.0
+offset_bottom = -41.6
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Lichen1" type="ColorRect" parent="." unique_id=1140301053]
+offset_left = 46.2
+offset_top = -14.7
+offset_right = 197.1
+offset_bottom = 45.2
+mouse_filter = 2
+color = Color(0.62, 0.68, 0.55, 0.6)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1136465834]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1840558284]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1968339837]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1591907781]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1201875988]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1087333597]
+position = Vector2(0, -260)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1591955358]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=2085866320]
+position = Vector2(-500, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1140917772]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1511310097]
+position = Vector2(0, 260)
+
+[node name="Player" parent="." unique_id=1644372325 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="ExitNorth" parent="." unique_id=1155151590 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "↑  up the trail"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." unique_id=2063901493 instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "↓  down the trail"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="gob_0" parent="." unique_id=2083219388 instance=ExtResource("enemy_0")]
+position = Vector2(-18, -90)
+
+[node name="hob_1" parent="." unique_id=1510417543 instance=ExtResource("enemy_1")]
+position = Vector2(25, 180)

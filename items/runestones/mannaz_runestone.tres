@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunestoneItem" load_steps=2 format=3 uid="uid://ba94c7322638"]
+
+[ext_resource type="Script" path="res://items/runestone_item.gd" id="script_1"]
+
+[resource]
+script = ExtResource("script_1")
+rune_symbol = "ᛗ"
+rune_stat = 3
+bonus_value = 1.5
+conduit = 0
+drop_weight = 5.0
+item_name = "Mannaz Slate"
+description = "+1.5% Damage Resistance. Mankind endures."
+category = "runestone"
+max_stack = 99
+placeholder_color = Color(0.55, 0.55, 0.58, 1)

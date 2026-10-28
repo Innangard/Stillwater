@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="4"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.10
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Ember Bolt"
+description = "A shard of condensed heat, spat from a dying flame."
+base_damage = 5.0
+element = 1
+cooldown = 1.5
+on_hit_effects = Array[ExtResource("3")]([SubResource("burn_app")])
+projectile_scene = ExtResource("2")
+projectile_speed = 280.0
+projectile_lifetime = 0.8
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 90.0

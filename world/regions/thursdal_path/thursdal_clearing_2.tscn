@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://thurclr002"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -260
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -260
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -300
+
+[node name="Node2D" type="Node2D" unique_id=917512892]
+script = ExtResource("region_script")
+region_id = "thursdal_clearing_2"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=917512893]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.42, 1)
+
+[node name="RestSlab" type="ColorRect" parent="." unique_id=917512894]
+offset_left = -150.0
+offset_top = -120.0
+offset_right = 150.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.52, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=917512895]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=917512896]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=917512897]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=917512898]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=917512899]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=917512900]
+position = Vector2(250, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=917512901]
+position = Vector2(250, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=917512902]
+position = Vector2(-250, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=917512903]
+position = Vector2(0, -230)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=917512904]
+position = Vector2(0, 230)
+
+[node name="Player" parent="." unique_id=917512905 instance=ExtResource("player_scene")]
+position = Vector2(250, 0)
+
+[node name="ExitEast" parent="." unique_id=917512906 instance=ExtResource("exit_scene")]
+position = Vector2(285, 0)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "→  further up"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=917512907 instance=ExtResource("exit_scene")]
+position = Vector2(-285, 0)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "←  back the way you came"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(-90, -40)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(90, -40)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(-90, 40)

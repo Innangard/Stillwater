@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://sabu00000068"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_1"]
+[ext_resource type="Resource" path="res://items/instances/hollow_bone.tres" id="pup_0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1041947930]
+script = ExtResource("region_script")
+region_id = "sprekken_approach_buffer_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1424928628]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.50, 0.36, 1)
+
+[node name="TrackW" type="ColorRect" parent="." unique_id=1488815395]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 0.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.62, 0.58, 0.42, 1)
+
+[node name="TrackN" type="ColorRect" parent="." unique_id=1839728866]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.62, 0.58, 0.42, 1)
+
+[node name="GrassL" type="ColorRect" parent="." unique_id=1710049002]
+offset_left = -260.0
+offset_top = 140.0
+offset_right = -160.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.58, 0.55, 0.32, 0.7)
+
+[node name="GrassR" type="ColorRect" parent="." unique_id=1014481355]
+offset_left = 160.0
+offset_top = -200.0
+offset_right = 260.0
+offset_bottom = -140.0
+mouse_filter = 2
+color = Color(0.58, 0.55, 0.32, 0.7)
+
+[node name="Stone" type="ColorRect" parent="." unique_id=1268677733]
+offset_left = -40.0
+offset_top = -50.0
+offset_right = 40.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(0.66, 0.62, 0.52, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1035912922]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1357972085]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -400, 60, -400, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1225338759]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1315851433]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -660, -60, -660, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1253653296]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1163949762]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1708034821]
+position = Vector2(0, -260)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1791879909]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=1130696435 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="Gob1" parent="." unique_id=1436083217 instance=ExtResource("enemy_0")]
+position = Vector2(-120, -100)
+
+[node name="Wolf" parent="." unique_id=1551720403 instance=ExtResource("enemy_1")]
+position = Vector2(160, 80)
+
+[node name="Bone" parent="." unique_id=1839971689 instance=ExtResource("pickup_scene")]
+position = Vector2(-180, 180)
+item = ExtResource("pup_0")
+persistent_per_run = true
+
+[node name="ExitNorth" parent="." unique_id=1692185526 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "↑  the descent"
+tint = Color(0.40, 0.46, 0.30, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." unique_id=1368419147 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "←  the descent"
+tint = Color(0.45, 0.50, 0.35, 0.4)
+zone_size = Vector2(48, 192)
+

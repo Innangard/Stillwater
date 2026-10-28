@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SmellReducer" format=3 uid="uid://caf03wugv8x64"]
+
+[ext_resource type="Script" uid="uid://c2j603re0pwt" path="res://items/smell_reducer.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://8bgt1s8lctca" path="res://sprites/Skill_Item icons/Separated Files/fc176.png" id="1_mvdpn"]
+
+[resource]
+script = ExtResource("1")
+smell_reduction = 40.0
+item_name = "Cinder Salt"
+description = "A small leather pouch of grey-white salt mixed with temple ash. The dead don't sweat, but they remember the shape of those who do. Rub this in. They forget for a while."
+icon = ExtResource("1_mvdpn")
+category = "consumable"
+max_stack = 5
+placeholder_color = Color(0.85, 0.78, 0.65, 1)

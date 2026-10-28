@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://bwestclr1cc03"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -240
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -260
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -280
+
+[node name="WestmoorClearing1" type="Node2D" unique_id=1875888475]
+script = ExtResource("region_script")
+region_id = "westmoor_clearing_1"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2038409503]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.36, 1)
+
+[node name="Hollow" type="ColorRect" parent="." unique_id=1253156027]
+offset_left = -120.0
+offset_top = -96.0
+offset_right = 120.0
+offset_bottom = 104.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="Cairn1" type="ColorRect" parent="." unique_id=1672623250]
+offset_left = -80.0
+offset_top = -60.0
+offset_right = -44.0
+offset_bottom = -8.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="Cairn2" type="ColorRect" parent="." unique_id=1391729909]
+offset_left = 50.0
+offset_top = 20.0
+offset_right = 92.0
+offset_bottom = 76.0
+mouse_filter = 2
+color = Color(0.48, 0.46, 0.44, 1)
+
+[node name="Heath1" type="ColorRect" parent="." unique_id=1063986652]
+offset_left = 60.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = -30.0
+mouse_filter = 2
+color = Color(0.40, 0.44, 0.34, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1901061075]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1078338363]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=1386800672]
+build_mode = 1
+polygon = PackedVector2Array(-260, 260, -60, 260, -60, 360, 60, 360, 60, 260, 280, 260, 280, 450, -260, 450)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=2091850304]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=2060099197]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1114140264]
+position = Vector2(0, -180)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1646826486]
+position = Vector2(0, -180)
+
+[node name="Player" parent="." unique_id=1438144421 instance=ExtResource("player_scene")]
+position = Vector2(0, -180)
+[node name="ExitSouth" parent="." unique_id=1726949178 instance=ExtResource("exit_scene")]
+position = Vector2(0, -220)
+target_scene = "res://world/regions/westmoor_path_2.tscn"
+target_spawn_point = "from_north"
+label = "↓  back to the stones"
+tint = Color(0.42, 0.46, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(-55, 30)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(60, -20)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

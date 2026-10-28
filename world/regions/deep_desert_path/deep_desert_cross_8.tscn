@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://genaba1298ff7c0"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/draugr_husk.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/sand_worm.tscn" id="enemy_1"]
+
+[node name="Node2D" type="Node2D" unique_id=20001701]
+script = ExtResource("region_script")
+region_id = "deep_desert_cross_8"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20001702]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.42, 0.32, 1)
+
+[node name="Track_north" type="ColorRect" parent="." unique_id=20001703]
+offset_left = -46.0
+offset_top = -400.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="Track_south" type="ColorRect" parent="." unique_id=20001704]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="Track_east" type="ColorRect" parent="." unique_id=20001705]
+offset_left = -46.0
+offset_top = -46.0
+offset_right = 660.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="Track_west" type="ColorRect" parent="." unique_id=20001706]
+offset_left = -660.0
+offset_top = -46.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20001707]
+offset_left = 129.0
+offset_top = 3.0
+offset_right = 163.0
+offset_bottom = 55.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.28, 1)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20001708]
+offset_left = 64.0
+offset_top = -123.0
+offset_right = 146.0
+offset_bottom = -49.0
+mouse_filter = 2
+color = Color(0.62, 0.55, 0.42, 1)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20001709]
+offset_left = -60.0
+offset_top = -81.0
+offset_right = -8.0
+offset_bottom = -49.0
+mouse_filter = 2
+color = Color(0.48, 0.42, 0.32, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="." unique_id=20001710]
+offset_left = 151.0
+offset_top = -184.0
+offset_right = 237.0
+offset_bottom = -118.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.28, 1)
+
+[node name="Decor4" type="ColorRect" parent="." unique_id=20001711]
+offset_left = 105.0
+offset_top = 89.0
+offset_right = 187.0
+offset_bottom = 121.0
+mouse_filter = 2
+color = Color(0.62, 0.55, 0.42, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20001712]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20001713]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -490, 60, -490, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20001714]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, -60, 300, -60, 490, 60, 490, 60, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20001715]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -750, -60, -750, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20001716]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, -60, 750, -60, 750, 60, 560, 60, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20001717]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=20001718]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=20001719]
+position = Vector2(0, 260)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=20001720]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=20001721]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=20001722 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+
+[node name="DraugrHusk_0" parent="." unique_id=25632657 instance=ExtResource("enemy_0")]
+position = Vector2(67, -196)
+
+[node name="DraugrHusk_1" parent="." unique_id=25632658 instance=ExtResource("enemy_0")]
+position = Vector2(-88, 109)
+
+[node name="SandWorm_2" parent="." unique_id=25632659 instance=ExtResource("enemy_1")]
+position = Vector2(247, -25)
+
+[node name="DraugrHusk_3" parent="." unique_id=25632660 instance=ExtResource("enemy_0")]
+position = Vector2(364, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  desert path"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  desert path"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "→  desert path"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-560, 0)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "←  desert path"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(48, 192)

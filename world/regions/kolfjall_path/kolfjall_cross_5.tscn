@@ -1,0 +1,125 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/forge_automaton.tscn" id="enemy_forge_automaton"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_wolf_lunge"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="KolfjallCross5" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "kolfjall_cross_5"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.30, 0.25, 0.20, 1)
+
+[node name="PathNS" type="ColorRect" parent="."]
+offset_left = -60
+offset_top = -880
+offset_right = 4
+offset_bottom = 900
+mouse_filter = 2
+color = Color(0.46, 0.38, 0.28, 0.5)
+
+[node name="PathEW" type="ColorRect" parent="."]
+offset_left = -800
+offset_top = -38
+offset_right = 800
+offset_bottom = 26
+mouse_filter = 2
+color = Color(0.46, 0.38, 0.28, 0.5)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = -248
+offset_top = 260
+offset_right = -193
+offset_bottom = 292
+mouse_filter = 2
+color = Color(0.42, 0.35, 0.25, 0.7)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = -165
+offset_top = 180
+offset_right = -137
+offset_bottom = 230
+mouse_filter = 2
+color = Color(0.36, 0.28, 0.18, 0.7)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -79
+offset_top = -194
+offset_right = -45
+offset_bottom = -165
+mouse_filter = 2
+color = Color(0.42, 0.35, 0.25, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = 214
+offset_top = 270
+offset_right = 272
+offset_bottom = 311
+mouse_filter = 2
+color = Color(0.42, 0.35, 0.25, 0.7)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(-28, -692)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(-28, 658)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(500, -6)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-500, -6)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_forge_automaton")]
+position = Vector2(-172, -172)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_wolf_lunge")]
+position = Vector2(240, -217)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-28, -808)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "north"
+tint = Color(0.46, 0.38, 0.28, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-28, 754)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "south"
+tint = Color(0.46, 0.38, 0.28, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(600, -6)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "east"
+tint = Color(0.46, 0.38, 0.28, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-600, -6)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "west"
+tint = Color(0.46, 0.38, 0.28, 0.4)
+zone_size = Vector2(192, 48)

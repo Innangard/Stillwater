@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://brk7u8itn1s68"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://jfgyrxm1ytju" path="res://sprites/Skill_Item icons/Separated Files/fc1957.png" id="1_ajwfh"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 2.0
+damage_taken_multiplier = 0.92
+element_multipliers = {
+2: 0.6
+}
+noise_weight = 3.0
+item_name = "Frostlaced Hood"
+description = "Wool threaded with ice-crystal fibers. Cold slides off like water. Helmet."
+icon = ExtResource("1_ajwfh")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.4, 0.6, 0.7, 1)

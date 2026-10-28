@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/lesser_smith.tscn" id="enemy_lesser_smith"]
+[ext_resource type="PackedScene" path="res://enemies/forge_automaton.tscn" id="enemy_forge_automaton"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_goblin_sword"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="SindriClearing6" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "sindri_clearing_6"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.25, 0.20, 0.18, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.42, 0.35, 0.28, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = 140
+offset_top = -221
+offset_right = 187
+offset_bottom = -194
+mouse_filter = 2
+color = Color(0.48, 0.35, 0.22, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = -150
+offset_top = -20
+offset_right = -100
+offset_bottom = 7
+mouse_filter = 2
+color = Color(0.35, 0.25, 0.18, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -284
+offset_top = 183
+offset_right = -243
+offset_bottom = 216
+mouse_filter = 2
+color = Color(0.35, 0.25, 0.18, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = -177
+offset_top = 76
+offset_right = -155
+offset_bottom = 98
+mouse_filter = 2
+color = Color(0.40, 0.30, 0.22, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(300, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_lesser_smith")]
+position = Vector2(-138, -104)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_forge_automaton")]
+position = Vector2(166, -110)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(-2, 165)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(420, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "east"
+tint = Color(0.42, 0.35, 0.28, 0.4)
+zone_size = Vector2(192, 48)

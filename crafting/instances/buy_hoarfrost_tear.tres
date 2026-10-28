@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/hoarfrost_tear.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Hoarfrost Tear"
+description = "A teardrop crystal of pure cold. Keep it wrapped or it will frost your pocket."
+inputs = []
+requires_weapon = null
+currency_cost = 42
+output_item = ExtResource("2")
+output_item_count = 1
+output_weapon = null

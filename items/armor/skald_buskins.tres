@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 1.0
+damage_taken_multiplier = 0.95
+noise_weight = 1.5
+max_health_bonus = 25.0
+item_name = "Skald's Buskins"
+description = "Soft mid-calf boots with a wormgold cord laced up the side. The cord is warm in the hand; the wearer's stride is quiet without trying. Feet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.50, 0.40, 0.28, 1)

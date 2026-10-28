@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/crystal_sentry_bolt.tres" id="weapon"]
+
+[node name="CrystalSentry" instance=ExtResource("base_enemy")]
+enemy_name = "Crystal Sentry"
+sprite_name = "enemy_crystal_sentry"
+body_tint = Color(0.55, 0.60, 0.68, 1.0)
+weapon_icon_color = Color(0.75, 0.80, 0.90, 1.0)
+body_radius = 14.0
+body_shape = 2
+max_health = 55.0
+max_speed = 55.0
+acceleration = 450.0
+base_detection = 110.0
+noise_sensitivity = 2.5
+smell_sensitivity = 5.5
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.5
+min_engage_range = 55.0
+currency_drop_min = 8
+currency_drop_max = 14
+item_drop_chance = 0.34

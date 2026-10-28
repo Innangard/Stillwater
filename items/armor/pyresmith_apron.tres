@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 4.5
+damage_taken_multiplier = 0.85
+element_multipliers = {
+1: 0.50,
+2: 1.10
+}
+noise_weight = 10.0
+armor_slot = 1
+item_name = "Pyresmith Apron"
+description = "A long leather apron, sewn through with slag-glass plates and quilted with ember-honey-cured cotton. The plates throw heat back. The cotton smolders gently in cold air. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.55, 0.28, 0.16, 1)

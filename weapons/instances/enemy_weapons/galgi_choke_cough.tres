@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="PersistentHitboxWeapon" format=3 uid="uid://barmco0updfay"]
+
+[ext_resource type="Script" uid="uid://c1tgaios4sv2h" path="res://weapons/persistent_hitbox_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.4
+
+[resource]
+script = ExtResource("1")
+length = 165.0
+cone_angle_degrees = 55.0
+duration = 1.8
+knockback = 45.0
+weapon_name = "Choke-Cough"
+base_damage = 4.0
+element = 6
+cooldown = 3.0
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+description = "Black blood, hot and rancid, expelled from a throat that has been rotting for a century. Burns like bile."

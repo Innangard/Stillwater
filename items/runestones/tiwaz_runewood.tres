@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunestoneItem" load_steps=2 format=3 uid="uid://b029ce4d2196"]
+
+[ext_resource type="Script" path="res://items/runestone_item.gd" id="script_1"]
+
+[resource]
+script = ExtResource("script_1")
+rune_symbol = "ᛏ"
+rune_stat = 0
+bonus_value = 4.5
+conduit = 2
+drop_weight = 5.0
+item_name = "Tiwaz Wood"
+description = "+4.5% Melee Damage. Tyr's hand — the sacrifice that strikes."
+category = "runestone"
+max_stack = 99
+placeholder_color = Color(0.55, 0.72, 0.45, 1)

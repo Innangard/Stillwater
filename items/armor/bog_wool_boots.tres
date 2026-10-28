@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 2.0
+damage_taken_multiplier = 0.95
+element_multipliers = {
+2: 0.80
+}
+noise_weight = 0.5
+item_name = "Bog-Wool Boots"
+description = "Boots felted from bog-wool, soled in peat-pitched leather. The wool muffles your step; the pitch leaves no print in the moor-moss. Whatever's stalking you in the dark stops being sure where you are. Feet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.30, 0.26, 0.20, 1)

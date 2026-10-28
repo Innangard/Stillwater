@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Kenning" format=3 uid="uid://cr5jbftg5x4u"]
+
+[ext_resource type="Script" uid="uid://bdkg4f4oalcv0" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "all_seer"
+display_name = "All-Seer"
+epithet = "She who walks the map before walking the world"
+description = "[DEBUG] Equip to reveal every room on the map as visited. Fast-travel works to any town, altar, or dungeon entrance the moment it's in your loadout. Unequip to stop applying the reveal to future world regenerations (already-revealed rooms stay revealed). Intended for authoring inspection — verify world-gen, jump to new content, no walking required."
+flavor_text = "The gods showed her the whole shore in a single breath. She remembered it all, which was the curse and the gift."
+category = 4
+unlock_hint = "Earned at the threshold of Ginnungagap — the gods gave you the map before they gave you the world."
+tier_color = Color(0.55, 0.85, 1, 1)

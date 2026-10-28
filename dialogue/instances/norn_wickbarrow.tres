@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://kxqq015g5thc"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Fortune Teller"
+text = "Sit. You arrived. I felt the southern arch hum when you stepped through it — every coming, every going, every now that this island folds into being. You smell of grass that has known rain."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Verðandi"
+text = "I am called the fortune teller of Wickbarrow. It is a small name. It is not the one I was given. I am Verðandi. The one of the present. The middle weaver."
+
+[sub_resource type="Resource" id="line3"]
+script = ExtResource("2")
+speaker = "Verðandi"
+text = "I sit at the loom that turns what is into what was. My elder sister Urðr wove what had been; my younger sister Skuld wove what would be. We made the cycle hum, together — past tense, now."
+
+[sub_resource type="Resource" id="line4"]
+script = ExtResource("2")
+speaker = "Verðandi"
+text = "Urðr has been silent at her loom for some time. Skuld has been silent longer. I weave the now alone, and the now grows thin in my fingers — there is no past behind it the king has not unmade, and no future ahead of it he has not eaten."
+
+[sub_resource type="Resource" id="line5"]
+script = ExtResource("2")
+speaker = "Verðandi"
+text = "And yet here you are, alive on the long shore. The now folded a stranger into itself. Someone wove that thread, child. I did not. Walk west, when you can. There is a small island, a seedling of Yggdrasil growing on it. My younger sister loved that place. If she left any sign of herself, it will be there."
+
+[sub_resource type="Resource" id="line6"]
+script = ExtResource("2")
+speaker = "Verðandi"
+text = "What you came in for. The runes. I cut them — present runes, the only kind I have. Bring me bone, slate, wood, gold, and I will bind the now into them. Sit, when you are ready."
+
+[sub_resource type="Resource" id="line7"]
+script = ExtResource("2")
+speaker = "Verðandi"
+text = "One thing more. The women you will meet in Nasus and Storsprunga, who call themselves fortune tellers as well — do not name them Norn. They are good souls. They learned the work from us, long ago, when my sisters and I still walked openly. The craft is real. The hands that cut for you in those towns are mortal."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2"), SubResource("line3"), SubResource("line4"), SubResource("line5"), SubResource("line6"), SubResource("line7")])

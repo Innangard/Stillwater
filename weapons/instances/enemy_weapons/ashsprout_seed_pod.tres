@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/exploding_projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Seed Pod"
+description = "A swollen pod launched in a high arc. It bursts on contact, scattering thorn-seeds."
+base_damage = 12.0
+element = 5
+cooldown = 3.0
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 280.0
+projectile_lifetime = 2.0
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 180.0

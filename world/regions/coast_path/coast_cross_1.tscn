@@ -1,0 +1,188 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_wolf_lunge"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_goblin_sword"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_goblin_bow"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="CoastCross1" type="Node2D" unique_id=300083]
+script = ExtResource("region_script")
+region_id = "coast_cross_1"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -60
+offset_top = -880
+offset_right = 4
+offset_bottom = -38
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = -60
+offset_top = -38
+offset_right = 4
+offset_bottom = 900
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Path2" type="ColorRect" parent="."]
+offset_left = -28
+offset_top = -70
+offset_right = 920
+offset_bottom = -6
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Path3" type="ColorRect" parent="."]
+offset_left = -900
+offset_top = -70
+offset_right = -28
+offset_bottom = -6
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Kelp0" type="ColorRect" parent="."]
+offset_left = 0
+offset_top = 475
+offset_right = 44
+offset_bottom = 501
+mouse_filter = 2
+color = Color(0.20, 0.30, 0.24, 0.8)
+
+[node name="Rock1" type="ColorRect" parent="."]
+offset_left = 196
+offset_top = -270
+offset_right = 227
+offset_bottom = -224
+mouse_filter = 2
+color = Color(0.50, 0.48, 0.44, 1)
+
+[node name="Kelp2" type="ColorRect" parent="."]
+offset_left = -47
+offset_top = -354
+offset_right = -17
+offset_bottom = -326
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.8)
+
+[node name="Kelp3" type="ColorRect" parent="."]
+offset_left = -376
+offset_top = -181
+offset_right = -317
+offset_bottom = -151
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.8)
+
+[node name="Tidepool4" type="ColorRect" parent="."]
+offset_left = -127
+offset_top = -346
+offset_right = -70
+offset_bottom = -294
+mouse_filter = 2
+color = Color(0.20, 0.34, 0.40, 0.7)
+
+[node name="Sand5" type="ColorRect" parent="."]
+offset_left = -417
+offset_top = -290
+offset_right = -356
+offset_bottom = -243
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.5)
+
+[node name="Sand6" type="ColorRect" parent="."]
+offset_left = 150
+offset_top = 247
+offset_right = 200
+offset_bottom = 326
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.5)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-560, -540, -560, -70, -655, -70, -655, -6, -560, -6, -560, 560, -750, 560, -750, -540)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(580, -540, 580, -70, 675, -70, 675, -6, 580, -6, 580, 560, 770, 560, 770, -540)
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-560, -540, -60, -540, -60, -635, 4, -635, 4, -540, 580, -540, 580, -730, -560, -730)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-560, 560, -60, 560, -60, 655, 4, 655, 4, 560, 580, 560, 580, 750, -560, 750)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(-28, -512)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(-28, 538)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(556, -38)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-536, -38)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_wolf_lunge")]
+position = Vector2(-460, -467)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(505, -478)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(-476, 485)
+
+[node name="Enemy3" parent="." instance=ExtResource("enemy_goblin_bow")]
+position = Vector2(487, 473)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-28, -628)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "↑  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-28, 634)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "↓  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(668, -38)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "→  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-648, -38)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "←  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(48, 192)

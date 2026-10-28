@@ -1,0 +1,120 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/bark_troll.tscn" id="enemy_bark_troll"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_goblin_sword"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -440
+
+[node name="AshsproutBuffer9" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "ashsprout_buffer_9"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.22, 0.28, 0.18, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -144
+offset_top = -1060
+offset_right = -96
+offset_bottom = 0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.30, 0.5)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = -144
+offset_top = 0
+offset_right = -96
+offset_bottom = 1020
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.30, 0.5)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = 90
+offset_top = 326
+offset_right = 146
+offset_bottom = 388
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.26, 0.8)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = -54
+offset_top = -2
+offset_right = 26
+offset_bottom = 57
+mouse_filter = 2
+color = Color(0.40, 0.35, 0.24, 0.8)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = 65
+offset_top = -116
+offset_right = 119
+offset_bottom = -64
+mouse_filter = 2
+color = Color(0.18, 0.25, 0.15, 0.8)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-300, -720, -145, -720, -145, -815, -95, -815, -95, -720, 440, -720, 440, -910, -300, -910)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-300, 680, -145, 680, -145, 775, -95, 775, -95, 680, 440, 680, 440, 870, -300, 870)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(-120, -692)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(-120, 658)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_bark_troll")]
+position = Vector2(123, -660)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(187, -20)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_bark_troll")]
+position = Vector2(107, 620)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-120, -808)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "path"
+tint = Color(0.38, 0.42, 0.30, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-120, 754)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "path"
+tint = Color(0.38, 0.42, 0.30, 0.4)
+zone_size = Vector2(192, 48)

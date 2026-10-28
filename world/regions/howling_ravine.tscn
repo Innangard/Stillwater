@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_b"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+
+[ext_resource type="Resource" path="res://items/instances/frost_filament.tres" id="item_filament"]
+
+; Narrower playable area — the ravine geometry pinches the path.
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -200.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -200.0
+
+[node name="HowlingRavine" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "howling_ravine"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0.18, 0.16, 0.14, 1.0)
+mouse_filter = 2
+
+; Cliff walls flanking the ravine — solid bands of darker stone outside
+; the playable area. They sit OUTSIDE x=±200 (the wall boundary) but
+; visually fill the screen so the constraint reads.
+[node name="CliffLeft" type="ColorRect" parent="."]
+offset_left = -1200.0
+offset_top = -540.0
+offset_right = -200.0
+offset_bottom = 540.0
+color = Color(0.10, 0.09, 0.08, 1.0)
+mouse_filter = 2
+
+[node name="CliffRight" type="ColorRect" parent="."]
+offset_left = 200.0
+offset_top = -540.0
+offset_right = 1200.0
+offset_bottom = 540.0
+color = Color(0.10, 0.09, 0.08, 1.0)
+mouse_filter = 2
+
+[node name="CliffEdgeLeft" type="ColorRect" parent="."]
+offset_left = -204.0
+offset_top = -540.0
+offset_right = -200.0
+offset_bottom = 540.0
+color = Color(0.04, 0.04, 0.03, 1.0)
+mouse_filter = 2
+
+[node name="CliffEdgeRight" type="ColorRect" parent="."]
+offset_left = 200.0
+offset_top = -540.0
+offset_right = 204.0
+offset_bottom = 540.0
+color = Color(0.04, 0.04, 0.03, 1.0)
+mouse_filter = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-200, -540, -60, -540, -60, -640, 60, -640, 60, -540, 200, -540, 200, -730, -200, -730)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-200, 540, -60, 540, -60, 640, 60, 640, 60, 540, 200, 540, 200, 730, -200, 730)
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="from_stair" type="Marker2D" parent="."]
+position = Vector2(0, 460)
+
+[node name="from_watch" type="Marker2D" parent="."]
+position = Vector2(0, -460)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(0, 0)
+
+; Narrow corridor with two enemies — fighting required, no detour available.
+[node name="Sentinel1" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(-80, -100)
+
+[node name="Sentinel2" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(80, 200)
+
+[node name="Sentinel3" parent="." instance=ExtResource("enemy_b")]
+position = Vector2(-60, 320)
+
+[node name="ReagentFilament" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(120, -300)
+item = ExtResource("item_filament")
+persistent_per_run = true
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 500)
+target_scene = "res://world/regions/riven_stair.tscn"
+target_spawn_point = "from_ravine"
+label = "↓  to the Riven Stair"
+tint = Color(0.34, 0.30, 0.26, 0.4)
+zone_size = Vector2(160, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -500)
+target_scene = "res://world/regions/northwall_watch.tscn"
+target_spawn_point = "from_ravine"
+label = "↑  to Northwall Watch"
+tint = Color(0.40, 0.40, 0.42, 0.4)
+zone_size = Vector2(160, 48)

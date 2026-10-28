@@ -1,0 +1,79 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/stone_lurker.tscn" id="enemy_stone_lurker"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_goblin_sword"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="FrostgardClearing9" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "frostgard_clearing_9"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.30, 0.35, 0.42, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.55, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = 166
+offset_top = 299
+offset_right = 216
+offset_bottom = 349
+mouse_filter = 2
+color = Color(0.50, 0.55, 0.60, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = 275
+offset_top = 186
+offset_right = 296
+offset_bottom = 213
+mouse_filter = 2
+color = Color(0.40, 0.45, 0.52, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -26
+offset_top = 292
+offset_right = -6
+offset_bottom = 318
+mouse_filter = 2
+color = Color(0.50, 0.55, 0.60, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(300, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_stone_lurker")]
+position = Vector2(-132, -87)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_sword")]
+position = Vector2(150, -125)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_stone_lurker")]
+position = Vector2(2, 133)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(420, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "east"
+tint = Color(0.45, 0.50, 0.55, 0.4)
+zone_size = Vector2(192, 48)

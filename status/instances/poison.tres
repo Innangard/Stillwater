@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://0wxssxysoks3"]
+
+[ext_resource type="Script" uid="uid://d25hkgivi0bek" path="res://status/status_effect.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = &"poison"
+display_name = "Poison"
+description = "Sickly venom in the veins. Lasts longer than burn, ticks slower, stacks higher."
+duration = 5.0
+tick_interval = 0.75
+damage_per_tick = 1.5
+damage_element = 4
+stack_behavior = 1
+max_stacks = 8
+tint_color = Color(0.4, 0.85, 0.3, 1)
+tint_intensity = 0.45

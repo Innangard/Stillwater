@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 0.5
+damage_taken_multiplier = 0.96
+noise_weight = 1.0
+move_speed_multiplier = 1.08
+item_name = "Galewalker Vest"
+description = "A thin vest of windsilk over a single chest-strap of sky-iron mail. The mail is a single concession to mortality; the rest is wind and want. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.58, 0.65, 0.72, 1)

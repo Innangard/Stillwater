@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cno72k7gxeuj3"]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" uid="uid://bitgonkbgcdpt" path="res://enemies/boss_enemy.gd" id="boss_script"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_pillar.tscn" id="pillar"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skeleton_king_swipe.tres" id="w_swipe"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skeleton_king_lunge.tres" id="w_lunge"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skeleton_king_swipe.tres" id="w_default"]
+
+[node name="SkeletonKing" unique_id=2115031947 instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+boss_display_name = "Skeleton King"
+weapon_swipe = ExtResource("w_swipe")
+weapon_lunge = ExtResource("w_lunge")
+pillar_scene = ExtResource("pillar")
+phase2_threshold = 0.3
+phase2_wind_up = 0.55
+phase2_recover = 0.35
+lunge_patience = 2.5
+phase2_lunge_patience = 1.6
+enemy_name = "Skeleton King"
+sprite_name = "boss_skeleton_king"
+body_tint = Color(0.75, 0.7, 0.6, 1)
+weapon_icon_color = Color(0.95, 0.85, 0.4, 1)
+body_radius = 22.0
+body_shape = 5
+max_health = 800.0
+max_speed = 85.0
+acceleration = 600.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_default")
+wind_up_duration = 0.85
+recover_duration = 0.55
+min_engage_range = 0.0
+currency_drop_min = 40
+currency_drop_max = 65
+item_drop_chance = 1.0

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://e5f3e54fd8e6"]
+
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/cinder_salt.tres" id="item_cinder_salt"]
+[ext_resource type="Resource" path="res://items/instances/hollow_bone.tres" id="item_hollow_bone"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="item_pale_ash"]
+[ext_resource type="Resource" path="res://items/instances/runeslate_tablet.tres" id="item_runeslate_tablet"]
+[ext_resource type="Resource" uid="uid://f0da87fab310" path="res://items/runestones/tiwaz_runestone.tres" id="output_rune"]
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_script"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("iq_script")
+item = ExtResource("item_runeslate_tablet")
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("iq_script")
+item = ExtResource("item_pale_ash")
+count = 2
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("iq_script")
+item = ExtResource("item_hollow_bone")
+
+[sub_resource type="Resource" id="input_3"]
+script = ExtResource("iq_script")
+item = ExtResource("item_cinder_salt")
+count = 2
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Inscribe Tiwaz Runestone"
+description = "Mark of Justice — mark one enemy; all damage to it increased 50% for 30s."
+inputs = Array[ExtResource("iq_script")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2"), SubResource("input_3")])
+output_item = ExtResource("output_rune")

@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/stone_lurker_slam.tres" id="weapon"]
+
+[node name="StoneLurker" instance=ExtResource("base_enemy")]
+enemy_name = "Stone Lurker"
+sprite_name = "enemy_stone_lurker"
+body_tint = Color(0.48, 0.48, 0.45, 1.0)
+weapon_icon_color = Color(0.65, 0.65, 0.60, 1.0)
+body_radius = 18.0
+body_shape = 2
+max_health = 80.0
+max_speed = 50.0
+acceleration = 380.0
+base_detection = 55.0
+noise_sensitivity = 3.0
+smell_sensitivity = 5.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.75
+recover_duration = 0.6
+min_engage_range = 0.0
+currency_drop_min = 11
+currency_drop_max = 18
+item_drop_chance = 0.38

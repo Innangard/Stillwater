@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/sailor_greatsword.tres" id="w_sword"]
+
+[node name="DrownedSailor" instance=ExtResource("base_enemy")]
+enemy_name = "Drowned Sailor"
+sprite_name = "enemy_drowned_sailor"
+body_tint = Color(0.28, 0.42, 0.44, 1.0)
+weapon_icon_color = Color(0.60, 0.70, 0.68, 1.0)
+body_radius = 15.0
+body_shape = 3
+max_health = 120.0
+max_speed = 55.0
+acceleration = 400.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_sword")
+wind_up_duration = 0.80
+recover_duration = 0.70
+min_engage_range = 0.0
+currency_drop_min = 2
+currency_drop_max = 5
+item_drop_chance = 0.0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Pine Club"
+description = "A gnarled length of mountain pine, swung with the authority of the forest."
+base_damage = 15.0
+element = 5
+cooldown = 1.5
+on_hit_effects = []
+swing_range = 45.0
+arc_radius = 32.0
+swing_duration = 0.2
+knockback = 300.0
+user_lunge_distance = 25.0
+swing_visual = 8

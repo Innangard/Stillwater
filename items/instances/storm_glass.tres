@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Storm-Glass"
+description = "Lightning-struck sand fused on the spot into a hollow black crystal — found in twisted shapes wherever the sky comes down hard. Holds a thrum like a struck bell. Ground into edges that bite with their own discharge. Reagent."
+category = "reagent"
+placeholder_color = Color(0.22, 0.20, 0.32, 1)

@@ -1,0 +1,59 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Jörmund"
+run/main_scene="res://ui/title_screen.tscn"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[autoload]
+
+InputSetup="*res://globals/input_setup.gd"
+EventBus="*res://globals/event_bus.gd"
+DifficultySettings="*res://globals/difficulty_settings.gd"
+GameState="*res://globals/game_state.gd"
+KenningManager="*res://kennings/kenning_manager.gd"
+RunState="*res://globals/run_state.gd"
+ClearingLootSpawner="*res://globals/clearing_loot_spawner.gd"
+PathManager="*res://globals/path_manager.gd"
+CraftingRegistry="*res://crafting/crafting_registry.gd"
+SceneTransition="*res://world/scene_transition.tscn"
+SaveManager="*res://globals/save_manager.gd"
+DialogueUI="*res://ui/dialogue_ui.tscn"
+Toast="*res://ui/toast.tscn"
+InventoryUI="*res://ui/inventory_ui.tscn"
+CraftingUI="*res://ui/crafting_ui.tscn"
+HUD="*res://ui/hud.tscn"
+WorldMap="*res://ui/world_map.gd"
+QuestManager="*res://quests/quest_manager.gd"
+QuestUI="*res://ui/quest_ui.gd"
+KenningsUI="*res://ui/kennings_ui.gd"
+RunesUI="*res://ui/runes_ui.gd"
+MenuTabs="*res://ui/menu_tabs.gd"
+PauseMenu="*res://ui/pause_menu.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

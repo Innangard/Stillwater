@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/dark.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.65
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Shroudfang Dagger"
+description = "Wrapped tip to grip in tomb linen taken from a draugr husk. The cloth has a hunger to it; the blade siphons something off every cut. Things you've stuck stop hitting as hard."
+base_damage = 12.0
+element = 6
+cooldown = 0.22
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app")])
+swing_range = 26.0
+arc_radius = 14.0
+swing_duration = 0.10
+knockback = 150.0
+hitbox_shape = 1
+swing_visual = 1

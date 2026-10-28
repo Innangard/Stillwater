@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/returning_projectile.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Hammer Throw"
+description = "The apprentice hurls the forge hammer end over end. It returns to the hand that threw it."
+base_damage = 14.0
+element = 1
+cooldown = 3.0
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 380.0
+projectile_lifetime = 1.5
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 280.0

@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/pine_warden.tscn" id="enemy_pine_warden"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_wolf_lunge"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_goblin_bow"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="BarrholtClearing2" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "barrholt_clearing_2"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.22, 0.30, 0.20, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.32, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = -207
+offset_top = 92
+offset_right = -187
+offset_bottom = 135
+mouse_filter = 2
+color = Color(0.40, 0.36, 0.28, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = 53
+offset_top = 105
+offset_right = 102
+offset_bottom = 145
+mouse_filter = 2
+color = Color(0.18, 0.28, 0.16, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = -276
+offset_top = 184
+offset_right = -248
+offset_bottom = 233
+mouse_filter = 2
+color = Color(0.40, 0.36, 0.28, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = 106
+offset_top = -55
+offset_right = 142
+offset_bottom = -23
+mouse_filter = 2
+color = Color(0.18, 0.28, 0.16, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_pine_warden")]
+position = Vector2(-159, -94)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_wolf_lunge")]
+position = Vector2(177, -95)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_goblin_bow")]
+position = Vector2(9, 147)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -420)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "north"
+tint = Color(0.38, 0.42, 0.32, 0.4)
+zone_size = Vector2(192, 48)

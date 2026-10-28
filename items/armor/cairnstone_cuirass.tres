@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 4.0
+damage_taken_multiplier = 0.86
+noise_weight = 13.0
+max_health_bonus = 25.0
+item_name = "Cairnstone Cuirass"
+description = "Plates of mountain granite, shaped and bound with iron wire over a thick hide backing. The person who made this was not interested in moving quickly. They were interested in not moving at all. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.38, 0.38, 0.40, 1)

@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/skadi.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skadi_aimed_shot.tres" id="w_aimed"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skadi_spread_shot.tres" id="w_spread"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skadi_lance_thrust.tres" id="w_thrust"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skadi_sweep.tres" id="w_sweep"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skadi_ice_stake.tres" id="w_stake"]
+
+[node name="Skadi" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Skadi"
+body_tint = Color(0.45, 0.52, 0.58, 1.0)
+weapon_icon_color = Color(0.65, 0.78, 0.85, 1.0)
+body_radius = 18.0
+body_shape = 0
+max_health = 1600.0
+max_speed = 85.0
+acceleration = 550.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_aimed")
+wind_up_duration = 0.60
+recover_duration = 0.50
+min_engage_range = 80.0
+boss_display_name = "Skadi"
+boss_id = "skadi"
+weapon_aimed = ExtResource("w_aimed")
+weapon_spread = ExtResource("w_spread")
+weapon_thrust = ExtResource("w_thrust")
+weapon_sweep = ExtResource("w_sweep")
+weapon_ice_stake = ExtResource("w_stake")
+phase2_threshold = 0.40
+phase2_speed = 80.0
+wind_up_aimed = 0.60
+wind_up_spread = 0.70
+wind_up_thrust = 0.50
+wind_up_sweep = 0.60
+wind_up_ice_stake = 0.70
+recover_aimed = 0.50
+recover_spread = 0.65
+recover_thrust = 0.45
+recover_sweep = 0.55
+recover_ice_stake = 0.80
+currency_drop_min = 80
+currency_drop_max = 130
+item_drop_chance = 1.0
+

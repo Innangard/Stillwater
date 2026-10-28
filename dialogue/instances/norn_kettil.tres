@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Norn Kettil"
+text = "Mm. A warm one. Mind the slate, it remembers heat better than anything else here."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Kettil"
+text = "Svala sent word about you, in her way. She doesn't write letters; she writes the air. You learn to read it after enough years. I read enough to be ready for you."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Kettil"
+text = "Bring me bones and slate. I'll teach the runes that the moor knows — the ones a desert-born Norn won't have shown you. They're not better. They're just colder."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3")])

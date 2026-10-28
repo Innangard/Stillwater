@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://bnuljd874bm6m"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="5_xvom1"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_crooked_bow.tres" id="buy_bow"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_pilgrims_hood.tres" id="buy_hood"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_pilgrim_mace.tres" id="buy_mace"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_pilgrim_spear.tres" id="buy_spear"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_worn_blade.tres" id="buy_worn"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="Resource" path="res://dialogue/instances/traveling_merchant_1.tres" id="merchant_dlg"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="merchant_npc"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -360.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -400.0
+
+[node name="ForestClearing2" type="Node2D" unique_id=300094]
+script = ExtResource("region_script")
+region_id = "coast_clearing_2"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1640338380]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 1)
+
+[node name="CenterPath" type="ColorRect" parent="."]
+offset_left = -10
+offset_top = 166
+offset_right = 50
+offset_bottom = 570
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1493989593]
+offset_left = -185.0
+offset_top = -144.0
+offset_right = 155.0
+offset_bottom = 176.0
+mouse_filter = 2
+color = Color(0.4, 0.5, 0.4, 1)
+
+[node name="Kelp0" type="ColorRect" parent="." unique_id=1580281124]
+offset_left = -202.0
+offset_top = -88.0
+offset_right = -156.0
+offset_bottom = -47.0
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.8)
+
+[node name="Drift1" type="ColorRect" parent="." unique_id=835325193]
+offset_left = 253.0
+offset_top = -173.0
+offset_right = 270.0
+offset_bottom = -88.0
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.8)
+
+[node name="Drift2" type="ColorRect" parent="." unique_id=1199661478]
+offset_left = 105.0
+offset_top = 43.0
+offset_right = 121.0
+offset_bottom = 161.0
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.8)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1186042759]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=614320735]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=1668600699]
+build_mode = 1
+polygon = PackedVector2Array(-360, 380, -10, 380, -10, 475, 50, 475, 50, 380, 400, 380, 400, 570, -360, 570)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=885585647]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1489499507]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1519288320]
+position = Vector2(20, 358)
+
+[node name="Player" parent="." unique_id=261981478 instance=ExtResource("player_scene")]
+position = Vector2(20, 358)
+
+[node name="TravelingMerchant" parent="." unique_id=776809893 instance=ExtResource("merchant_npc")]
+position = Vector2(60, -60)
+npc_name = "Traveling Merchant"
+sprite_name = "npc_traveling_merchant"
+dialogue = ExtResource("merchant_dlg")
+tint = Color(0.55, 0.5, 0.4, 1)
+station_name = "Traveler's Pack"
+recipes = Array[ExtResource("5_xvom1")]([ExtResource("buy_worn"), ExtResource("buy_bow"), ExtResource("buy_spear"), ExtResource("buy_mace"), ExtResource("buy_hood")])
+
+[node name="ExitSouth" parent="." unique_id=1871671241 instance=ExtResource("exit_scene")]
+position = Vector2(20, 454)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "↓  back to the path"
+tint = Color(0.45, 0.5, 0.42, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(-60, 20)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

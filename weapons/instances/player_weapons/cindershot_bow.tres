@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://dyd6rjur8jepb"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d2k2is4d7jx1m" path="res://sprites/Skill_Item icons/Separated Files/fc1596.png" id="1_kf6bb"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="4"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.35
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 560.0
+knockback = 130.0
+weapon_name = "Cindershot Bow"
+base_damage = 9.0
+element = 1
+cooldown = 0.6
+on_hit_effects = Array[ExtResource("3")]([SubResource("status_app")])
+description = "The bowstring smolders faintly. Arrows leave trails of ash."
+icon = ExtResource("1_kf6bb")
+two_handed = true

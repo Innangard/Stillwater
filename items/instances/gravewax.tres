@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Gravewax"
+description = "Tallow rendered from the fat of the unwilling dead, set in a wake-fire and skimmed at first cooling. Holds a flame that gives no warmth and casts a thinner shadow than it ought to. Used as a brand-grease on edges that should hurt longer. Reagent."
+category = "reagent"
+placeholder_color = Color(0.42, 0.36, 0.30, 1)

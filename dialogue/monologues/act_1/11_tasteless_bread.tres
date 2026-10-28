@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Journal Scrap"
+text = "The bread we bake here fills the stomach, but it tastes of dust and old cobwebs. We eat only out of habit, going through the motions of the living to stave off the hollow feeling in our chests. I chew the tasteless crusts and close my eyes, trying desperately to remember the sweetness of wild honey."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/hobgoblin_broadsword.tres" id="weapon"]
+
+[node name="HobgoblinSword" instance=ExtResource("base_enemy")]
+enemy_name = "Hobgoblin Reaver"
+sprite_name = "enemy_hobgoblin"
+body_tint = Color(0.28, 0.40, 0.22, 1.0)
+weapon_icon_color = Color(0.92, 0.32, 0.22, 1.0)
+body_radius = 16.0
+max_health = 70.0
+max_speed = 130.0
+acceleration = 820.0
+base_detection = 95.0
+noise_sensitivity = 8.0
+smell_sensitivity = 3.5
+weapon = ExtResource("weapon")
+wind_up_duration = 0.38
+recover_duration = 0.42
+min_engage_range = 0.0
+stagger_threshold = 4.0
+currency_drop_min = 9
+currency_drop_max = 16
+item_drop_chance = 0.45

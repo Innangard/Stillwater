@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://hindclr004"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/brown_bear.tscn" id="enemy_0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1078431952]
+script = ExtResource("region_script")
+region_id = "hindarfjall_clearing_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1301018115]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.36, 0.42, 1)
+
+[node name="TrackN" type="ColorRect" parent="." unique_id=1427293954]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="Glade" type="ColorRect" parent="." unique_id=1062659530]
+offset_left = -160.0
+offset_top = -120.0
+offset_right = 160.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.44, 0.46, 0.50, 1)
+
+[node name="Stone1" type="ColorRect" parent="." unique_id=2061365843]
+offset_left = 233.8
+offset_top = -53.4
+offset_right = 284.6
+offset_bottom = -7.8
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Stone2" type="ColorRect" parent="." unique_id=1908882650]
+offset_left = -227.6
+offset_top = -191.6
+offset_right = -154.4
+offset_bottom = -113.6
+mouse_filter = 2
+color = Color(0.55, 0.55, 0.58, 1)
+
+[node name="Lichen1" type="ColorRect" parent="." unique_id=1961643048]
+offset_left = 182.9
+offset_top = 86.8
+offset_right = 321.6
+offset_bottom = 143.9
+mouse_filter = 2
+color = Color(0.62, 0.68, 0.55, 0.6)
+
+[node name="Lichen2" type="ColorRect" parent="." unique_id=2000859048]
+offset_left = -52.7
+offset_top = -203.5
+offset_right = 128.9
+offset_bottom = -137.5
+mouse_filter = 2
+color = Color(0.62, 0.68, 0.55, 0.6)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2085222520]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1618333407]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1042049646]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1949280874]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1506764376]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1392863681]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1620884407]
+position = Vector2(0, -260)
+
+[node name="Player" parent="." unique_id=1966961648 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="ExitNorth" parent="." unique_id=1405211120 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/hollowmere_village.tscn"
+target_spawn_point = "default"
+label = "↑  up the trail"
+tint = Color(0.50, 0.55, 0.60, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="bear_0" parent="." unique_id=1473480925 instance=ExtResource("enemy_0")]
+position = Vector2(60, -40)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(-60, 20)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

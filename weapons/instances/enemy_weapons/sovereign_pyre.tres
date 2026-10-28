@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PersistentHitboxWeapon" format=3 uid="uid://22mfa3n2rbfp"]
+
+[ext_resource type="Script" uid="uid://c1tgaios4sv2h" path="res://weapons/persistent_hitbox_weapon.gd" id="1"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.5
+
+[resource]
+script = ExtResource("1")
+length = 250.0
+cone_angle_degrees = 70.0
+duration = 3.0
+tick_interval = 0.3
+knockback = 0.0
+weapon_name = "Sovereign Pyre"
+base_damage = 5.0
+element = 1
+cooldown = 3.5
+on_hit_effects = Array[ExtResource("2")]([SubResource("burn_app")])
+description = "Royal fire — a roar that rolls forward in a wave the size of a hall."

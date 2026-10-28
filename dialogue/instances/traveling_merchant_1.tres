@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://cpj5i4o6i0c6d"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Traveler"
+text = "The road provides, if you know where to look. I've collected more than I can carry — care to trade?"
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Traveler"
+text = "Take your time. I'm in no rush — the wolves don't come here."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

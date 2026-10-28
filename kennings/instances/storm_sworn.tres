@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "storm_sworn"
+display_name = "Storm-Sworn"
+epithet = "He whose oath was taken under the white sky"
+description = "Thunder swore an oath to you, and it remembers. Lightning passes through where it should strike, and your own bolts crack louder."
+flavor_text = "The thunder calls your name like a brother."
+category = 2
+unlock_flag = "kenning_unlock_storm_sworn"
+unlock_hint = "Endure a storm-shrine ritual without flinching."
+element_resistance_multipliers = {
+3: 0.5
+}
+element_damage_multipliers = {
+3: 1.10
+}
+tier_color = Color(1.00, 0.95, 0.35, 1)

@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/goblin_spear.tres" id="weapon"]
+
+[node name="GoblinSpear" instance=ExtResource("base_enemy")]
+enemy_name = "Goblin Spearman"
+sprite_name = "enemy_goblin"
+body_tint = Color(0.48, 0.55, 0.36, 1.0)
+weapon_icon_color = Color(0.78, 0.78, 0.78, 1.0)
+body_radius = 14.0
+max_health = 50.0
+max_speed = 120.0
+acceleration = 750.0
+base_detection = 85.0
+noise_sensitivity = 8.0
+smell_sensitivity = 3.5
+weapon = ExtResource("weapon")
+wind_up_duration = 0.5
+recover_duration = 0.4
+min_engage_range = 0.0
+currency_drop_min = 5
+currency_drop_max = 10
+item_drop_chance = 0.4

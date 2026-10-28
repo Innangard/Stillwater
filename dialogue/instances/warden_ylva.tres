@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Ylva"
+text = "I walk the walls. Four times a day, once at each quarter. The walls do not need watching. Nothing comes from the north except wind and silence. But the watching is the point. If we stop watching, we are just dead people sitting in a ruin."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Ylva"
+text = "So I walk. And the walls hold. And the silence stays on the other side where it belongs."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Merchant Eska"
+text = "Heart still going, then. We get one of you through every few seasons. Or — what passes for seasons here."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Eska"
+text = "Reagents, mostly. Some preserved meats if you've a stomach. Souls is what we trade in — your pockets are the same as anyone's down here. I won't ask where you got them."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Eska"
+text = "If you're heading further north or west, take more bone than ash. The cold ones up there don't burn well."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3")])

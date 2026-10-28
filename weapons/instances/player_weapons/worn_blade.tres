@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://dcgmvm2ogtamu"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://chnj553ivonfw" path="res://sprites/Skill_Item icons/Separated Files/fc1447.png" id="1_p1dqt"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2_lwajn"]
+
+[resource]
+script = ExtResource("1")
+swing_range = 22.0
+knockback = 260.0
+weapon_name = "Worn Blade"
+base_damage = 11.0
+cooldown = 0.35
+description = "A pitted iron sword carried by some long-dead pilgrim. Better than your bare hands. Barely."
+icon = ExtResource("1_p1dqt")

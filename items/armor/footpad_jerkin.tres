@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 1.5
+damage_taken_multiplier = 0.93
+noise_weight = 4.0
+melee_damage_multiplier = 1.08
+item_name = "Footpad's Jerkin"
+description = "A boiled leather jerkin reinforced at the shoulders with bone slats. The slats keep an honest swing from finding rib. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.40, 0.30, 0.20, 1)

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunestoneItem" load_steps=2 format=3 uid="uid://8f1f46013959"]
+
+[ext_resource type="Script" path="res://items/runestone_item.gd" id="script_1"]
+
+[resource]
+script = ExtResource("script_1")
+rune_symbol = "ᛝ"
+rune_stat = 9
+bonus_value = 4.5
+conduit = 2
+drop_weight = 5.0
+item_name = "Ingwaz Wood"
+description = "+4.5% Max HP. The seed holds the whole tree."
+category = "runestone"
+max_stack = 99
+placeholder_color = Color(0.55, 0.72, 0.45, 1)

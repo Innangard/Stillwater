@@ -1,0 +1,150 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://enemies/giant_crab.tscn" id="enemy_crab"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_wolf"]
+
+[node name="GarnvikBuffer4" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "garnvik_buffer_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000
+offset_top = -2000
+offset_right = 2000
+offset_bottom = 2000
+mouse_filter = 2
+color = Color(0.15, 0.19, 0.23, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -30
+offset_top = -635
+offset_right = 30
+offset_bottom = 0
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.5)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = -30
+offset_top = 0
+offset_right = 30
+offset_bottom = 655
+mouse_filter = 2
+color = Color(0.48, 0.44, 0.36, 0.5)
+
+[node name="Tidepool0" type="ColorRect" parent="."]
+offset_left = 233
+offset_top = 301
+offset_right = 351
+offset_bottom = 341
+mouse_filter = 2
+color = Color(0.28, 0.44, 0.54, 0.55)
+
+[node name="Sand1" type="ColorRect" parent="."]
+offset_left = 25
+offset_top = -136
+offset_right = 149
+offset_bottom = -57
+mouse_filter = 2
+color = Color(0.52, 0.48, 0.38, 0.55)
+
+[node name="Netshred2" type="ColorRect" parent="."]
+offset_left = -3
+offset_top = 25
+offset_right = 33
+offset_bottom = 103
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.4)
+
+[node name="Sand3" type="ColorRect" parent="."]
+offset_left = 148
+offset_top = -216
+offset_right = 314
+offset_bottom = -123
+mouse_filter = 2
+color = Color(0.52, 0.48, 0.38, 0.55)
+
+[node name="Ice4" type="ColorRect" parent="."]
+offset_left = -65
+offset_top = 68
+offset_right = -5
+offset_bottom = 157
+mouse_filter = 2
+color = Color(0.70, 0.80, 0.88, 0.35)
+
+[node name="Kelpline5" type="ColorRect" parent="."]
+offset_left = -353
+offset_top = -62
+offset_right = -240
+offset_bottom = -47
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.9)
+
+[node name="Ice6" type="ColorRect" parent="."]
+offset_left = -238
+offset_top = -107
+offset_right = -152
+offset_bottom = -34
+mouse_filter = 2
+color = Color(0.70, 0.80, 0.88, 0.35)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallNorth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, -540, -30, -540, -30, -635, 30, -635, 30, -540, 520, -540, 520, -660, -520, -660)
+
+[node name="WallSouth" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-520, 560, -30, 560, -30, 655, 30, 655, 30, 560, 520, 560, 520, 680, -520, 680)
+
+[node name="WallEast" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(480, -580, 480, 600, 600, 600, 600, -580)
+
+[node name="WallWest" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-480, -580, -480, 600, -600, 600, -600, -580)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -512)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(0, 538)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_crab")]
+position = Vector2(75, -75)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_crab")]
+position = Vector2(330, 185)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_wolf")]
+position = Vector2(-227, -6)
+
+[node name="Enemy3" parent="." instance=ExtResource("enemy_wolf")]
+position = Vector2(-29, 54)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -628)
+target_scene = "res://world/regions/dungeon_entrance_garnvik.tscn"
+target_spawn_point = "default"
+label = "↑  along the shoals"
+tint = Color(0.35, 0.50, 0.58, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 634)
+target_scene = "res://world/regions/dungeon_entrance_garnvik.tscn"
+target_spawn_point = "default"
+label = "↓  along the shoals"
+tint = Color(0.35, 0.50, 0.58, 0.4)
+zone_size = Vector2(192, 48)
+

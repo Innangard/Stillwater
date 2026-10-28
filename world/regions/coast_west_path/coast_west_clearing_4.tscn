@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://gen1f909a6091f9"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[node name="Node2D" type="Node2D" unique_id=20002303]
+script = ExtResource("region_script")
+region_id = "coast_west_clearing_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=20002304]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.26, 0.36, 0.30, 1)
+
+[node name="Track_north" type="ColorRect" parent="." unique_id=20002305]
+offset_left = -46.0
+offset_top = -400.0
+offset_right = 46.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.40, 0.48, 0.38, 0.6)
+
+[node name="Decor0" type="ColorRect" parent="." unique_id=20002306]
+offset_left = 145.0
+offset_top = -150.0
+offset_right = 233.0
+offset_bottom = -124.0
+mouse_filter = 2
+color = Color(0.35, 0.42, 0.35, 0.5)
+
+[node name="Decor1" type="ColorRect" parent="." unique_id=20002307]
+offset_left = 205.0
+offset_top = -124.0
+offset_right = 269.0
+offset_bottom = -100.0
+mouse_filter = 2
+color = Color(0.48, 0.52, 0.46, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="." unique_id=20002308]
+offset_left = -232.0
+offset_top = 20.0
+offset_right = -202.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(0.26, 0.36, 0.30, 0.7)
+
+[node name="Decor3" type="ColorRect" parent="." unique_id=20002309]
+offset_left = -9.0
+offset_top = -79.0
+offset_right = 45.0
+offset_bottom = -15.0
+mouse_filter = 2
+color = Color(0.35, 0.42, 0.35, 0.5)
+
+[node name="Decor4" type="ColorRect" parent="." unique_id=20002310]
+offset_left = 18.0
+offset_top = -42.0
+offset_right = 90.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.48, 0.52, 0.46, 0.6)
+
+[node name="RewardMarker" type="ColorRect" parent="." unique_id=20002311]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.85, 0.75, 0.45, 0.7)
+
+[node name="RewardGlow" type="ColorRect" parent="RewardMarker" unique_id=20002312]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(1.0, 0.95, 0.65, 0.3)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=20002313]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=20002314]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -490, 60, -490, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=20002315]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=20002316]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=20002317]
+build_mode = 1
+polygon = PackedVector2Array(560, -300, 560, 300, 750, 300, 750, -300)
+
+[node name="default" type="Marker2D" parent="." unique_id=20002318]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=20002319]
+position = Vector2(0, -260)
+
+[node name="Player" parent="." unique_id=20002320 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↑  northern corridor"
+tint = Color(0.40, 0.48, 0.38, 0.4)
+zone_size = Vector2(192, 48)

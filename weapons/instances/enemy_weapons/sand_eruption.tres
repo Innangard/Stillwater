@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PersistentHitboxWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/persistent_hitbox_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Sand Eruption"
+description = "The dune above the worm cracks open. Anyone standing on the wrong patch of sand learns where it was."
+base_damage = 12.0
+element = 0
+cooldown = 3.6
+on_hit_effects = []
+shape_kind = 2
+length = 75.0
+cone_angle_degrees = 60.0
+rect_width = 40.0
+duration = 0.35
+tick_interval = 5.0
+knockback = 500.0

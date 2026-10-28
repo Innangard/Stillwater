@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Ghost-Lichen"
+description = "Pale lichen that grows only on north-facing stone, where the dawn never touches. Cold to the tongue. The skalds say it remembers winter when winter forgets itself. Ground into edge-coatings and tanning baths. Reagent."
+category = "reagent"
+placeholder_color = Color(0.78, 0.84, 0.82, 1)

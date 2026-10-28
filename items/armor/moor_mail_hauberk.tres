@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 1
+damage_reduction = 5.0
+damage_taken_multiplier = 0.82
+element_multipliers = {
+2: 0.55,
+3: 0.75
+}
+noise_weight = 14.0
+item_name = "Moor-Mail Hauberk"
+description = "Cold-iron rings, riveted four-in-one, lined with ghost-lichen felt. Heavier than the cinderplate it replaces and louder when you walk — but the cold rolls right off, and lightning thinks twice. The mail of someone who isn't trying to sneak. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.40, 0.44, 0.50, 1)

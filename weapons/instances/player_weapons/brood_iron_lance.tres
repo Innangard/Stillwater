@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/poison.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 1.00
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Brood-Iron Lance"
+description = "Hammered from a single broken plate of the broodmother's chitin, blackened by her body heat and edged with the same hooks she lined her birth-canal with. It is heavier than steel of its length should be. Every solid hit leaves the target green-veined and dying slowly."
+base_damage = 32.0
+element = 4
+cooldown = 0.68
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app")])
+swing_range = 72.0
+arc_radius = 11.0
+swing_duration = 0.20
+knockback = 360.0
+hitbox_shape = 1
+two_handed = true
+swing_visual = 2

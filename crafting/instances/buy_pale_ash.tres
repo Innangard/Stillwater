@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Pale Ash"
+description = "Burned bone-flake from the temple braziers. Dry to the touch."
+inputs = []
+requires_weapon = null
+currency_cost = 6
+output_item = ExtResource("2")
+output_item_count = 1
+output_weapon = null

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 3.5
+damage_taken_multiplier = 0.87
+element_multipliers = {
+6: 0.45,
+5: 1.20
+}
+noise_weight = -6.0
+armor_slot = 1
+item_name = "Gravewalker Robe"
+description = "A heavy robe with wormgold thread sewn through the seams. The thread remembers every hand that's worn it before — there are many. The dark passes through it without much interest. Holy fire, though, finds purchase. Chest."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.20, 0.18, 0.24, 1)

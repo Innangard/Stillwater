@@ -1,0 +1,143 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://enemies/galgi_the_bound.tscn" id="boss_scene"]
+[ext_resource type="PackedScene" path="res://world/passage.tscn" id="passage_scene"]
+[ext_resource type="Script" path="res://world/boss_room_gate.gd" id="gate_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -520.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -520.0
+
+
+[node name="MyrkfenBossRoom" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "myrkfen_boss_room"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.11, 0.14, 0.10, 1)
+
+[node name="SunkenPool" type="ColorRect" parent="."]
+offset_left = -420.0
+offset_top = -300.0
+offset_right = 420.0
+offset_bottom = 320.0
+mouse_filter = 2
+color = Color(0.18, 0.28, 0.17, 0.7)
+
+[node name="PoolRing" type="ColorRect" parent="."]
+offset_left = -360.0
+offset_top = -250.0
+offset_right = 360.0
+offset_bottom = 270.0
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.20, 0.6)
+
+[node name="GallowsTrunk" type="ColorRect" parent="."]
+offset_left = -18.0
+offset_top = -260.0
+offset_right = 18.0
+offset_bottom = -60.0
+mouse_filter = 2
+color = Color(0.18, 0.13, 0.09, 1)
+
+[node name="GallowsBeam" type="ColorRect" parent="."]
+offset_left = -130.0
+offset_top = -280.0
+offset_right = 130.0
+offset_bottom = -258.0
+mouse_filter = 2
+color = Color(0.22, 0.16, 0.11, 1)
+
+[node name="PoisonSlick1" type="ColorRect" parent="."]
+offset_left = -320.0
+offset_top = 120.0
+offset_right = -180.0
+offset_bottom = 210.0
+mouse_filter = 2
+color = Color(0.36, 0.56, 0.16, 0.30)
+
+[node name="PoisonSlick2" type="ColorRect" parent="."]
+offset_left = 190.0
+offset_top = -220.0
+offset_right = 330.0
+offset_bottom = -140.0
+mouse_filter = 2
+color = Color(0.36, 0.56, 0.16, 0.30)
+
+[node name="DeadTree1" type="ColorRect" parent="."]
+offset_left = -430.0
+offset_top = -330.0
+offset_right = -404.0
+offset_bottom = -230.0
+mouse_filter = 2
+color = Color(0.17, 0.13, 0.10, 1)
+
+[node name="DeadTree2" type="ColorRect" parent="."]
+offset_left = 400.0
+offset_top = 190.0
+offset_right = 426.0
+offset_bottom = 300.0
+mouse_filter = 2
+color = Color(0.17, 0.13, 0.10, 1)
+
+[node name="BossRoomGate" type="Node2D" parent="."]
+script = ExtResource("gate_script")
+boss_id = "galgi_the_bound"
+target_scene = "res://world/regions/dungeon_entrance_myrkfen.tscn"
+passage_color = Color(0.40, 0.65, 0.35, 1.0)
+prompt_text = "Press [E] to leave the fen"
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="GalgiTheBound" parent="." instance=ExtResource("boss_scene")]
+position = Vector2(0, -160)
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 320)
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -360)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(0, 360)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(470, 0)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-470, 0)
+

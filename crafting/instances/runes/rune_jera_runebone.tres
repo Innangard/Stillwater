@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://a22262cdd6f4"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_script"]
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/bone_tablet.tres" id="item_bone_tablet"]
+[ext_resource type="Resource" path="res://items/instances/bog_bile.tres" id="item_bog_bile"]
+[ext_resource type="Resource" path="res://items/instances/living_fire.tres" id="item_living_fire"]
+[ext_resource type="Resource" uid="uid://60f86ac0925f" path="res://items/runestones/jera_runebone.tres" id="output_rune"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("iq_script")
+item = ExtResource("item_bone_tablet")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("iq_script")
+item = ExtResource("item_bog_bile")
+count = 2
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("iq_script")
+item = ExtResource("item_living_fire")
+count = 1
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Inscribe Jera Runebone"
+description = "Rot Seed — plant a trap that poisons enemies who walk over it for 30s."
+inputs = Array[ExtResource("iq_script")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_item = ExtResource("output_rune")

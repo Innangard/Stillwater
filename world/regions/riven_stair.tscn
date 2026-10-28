@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_b"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+
+[ext_resource type="Resource" path="res://items/instances/bog_bile.tres" id="item_bile"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -360.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -360.0
+
+[node name="RivenStair" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "riven_stair"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0.34, 0.30, 0.26, 1.0)
+mouse_filter = 2
+
+; Stair "treads" — horizontal stripes giving the impression of carved steps
+; up the slope. Each stripe slightly darker as you go higher (north).
+[node name="Tread1" type="ColorRect" parent="."]
+offset_left = -180.0
+offset_top = 280.0
+offset_right = 180.0
+offset_bottom = 320.0
+color = Color(0.46, 0.42, 0.38, 1.0)
+mouse_filter = 2
+
+[node name="Tread2" type="ColorRect" parent="."]
+offset_left = -180.0
+offset_top = 140.0
+offset_right = 180.0
+offset_bottom = 180.0
+color = Color(0.42, 0.38, 0.34, 1.0)
+mouse_filter = 2
+
+[node name="Tread3" type="ColorRect" parent="."]
+offset_left = -180.0
+offset_top = 0.0
+offset_right = 180.0
+offset_bottom = 40.0
+color = Color(0.38, 0.34, 0.30, 1.0)
+mouse_filter = 2
+
+[node name="Tread4" type="ColorRect" parent="."]
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = -100.0
+color = Color(0.34, 0.30, 0.26, 1.0)
+mouse_filter = 2
+
+[node name="Tread5" type="ColorRect" parent="."]
+offset_left = -180.0
+offset_top = -280.0
+offset_right = 180.0
+offset_bottom = -240.0
+color = Color(0.30, 0.26, 0.22, 1.0)
+mouse_filter = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, -540, -60, -540, -60, -640, 60, -640, 60, -540, 360, -540, 360, -730, -360, -730)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-360, 540, -60, 540, -60, 640, 60, 640, 60, 540, 360, 540, 360, 730, -360, 730)
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="from_corpse" type="Marker2D" parent="."]
+position = Vector2(0, 460)
+
+[node name="from_ravine" type="Marker2D" parent="."]
+position = Vector2(0, -460)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(0, 0)
+
+[node name="Sentinel" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(220, -180)
+
+[node name="ReagentBile" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(-260, 100)
+item = ExtResource("item_bile")
+persistent_per_run = true
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 500)
+target_scene = "res://world/regions/corpse_clearing.tscn"
+target_spawn_point = "from_stair"
+label = "↓  to the Corpse Clearing"
+tint = Color(0.32, 0.30, 0.22, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -500)
+target_scene = "res://world/regions/howling_ravine.tscn"
+target_spawn_point = "from_stair"
+label = "↑  to the Howling Ravine"
+tint = Color(0.18, 0.16, 0.14, 0.4)
+zone_size = Vector2(192, 48)

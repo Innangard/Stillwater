@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ExplodingRangedWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/exploding_ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/exploding_projectile.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="3"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Husk Ashbomb"
+description = "A bundle of pitch and bone-grit the husk hurls underarm. It bursts on impact — what survives the shock keeps moving."
+base_damage = 8.0
+element = 6
+cooldown = 2.8
+on_hit_effects = []
+projectile_scene = ExtResource("2")
+projectile_speed = 210.0
+projectile_lifetime = 1.30
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 120.0
+child_projectile_scene = ExtResource("3")
+child_count = 6
+child_speed = 240.0
+child_lifetime = 0.45
+child_damage_multiplier = 0.55
+child_spread_degrees = 360.0
+child_knockback = 60.0
+projectile_visual = 3

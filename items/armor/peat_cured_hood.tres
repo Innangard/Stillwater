@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 2.5
+damage_taken_multiplier = 0.92
+element_multipliers = {
+2: 0.65
+}
+noise_weight = 4.0
+item_name = "Peat-Cured Hood"
+description = "A hood cured for forty days in a peat-pit. The wool comes out black, water-tight, and smelling of the long dark. Sits heavy on the head. The cold doesn't get through, but the dead can hear you breathing in it. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.28, 0.22, 0.18, 1)

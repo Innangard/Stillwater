@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://npcs/norn.gd" id="norn_script"]
+
+[sub_resource type="CircleShape2D" id="norn_shape"]
+radius = 40.0
+
+[node name="Norn" type="Node2D"]
+script = ExtResource("norn_script")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("norn_shape")

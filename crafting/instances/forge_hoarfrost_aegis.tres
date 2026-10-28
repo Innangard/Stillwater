@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/hoarfrost_aegis.tres" id="3"]
+[ext_resource type="Resource" path="res://items/instances/hoarfrost_tear.tres" id="4"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="5"]
+[ext_resource type="Resource" path="res://items/instances/ghost_lichen.tres" id="6"]
+[ext_resource type="Resource" path="res://items/instances/sky_iron.tres" id="7"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("4")
+count = 2
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("5")
+count = 5
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("2")
+item = ExtResource("6")
+count = 3
+
+[sub_resource type="Resource" id="input_3"]
+script = ExtResource("2")
+item = ExtResource("7")
+count = 1
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Hoarfrost Aegis"
+description = "Cold iron struck at the centre with a single sky-iron rivet, the seam packed with ghost-lichen, the boss set with hoarfrost-tear. Pristine work and it shows."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2"), SubResource("input_3")])
+output_weapon = ExtResource("3")
+currency_cost = 72

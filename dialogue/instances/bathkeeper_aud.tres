@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://bvyg3nog85ets"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_0"]
+script = ExtResource("2")
+speaker = "Bath-keeper Aud"
+text = "Oh. Oh, my. You smell wrong. You smell like rain on grass. I haven't smelled rain on grass in — I cannot remember how long."
+
+[sub_resource type="Resource" id="line_0b"]
+script = ExtResource("2")
+speaker = "Aud"
+text = "Don't be alarmed. It is only that you are alive, and I am very old, and the two things have not stood in the same room in some time. Come closer. Let me see you properly."
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Bath-keeper Aud"
+text = "Step in, step in. The water remembers what to do, even when nothing else does."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Aud"
+text = "You'll have noticed by now — the dead can smell you. They've nothing else, you see. No proper noses, no proper anything. But your scent stands out. Warm, busy. Like an open kitchen at noon."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Aud"
+text = "A bath cuts that. Not gone — never quite gone — but pinned low for a while. Some of the old hunters don't like it. Say a clean smell is its own beacon. And it is, in its way. The dead notice clean too."
+
+[sub_resource type="Resource" id="line_4"]
+script = ExtResource("2")
+speaker = "Aud"
+text = "But that's a lower ceiling than letting yourself ripen. Trust me. I've seen what comes for a pilgrim who hasn't washed in a week. You'd rather they sniff a held lantern than chase a torch."
+
+[sub_resource type="Resource" id="line_5"]
+script = ExtResource("2")
+speaker = "Aud"
+text = "Eight souls. The water's warm enough. And there's a bench by the door for dripping."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_0"), SubResource("line_0b"), SubResource("line_1"), SubResource("line_2"), SubResource("line_3"), SubResource("line_4"), SubResource("line_5")])

@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://baltar3zz3zz9"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_burst.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_b"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/briar_fang.tres" id="loot_weapon"]
+[ext_resource type="Resource" path="res://items/armor/cinder_cowl.tres" id="loot_armor"]
+[ext_resource type="Resource" path="res://items/instances/living_wood_tablet.tres" id="loot_capstone"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="item_phial"]
+[ext_resource type="Resource" path="res://items/instances/wraithseed.tres" id="item_wraith"]
+[ext_resource type="PackedScene" path="res://dialogue/altar_carving.tscn" id="carving_scene"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1_pool.tres" id="monologue_pool"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -360
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -360
+
+[node name="WickbarrowAltar" type="Node2D" unique_id=1300000001]
+script = ExtResource("region_script")
+region_id = "wickbarrow_altar"
+player_scene = ExtResource("player_scene")
+
+; Forest-shrine palette — deep green ground matches the east_path
+; pool. The third altar in the game uses a third visual identity:
+; Westmoor = cool slate, Eastreach = warm chalk, Wickbarrow = deep
+; verdant forest. Player can tell which altar they're at instantly.
+[node name="Background" type="ColorRect" parent="." unique_id=1300000002]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.22, 0.32, 0.22, 1)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1300000003]
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 240.0
+mouse_filter = 2
+color = Color(0.40, 0.46, 0.32, 1)
+
+; Four wooden totem posts at the cardinal points — different
+; silhouette from Westmoor's standing stones (square slabs) and
+; Eastreach's cairns (rounded stacks). Reads as a woodland shrine
+; carved by hand.
+[node name="TotemN" type="ColorRect" parent="." unique_id=1300000004]
+offset_left = -20.0
+offset_top = -200.0
+offset_right = 20.0
+offset_bottom = -130.0
+mouse_filter = 2
+color = Color(0.30, 0.22, 0.16, 1)
+
+[node name="TotemS" type="ColorRect" parent="." unique_id=1300000005]
+offset_left = -20.0
+offset_top = 130.0
+offset_right = 20.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.30, 0.22, 0.16, 1)
+
+[node name="TotemE" type="ColorRect" parent="." unique_id=1300000006]
+offset_left = 200.0
+offset_top = -22.0
+offset_right = 260.0
+offset_bottom = 22.0
+mouse_filter = 2
+color = Color(0.30, 0.22, 0.16, 1)
+
+[node name="TotemW" type="ColorRect" parent="." unique_id=1300000007]
+offset_left = -260.0
+offset_top = -22.0
+offset_right = -200.0
+offset_bottom = 22.0
+mouse_filter = 2
+color = Color(0.30, 0.22, 0.16, 1)
+
+; Mossy stone altar with a living-wood centrepiece. The "offering"
+; placed on this altar is a sprouting branch, not a flame or sun —
+; ties to the living_wood_tablet capstone reward.
+[node name="AltarBase" type="ColorRect" parent="." unique_id=1300000008]
+offset_left = -90.0
+offset_top = -30.0
+offset_right = 90.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.32, 0.30, 0.24, 1)
+
+[node name="AltarStone" type="ColorRect" parent="." unique_id=1300000009]
+offset_left = -78.0
+offset_top = -42.0
+offset_right = 78.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(0.50, 0.52, 0.40, 1)
+
+[node name="AltarBasin" type="ColorRect" parent="." unique_id=1300000010]
+offset_left = -40.0
+offset_top = -28.0
+offset_right = 40.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.20, 0.14, 1)
+
+; Living-wood sprout above the altar — vertical "branch" with a
+; small green canopy. Distinct from Westmoor's flame and Eastreach's
+; sun disc.
+[node name="WoodBranch" type="ColorRect" parent="." unique_id=1300000011]
+offset_left = -6.0
+offset_top = -80.0
+offset_right = 6.0
+offset_bottom = -28.0
+mouse_filter = 2
+color = Color(0.42, 0.30, 0.20, 1)
+
+[node name="WoodCanopy" type="ColorRect" parent="." unique_id=1300000012]
+offset_left = -32.0
+offset_top = -110.0
+offset_right = 32.0
+offset_bottom = -76.0
+mouse_filter = 2
+color = Color(0.45, 0.65, 0.30, 1)
+
+; Lichen-covered logs marking the southern approach.
+[node name="LogL" type="ColorRect" parent="." unique_id=1300000013]
+offset_left = -250.0
+offset_top = 150.0
+offset_right = -200.0
+offset_bottom = 220.0
+mouse_filter = 2
+color = Color(0.35, 0.32, 0.22, 1)
+
+[node name="LogR" type="ColorRect" parent="." unique_id=1300000014]
+offset_left = 200.0
+offset_top = 150.0
+offset_right = 250.0
+offset_bottom = 220.0
+mouse_filter = 2
+color = Color(0.35, 0.32, 0.22, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1300000015]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1300000016]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1300000017]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1300000018]
+build_mode = 1
+polygon = PackedVector2Array(-400, -360, -400, -60, -500, -60, -500, 60, -400, 60, -400, 360, -590, 360, -590, -360)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls" unique_id=1300000019]
+build_mode = 1
+polygon = PackedVector2Array(400, -360, 400, -60, 500, -60, 500, 60, 400, 60, 400, 360, 590, 360, 590, -360)
+
+; Spawn markers — one per cardinal direction. _try_chain rewires
+; whichever exit the chain approaches from; the other three are
+; static fallbacks back to the start of the east road.
+[node name="default" type="Marker2D" parent="." unique_id=1300000020]
+position = Vector2(0, 240)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1300000021]
+position = Vector2(0, -240)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1300000022]
+position = Vector2(0, 240)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1300000023]
+position = Vector2(340, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1300000024]
+position = Vector2(-340, 0)
+
+[node name="Player" parent="." unique_id=1300000025 instance=ExtResource("player_scene")]
+position = Vector2(0, 240)
+
+; Guardian pair — a melee goblin sword and a ranged skeleton burst.
+; Tougher fight than either of the other two altars to compensate
+; for the east chain being the shortest unlocked path to a capstone
+; reward (no Nasus prerequisite, unlike the Westmoor / Eastreach
+; altars).
+[node name="GuardianGoblin" parent="." unique_id=1300000026 instance=ExtResource("enemy_b")]
+position = Vector2(-150, -100)
+
+[node name="GuardianSkeleton" parent="." unique_id=1300000027 instance=ExtResource("enemy_a")]
+position = Vector2(160, -90)
+
+; Capstone loot. living_wood_tablet is reserved for this altar (the
+; "growing" sister to Westmoor's living_fire and Eastreach's
+; deep_gold). Briar Fang is the signature weapon — venomous,
+; thematically tied to the forest setting.
+[node name="LivingWoodTabletPickup" parent="." unique_id=1300000028 instance=ExtResource("pickup_scene")]
+position = Vector2(0, 100)
+item = ExtResource("loot_capstone")
+persistent_per_run = true
+
+[node name="BriarFangPickup" parent="." unique_id=1300000029 instance=ExtResource("pickup_scene")]
+position = Vector2(-130, 130)
+weapon = ExtResource("loot_weapon")
+persistent_per_run = true
+
+[node name="CinderCowlPickup" parent="." unique_id=1300000030 instance=ExtResource("pickup_scene")]
+position = Vector2(130, 130)
+item = ExtResource("loot_armor")
+persistent_per_run = true
+
+[node name="SoulPhialPickup" parent="." unique_id=1300000031 instance=ExtResource("pickup_scene")]
+position = Vector2(-200, -150)
+item = ExtResource("item_phial")
+persistent_per_run = true
+
+[node name="WraithseedPickup" parent="." unique_id=1300000032 instance=ExtResource("pickup_scene")]
+position = Vector2(200, -150)
+item = ExtResource("item_wraith")
+persistent_per_run = true
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-360, 0)
+target_scene = "res://world/regions/wickbarrow_east_gate.tscn"
+target_spawn_point = "default"
+label = "←  back the way you came"
+tint = Color(0.38, 0.42, 0.28, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="AltarCarving" parent="." unique_id=1099999000 instance=ExtResource("carving_scene")]
+position = Vector2(0, -36)
+pool = ExtResource("monologue_pool")
+carving_name = "Mossed Stone"
+carving_id = "wickbarrow_main"
+tint = Color(0.38, 0.42, 0.28, 1)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(360, 0)
+target_scene = "res://world/regions/dungeon_entrance_sprekken.tscn"
+target_spawn_point = "from_west"
+label = "→  toward the Sprekken barrow"
+tint = Color(0.42, 0.36, 0.48, 0.4)
+zone_size = Vector2(48, 192)

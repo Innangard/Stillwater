@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://dujujleit8fvh"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "There you are. Came through the old arch, did you? I felt it open. Don't try to remember the journey — none of you ever can."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "Well. Look at that. You bleed red. I haven't seen red in a very long time."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "This place is called Jörmund. Once it was the long shore where the dead would wait their turn at the Pool, before being sent back into the world to be born again. It was a kindness. A passage."
+
+[sub_resource type="Resource" id="line_4"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "Then a man crowned himself king and decided that going home was a privilege he alone could grant. He grants it to no one. The water still ripples. Nothing leaves through it."
+
+[sub_resource type="Resource" id="line_4b"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "The Pool runs on consent — that is its old kindness, and its new cage. It cannot take you against your will. So when the king refused, the Pool waited. It is still waiting. We have all been very patient."
+
+[sub_resource type="Resource" id="line_5"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "The arches still work, though. The gods made them, back when this island was a kindness, so the dead would have a door. Press your hand to one and it remembers your shape. Should you fall, it will pull you back. There are four. This one is the South. You will want to wake them all, in time."
+
+[sub_resource type="Resource" id="line_6"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "Wickbarrow lies up the path north. The smith there is decent and the people will not bite you, though they may stare. Don't mind it. They've been here a very long time."
+
+[sub_resource type="Resource" id="line_6b"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "I will not tell you the king's name yet. Names here are weight. You will earn the carrying of it, when you have walked far enough that the knowing won't break you. Come back to me, when the southern arch goes dark behind you. I will give you what I know."
+
+[sub_resource type="Resource" id="line_7"]
+script = ExtResource("2")
+speaker = "Observer"
+text = "Go on, then. The road won't walk itself."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3"), SubResource("line_4"), SubResource("line_4b"), SubResource("line_5"), SubResource("line_6"), SubResource("line_6b"), SubResource("line_7")])

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Fenna"
+text = "Cargo washes in every tide. Half of it is ruined, half of it is worth more than the ship that carried it."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Fenna"
+text = "I dry what I can, patch the rest, and sell it at a fair price. Have a look before the salt claims it."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

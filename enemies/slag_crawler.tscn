@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/slag_crawler_touch.tres" id="weapon"]
+
+[node name="SlagCrawler" instance=ExtResource("base_enemy")]
+enemy_name = "Slag Crawler"
+sprite_name = "enemy_slag_crawler"
+body_tint = Color(0.60, 0.35, 0.20, 1.0)
+weapon_icon_color = Color(0.85, 0.50, 0.25, 1.0)
+body_radius = 11.0
+body_shape = 0
+max_health = 35.0
+max_speed = 95.0
+acceleration = 650.0
+base_detection = 60.0
+noise_sensitivity = 4.5
+smell_sensitivity = 3.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.45
+recover_duration = 0.35
+min_engage_range = 0.0
+currency_drop_min = 5
+currency_drop_max = 9
+item_drop_chance = 0.28

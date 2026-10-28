@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://c6dw7jfgybyfr"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://covsms1lgbcux" path="res://sprites/Skill_Item icons/Separated Files/fc1918.png" id="1_fvwq6"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 2.0
+damage_taken_multiplier = 0.92
+element_multipliers = {
+3: 0.6
+}
+noise_weight = 3.0
+item_name = "Sparkwoven Helm"
+description = "Copper threads woven into wool. Lightning finds a path to ground before it finds your skull. Helmet."
+icon = ExtResource("1_fvwq6")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.6, 0.58, 0.35, 1)

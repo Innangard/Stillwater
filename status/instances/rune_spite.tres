@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://6f2c091d34d9"]
+
+[ext_resource type="Script" path="res://status/status_effect.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = &"rune_spite"
+display_name = "Spite Barrier"
+description = "A shell of malice. All damage returned to sender."
+duration = 10.0
+tick_interval = 0.0
+damage_per_tick = 0.0
+damage_element = 0
+speed_multiplier = 1.0
+damage_taken_multiplier = 0.0
+damage_dealt_multiplier = 1.0
+prevents_action = false
+stack_behavior = 0
+max_stacks = 1
+tint_color = Color(0.85, 0.3, 0.9, 1.0)
+tint_intensity = 0.45

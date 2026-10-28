@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RangedWeapon" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/freeze.tres" id="3"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="4"]
+
+[sub_resource type="Resource" id="freeze_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.50
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Hoarfrost Bow"
+description = "Yew strung with sinew soaked in hoarfrost-tear water. Each arrow leaves the bow already remembering winter. Half the time it hits, the target's blood goes thick and slow. Ranged, half-chance freeze."
+base_damage = 22.0
+element = 2
+cooldown = 0.75
+on_hit_effects = Array[ExtResource("2")]([SubResource("freeze_app")])
+projectile_scene = ExtResource("4")
+projectile_speed = 580.0
+projectile_lifetime = 1.40
+projectile_count = 1
+spread_degrees = 0.0
+pierce = 0
+knockback = 160.0
+placeholder_color = Color(0.55, 0.78, 0.92, 1)
+two_handed = true

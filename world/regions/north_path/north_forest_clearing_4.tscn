@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://b2ik2vgcx2puw"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="5_8isp6"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_pale_ash.tres" id="buy_ash"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_frost_filament.tres" id="buy_frost"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_longbow.tres" id="buy_longbow"]
+[ext_resource type="Resource" path="res://crafting/instances/buy_soul_phial.tres" id="buy_phial"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="Resource" path="res://dialogue/instances/traveling_merchant_4.tres" id="merchant_dlg"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="merchant_npc"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -380.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -450
+
+[node name="ForestClearing4" type="Node2D" unique_id=300064]
+script = ExtResource("region_script")
+region_id = "north_forest_clearing_4"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1079803005]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.44, 0.28, 1)
+
+[node name="CenterPath" type="ColorRect" parent="."]
+offset_left = -620
+offset_top = -10
+offset_right = -147
+offset_bottom = 50
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=1375639968]
+offset_left = -157.0
+offset_top = -161.0
+offset_right = 163.0
+offset_bottom = 139.0
+mouse_filter = 2
+color = Color(0.48, 0.54, 0.38, 1)
+
+[node name="Shroom0" type="ColorRect" parent="." unique_id=1442167171]
+offset_left = 204.0
+offset_top = 126.0
+offset_right = 217.0
+offset_bottom = 141.0
+mouse_filter = 2
+color = Color(0.62, 0.36, 0.32, 0.95)
+
+[node name="Bush1" type="ColorRect" parent="." unique_id=111282123]
+offset_left = 237.0
+offset_top = -68.0
+offset_right = 274.0
+offset_bottom = -22.0
+mouse_filter = 2
+color = Color(0.14, 0.24, 0.16, 1)
+
+[node name="Pool2" type="ColorRect" parent="." unique_id=304179180]
+offset_left = 19.0
+offset_top = -46.0
+offset_right = 56.0
+offset_bottom = -17.0
+mouse_filter = 2
+color = Color(0.16, 0.26, 0.3, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1585244110]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1482360812]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=233054065]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1826068113]
+build_mode = 1
+polygon = PackedVector2Array(-430, -340, -430, -10, -525, -10, -525, 50, -430, 50, -430, 380, -620, 380, -620, -340)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=534199471]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=67963385]
+position = Vector2(-406, 20)
+
+[node name="Player" parent="." unique_id=671026900 instance=ExtResource("player_scene")]
+position = Vector2(-406, 20)
+
+[node name="TravelingMerchant" parent="." unique_id=478909632 instance=ExtResource("merchant_npc")]
+position = Vector2(60, -60)
+npc_name = "Traveling Merchant"
+sprite_name = "npc_traveling_merchant"
+dialogue = ExtResource("merchant_dlg")
+tint = Color(0.55, 0.5, 0.4, 1)
+station_name = "Traveler's Pack"
+recipes = Array[ExtResource("5_8isp6")]([ExtResource("buy_longbow"), ExtResource("buy_frost"), ExtResource("buy_ash"), ExtResource("buy_phial")])
+
+[node name="ExitWest" parent="." unique_id=497580032 instance=ExtResource("exit_scene")]
+position = Vector2(-518, 20)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "←  back to the path"
+tint = Color(0.5, 0.45, 0.35, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(-60, 20)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

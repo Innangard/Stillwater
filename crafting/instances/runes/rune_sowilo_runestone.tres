@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://dc0d7852a76a"]
+
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/cinder_salt.tres" id="item_cinder_salt"]
+[ext_resource type="Resource" path="res://items/instances/living_fire.tres" id="item_living_fire"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="item_pale_ash"]
+[ext_resource type="Resource" path="res://items/instances/runeslate_tablet.tres" id="item_runeslate_tablet"]
+[ext_resource type="Resource" uid="uid://0d437f1f237f" path="res://items/runestones/sowilo_runestone.tres" id="output_rune"]
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_script"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("iq_script")
+item = ExtResource("item_runeslate_tablet")
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("iq_script")
+item = ExtResource("item_living_fire")
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("iq_script")
+item = ExtResource("item_pale_ash")
+count = 4
+
+[sub_resource type="Resource" id="input_3"]
+script = ExtResource("iq_script")
+item = ExtResource("item_cinder_salt")
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Inscribe Sowilo Runestone"
+description = "Daylight Aura — enemy noise/smell detection disabled for 45s."
+inputs = Array[ExtResource("iq_script")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2"), SubResource("input_3")])
+output_item = ExtResource("output_rune")

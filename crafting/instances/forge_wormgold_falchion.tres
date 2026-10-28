@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/wormgold_falchion.tres" id="out_weapon"]
+[ext_resource type="Resource" path="res://items/instances/wormgold.tres" id="reagent0"]
+[ext_resource type="Resource" path="res://items/instances/gravewax.tres" id="reagent1"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="reagent2"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent0")
+count = 2
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 2
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("2")
+item = ExtResource("reagent2")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Wormgold Falchion"
+description = "Wrap the grip in wormgold wire, work gravewax into the hilt-bedding. The blade comes out heavier than it was, somehow. Refuses, at first, to be sheathed."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_weapon = ExtResource("out_weapon")
+currency_cost = 100

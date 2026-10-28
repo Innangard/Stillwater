@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 2.0
+damage_taken_multiplier = 0.9
+element_multipliers = {
+2: 0.7
+}
+noise_weight = 5.0
+melee_damage_multiplier = 1.1
+item_name = "Ironmoss Helm"
+description = "An open-faced helm forged from Hollowmere iron and padded with mountain moss. The metal is cold even by the fire; the moss keeps the cold from reaching the skull. Reduces all incoming damage and sharpens melee strikes. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.36, 0.40, 0.44, 1)

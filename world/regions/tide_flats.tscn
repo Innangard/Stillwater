@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://enemies/giant_crab.tscn" id="enemy_a"]
+[ext_resource type="PackedScene" path="res://enemies/kobold_brown.tscn" id="enemy_b"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+
+[ext_resource type="Resource" path="res://items/instances/wraithseed.tres" id="item_wraith"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+normal = Vector2(0, -1)
+distance = -340.0
+
+[node name="TideFlats" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "tide_flats"
+player_scene = ExtResource("player_scene")
+
+; Wet-sand palette — greyer, cooler than the dunes.
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+color = Color(0.55, 0.65, 0.70, 1.0)
+mouse_filter = 2
+
+; Shallow tide pools.
+[node name="Pool1" type="ColorRect" parent="."]
+offset_left = -240.0
+offset_top = -100.0
+offset_right = -80.0
+offset_bottom = -40.0
+color = Color(0.30, 0.50, 0.58, 0.85)
+mouse_filter = 2
+
+[node name="Pool2" type="ColorRect" parent="."]
+offset_left = 100.0
+offset_top = 80.0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.30, 0.50, 0.58, 0.85)
+mouse_filter = 2
+
+[node name="Pool3" type="ColorRect" parent="."]
+offset_left = -360.0
+offset_top = 160.0
+offset_right = -180.0
+offset_bottom = 240.0
+color = Color(0.30, 0.50, 0.58, 0.85)
+mouse_filter = 2
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-540, -340, -540, -30, -635, -30, -635, 30, -540, 30, -540, 340, -730, 340, -730, -340)
+
+[node name="WallRight" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(540, -340, 540, -30, 635, -30, 635, 30, 540, 30, 540, 340, 730, 340, 730, -340)
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="default" type="Marker2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="from_dunes" type="Marker2D" parent="."]
+position = Vector2(516, 0)
+
+[node name="from_shoals" type="Marker2D" parent="."]
+position = Vector2(-516, 0)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+position = Vector2(0, 0)
+
+[node name="Wanderer1" parent="." instance=ExtResource("enemy_a")]
+position = Vector2(-100, -180)
+
+[node name="Wanderer2" parent="." instance=ExtResource("enemy_b")]
+position = Vector2(220, -120)
+
+[node name="ReagentWraith" parent="." instance=ExtResource("pickup_scene")]
+position = Vector2(40, 240)
+item = ExtResource("item_wraith")
+persistent_per_run = true
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(628, 0)
+target_scene = "res://world/regions/beach_dunes.tscn"
+target_spawn_point = "from_tide"
+label = "→  to the Beach Dunes"
+tint = Color(0.78, 0.72, 0.58, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-628, 0)
+target_scene = "res://world/regions/wreck_shoals.tscn"
+target_spawn_point = "from_tide"
+label = "←  to the Wreck Shoals"
+tint = Color(0.42, 0.45, 0.50, 0.4)
+zone_size = Vector2(48, 192)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://bd7wtjpha7t42"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcn8yuq8kxhq5" path="res://sprites/Skill_Item icons/Separated Files/fc2031.png" id="1_ky2h3"]
+
+[resource]
+script = ExtResource("1")
+damage_reduction = 0.0
+damage_taken_multiplier = 0.95
+noise_weight = 2.0
+melee_damage_multiplier = 1.05
+item_name = "Pilgrim's Cloak"
+description = "A threadbare wool cloak, patched and re-patched by dead hands. The heavy weave drags the shoulder a little — but a heavier swing lands heavier. Chest."
+icon = ExtResource("1_ky2h3")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.5, 0.48, 0.45, 1)

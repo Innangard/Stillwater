@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Slag-Glass Shard"
+description = "A shard of cooled forge-slag, the glass-black runoff from a hot smelting. Still warm to the touch hours after the forge is dead. Smiths grind it into edges that hold heat the way good iron holds memory. Reagent."
+category = "reagent"
+placeholder_color = Color(0.18, 0.12, 0.10, 1)

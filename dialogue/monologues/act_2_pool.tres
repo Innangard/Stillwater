@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MonologuePool" load_steps=17 format=3]
+
+[ext_resource type="Script" path="res://dialogue/monologue_pool.gd" id="1"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/01_stranger_walks.tres" id="m_01"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/02_seedling_rotting.tres" id="m_02"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/03_corpse_sea.tres" id="m_03"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/04_third_weaver.tres" id="m_04"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/05_unfinished_masterwork.tres" id="m_05"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/06_ash_weeper.tres" id="m_06"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/07_sky_candle.tres" id="m_07"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/08_western_marshes.tres" id="m_08"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/09_husband_unmade.tres" id="m_09"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/10_sins_in_ash.tres" id="m_10"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/11_king_understood.tres" id="m_11"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/12_mothers_face.tres" id="m_12"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/13_hollow_mountain.tres" id="m_13"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/14_leaves_fall.tres" id="m_14"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_2/15_red_blood.tres" id="m_15"]
+
+[resource]
+script = ExtResource("1")
+monologues = Array[Resource]([ExtResource("m_01"), ExtResource("m_02"), ExtResource("m_03"), ExtResource("m_04"), ExtResource("m_05"), ExtResource("m_06"), ExtResource("m_07"), ExtResource("m_08"), ExtResource("m_09"), ExtResource("m_10"), ExtResource("m_11"), ExtResource("m_12"), ExtResource("m_13"), ExtResource("m_14"), ExtResource("m_15")])

@@ -1,0 +1,129 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_wolf_lunge"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_goblin_spear"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_wolf_swipe"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -360
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -380
+
+[node name="CoastBuffer7" type="Node2D" unique_id=300079]
+script = ExtResource("region_script")
+region_id = "coast_buffer_7"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.28, 0.38, 0.32, 1)
+
+[node name="Path0" type="ColorRect" parent="."]
+offset_left = -266
+offset_top = 0
+offset_right = -214
+offset_bottom = 960
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Path1" type="ColorRect" parent="."]
+offset_left = -940
+offset_top = -26
+offset_right = -240
+offset_bottom = 26
+mouse_filter = 2
+color = Color(0.45, 0.50, 0.42, 0.5)
+
+[node name="Rock0" type="ColorRect" parent="."]
+offset_left = 172
+offset_top = -175
+offset_right = 217
+offset_bottom = -137
+mouse_filter = 2
+color = Color(0.46, 0.44, 0.40, 1)
+
+[node name="Sand1" type="ColorRect" parent="."]
+offset_left = -45
+offset_top = 358
+offset_right = 47
+offset_bottom = 394
+mouse_filter = 2
+color = Color(0.55, 0.52, 0.42, 0.5)
+
+[node name="Rock2" type="ColorRect" parent="."]
+offset_left = -178
+offset_top = 126
+offset_right = -138
+offset_bottom = 176
+mouse_filter = 2
+color = Color(0.50, 0.48, 0.44, 1)
+
+[node name="Kelp3" type="ColorRect" parent="."]
+offset_left = -187
+offset_top = 386
+offset_right = -149
+offset_bottom = 424
+mouse_filter = 2
+color = Color(0.22, 0.34, 0.28, 0.8)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-600, -380, -600, -26, -695, -26, -695, 26, -600, 26, -600, 620, -790, 620, -790, -380)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-600, 620, -266, 620, -266, 715, -214, 715, -214, 620, 360, 620, 360, 810, -600, 810)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(-240, 598)
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-576, 0)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_wolf_lunge")]
+position = Vector2(318, 263)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_goblin_spear")]
+position = Vector2(-344, -83)
+
+[node name="Enemy2" parent="." instance=ExtResource("enemy_wolf_swipe")]
+position = Vector2(161, -65)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-240, 694)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "↓  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-688, 0)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "←  coastal path"
+tint = Color(0.45, 0.50, 0.42, 0.4)
+zone_size = Vector2(48, 192)

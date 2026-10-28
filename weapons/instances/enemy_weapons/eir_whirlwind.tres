@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ExpandingRingWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/expanding_ring_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Feather Storm"
+description = "Eir spins, and a ring of razor-edged feathers erupts outward from her wings."
+base_damage = 14.0
+element = 6
+cooldown = 5.0
+on_hit_effects = []
+start_radius = 35.0
+end_radius = 200.0
+expand_duration = 0.8
+band_half_width = 14.0
+knockback = 250.0
+ring_color = Color(0.60, 0.50, 0.70, 0.65)

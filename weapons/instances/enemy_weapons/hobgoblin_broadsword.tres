@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Hobgoblin Broadsword"
+description = "A heavier blade than its smaller kin carries. Forged with intent, not scavenged."
+base_damage = 14.0
+element = 0
+cooldown = 0.58
+on_hit_effects = []
+swing_range = 26.0
+arc_radius = 26.0
+swing_duration = 0.16
+knockback = 280.0
+user_lunge_distance = 0.0
+hitbox_shape = 0

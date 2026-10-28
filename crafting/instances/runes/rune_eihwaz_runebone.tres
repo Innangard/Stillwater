@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://2186c8791522"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_script"]
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/bone_tablet.tres" id="item_bone_tablet"]
+[ext_resource type="Resource" path="res://items/instances/wraithseed.tres" id="item_wraithseed"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="item_soul_phial"]
+[ext_resource type="Resource" uid="uid://493c5ba54076" path="res://items/runestones/eihwaz_runebone.tres" id="output_rune"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("iq_script")
+item = ExtResource("item_bone_tablet")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("iq_script")
+item = ExtResource("item_wraithseed")
+count = 2
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("iq_script")
+item = ExtResource("item_soul_phial")
+count = 1
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Inscribe Eihwaz Runebone"
+description = "Life Drain — bolt that deals 18 damage and heals the player for the same amount."
+inputs = Array[ExtResource("iq_script")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_item = ExtResource("output_rune")

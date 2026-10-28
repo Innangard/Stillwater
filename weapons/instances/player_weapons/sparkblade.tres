@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://ci6qphrb412aa"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dh2m36t3gypp" path="res://sprites/Skill_Item icons/Separated Files/fc1587.png" id="1_1tjxi"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" uid="uid://d4bp5ai168b0t" path="res://status/instances/shock.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.35
+
+[resource]
+script = ExtResource("1")
+swing_range = 38.0
+arc_radius = 34.0
+swing_duration = 0.18
+weapon_name = "Sparkblade"
+base_damage = 15.0
+element = 3
+cooldown = 0.42
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app")])
+description = "A blade that hums with captured storm-light. Cuts leave a searing afterimage."
+icon = ExtResource("1_1tjxi")

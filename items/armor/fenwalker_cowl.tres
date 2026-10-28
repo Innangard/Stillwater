@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 0.5
+damage_taken_multiplier = 0.95
+element_multipliers = {
+4: 0.8
+}
+noise_weight = 2.0
+item_name = "Fenwalker's Cowl"
+description = "Moss-green leather stretched tight over a wicker frame. The lining is packed with dried bog-herbs that cut the worst of the marsh vapours. Resists poison — barely. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.34, 0.42, 0.24, 1)

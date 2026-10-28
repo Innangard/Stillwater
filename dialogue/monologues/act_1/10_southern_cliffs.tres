@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Journal Scrap"
+text = "I grew so weary of the waiting that I threw myself from the southern cliffs, hoping to shatter my skull on the rocks below. I did not find the end I sought. My body simply dissolved into black ash, only to pull itself back together at the arch by morning. We are denied even the mercy of destruction."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

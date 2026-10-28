@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Frost Bite"
+description = "Hrimfaxi lunges forward, jaws wide, trailing frost from its mane."
+base_damage = 16.0
+element = 4
+cooldown = 1.2
+on_hit_effects = []
+swing_range = 35.0
+arc_radius = 28.0
+swing_duration = 0.15
+knockback = 300.0
+user_lunge_distance = 70.0
+swing_visual = 8

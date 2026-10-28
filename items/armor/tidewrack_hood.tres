@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 0
+damage_reduction = 0.5
+damage_taken_multiplier = 0.95
+element_multipliers = {
+2: 0.85
+}
+noise_weight = 1.5
+ranged_damage_multiplier = 1.08
+item_name = "Tidewrack Hood"
+description = "Saltcloth dyed in kelp-water and cured in brine until it stiffened. The cold doesn't bite through it; the wind just adds character. Steady hands for the bowstring. Helmet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.38, 0.50, 0.52, 1)

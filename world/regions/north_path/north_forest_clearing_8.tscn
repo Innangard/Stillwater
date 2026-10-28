@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://bouqwibqnmuy3"]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -260.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -360.0
+
+[node name="ForestClearing8" type="Node2D" unique_id=300068]
+script = ExtResource("region_script")
+region_id = "north_forest_clearing_8"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1860423229]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.32, 0.44, 0.28, 1)
+
+[node name="CenterPath" type="ColorRect" parent="."]
+offset_left = -20
+offset_top = 103
+offset_right = 40
+offset_bottom = 470
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="Clearing" type="ColorRect" parent="." unique_id=30561962]
+offset_left = -145.0
+offset_top = -87.0
+offset_right = 115.0
+offset_bottom = 113.0
+mouse_filter = 2
+color = Color(0.48, 0.54, 0.38, 1)
+
+[node name="Moss0" type="ColorRect" parent="." unique_id=1751555714]
+offset_left = 129.0
+offset_top = -130.0
+offset_right = 245.0
+offset_bottom = -81.0
+mouse_filter = 2
+color = Color(0.3, 0.46, 0.28, 0.6)
+
+[node name="Shroom1" type="ColorRect" parent="." unique_id=864383727]
+offset_left = -252.0
+offset_top = 98.0
+offset_right = -237.0
+offset_bottom = 113.0
+mouse_filter = 2
+color = Color(0.62, 0.36, 0.32, 0.95)
+
+[node name="Bush2" type="ColorRect" parent="." unique_id=848202998]
+offset_left = 60.0
+offset_top = 45.0
+offset_right = 95.0
+offset_bottom = 84.0
+mouse_filter = 2
+color = Color(0.16, 0.26, 0.18, 1)
+
+[node name="Bush3" type="ColorRect" parent="." unique_id=1107245172]
+offset_left = 114.0
+offset_top = 94.0
+offset_right = 147.0
+offset_bottom = 122.0
+mouse_filter = 2
+color = Color(0.14, 0.24, 0.16, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1804553790]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=767226344]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=722931150]
+build_mode = 1
+polygon = PackedVector2Array(-340, 280, -20, 280, -20, 375, 40, 375, 40, 280, 360, 280, 360, 470, -340, 470)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=2089470922]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=176855080]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1087535638]
+position = Vector2(10, 258)
+
+[node name="Player" parent="." unique_id=1746194158 instance=ExtResource("player_scene")]
+position = Vector2(10, 258)[node name="ExitSouth" parent="." unique_id=1946173452 instance=ExtResource("exit_scene")]
+position = Vector2(10, 354)
+target_scene = "res://world/regions/wickbarrow_outskirts.tscn"
+target_spawn_point = "default"
+label = "↓  back to the path"
+tint = Color(0.5, 0.45, 0.35, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(22, -17)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(-32, -39)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

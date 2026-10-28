@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Armor" format=3]
+
+[ext_resource type="Script" path="res://items/armor.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 2.5
+damage_taken_multiplier = 0.9
+noise_weight = 6.0
+melee_damage_multiplier = 1.1
+max_health_bonus = 20.0
+item_name = "Bonebreaker Greaves"
+description = "Sky-iron greaves with cold-iron plating below the knee. The wearer's footfall registers two rooms away. They have stopped trying to hide. Feet."
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.46, 0.48, 0.52, 1)

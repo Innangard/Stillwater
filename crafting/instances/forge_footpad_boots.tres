@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://items/armor/footpad_boots.tres" id="out_armor"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="reagent0"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent0")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Footpad's Boots"
+description = "Stitch the soles twice, peat-pitch the seams. The cobbler's grandmother did it this way and she walked from Wickbarrow to Nasus in one season."
+inputs = Array[ExtResource("2")]([SubResource("input_0")])
+output_item = ExtResource("out_armor")
+currency_cost = 25

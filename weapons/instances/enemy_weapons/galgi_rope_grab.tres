@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TelegraphedAreaWeapon" format=3 uid="uid://dx6ku4ruah2s"]
+
+[ext_resource type="Script" uid="uid://bkgcue7ctrma4" path="res://weapons/telegraphed_area_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/telegraph.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="3"]
+[ext_resource type="Resource" path="res://status/instances/snare.tres" id="4"]
+
+[sub_resource type="Resource" id="snare_app"]
+script = ExtResource("3")
+effect = ExtResource("4")
+chance = 0.85
+
+[resource]
+script = ExtResource("1")
+warning_duration = 0.65
+damage_radius = 60.0
+linger_duration = 0.3
+max_engage_range = 9999.0
+weapon_name = "Rope-Arm Grab"
+base_damage = 6.0
+element = 6
+cooldown = 2.0
+on_hit_effects = Array[ExtResource("3")]([SubResource("snare_app")])
+description = "Tendrils of braided rope erupt from the floor at the dead-man's bidding. Stand still and they take hold."

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://status/status_effect.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = &"venomblood"
+display_name = "Venomblood"
+description = "Fen toxins coat your weapons. Every strike bites deeper — but the fumes cling to your lungs and slow your step."
+duration = 15.0
+tick_interval = 0.0
+damage_per_tick = 0.0
+damage_element = 0
+speed_multiplier = 0.90
+damage_taken_multiplier = 1.0
+damage_dealt_multiplier = 1.25
+prevents_action = false
+binding = false
+stack_behavior = 0
+max_stacks = 1
+tint_color = Color(0.40, 0.65, 0.20, 1.0)
+tint_intensity = 0.30

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Kenning" format=3 uid="uid://dldae7hyqg8fl"]
+
+[ext_resource type="Script" uid="uid://bdkg4f4oalcv0" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "bone_kings_bane"
+display_name = "Bone-King's-Bane"
+epithet = "He who pulled the crown from the corpse-throne"
+description = "You ended a king the dead had crowned themselves. The lesser dead remember your hand."
+flavor_text = "His throne was bone. His crown is yours."
+unlock_flag = "boss_dead_skeleton_king"
+unlock_hint = "Bring down the bone-king beneath Sprekken."
+hidden_when_locked = true
+damage_dealt_multiplier = 1.18
+tier_color = Color(0.9, 0.85, 0.75, 1)

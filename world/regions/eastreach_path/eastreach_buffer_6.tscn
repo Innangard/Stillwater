@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://erbu0000006a"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=2029153441]
+script = ExtResource("region_script")
+region_id = "eastreach_buffer_6"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1035999727]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="TrackE" type="ColorRect" parent="." unique_id=2022422266]
+offset_left = 0.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="TrackS" type="ColorRect" parent="." unique_id=1121730009]
+offset_left = -46.0
+offset_top = 0.0
+offset_right = 46.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="Slab1" type="ColorRect" parent="." unique_id=1556633746]
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.40, 0.34, 0.28, 1)
+
+[node name="BoneL" type="ColorRect" parent="." unique_id=1137150490]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = -60.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="BoneR" type="ColorRect" parent="." unique_id=1403099880]
+offset_left = 60.0
+offset_top = -30.0
+offset_right = 100.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2061064943]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1781544262]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1937950591]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1968275862]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1607471124]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1478445710]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=2005292196]
+position = Vector2(500, 0)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1597273250]
+position = Vector2(0, 260)
+
+[node name="Player" parent="." unique_id=2039387945 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="Gob1" parent="." unique_id=1295109338 instance=ExtResource("enemy_0")]
+position = Vector2(-100, -120)
+
+[node name="Gob2" parent="." unique_id=1389398184 instance=ExtResource("enemy_1")]
+position = Vector2(140, 100)
+
+[node name="Wolf" parent="." unique_id=1590150768 instance=ExtResource("enemy_2")]
+position = Vector2(-180, 140)
+
+[node name="ExitEast" parent="." unique_id=2053837172 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "→  the road"
+tint = Color(0.62, 0.55, 0.38, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitSouth" parent="." unique_id=1754868371 instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↓  the road"
+tint = Color(0.55, 0.48, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+

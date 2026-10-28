@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "mead_hall_sated"
+display_name = "Mead-Hall-Sated"
+epithet = "She who left the long-house heavier"
+description = "A long feast leaves a long shadow. You carry thirty more points of life than you did when you sat down."
+flavor_text = "The horn was passed to you nine times. You did not refuse it once."
+category = 1
+unlock_flag = "kenning_unlock_mead_hall_sated"
+unlock_hint = "Sup with three different innkeepers across the island."
+max_health_bonus = 30.0
+tier_color = Color(0.70, 0.50, 0.30, 1)

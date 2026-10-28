@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/gymir.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/gymir_boulder.tres" id="w_boulder"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/gymir_slam.tres" id="w_slam"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/gymir_self_shard.tres" id="w_shatter"]
+
+[node name="Gymir" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Gymir"
+body_tint = Color(0.50, 0.48, 0.42, 1.0)
+weapon_icon_color = Color(0.70, 0.65, 0.55, 1.0)
+body_radius = 28.0
+body_shape = 2
+max_health = 2200.0
+max_speed = 45.0
+acceleration = 350.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_boulder")
+wind_up_duration = 0.80
+recover_duration = 0.70
+min_engage_range = 0.0
+boss_display_name = "Gymir"
+boss_id = "gymir"
+weapon_boulder = ExtResource("w_boulder")
+weapon_slam = ExtResource("w_slam")
+weapon_shatter = ExtResource("w_shatter")
+phase2_threshold = 0.35
+phase2_speed = 60.0
+wind_up_boulder = 0.80
+wind_up_slam = 0.90
+wind_up_shatter = 0.75
+recover_boulder = 0.70
+recover_slam = 1.00
+recover_shatter = 0.90
+currency_drop_min = 80
+currency_drop_max = 130
+item_drop_chance = 1.0
+

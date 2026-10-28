@@ -1,0 +1,146 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left_gen"]
+normal = Vector2(1, 0)
+distance = -600.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right_gen"]
+normal = Vector2(-1, 0)
+distance = -600.0
+
+[node name="DungeonEntranceAshsprout" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "dungeon_entrance_ashsprout"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.24, 0.28, 0.22, 1)
+
+[node name="Path" type="ColorRect" parent="."]
+offset_left = -600.0
+offset_top = -32.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="DungeonPlatform" type="ColorRect" parent="."]
+offset_left = -80.0
+offset_top = -120.0
+offset_right = 280.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.30, 0.35, 0.28, 1)
+
+[node name="DungeonArch" type="ColorRect" parent="."]
+offset_left = 180.0
+offset_top = -100.0
+offset_right = 260.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.38, 0.45, 0.35, 1)
+
+[node name="ArchKeystone" type="ColorRect" parent="."]
+offset_left = 195.0
+offset_top = -110.0
+offset_right = 245.0
+offset_bottom = -100.0
+mouse_filter = 2
+color = Color(0.50, 0.58, 0.45, 1)
+
+[node name="Torch1" type="ColorRect" parent="."]
+offset_left = 170.0
+offset_top = -80.0
+offset_right = 180.0
+offset_bottom = -50.0
+mouse_filter = 2
+color = Color(0.85, 0.6, 0.2, 1)
+
+[node name="Torch2" type="ColorRect" parent="."]
+offset_left = 260.0
+offset_top = -80.0
+offset_right = 270.0
+offset_bottom = -50.0
+mouse_filter = 2
+color = Color(0.85, 0.6, 0.2, 1)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft_Gen" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left_gen")
+
+[node name="WallRight_Gen" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right_gen")
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-400, 0)
+
+[node name="from_dungeon" type="Marker2D" parent="."]
+position = Vector2(200, 0)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(280, 0)
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="from_south" type="Marker2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-500, 0)
+target_scene = "res://world/regions/vatnsteinn_altar.tscn"
+target_spawn_point = "from_north"
+label = "\u2190  back to the stones"
+tint = Color(0.30, 0.38, 0.32, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -380)
+target_scene = "res://world/regions/vatnsteinn_altar.tscn"
+target_spawn_point = "from_north"
+label = "\u2191  back to the approach"
+tint = Color(0.30, 0.38, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, 380)
+target_scene = "res://world/regions/vatnsteinn_altar.tscn"
+target_spawn_point = "from_north"
+label = "\u2193  back to the approach"
+tint = Color(0.30, 0.38, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(220, 0)
+target_scene = "res://world/regions/ashsprout/ashsprout_buffer_1.tscn"
+target_spawn_point = "default"
+label = "\u2192  enter the Blighted Grove"
+tint = Color(0.38, 0.45, 0.32, 0.6)
+zone_size = Vector2(60, 120)

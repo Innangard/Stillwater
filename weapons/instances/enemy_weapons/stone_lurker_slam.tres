@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Stone Slam"
+description = "The lurker rears up and drops its full weight. The impact cracks the floor."
+base_damage = 17.0
+element = 3
+cooldown = 1.6
+on_hit_effects = []
+swing_range = 40.0
+arc_radius = 30.0
+swing_duration = 0.2
+knockback = 350.0
+user_lunge_distance = 20.0
+swing_visual = 8

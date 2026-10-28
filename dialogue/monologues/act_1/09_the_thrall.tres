@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Journal Scrap"
+text = "They call this place a prison, but I was a thrall in the world above, beaten and starved by cruel masters. Here, the long afternoon never fades to black, and no man holds a whip over my back. Let the warlord keep his tower in the lake; I have found my paradise in the quiet dirt of the long shore."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

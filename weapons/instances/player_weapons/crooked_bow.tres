@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RangedWeapon" format=3 uid="uid://ctgkgcbxbagea"]
+
+[ext_resource type="Script" uid="uid://d28f4mchb1wjm" path="res://weapons/ranged_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dihd6offvohii" path="res://sprites/Skill_Item icons/Separated Files/fc1483.png" id="1_tdboi"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="2"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2_ryp01"]
+
+[resource]
+script = ExtResource("1")
+projectile_scene = ExtResource("2")
+projectile_speed = 540.0
+knockback = 120.0
+weapon_name = "Crooked Bow"
+cooldown = 0.55
+base_damage = 8.0
+description = "Warped yew, salvaged from a guard's corpse. Slow draw, sharp arrows."
+icon = ExtResource("1_tdboi")
+two_handed = true

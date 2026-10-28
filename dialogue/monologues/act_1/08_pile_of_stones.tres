@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Journal Scrap"
+text = "I have moved this pile of stones from the left side of the path to the right, and then back again, every day for ten years. If I stop moving the stones, I will have to think about the stillness of the air, and if I think about the stillness, my mind will begin to fray. The stones give me a purpose when the gods have abandoned us to this waiting."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

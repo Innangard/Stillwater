@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://sacl0000012e"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -260
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -300
+
+[node name="Node2D" type="Node2D" unique_id=1874115303]
+script = ExtResource("region_script")
+region_id = "sprekken_approach_clearing_2"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=2019732408]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.50, 0.36, 1)
+
+[node name="Hollow" type="ColorRect" parent="." unique_id=1405902892]
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = 140.0
+mouse_filter = 2
+color = Color(0.62, 0.58, 0.42, 1)
+
+[node name="Grass" type="ColorRect" parent="." unique_id=1080617495]
+offset_left = -150.0
+offset_top = -80.0
+offset_right = -80.0
+offset_bottom = -30.0
+mouse_filter = 2
+color = Color(0.58, 0.55, 0.32, 0.7)
+
+[node name="Stone" type="ColorRect" parent="." unique_id=1811916952]
+offset_left = 30.0
+offset_top = 40.0
+offset_right = 90.0
+offset_bottom = 80.0
+mouse_filter = 2
+color = Color(0.66, 0.62, 0.52, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1854087387]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1424944418]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=2081680414]
+build_mode = 1
+polygon = PackedVector2Array(-300, 260, -60, 260, -60, 360, 60, 360, 60, 260, 300, 260, 300, 450, -300, 450)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1848272314]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1729204671]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1242258045]
+position = Vector2(0, 180)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1061604178]
+position = Vector2(0, 180)
+
+[node name="Player" parent="." unique_id=1471859782 instance=ExtResource("player_scene")]
+position = Vector2(0, 180)
+[node name="ExitSouth" parent="." unique_id=2075469495 instance=ExtResource("exit_scene")]
+position = Vector2(0, 220)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "↓  back to the path"
+tint = Color(0.42, 0.48, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="RuneMarker" type="Node2D" parent="."]
+position = Vector2(0, 0)
+
+[node name="EquipMarker" type="Node2D" parent="."]
+position = Vector2(-60, 20)
+
+[node name="MiscMarker" type="Node2D" parent="."]
+position = Vector2(60, 20)

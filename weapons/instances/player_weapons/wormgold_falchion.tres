@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/dark.tres" id="3"]
+
+[sub_resource type="Resource" id="dark_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.75
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Wormgold Falchion"
+description = "A heavy curved blade, the grip wrapped in wormgold wire that goes warm in the hand as soon as you draw. The blade has been wielded before, by someone who is no longer wielding it. It would prefer you didn't ask why. High dark-affliction rate."
+base_damage = 22.0
+element = 6
+cooldown = 0.42
+on_hit_effects = Array[ExtResource("2")]([SubResource("dark_app")])
+swing_range = 40.0
+arc_radius = 36.0
+swing_duration = 0.14
+knockback = 220.0
+user_lunge_distance = 0.0
+hitbox_shape = 0
+placeholder_color = Color(0.35, 0.28, 0.18, 1)

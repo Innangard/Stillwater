@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "An Overheard Voice"
+text = "She drags her heavy net through the shallows, endlessly searching the whale-road for men who have already drowned. In life, she served the sea goddess, and even in death, she refused to drop the net. Do not step into the water near the wrecks, or the sea-witch will pull you under to drown you again."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

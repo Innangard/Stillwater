@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TelegraphedAreaWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/telegraphed_area_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/telegraph.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Root Strike"
+description = "A gnarled root erupts from the earth beneath the target, splitting stone."
+base_damage = 15.0
+element = 5
+cooldown = 2.5
+on_hit_effects = []
+telegraph_scene = ExtResource("2")
+warning_duration = 0.65
+damage_radius = 45.0
+linger_duration = 0.4
+target_picker = 0
+prediction_seconds = 0.25
+caster_offset = Vector2(0, 0)
+max_engage_range = 9999.0
+knockback = 300.0

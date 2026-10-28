@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://items/instances/pyre_salve.tres" id="out_item"]
+[ext_resource type="Resource" path="res://items/instances/living_fire.tres" id="reagent1"]
+[ext_resource type="Resource" path="res://items/instances/ghost_lichen.tres" id="reagent2"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent2")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Distill Pyre Salve"
+description = "Render a drop of living fire into beeswax, work in ghost-lichen until it sets to a paste. Burns where it touches; the burn drives out everything else."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1")])
+output_item = ExtResource("out_item")
+currency_cost = 50

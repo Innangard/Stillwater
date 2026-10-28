@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Sky-Iron"
+description = "A lump of meteoric iron, cold even in summer, that hums faintly when held. The skalds say it remembers the long fall. Forged into weapon-cores that draw the strike where the smith wants it. Reagent."
+category = "reagent"
+placeholder_color = Color(0.55, 0.62, 0.78, 1)

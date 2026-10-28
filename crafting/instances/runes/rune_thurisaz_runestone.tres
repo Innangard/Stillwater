@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://4ae3db773828"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_script"]
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="iq_script"]
+[ext_resource type="Resource" path="res://items/instances/runeslate_tablet.tres" id="item_runeslate_tablet"]
+[ext_resource type="Resource" path="res://items/instances/frost_filament.tres" id="item_frost_filament"]
+[ext_resource type="Resource" path="res://items/instances/pale_ash.tres" id="item_pale_ash"]
+[ext_resource type="Resource" uid="uid://e67e35fe4207" path="res://items/runestones/thurisaz_runestone.tres" id="output_rune"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("iq_script")
+item = ExtResource("item_runeslate_tablet")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("iq_script")
+item = ExtResource("item_frost_filament")
+count = 3
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("iq_script")
+item = ExtResource("item_pale_ash")
+count = 2
+
+[resource]
+script = ExtResource("recipe_script")
+recipe_name = "Inscribe Thurisaz Runestone"
+description = "Thorn Aura — enemies that hit you take 50% reflected damage for 45s."
+inputs = Array[ExtResource("iq_script")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_item = ExtResource("output_rune")

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" path="res://weapons/instances/player_weapons/hoarfrost_bow.tres" id="out_weapon"]
+[ext_resource type="Resource" path="res://items/instances/hoarfrost_tear.tres" id="reagent1"]
+[ext_resource type="Resource" path="res://items/instances/frost_filament.tres" id="reagent2"]
+[ext_resource type="Resource" path="res://items/instances/cold_iron_filing.tres" id="reagent3"]
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+count = 1
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent2")
+count = 3
+
+[sub_resource type="Resource" id="input_2"]
+script = ExtResource("2")
+item = ExtResource("reagent3")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Hoarfrost Bow"
+description = "Anneal the string in hoarfrost-tear water, bind the limbs with frost filament. The bow remembers winter even in the smith's forge."
+inputs = Array[ExtResource("2")]([SubResource("input_0"), SubResource("input_1"), SubResource("input_2")])
+output_weapon = ExtResource("out_weapon")
+currency_cost = 120

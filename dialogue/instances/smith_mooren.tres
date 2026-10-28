@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Smith Mooren"
+text = "You smell of the road. Long road, by the look of you. Sit if you need to. The fire's been going for the better part of a century — it'll keep."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Mooren"
+text = "Orn in Nasus taught me what he could. I've added some things since. The moor doesn't have his coals but it has the rain, and rain teaches a different kind of steel."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Mooren"
+text = "If you carry anything broken or unfinished, I'll look at it. Bring me what you've collected from the cold ones out there. We'll see what comes of it."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3")])

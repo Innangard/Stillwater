@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="TelegraphedAreaWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/telegraphed_area_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/telegraph.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Ice Stake"
+description = "A pillar of ice erupts from the frozen ground at the hunter's chosen mark."
+base_damage = 16.0
+element = 4
+cooldown = 4.0
+on_hit_effects = []
+telegraph_scene = ExtResource("2")
+warning_duration = 0.7
+damage_radius = 50.0
+linger_duration = 0.5
+target_picker = 0
+prediction_seconds = 0.3
+caster_offset = Vector2(0, 0)
+max_engage_range = 9999.0
+knockback = 350.0

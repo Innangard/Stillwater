@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunestoneItem" load_steps=2 format=3 uid="uid://621ea6c3cd8c"]
+
+[ext_resource type="Script" path="res://items/runestone_item.gd" id="script_1"]
+
+[resource]
+script = ExtResource("script_1")
+rune_symbol = "ᛈ"
+rune_stat = 13
+bonus_value = 20.0
+conduit = 3
+drop_weight = 10.0
+item_name = "Perthro Gold"
+description = "+20% Swap Speed. The dice fall where hands are quick."
+category = "runestone"
+max_stack = 99
+placeholder_color = Color(0.95, 0.80, 0.35, 1)

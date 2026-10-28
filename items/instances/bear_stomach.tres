@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Bear Stomach"
+description = "The bear's stomach lining, taken whole. The wall is unnaturally thick — bears that eat the burnt and the smoking grow flesh that won't burn. Tanned correctly, it lines armor against heat better than any forge-finish. Reagent."
+category = "reagent"
+placeholder_color = Color(0.50, 0.32, 0.22, 1)

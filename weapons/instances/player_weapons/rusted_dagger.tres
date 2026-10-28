@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://dulannu7260jc"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://csw4diaxs4rdj" path="res://sprites/Skill_Item icons/Separated Files/fc1785.png" id="1_hij6c"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+
+[resource]
+script = ExtResource("1")
+swing_range = 24.0
+arc_radius = 12.0
+swing_duration = 0.1
+knockback = 140.0
+hitbox_shape = 1
+weapon_name = "Rusted Dagger"
+base_damage = 7.0
+cooldown = 0.2
+description = "A short, pitted blade better suited to a butcher than a soldier. It punches a hole faster than you can think about it. You'll have to close the distance to use it."
+icon = ExtResource("1_hij6c")
+swing_visual = 1

@@ -1,0 +1,84 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/stone_lurker.tscn" id="enemy_stone_lurker"]
+[ext_resource type="PackedScene" path="res://enemies/frost_wolf.tscn" id="enemy_frost_wolf"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+
+[node name="GymirClearing3" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "gymir_clearing_3"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.30, 0.32, 0.35, 1)
+
+[node name="Arena" type="ColorRect" parent="."]
+offset_left = -350
+offset_top = -350
+offset_right = 350
+offset_bottom = 350
+mouse_filter = 2
+color = Color(0.45, 0.48, 0.50, 0.3)
+
+[node name="Decor0" type="ColorRect" parent="."]
+offset_left = 127
+offset_top = -16
+offset_right = 177
+offset_bottom = 6
+mouse_filter = 2
+color = Color(0.42, 0.44, 0.48, 0.6)
+
+[node name="Decor1" type="ColorRect" parent="."]
+offset_left = -266
+offset_top = 106
+offset_right = -223
+offset_bottom = 150
+mouse_filter = 2
+color = Color(0.42, 0.44, 0.48, 0.6)
+
+[node name="Decor2" type="ColorRect" parent="."]
+offset_left = 228
+offset_top = 255
+offset_right = 269
+offset_bottom = 280
+mouse_filter = 2
+color = Color(0.35, 0.38, 0.42, 0.6)
+
+[node name="Decor3" type="ColorRect" parent="."]
+offset_left = -84
+offset_top = 53
+offset_right = -36
+offset_bottom = 88
+mouse_filter = 2
+color = Color(0.42, 0.44, 0.48, 0.6)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_north" type="Marker2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="Enemy0" parent="." instance=ExtResource("enemy_stone_lurker")]
+position = Vector2(-177, -116)
+
+[node name="Enemy1" parent="." instance=ExtResource("enemy_frost_wolf")]
+position = Vector2(175, -102)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -420)
+target_scene = "res://world/regions/storsprunga_town.tscn"
+target_spawn_point = "default"
+label = "north"
+tint = Color(0.45, 0.48, 0.50, 0.4)
+zone_size = Vector2(192, 48)

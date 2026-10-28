@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://wbuf00000387"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_toss.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_1"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="pup_0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1090470603]
+script = ExtResource("region_script")
+region_id = "west_buffer_11"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1177042233]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.34, 0.38, 0.36, 1)
+
+[node name="TrackV" type="ColorRect" parent="." unique_id=1623582986]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.46, 0.48, 0.42, 1)
+
+[node name="Rift" type="ColorRect" parent="." unique_id=1956326773]
+offset_left = -220.0
+offset_top = 70.0
+offset_right = -80.0
+offset_bottom = 130.0
+mouse_filter = 2
+color = Color(0.30, 0.30, 0.34, 1)
+
+[node name="Heath" type="ColorRect" parent="." unique_id=1396154788]
+offset_left = 100.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = -90.0
+mouse_filter = 2
+color = Color(0.40, 0.44, 0.34, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1415931807]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1406897547]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -400, 60, -400, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=1860086769]
+build_mode = 1
+polygon = PackedVector2Array(-560, 300, -60, 300, -60, 400, 60, 400, 60, 300, 560, 300, 560, 490, -560, 490)
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1850299599]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1175982195]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1535278474]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1541811367]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=2003581044]
+position = Vector2(0, 260)
+
+[node name="Player" parent="." unique_id=1786305043 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="Skel1" parent="." unique_id=1237662085 instance=ExtResource("enemy_0")]
+position = Vector2(-120, -100)
+
+[node name="Gob1" parent="." unique_id=1193333028 instance=ExtResource("enemy_1")]
+position = Vector2(160, 80)
+
+[node name="Phial" parent="." unique_id=1805155344 instance=ExtResource("pickup_scene")]
+position = Vector2(140, 0)
+item = ExtResource("pup_0")
+persistent_per_run = true
+
+[node name="ExitNorth" parent="." unique_id=2060463462 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↑  the moor"
+tint = Color(0.45, 0.50, 0.55, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." unique_id=1645860976 instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↓  the moor"
+tint = Color(0.45, 0.50, 0.55, 0.4)
+zone_size = Vector2(192, 48)
+

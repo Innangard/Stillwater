@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ShieldWeapon" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://weapons/shield_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://weapons/shield_zone.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Frost-Banded Round"
+description = "A round shield rimmed in frost-filament wire. The wire bites cold into anything that strikes the face — and flame especially has no answer for the rim."
+base_damage = 0.0
+element = 0
+cooldown = 0.0
+on_hit_effects = []
+category = "shield"
+max_stack = 1
+placeholder_color = Color(0.6, 0.7, 0.8, 1)
+block_arc_size = Vector2(38, 78)
+block_distance = 30.0
+movement_speed_multiplier = 0.55
+melee_damage_reduction = 0.2
+shield_zone_scene = ExtResource("2")
+element_multipliers = {
+1: 0.5
+}

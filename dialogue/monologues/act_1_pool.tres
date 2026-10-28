@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="MonologuePool" load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://dialogue/monologue_pool.gd" id="1"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/01_bone_house.tres" id="m_01"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/02_water_asks.tres" id="m_02"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/03_hold_your_name.tres" id="m_03"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/04_black_ash.tres" id="m_04"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/05_first_fool.tres" id="m_05"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/06_lashed_together.tres" id="m_06"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/07_the_net.tres" id="m_07"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/08_pile_of_stones.tres" id="m_08"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/09_the_thrall.tres" id="m_09"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/10_southern_cliffs.tres" id="m_10"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/11_tasteless_bread.tres" id="m_11"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/12_sleep_is_forgetting.tres" id="m_12"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/13_wooden_boats.tres" id="m_13"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/14_warrior_humiliation.tres" id="m_14"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/15_counting_ripples.tres" id="m_15"]
+[ext_resource type="Resource" path="res://dialogue/monologues/act_1/16_wasting_sickness.tres" id="m_16"]
+
+[resource]
+script = ExtResource("1")
+monologues = Array[Resource]([
+ExtResource("m_01"), ExtResource("m_02"), ExtResource("m_03"), ExtResource("m_04"),
+ExtResource("m_05"), ExtResource("m_06"), ExtResource("m_07"), ExtResource("m_08"),
+ExtResource("m_09"), ExtResource("m_10"), ExtResource("m_11"), ExtResource("m_12"),
+ExtResource("m_13"), ExtResource("m_14"), ExtResource("m_15"), ExtResource("m_16"),
+])

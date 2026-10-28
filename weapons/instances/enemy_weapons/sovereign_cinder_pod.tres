@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ExplodingRangedWeapon" format=3 uid="uid://8jwcxvnoojr4"]
+
+[ext_resource type="Script" uid="uid://dfvnmq25ubckp" path="res://weapons/exploding_ranged_weapon.gd" id="1"]
+[ext_resource type="PackedScene" path="res://projectiles/exploding_projectile.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://projectiles/projectile.tscn" id="3"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="4"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="5"]
+
+[sub_resource type="Resource" id="burn_app"]
+script = ExtResource("4")
+effect = ExtResource("5")
+chance = 0.25
+
+[resource]
+script = ExtResource("1")
+child_projectile_scene = ExtResource("3")
+child_count = 6
+child_speed = 290.0
+child_lifetime = 1.0
+child_damage_multiplier = 0.5
+projectile_scene = ExtResource("2")
+projectile_speed = 260.0
+projectile_lifetime = 1.05
+projectile_count = 3
+spread_degrees = 45.0
+knockback = 130.0
+weapon_name = "Sovereign Cinder Pod"
+base_damage = 9.0
+element = 1
+cooldown = 2.6
+on_hit_effects = Array[ExtResource("4")]([SubResource("burn_app")])
+description = "A heavier seed. The crown's own ash. It blooms in six directions."
+projectile_visual = 3

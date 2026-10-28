@@ -1,0 +1,173 @@
+[gd_scene format=3 uid="uid://erbu000000c9"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://pickups/pickup.tscn" id="pickup_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_spear.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_2"]
+[ext_resource type="Resource" uid="uid://dbqil2ogddigy" path="res://items/instances/soul_phial.tres" id="pup_0"]
+[ext_resource type="Resource" uid="uid://6423a53cdc8" path="res://items/instances/bone_tablet.tres" id="pup_1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1144101000]
+script = ExtResource("region_script")
+region_id = "eastreach_cross_1"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1699219715]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="TrackH" type="ColorRect" parent="." unique_id=1902683003]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="TrackV" type="ColorRect" parent="." unique_id=1007892792]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 340.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="Marker" type="ColorRect" parent="." unique_id=1607304290]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+mouse_filter = 2
+color = Color(0.78, 0.74, 0.66, 1)
+
+[node name="CairnNE" type="ColorRect" parent="." unique_id=1700476020]
+offset_left = 180.0
+offset_top = -160.0
+offset_right = 220.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="CairnSW" type="ColorRect" parent="." unique_id=2009041690]
+offset_left = -200.0
+offset_top = 140.0
+offset_right = -160.0
+offset_bottom = 200.0
+mouse_filter = 2
+color = Color(0.85, 0.80, 0.72, 1)
+
+[node name="Grass" type="ColorRect" parent="." unique_id=1581331916]
+offset_left = 250.0
+offset_top = 40.0
+offset_right = 360.0
+offset_bottom = 110.0
+mouse_filter = 2
+color = Color(0.70, 0.62, 0.40, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1968562661]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=2035504778]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=2018198355]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1299856280]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=2023874952]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1133719670]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1493118158]
+position = Vector2(0, -260)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=1461869625]
+position = Vector2(0, 260)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1405529927]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1029553223]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=1643193243 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="Gob1" parent="." unique_id=1230813831 instance=ExtResource("enemy_0")]
+position = Vector2(-100, -120)
+
+[node name="Gob2" parent="." unique_id=1514580392 instance=ExtResource("enemy_1")]
+position = Vector2(140, 100)
+
+[node name="Wolf" parent="." unique_id=1573097379 instance=ExtResource("enemy_2")]
+position = Vector2(-180, 140)
+
+[node name="Phial" parent="." unique_id=1388158520 instance=ExtResource("pickup_scene")]
+position = Vector2(-180, 140)
+item = ExtResource("pup_0")
+persistent_per_run = true
+
+[node name="Tablet" parent="." unique_id=2035532866 instance=ExtResource("pickup_scene")]
+position = Vector2(180, -120)
+item = ExtResource("pup_1")
+persistent_per_run = true
+
+[node name="ExitNorth" parent="." unique_id=1065332016 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↑  the road"
+tint = Color(0.55, 0.48, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." unique_id=1167739000 instance=ExtResource("exit_scene")]
+position = Vector2(0, 300)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↓  the road"
+tint = Color(0.55, 0.48, 0.32, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." unique_id=1874824991 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "→  the road"
+tint = Color(0.62, 0.55, 0.38, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=2074962895 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "←  the road"
+tint = Color(0.62, 0.55, 0.38, 0.4)
+zone_size = Vector2(48, 192)
+

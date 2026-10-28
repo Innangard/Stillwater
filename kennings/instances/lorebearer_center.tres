@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "lorebearer_center"
+display_name = "Crown-Witness"
+epithet = "She who read the king's silk and the scales beneath"
+description = "The carvings at the threshold of the King's water named what the warlord became before the warlord did. To carry their warning is to be marked — what would have surprised you cannot, and the blows the king's herald lands fall lighter for it."
+flavor_text = "I saw his skin beneath the silk. The King is gone. He is a root-gnawer now, lengthening and twisting in the dark."
+category = 1
+unlock_flag = "all_monologues_read_act_4"
+unlock_hint = "Read every carving at the approach to the King's Tower."
+damage_taken_multiplier = 0.88
+max_health_bonus = 15.0
+tier_color = Color(0.50, 0.34, 0.58, 1)

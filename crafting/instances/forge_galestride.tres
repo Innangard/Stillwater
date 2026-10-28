@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://dfyldvp14t018"]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtmu2v47uldfo" path="res://crafting/item_quantity.gd" id="2"]
+[ext_resource type="Resource" uid="uid://m352sds63f21" path="res://items/armor/pilgrims_sandals.tres" id="base_armor"]
+[ext_resource type="Resource" uid="uid://dc2j4agsmq4e3" path="res://items/armor/galestride_sandals.tres" id="out_armor"]
+[ext_resource type="Resource" path="res://items/instances/soul_phial.tres" id="reagent1"]
+[ext_resource type="Resource" path="res://items/instances/cinder_salt.tres" id="reagent2"]
+
+[sub_resource type="Resource" id="input_base"]
+script = ExtResource("2")
+item = ExtResource("base_armor")
+
+[sub_resource type="Resource" id="input_0"]
+script = ExtResource("2")
+item = ExtResource("reagent1")
+
+[sub_resource type="Resource" id="input_1"]
+script = ExtResource("2")
+item = ExtResource("reagent2")
+count = 2
+
+[resource]
+script = ExtResource("1")
+recipe_name = "Forge Galestride Sandals"
+description = "Lace the pilgrim's sandals with copper wire."
+inputs = Array[ExtResource("2")]([SubResource("input_base"), SubResource("input_0"), SubResource("input_1")])
+currency_cost = 20
+output_item = ExtResource("out_armor")

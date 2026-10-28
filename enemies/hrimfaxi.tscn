@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Script" path="res://enemies/hrimfaxi.gd" id="boss_script"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/hrimfaxi_lunge_bite.tres" id="w_bite"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/hrimfaxi_swipe.tres" id="w_swipe"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/hrimfaxi_leap.tres" id="w_leap"]
+[ext_resource type="PackedScene" path="res://enemies/frost_pup.tscn" id="pup"]
+
+[node name="Hrimfaxi" instance=ExtResource("base_enemy")]
+script = ExtResource("boss_script")
+enemy_name = "Hrimfaxi"
+body_tint = Color(0.58, 0.62, 0.70, 1.0)
+weapon_icon_color = Color(0.75, 0.82, 0.90, 1.0)
+body_radius = 22.0
+body_shape = 0
+max_health = 1900.0
+max_speed = 95.0
+acceleration = 600.0
+base_detection = 9999.0
+noise_sensitivity = 0.0
+smell_sensitivity = 0.0
+weapon = ExtResource("w_bite")
+wind_up_duration = 0.45
+recover_duration = 0.40
+min_engage_range = 0.0
+boss_display_name = "Hrimfaxi"
+boss_id = "hrimfaxi"
+weapon_bite = ExtResource("w_bite")
+weapon_swipe = ExtResource("w_swipe")
+weapon_leap = ExtResource("w_leap")
+phase2_threshold = 0.40
+phase2_speed = 110.0
+pup_scene = ExtResource("pup")
+max_pups = 2
+wind_up_bite = 0.45
+wind_up_swipe = 0.55
+wind_up_leap = 0.85
+recover_bite = 0.40
+recover_swipe = 0.50
+recover_leap = 0.80
+currency_drop_min = 80
+currency_drop_max = 130
+item_drop_chance = 1.0
+

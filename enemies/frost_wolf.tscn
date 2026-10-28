@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/frost_wolf_lunge.tres" id="weapon"]
+
+[node name="FrostWolf" instance=ExtResource("base_enemy")]
+enemy_name = "Frost Wolf"
+sprite_name = "enemy_frost_wolf"
+body_tint = Color(0.62, 0.65, 0.70, 1.0)
+weapon_icon_color = Color(0.80, 0.85, 0.90, 1.0)
+body_radius = 14.0
+body_shape = 0
+max_health = 52.0
+max_speed = 100.0
+acceleration = 650.0
+base_detection = 85.0
+noise_sensitivity = 5.5
+smell_sensitivity = 5.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.45
+min_engage_range = 0.0
+currency_drop_min = 7
+currency_drop_max = 12
+item_drop_chance = 0.32

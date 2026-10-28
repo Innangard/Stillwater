@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/skeleton_bone_burst.tres" id="weapon"]
+
+[node name="SkeletonBurst" instance=ExtResource("base_enemy")]
+enemy_name = "Bone Revenant"
+sprite_name = "enemy_skeleton_burst"
+body_tint = Color(0.58, 0.52, 0.48, 1.0)
+weapon_icon_color = Color(0.75, 0.65, 0.55, 1.0)
+body_radius = 18.0
+body_shape = 3
+max_health = 60.0
+max_speed = 68.0
+acceleration = 550.0
+base_detection = 90.0
+noise_sensitivity = 5.0
+smell_sensitivity = 6.0
+weapon = ExtResource("weapon")
+wind_up_duration = 1.20
+recover_duration = 0.90
+min_engage_range = 0.0
+currency_drop_min = 10
+currency_drop_max = 18
+item_drop_chance = 0.50

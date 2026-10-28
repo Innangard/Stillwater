@@ -1,0 +1,219 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://b17str3yxi07" path="res://crafting/recipe.gd" id="recipe_type"]
+[ext_resource type="Resource" path="res://dialogue/instances/blacksmith_gunhild.tres" id="dlg_gunhild"]
+[ext_resource type="Resource" path="res://dialogue/instances/merchant_aldis.tres" id="dlg_aldis"]
+[ext_resource type="Resource" path="res://dialogue/instances/norn_kaldrholt.tres" id="dlg_revna"]
+[ext_resource type="Resource" path="res://dialogue/instances/ranger_torsten.tres" id="dlg_torsten"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://npcs/npc.tscn" id="npc_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/quest_board.tscn" id="qb_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://npcs/townsperson.tscn" id="tp_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -400.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -340.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -500.0
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -900.0
+
+[sub_resource type="RectangleShape2D" id="bldg_longhouse"]
+size = Vector2(200, 100)
+
+[sub_resource type="RectangleShape2D" id="bldg_storehouse"]
+size = Vector2(140, 80)
+
+[sub_resource type="RectangleShape2D" id="bldg_cabin1"]
+size = Vector2(120, 70)
+
+[sub_resource type="RectangleShape2D" id="bldg_cabin2"]
+size = Vector2(110, 70)
+
+[node name="KaldrholtTown" type="Node2D"]
+script = ExtResource("region_script")
+region_id = "kaldrholt_town"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -2400.0
+offset_top = -2000.0
+offset_right = 2400.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.25, 0.32, 0.22, 1)
+
+[node name="Street" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -36.0
+offset_right = 900.0
+offset_bottom = 36.0
+mouse_filter = 2
+color = Color(0.45, 0.42, 0.35, 0.50)
+
+[node name="TreelineN" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -400.0
+offset_right = 900.0
+offset_bottom = -340.0
+mouse_filter = 2
+color = Color(0.15, 0.22, 0.12, 1)
+
+[node name="TreelineS" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = 340.0
+offset_right = 900.0
+offset_bottom = 400.0
+mouse_filter = 2
+color = Color(0.15, 0.22, 0.12, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="Walltop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_top")
+
+[node name="Wallbottom" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_bottom")
+
+[node name="Wallleft" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_left")
+
+[node name="Wallright" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("wall_right")
+
+[node name="Buildings" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="bldg_longhouseShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-260, -180)
+shape = SubResource("bldg_longhouse")
+
+[node name="bldg_storehouseShape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(60, -180)
+shape = SubResource("bldg_storehouse")
+
+[node name="bldg_cabin1Shape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(300, -180)
+shape = SubResource("bldg_cabin1")
+
+[node name="bldg_cabin2Shape" type="CollisionShape2D" parent="Buildings"]
+position = Vector2(-180, 200)
+shape = SubResource("bldg_cabin2")
+
+[node name="LonghouseVisual" type="ColorRect" parent="."]
+offset_left = -360
+offset_top = -230
+offset_right = -160
+offset_bottom = -130
+mouse_filter = 2
+color = Color(0.28, 0.24, 0.18, 1)
+
+[node name="StorehouseVisual" type="ColorRect" parent="."]
+offset_left = -10
+offset_top = -220
+offset_right = 130
+offset_bottom = -140
+mouse_filter = 2
+color = Color(0.30, 0.26, 0.20, 1)
+
+[node name="Cabin1Visual" type="ColorRect" parent="."]
+offset_left = 240
+offset_top = -215
+offset_right = 360
+offset_bottom = -145
+mouse_filter = 2
+color = Color(0.26, 0.22, 0.18, 1)
+
+[node name="Cabin2Visual" type="ColorRect" parent="."]
+offset_left = -235
+offset_top = 165
+offset_right = -125
+offset_bottom = 235
+mouse_filter = 2
+color = Color(0.26, 0.22, 0.18, 1)
+
+[node name="default" type="Marker2D" parent="."]
+
+[node name="from_west" type="Marker2D" parent="."]
+position = Vector2(-380, 0)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(720, 0)
+
+[node name="Player" parent="." instance=ExtResource("player_scene")]
+
+[node name="BlacksmithGunhild" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(380, -100)
+npc_name = "Gunhild the Pine-smith"
+dialogue = ExtResource("dlg_gunhild")
+tint = Color(0.42, 0.48, 0.38, 1)
+station_name = "Gunhild's Stump Forge"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="MerchantAldis" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(460, 100)
+npc_name = "Merchant Aldis"
+dialogue = ExtResource("dlg_aldis")
+tint = Color(0.45, 0.45, 0.40, 1)
+station_name = "Aldis's Sled Goods"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="BarkSpeakerRevna" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-180, 240)
+npc_name = "Bark-speaker Revna"
+dialogue = ExtResource("dlg_revna")
+tint = Color(0.35, 0.42, 0.30, 1)
+station_name = "Revna's Heartwood"
+recipes = Array[ExtResource("recipe_type")]([])
+
+[node name="RangerTorsten" parent="." instance=ExtResource("npc_scene")]
+position = Vector2(-320, -60)
+npc_name = "Ranger Torsten"
+dialogue = ExtResource("dlg_torsten")
+tint = Color(0.40, 0.45, 0.35, 1)
+
+[node name="QuestBoard" parent="." instance=ExtResource("qb_scene")]
+position = Vector2(180, 120)
+board_name = "KaldrholtTown Postings"
+
+[node name="TownspersonNE" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(280, -80)
+tint = Color(0.42, 0.45, 0.38, 1)
+
+[node name="TownspersonE" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(400, 60)
+tint = Color(0.45, 0.42, 0.40, 1)
+
+[node name="TownspersonS" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(60, 220)
+tint = Color(0.40, 0.42, 0.38, 1)
+
+[node name="TownspersonNW" parent="." instance=ExtResource("tp_scene")]
+position = Vector2(-220, -80)
+tint = Color(0.38, 0.42, 0.35, 1)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-460, 0)
+target_scene = "res://world/regions/barrholt_altar.tscn"
+target_spawn_point = "from_east"
+label = "\u2190  back through the woods"
+tint = Color(0.30, 0.42, 0.28, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitEast" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(740, 0)
+target_scene = "res://world/regions/vindfell_altar.tscn"
+target_spawn_point = "from_west"
+label = "\u2192  toward Vindfell"
+tint = Color(0.35, 0.45, 0.30, 0.4)
+zone_size = Vector2(48, 192)

@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://ddbu000020"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+
+[ext_resource type="PackedScene" path="res://enemies/giant_scorpion.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/sand_worm.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/draugr_husk.tscn" id="enemy_2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=820000]
+script = ExtResource("region_script")
+region_id = "deep_desert_buffer_20"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=820001]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.48, 0.42, 0.32, 1)
+
+[node name="TrackW" type="ColorRect" parent="." unique_id=820010]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 0.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="TrackN" type="ColorRect" parent="." unique_id=820011]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.58, 0.50, 0.36, 1)
+
+[node name="AshL" type="ColorRect" parent="." unique_id=820050]
+offset_left = -210.0
+offset_top = -50.0
+offset_right = -110.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.78, 0.72, 0.55, 0.6)
+
+[node name="AshR" type="ColorRect" parent="." unique_id=820051]
+offset_left = 130.0
+offset_top = -40.0
+offset_right = 230.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(0.78, 0.72, 0.55, 0.6)
+
+[node name="Marker" type="ColorRect" parent="." unique_id=820052]
+offset_left = -25.0
+offset_top = 100.0
+offset_right = 25.0
+offset_bottom = 160.0
+mouse_filter = 2
+color = Color(0.55, 0.42, 0.28, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=820100]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=820101]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=820102]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=820103]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=820104]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=820200]
+position = Vector2(0, -260)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=820201]
+position = Vector2(0, -260)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=820202]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=820250 instance=ExtResource("player_scene")]
+position = Vector2(0, -260)
+
+[node name="ExitNorth" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "↑  desert path"
+tint = Color(0.55, 0.50, 0.40, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitWest" parent="." instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/eastreach_altar.tscn"
+target_spawn_point = "default"
+label = "←  desert path"
+tint = Color(0.60, 0.52, 0.40, 0.4)
+zone_size = Vector2(48, 192)
+
+
+[node name="GiantScorpion_0" parent="." unique_id=9502000 instance=ExtResource("enemy_0")]
+position = Vector2(-200, -100)
+
+[node name="GiantScorpion_1" parent="." unique_id=9502001 instance=ExtResource("enemy_0")]
+position = Vector2(200, 100)
+
+[node name="SandWorm_2" parent="." unique_id=9502002 instance=ExtResource("enemy_1")]
+position = Vector2(0, -200)
+
+[node name="DraugrHusk_3" parent="." unique_id=9502003 instance=ExtResource("enemy_2")]
+position = Vector2(320, 180)

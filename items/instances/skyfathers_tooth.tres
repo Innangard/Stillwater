@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3]
+
+[ext_resource type="Script" path="res://items/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_name = "Skyfather's Tooth"
+description = "A tooth-shaped fulgurite, drawn whole from the sand where a strike left no body — only the place a body would have stood. The thunder is still inside it; tap a knife to one and the knife answers. Reagent."
+category = "reagent"
+placeholder_color = Color(0.80, 0.90, 1.00, 1)

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Iron Fist"
+description = "A piston-driven punch from a construct that no longer remembers its maker."
+base_damage = 14.0
+element = 1
+cooldown = 1.2
+on_hit_effects = []
+swing_range = 30.0
+arc_radius = 24.0
+swing_duration = 0.14
+knockback = 300.0
+user_lunge_distance = 35.0
+swing_visual = 8

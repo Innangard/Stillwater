@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://do17jswo54xf1"]
+
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" uid="uid://cn6ss5xdkdrul" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="Script" uid="uid://cbqj35u854vep" path="res://world/region_root.gd" id="region_script"]
+
+[node name="DungeonEntranceSprekken" type="Node2D" unique_id=8000412]
+script = ExtResource("region_script")
+region_id = "dungeon_entrance_sprekken"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=8000413]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.22, 0.28, 0.24, 1)
+
+[node name="Path" type="ColorRect" parent="." unique_id=8000414]
+offset_left = -600.0
+offset_top = -32.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.5, 0.45, 0.35, 0.5)
+
+[node name="DungeonPlatform" type="ColorRect" parent="." unique_id=8000415]
+offset_left = -80.0
+offset_top = -120.0
+offset_right = 280.0
+offset_bottom = 120.0
+mouse_filter = 2
+color = Color(0.25, 0.22, 0.3, 1)
+
+[node name="DungeonArch" type="ColorRect" parent="." unique_id=8000416]
+offset_left = 180.0
+offset_top = -100.0
+offset_right = 260.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.35, 0.28, 0.4, 1)
+
+[node name="ArchKeystone" type="ColorRect" parent="." unique_id=8000417]
+offset_left = 195.0
+offset_top = -110.0
+offset_right = 245.0
+offset_bottom = -100.0
+mouse_filter = 2
+color = Color(0.5, 0.4, 0.55, 1)
+
+[node name="Torch1" type="ColorRect" parent="." unique_id=8000418]
+offset_left = 170.0
+offset_top = -80.0
+offset_right = 180.0
+offset_bottom = -50.0
+mouse_filter = 2
+color = Color(0.85, 0.6, 0.2, 1)
+
+[node name="Torch2" type="ColorRect" parent="." unique_id=8000419]
+offset_left = 260.0
+offset_top = -80.0
+offset_right = 270.0
+offset_bottom = -50.0
+mouse_filter = 2
+color = Color(0.85, 0.6, 0.2, 1)
+
+[node name="Player" parent="." unique_id=8000420 instance=ExtResource("player_scene")]
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=8000421]
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1008953096]
+build_mode = 1
+polygon = PackedVector2Array(-600, -400, -60, -400, -60, -500, 60, -500, 60, -400, 600, -400, 600, -590, -600, -590)
+
+[node name="WallBottom" type="CollisionPolygon2D" parent="Walls" unique_id=562497162]
+build_mode = 1
+polygon = PackedVector2Array(-600, 400, -60, 400, -60, 500, 60, 500, 60, 400, 600, 400, 600, 590, -600, 590)
+
+[node name="WallLeft_Gen" type="CollisionPolygon2D" parent="Walls" unique_id=1347273600]
+build_mode = 1
+polygon = PackedVector2Array(-600, -400, -600, -60, -700, -60, -700, 60, -600, 60, -600, 400, -790, 400, -790, -400)
+
+[node name="WallRight_Gen" type="CollisionPolygon2D" parent="Walls" unique_id=1812741844]
+build_mode = 1
+polygon = PackedVector2Array(600, -400, 600, -60, 700, -60, 700, 60, 600, 60, 600, 400, 790, 400, 790, -400)
+
+[node name="default" type="Marker2D" parent="." unique_id=8000422]
+
+[node name="from_west" type="Marker2D" parent="." unique_id=8000423]
+position = Vector2(-400, 0)
+
+[node name="from_dungeon" type="Marker2D" parent="." unique_id=8000424]
+position = Vector2(200, 0)
+
+[node name="from_east" type="Marker2D" parent="."]
+position = Vector2(280, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=8000425]
+position = Vector2(0, -300)
+
+[node name="from_south" type="Marker2D" parent="." unique_id=8000426]
+position = Vector2(0, 300)
+
+[node name="ExitWest" parent="." unique_id=8000427 instance=ExtResource("exit_scene")]
+position = Vector2(-500, 0)
+target_scene = "res://world/regions/wickbarrow_altar.tscn"
+target_spawn_point = "from_east"
+label = "←  back to the approach"
+tint = Color(0.3, 0.42, 0.28, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." unique_id=34382684 instance=ExtResource("exit_scene")]
+position = Vector2(0, -380)
+target_scene = "res://world/regions/wickbarrow_altar.tscn"
+target_spawn_point = "from_east"
+label = "↑  back to the approach"
+tint = Color(0.3, 0.42, 0.28, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitSouth" parent="." unique_id=1396162398 instance=ExtResource("exit_scene")]
+position = Vector2(0, 380)
+target_scene = "res://world/regions/wickbarrow_altar.tscn"
+target_spawn_point = "from_east"
+label = "↓  back to the approach"
+tint = Color(0.3, 0.42, 0.28, 0.4)
+zone_size = Vector2(192, 48)
+
+[node name="ExitEast" parent="." unique_id=8000428 instance=ExtResource("exit_scene")]
+position = Vector2(220, 0)
+target_scene = "res://world/regions/sprekken/sprekken_buffer_1.tscn"
+target_spawn_point = "default"
+label = "→  enter the Sprekken Depths"
+tint = Color(0.5, 0.35, 0.55, 0.6)
+zone_size = Vector2(60, 120)

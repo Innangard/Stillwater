@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/enemy.tscn" id="base_enemy"]
+[ext_resource type="Resource" path="res://weapons/instances/enemy_weapons/ember_spear.tres" id="weapon"]
+
+[node name="EmberSpear" instance=ExtResource("base_enemy")]
+enemy_name = "Ember-bearer"
+sprite_name = "enemy_ember_spear"
+body_tint = Color(0.78, 0.34, 0.20, 1.0)
+weapon_icon_color = Color(1.00, 0.65, 0.20, 1.0)
+body_radius = 12.0
+body_shape = 1
+max_health = 30.0
+max_speed = 130.0
+acceleration = 800.0
+base_detection = 80.0
+noise_sensitivity = 7.0
+smell_sensitivity = 4.0
+weapon = ExtResource("weapon")
+wind_up_duration = 0.55
+recover_duration = 0.40
+min_engage_range = 0.0
+currency_drop_min = 4
+currency_drop_max = 9
+item_drop_chance = 0.32

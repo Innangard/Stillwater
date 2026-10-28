@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Armor" format=3 uid="uid://m352sds63f21"]
+
+[ext_resource type="Script" uid="uid://cw5s273qilag1" path="res://items/armor.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bf4v2b53rdidr" path="res://sprites/Skill_Item icons/Separated Files/fc2035.png" id="1_nreso"]
+
+[resource]
+script = ExtResource("1")
+armor_slot = 2
+damage_reduction = 0.0
+damage_taken_multiplier = 0.97
+noise_weight = 0.5
+move_speed_multiplier = 1.05
+item_name = "Pilgrim's Sandals"
+description = "Worn leather sandals held together by stubbornness and old cord. Light on the feet — they have to be, with this far still to walk. Boots."
+icon = ExtResource("1_nreso")
+category = "armor"
+max_stack = 1
+placeholder_color = Color(0.55, 0.48, 0.4, 1)

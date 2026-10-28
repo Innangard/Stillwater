@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Still-water Thora"
+text = "The lake is a mirror for more than sky. On calm nights you can see the bottom, and the bottom sees you back."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Still-water Thora"
+text = "My runes are lake-smoothed stones. They have spent centuries being shaped by water and whatever lives beneath it. The inscriptions I add are the last step, not the first."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

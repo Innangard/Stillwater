@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Kenning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "net_cutter"
+display_name = "Net-Cutter"
+epithet = "No rope holds him, no hand drags him"
+description = "You cut the Crone's net from the inside. Nothing that grabs, snares, or hauls will ever close on you again — nets part, roots snap, and the pull of drowned hands finds no purchase."
+flavor_text = "Ran counts her catch each night. One line of the tally is crossed out."
+unlock_flag = "boss_dead_drowned_crone"
+unlock_hint = "Cut the net of the sea-witch in the Garnvik, south of Storsprunga."
+hidden_when_locked = true
+damage_dealt_multiplier = 1.0
+weapon_filter = 0
+damage_taken_multiplier = 1.0
+move_speed_multiplier = 1.0
+dash_cooldown_multiplier = 1.0
+binding_immunity = true
+category = 1
+tier_color = Color(0.38, 0.62, 0.62, 1)

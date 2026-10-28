@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://erbu0000006c"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_sword.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1280290060]
+script = ExtResource("region_script")
+region_id = "eastreach_buffer_8"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1182431862]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="TrackH" type="ColorRect" parent="." unique_id=1826979307]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="Plateau" type="ColorRect" parent="." unique_id=1593913981]
+offset_left = -180.0
+offset_top = -100.0
+offset_right = 180.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.78, 0.74, 0.66, 1)
+
+[node name="LipL" type="ColorRect" parent="." unique_id=1812036931]
+offset_left = -280.0
+offset_top = -100.0
+offset_right = -180.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.40, 0.34, 0.28, 1)
+
+[node name="LipR" type="ColorRect" parent="." unique_id=1420652717]
+offset_left = 180.0
+offset_top = -100.0
+offset_right = 280.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.40, 0.34, 0.28, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1173757420]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1643048452]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1461340471]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1387265576]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1433814730]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1682365694]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1409463913]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1240426034]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=1408243157 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="Gob1" parent="." unique_id=1181785418 instance=ExtResource("enemy_0")]
+position = Vector2(-80, -80)
+
+[node name="Skel" parent="." unique_id=1906900420 instance=ExtResource("enemy_1")]
+position = Vector2(140, -120)
+
+[node name="Wolf" parent="." unique_id=1219378829 instance=ExtResource("enemy_2")]
+position = Vector2(-180, 140)
+
+[node name="ExitEast" parent="." unique_id=1838668439 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "→  the road"
+tint = Color(0.62, 0.55, 0.38, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=1457661565 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "←  the road"
+tint = Color(0.62, 0.55, 0.38, 0.4)
+zone_size = Vector2(48, 192)
+

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "A Carving"
+text = "Hold tightly to your name and speak it to the dirt every morning. When the mind-forge empties of who you were, the monsters take you, and you will forget how to speak entirely. I watched my brother forget his name yesterday; his jaw unhinged, his eyes went white, and he fled into the salt marshes to hunt for meat that will never fill him."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1")])

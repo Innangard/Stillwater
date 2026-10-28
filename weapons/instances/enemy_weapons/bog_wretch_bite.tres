@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Script" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/poison.tres" id="3"]
+
+[sub_resource type="Resource" id="poison_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.45
+
+[resource]
+script = ExtResource("1")
+weapon_name = "Wretch Bite"
+description = "Teeth grown soft in the bog and no cleaner for it. The wound goes green by nightfall."
+base_damage = 9.0
+element = 4
+cooldown = 0.85
+on_hit_effects = Array[ExtResource("2")]([SubResource("poison_app")])
+swing_range = 22.0
+arc_radius = 18.0
+swing_duration = 0.14
+knockback = 180.0
+user_lunge_distance = 40.0
+hitbox_shape = 0
+swing_visual = 8

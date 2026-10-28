@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://hm000105"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+
+[ext_resource type="PackedScene" path="res://enemies/skeleton_fan.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_1"]
+[ext_resource type="PackedScene" path="res://enemies/goblin_bow.tscn" id="enemy_2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1749776591]
+script = ExtResource("region_script")
+region_id = "hollowmere_buffer_5"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1232896650]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.26, 0.30, 0.34, 1)
+
+[node name="TrackW" type="ColorRect" parent="." unique_id=1004310589]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 0.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.44, 1)
+
+[node name="TrackN" type="ColorRect" parent="." unique_id=1670534676]
+offset_left = -46.0
+offset_top = -340.0
+offset_right = 46.0
+offset_bottom = 0.0
+mouse_filter = 2
+color = Color(0.38, 0.42, 0.44, 1)
+
+[node name="Stone1" type="ColorRect" parent="." unique_id=1718809978]
+offset_left = -80.0
+offset_top = -200.0
+offset_right = -42.0
+offset_bottom = -110.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Stone2" type="ColorRect" parent="." unique_id=1628691015]
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 82.0
+offset_bottom = 210.0
+mouse_filter = 2
+color = Color(0.52, 0.52, 0.55, 1)
+
+[node name="Heath1" type="ColorRect" parent="." unique_id=1351783224]
+offset_left = 110.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = -90.0
+mouse_filter = 2
+color = Color(0.40, 0.44, 0.34, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1748025136]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionPolygon2D" parent="Walls" unique_id=1355782782]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -60, -300, -60, -400, 60, -400, 60, -300, 560, -300, 560, -490, -560, -490)
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1316948009]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionPolygon2D" parent="Walls" unique_id=1214780670]
+build_mode = 1
+polygon = PackedVector2Array(-560, -300, -560, -60, -660, -60, -660, 60, -560, 60, -560, 300, -750, 300, -750, -300)
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1850472881]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1754382786]
+position = Vector2(-500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1363044086]
+position = Vector2(-500, 0)
+
+[node name="from_north" type="Marker2D" parent="." unique_id=1923719831]
+position = Vector2(0, -260)
+
+[node name="Player" parent="." unique_id=1829971769 instance=ExtResource("player_scene")]
+position = Vector2(-500, 0)
+
+[node name="Skel1" parent="." unique_id=1988656250 instance=ExtResource("enemy_0")]
+position = Vector2(-120, -100)
+
+[node name="Gob1" parent="." unique_id=2066854993 instance=ExtResource("enemy_1")]
+position = Vector2(160, 80)
+
+[node name="ExitWest" parent="." unique_id=1393262759 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "←  the moor"
+tint = Color(0.40, 0.44, 0.46, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitNorth" parent="." unique_id=1667556330 instance=ExtResource("exit_scene")]
+position = Vector2(0, -300)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "↑  the moor"
+tint = Color(0.45, 0.50, 0.55, 0.4)
+zone_size = Vector2(192, 48)
+
+
+[node name="SkelFan_0" parent="." unique_id=9700500 instance=ExtResource("enemy_0")]
+position = Vector2(0, 0)
+
+[node name="WolfSwipe_1" parent="." unique_id=9700501 instance=ExtResource("enemy_1")]
+position = Vector2(-300, -120)
+
+[node name="GobBow_2" parent="." unique_id=9700502 instance=ExtResource("enemy_2")]
+position = Vector2(280, 140)

@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://erbu00000072"]
+
+[ext_resource type="Script" path="res://world/region_root.gd" id="region_script"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="player_scene"]
+[ext_resource type="PackedScene" path="res://world/exit_zone.tscn" id="exit_scene"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_lunge.tscn" id="enemy_0"]
+[ext_resource type="PackedScene" path="res://enemies/wolf_swipe.tscn" id="enemy_1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_top"]
+normal = Vector2(0, 1)
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_bottom"]
+distance = -300
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_left"]
+normal = Vector2(1, 0)
+distance = -560
+
+[sub_resource type="WorldBoundaryShape2D" id="wall_right"]
+normal = Vector2(-1, 0)
+distance = -560
+
+[node name="Node2D" type="Node2D" unique_id=1517405044]
+script = ExtResource("region_script")
+region_id = "eastreach_buffer_14"
+player_scene = ExtResource("player_scene")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1210211219]
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+mouse_filter = 2
+color = Color(0.55, 0.50, 0.40, 1)
+
+[node name="TrackH" type="ColorRect" parent="." unique_id=1722307257]
+offset_left = -560.0
+offset_top = -46.0
+offset_right = 560.0
+offset_bottom = 46.0
+mouse_filter = 2
+color = Color(0.68, 0.62, 0.48, 1)
+
+[node name="PostL" type="ColorRect" parent="." unique_id=1522856718]
+offset_left = -260.0
+offset_top = -100.0
+offset_right = -200.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.40, 0.34, 0.28, 1)
+
+[node name="PostR" type="ColorRect" parent="." unique_id=1102486505]
+offset_left = 200.0
+offset_top = -100.0
+offset_right = 260.0
+offset_bottom = 100.0
+mouse_filter = 2
+color = Color(0.40, 0.34, 0.28, 1)
+
+[node name="Grass" type="ColorRect" parent="." unique_id=1329723213]
+offset_left = -100.0
+offset_top = 150.0
+offset_right = 100.0
+offset_bottom = 210.0
+mouse_filter = 2
+color = Color(0.70, 0.62, 0.40, 0.7)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1631717503]
+collision_layer = 1
+collision_mask = 0
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls" unique_id=1136684093]
+shape = SubResource("wall_top")
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls" unique_id=1799720968]
+shape = SubResource("wall_bottom")
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls" unique_id=1725346301]
+shape = SubResource("wall_left")
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls" unique_id=1228294098]
+shape = SubResource("wall_right")
+
+[node name="default" type="Marker2D" parent="." unique_id=1200705133]
+position = Vector2(500, 0)
+
+[node name="from_east" type="Marker2D" parent="." unique_id=1993145507]
+position = Vector2(500, 0)
+
+[node name="from_west" type="Marker2D" parent="." unique_id=1848707374]
+position = Vector2(-500, 0)
+
+[node name="Player" parent="." unique_id=1237252366 instance=ExtResource("player_scene")]
+position = Vector2(500, 0)
+
+[node name="Wolf1" parent="." unique_id=1647330957 instance=ExtResource("enemy_0")]
+position = Vector2(-100, -80)
+
+[node name="Wolf2" parent="." unique_id=1793676971 instance=ExtResource("enemy_1")]
+position = Vector2(80, -100)
+
+[node name="Wolf3" parent="." unique_id=1934787938 instance=ExtResource("enemy_0")]
+position = Vector2(160, 120)
+
+[node name="ExitEast" parent="." unique_id=1495863544 instance=ExtResource("exit_scene")]
+position = Vector2(540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "→  the road"
+tint = Color(0.62, 0.55, 0.38, 0.4)
+zone_size = Vector2(48, 192)
+
+[node name="ExitWest" parent="." unique_id=2029251569 instance=ExtResource("exit_scene")]
+position = Vector2(-540, 0)
+target_scene = "res://world/regions/nasus_overlook.tscn"
+target_spawn_point = "default"
+label = "←  the road"
+tint = Color(0.62, 0.55, 0.38, 0.4)
+zone_size = Vector2(48, 192)
+

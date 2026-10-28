@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Kenning" format=3]
+
+[ext_resource type="Script" path="res://kennings/kenning.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+kenning_id = "iron_sided"
+display_name = "Iron-Sided"
+epithet = "He who shrugs the spear off as though it were rain"
+description = "Hits glance off you. Nothing else moves quite right either — you take fifteen percent less damage but walk ten percent slower."
+flavor_text = "Some men are walls. Walls are not famous for moving."
+category = 1
+unlock_flag = "kenning_unlock_iron_sided"
+unlock_hint = "Survive a battle where every other living thing fell."
+damage_taken_multiplier = 0.85
+move_speed_multiplier = 0.90
+tier_color = Color(0.55, 0.55, 0.60, 1)

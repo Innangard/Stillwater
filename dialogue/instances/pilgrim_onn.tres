@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3 uid="uid://cwafvmqel5r56"]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line_1"]
+script = ExtResource("2")
+speaker = "Onn"
+text = "I came up the south road, oh — long ago. To wait my turn at the Pool, like everyone."
+
+[sub_resource type="Resource" id="line_2"]
+script = ExtResource("2")
+speaker = "Onn"
+text = "Then the king came down from his hall and the queue stopped moving. The water still ripples. Nothing leaves through it anymore."
+
+[sub_resource type="Resource" id="line_3"]
+script = ExtResource("2")
+speaker = "Onn"
+text = "He tells us we are not ready. He tells us he is not ready. He says it kindly. He has said it for a hundred years."
+
+[sub_resource type="Resource" id="line_4"]
+script = ExtResource("2")
+speaker = "Onn"
+text = "You're the first warm thing I've seen in this long while. Whatever brought you here — I hope you're ready, even if he is not."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line_1"), SubResource("line_2"), SubResource("line_3"), SubResource("line_4")])

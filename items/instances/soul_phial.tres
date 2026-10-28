@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ConsumableItem" format=3 uid="uid://dbqil2ogddigy"]
+
+[ext_resource type="Script" uid="uid://cmu6ioiycayjm" path="res://items/consumable_item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dm25srjgkspcn" path="res://sprites/Skill_Item icons/Separated Files/fc266.png" id="1_44p8l"]
+
+[resource]
+script = ExtResource("1")
+heal_amount = 40.0
+item_name = "Soul Phial"
+description = "A glass vial of warm, red light — the trapped breath of a soul not yet ready to pass. Restores 40 HP."
+icon = ExtResource("1_44p8l")
+category = "consumable"
+max_stack = 5
+placeholder_color = Color(0.95, 0.3, 0.4, 1)

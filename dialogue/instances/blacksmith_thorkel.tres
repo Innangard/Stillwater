@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dialogue" format=3]
+
+[ext_resource type="Script" uid="uid://20vxx3lmqysn" path="res://dialogue/dialogue.gd" id="1"]
+[ext_resource type="Script" uid="uid://cpen105j75gae" path="res://dialogue/dialogue_line.gd" id="2"]
+
+[sub_resource type="Resource" id="line1"]
+script = ExtResource("2")
+speaker = "Thorkel"
+text = "The old drydock still turns out keels, though no one knows where the ships go anymore. The sea takes them and sends back driftwood."
+
+[sub_resource type="Resource" id="line2"]
+script = ExtResource("2")
+speaker = "Thorkel"
+text = "I forge fittings, nails, and blades from salvaged anchor chain. Bring me what you pull from the wreckage and I will hammer it into something that bites back."
+
+[resource]
+script = ExtResource("1")
+lines = Array[ExtResource("2")]([SubResource("line1"), SubResource("line2")])

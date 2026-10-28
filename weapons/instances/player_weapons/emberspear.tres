@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MeleeWeapon" format=3 uid="uid://b7ou5xgeqwco0"]
+
+[ext_resource type="Script" uid="uid://3ou3co034g02" path="res://weapons/melee_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://byywqilt4up6p" path="res://sprites/Skill_Item icons/Separated Files/fc1541.png" id="1_16lyb"]
+[ext_resource type="Script" uid="uid://3qvb6p2atqjx" path="res://status/status_application.gd" id="2"]
+[ext_resource type="Resource" path="res://status/instances/burn.tres" id="3"]
+
+[sub_resource type="Resource" id="status_app"]
+script = ExtResource("2")
+effect = ExtResource("3")
+chance = 0.4
+
+[resource]
+script = ExtResource("1")
+swing_range = 72.0
+arc_radius = 9.0
+swing_duration = 0.2
+knockback = 220.0
+hitbox_shape = 1
+weapon_name = "Emberspear"
+base_damage = 17.0
+element = 1
+cooldown = 0.42
+on_hit_effects = Array[ExtResource("2")]([SubResource("status_app")])
+description = "The flint tip glows like a banked coal. What it pierces, it ignites."
+icon = ExtResource("1_16lyb")
+swing_visual = 2
