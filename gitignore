@@ -1,0 +1,40 @@
+# Godot 4 cache and editor state. Godot rebuilds this on import.
+# It also holds export_credentials.cfg, which must never be committed.
+.godot/
+
+# Exported builds
+*.exe
+*.pck
+*.dmg
+*.apk
+*.aab
+*.x86_64
+*.x86_32
+*.arm64
+*.zip
+builds/
+exports/
+
+# Generator scripts and their scratch output
+gen_*.py
+fill_*.py
+__pycache__/
+*.pyc
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# WSL creates these when files are copied over from Windows
+*:Zone.Identifier
+*.Zone.Identifier
